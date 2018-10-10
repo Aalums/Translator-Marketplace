@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>สร้างรายการจ้างแปล</title>
+  <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div class = "form">
+  
+  <div class = "header">
+  
+     <center><h1>สร้างรายการจ้างแปล</h1></center>     
+  </div>
+  
+  <div class = "sign-in-form">
+  <table style="width:100%">
+
+  <tr>
+    <td>
+    <h3>ชื่องาน</h3>
+    <input></input> 
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <h3>การแปล</h3><br><br><br>
+    <form action="">
+      <input type="radio" name="translate" value="thaieng"> ไทย -> อังกฤษ
+      <input type="radio" name="translate" value="engthai" > อังกฤษ -> ไทย
+    </form>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    <h3>จำนวนหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา</h3>
+      <div class="product">
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-line-price">120.0</div>
+  </div>
+
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    <h3>รายละเอียดงาน</h3>
+     <input></input> 
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    <h3>แนบไฟล์</h3> <br><br><br><br>
+    <div class="custom-upload">
+      <label class="custom-upload__button" for="file" data-element="custom-upload-button">Upload Files </label>
+      <i class="fa fa-file-image-o" ></i>
+    <input class="custom-upload__input" id="file" type="file" data-behaviour="custom-upload-input" value="" multiple/>
+    </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+    <button>
+    <div class = "button-text">สร้างรายการจ้าง</div>
+    </button></center>
+    </td>
+  </tr>
+</table>
+</div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script  src="js/index.js"></script>
+
+</body>
+
+</html>

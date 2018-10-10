@@ -1,0 +1,276 @@
+/* 
+
+colors
+
+blue: #003489
+off-white: #f6eee3
+red: #c50058 
+yellow: #ffdf00
+
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  line-height: 0.5;
+  color: #003489;
+  background: #ffdf00;
+ font-family: 'Mitr', sans-serif;
+}
+
+/* fonts */
+
+h1 {
+    font-weight: normal;
+
+  font-size: 2.15em;
+  font-weight: 900;
+  line-height: 1.2em;
+  margin-bottom: 34px;
+}
+
+h2, button {
+  font-variant: small-caps;
+  font-weight: normal;
+  font-size: 1.24em;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #003489;
+}
+
+h3, a {
+ font-family: 'Mitr', sans-serif;
+  font-variant: small-caps;
+  font-size: .9em;
+  letter-spacing: 1px;
+  font-weight: 700;
+  line-height: 0;
+  margin-bottom: 4px;
+}
+/*uplode file button*/
+.custom-upload__input {
+  height: 0;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.custom-upload__button {
+ /* position: absolute;
+  top: 85%;
+  left: 22%;*/
+  padding: 5px 40px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 2px solid #003489;
+ font-family: 'Mitr', sans-serif;
+  border-radius: 20px;
+  background-color: #f6eee3;
+  color: #003489;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.custom-upload__button:hover {
+  background-color: #fff;
+  color: #666;
+  cursor: pointer;
+}
+.custom-upload__button .fa.fa-file-image-o {
+  font-family: FontAwesome;
+}
+
+
+/* form */
+
+.form {
+  max-width: 600px;
+  min-width: 490px;
+  width: 80%;
+  position: absolute;
+  padding: 50px;
+  padding-right: 54px;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%,0);
+  border-radius: 5px;
+  background: #fff;
+  border: 2px solid #003489;
+  box-shadow: 8px 8px 0px 0px #003489;
+  margin-bottom: 100px;
+  
+}
+
+.sign-in-form {
+  opacity: 1;
+  float: left;
+  width: 100%;
+}
+
+.sign-up-form {
+  opacity: 1;
+  float: left;
+  margin-top: -373px;
+}
+
+.sign-in-container {
+  outline: none;
+  cursor: pointer;
+  float: left;
+}
+
+.sign-up-container {
+  cursor: pointer;
+  float: right;
+}
+
+.header {
+  overflow: visible;
+  height: 60px;
+/*   margin-bottom: 50px; */
+  line-height: .8em;
+}
+
+.underline-thick {
+  margin-top: 10px;
+  width: 60px;
+  height: 3px;
+  background: #003489;
+}
+input[type=radio] {
+    border: 0px;
+    width: 6%;
+    height: 1.3em;
+}
+
+input {
+  outline: none;
+  background: transparent;
+  color: #003489;
+  border: 2px solid #003489;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  margin-bottom: 30px;
+  font-size: .9em;
+  width: 100%;
+  height: 2.5em;
+}
+
+button {
+  box-sizing: border-box;
+  outline: none;
+  border: 2px solid #003489;
+  background: #f6eee3;
+  border-radius: 4px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 13px;
+  margin-bottom: 30px;
+  transition: transform .2s, box-shadow .2s;
+  transform: translate(-4px,-4px);
+  box-shadow: 4px 4px 0px 0px #003489;
+  text-align: center;
+}
+
+.button-text {
+	font-family: 'Mitr', sans-serif;
+  margin: 0;
+  line-height: 1;
+}
+
+button:hover {
+  transform: translate(-6px,-6px);
+  box-shadow: 6px 6px 0px 0px #003489;
+}
+
+button:active {
+  transition-delay:-.15s;
+  transform: translate(-2px,-2px);
+  box-shadow: 2px 2px 0px 0px #003489;
+}
+
+.forgot {
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.forgot:hover {
+  color: #5174ad;
+}
+
+.underline-thick {
+  transition: transform cubic-bezier(.29,.17,.03,1) .4s;
+  transform: scale(0,1);
+  transform-origin: left;
+}
+
+/* animations */
+
+.sign-in-container.selected .underline-thick, .sign-up-container.selected .underline-thick {
+  transform: scale(1,1);
+}
+
+.sign-in-container:hover h2, .sign-up-container:hover h2 {
+/*   color: #5174ad; */
+}
+
+.sign-in-container:hover .underline-thick, .sign-up-container:hover .underline-thick {
+  transform: scale(1,1);
+/*   background: #5174ad; */
+}
+
+
+/*calculate price*/
+
+
+
+.product-quantity {
+  float: left;
+  width: 10%;
+}
+.product-line-price {
+  float: left;
+  width: 12%;
+  text-align: right;
+  margin-top: 15px;
+  margin-left: 50px;
+}
+
+/* This is used as the traditional .clearfix class */
+.group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
+.group:after,
+.shopping-cart:after,
+.column-labels:after,
+.product:after,
+.totals-item:after {
+  content: '';
+  display: table;
+}
+
+.group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+  clear: both;
+}
+
+.group, .shopping-cart, .column-labels, .product, .totals-item {
+  zoom: 1;
+}
+
+/* Apply clearfix in a few places */
+/* Apply dollar signs */
+.product .product-price:after, .product .product-line-price:after, .totals-value:before {
+  content: '฿';
+}
+
+/* Product entries */
+.product {
+}
+.product .product-quantity input {
+  width: 40px;
+
+}

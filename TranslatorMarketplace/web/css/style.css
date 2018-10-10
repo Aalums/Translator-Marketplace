@@ -51,36 +51,6 @@ h3, a {
   line-height: 0;
   margin-bottom: 4px;
 }
-/*uplode file button*/
-.custom-upload__input {
-  height: 0;
-  left: -10000px;
-  overflow: hidden;
-  position: absolute;
-}
-
-.custom-upload__button {
- /* position: absolute;
-  top: 85%;
-  left: 22%;*/
-  padding: 5px 40px;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  border: 2px solid #003489;
- font-family: 'Mitr', sans-serif;
-  border-radius: 20px;
-  background-color: #f6eee3;
-  color: #003489;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-.custom-upload__button:hover {
-  background-color: #fff;
-  color: #666;
-  cursor: pointer;
-}
-.custom-upload__button .fa.fa-file-image-o {
-  font-family: FontAwesome;
-}
 
 
 /* form */
@@ -274,3 +244,21 @@ button:active {
   width: 40px;
 
 }
+
+/*select date*/
+
+
+[type="date"] {   
+ background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 100% 50% no-repeat;
+    font-family: 'Mitr', sans-serif;
+    width: 27%;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.createorder {
+    -webkit-column-count: 1;

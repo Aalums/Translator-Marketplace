@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+<div class="createorder">
   <div class = "form">
   
   <div class = "header">
@@ -61,25 +61,22 @@
      <input></input> 
     </td>
   </tr>
-
-  <tr>
+ <tr>
     <td>
-    <h3>แนบไฟล์</h3> <br><br><br><br>
-    <div class="custom-upload">
-      <label class="custom-upload__button" for="file" data-element="custom-upload-button">Upload Files </label>
-      <i class="fa fa-file-image-o" ></i>
-    <input class="custom-upload__input" id="file" type="file" data-behaviour="custom-upload-input" value="" multiple/>
-    </div>
+    <h3>กำหนดวันรับงานแปล</h3><br>
+     <input type="date" name="orderdate" id="orderdate">
     </td>
   </tr>
 
   <tr>
     <td>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h3>แนบไฟล์ที่ต้องการแปล</h3> <br><br><br><br>
+    <input type="file" name="myFile"><br><br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
     <center>
     <button>
     <div class = "button-text">สร้างรายการจ้าง</div>
@@ -88,7 +85,7 @@
   </tr>
 </table>
 </div>
-
+</div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
     <script  src="js/index.js"></script>

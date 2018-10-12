@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Translate</title>
+        <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <form action="RegisterTranslator" method="POST">
+            <div class="createorder">
+                <div class = "form">
+                    <center><a href="https://www.picz.in.th/image/kC2A9R"><img src="https://www.picz.in.th/images/2018/10/10/kC2A9R.png" alt="kC2A9R.png" border="0" width ="180px" hight ="160px"/></a></center>
+
+                    <div class = "TableEmploy">
+                        <!-- Tab links -->
+                        <center>
+                            <div class="tab"><BR>
+                                <button class="tablinks" onclick="openCity(event, 'จ้างแปล')"> จ้างแปล </button>
+                                <button class="tablinks" onclick="openCity(event, 'รับจ้างแปล')"> รับจ้างแปล </button>
+                            </div>
+                            
+                            <!--
+                            .TableEmploy{
+                            font-size: larger;
+                            }-->
+                            
+                            <!-- Create Table -->
+                            <BR><font fontsize="lange"> รายการที่ถูกจ้าง </font><BR><BR>
+                            <TABLE Border="4" style="width: -webkit-fill-available" size="auto">
+                                <TR>
+                                    <TH> รายละเอียดการจ้าง </TH>
+                                    <TH> รับ/ปฏิเสธ </TH>
+                                </TR>
+                                <TR>
+                                    <TD> ข้อมูล </TD>
+                                    <TD> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</TD>
+                                </TR>
+                                <TR>
+                                    <TD> ข้อมูล </TD>
+                                    <TD> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</TD>
+                                </TR>
+                            </TABLE>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

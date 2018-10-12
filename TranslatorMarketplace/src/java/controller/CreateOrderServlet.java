@@ -1,4 +1,4 @@
-package servlets;
+package controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import model.file_create;
 
-@WebServlet(name = "Create_order_Servlet", urlPatterns = {"/Create_order_Servlet"})
-public class Create_order_Servlet extends HttpServlet {
+@MultipartConfig
+@WebServlet(name = "CreateOrderServlet", urlPatterns = {"/CreateOrderServlet"})
+public class CreateOrderServlet extends HttpServlet {
 
     private Connection conn;
     public void init() {
@@ -36,13 +38,9 @@ public class Create_order_Servlet extends HttpServlet {
             String title = request.getParameter("title");
             String translate = request.getParameter("translate");
             int num_page = Integer.parseInt(request.getParameter("num_page"));
-            float price = Float.parseFloat(request.getParameter("price"));
+            float price = num_page * 120;
             String description = request.getParameter("description");
             Date date = Date.valueOf(request.getParameter("orderdate"));
-            
-            //เช็ค
-            out.println("<br>"+title+"<br>"+translate+"<br>"+num_page+"<br>"+price+"<br>"+description+"<br>"+date+"<br>");
-            out.println("alert('Get Parameter Complete!!')");
             
             Part file = request.getPart("file_create");
             InputStream inputStream = file.getInputStream();
@@ -50,18 +48,20 @@ public class Create_order_Servlet extends HttpServlet {
             file_create.fileCreate(title, inputStream);
             
             //เช็ค
-            out.println("<br>alert('File Complete!!')");
+            out.println("<br>"+title+"<br>"+translate+"<br>"+num_page+"<br>"+price+"<br>"+description+"<br>"+date+"<br>");
+            out.println("alert('Get Parameter Complete!!')");
             
-            //เพิ่มข้อมูลลงฐานข้อมูล
-            String sql = "INSERT INTO create_order (id_customer, title, file_create, description, price, due_date) "
-                    + "VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO create_order (id_customer, title, file_create, translate_type, description, num_page, price, due_date) "
+                    + "VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, "admin");
             stmt.setString(2, title);
             stmt.setString(3, file_create.create());
-            stmt.setString(4, description);
-            stmt.setFloat(5, price);
-            stmt.setDate(6, date);
+            stmt.setString(4, translate);
+            stmt.setString(5, description);
+            stmt.setInt(6, num_page);
+            stmt.setFloat(7, price);
+            stmt.setDate(8, date);
             
             stmt.executeUpdate();
             stmt.close();
@@ -70,7 +70,7 @@ public class Create_order_Servlet extends HttpServlet {
             out.println("<br>alert('INSERT Complete!!')");
             
         } catch (SQLException ex) {
-            Logger.getLogger(Create_order_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

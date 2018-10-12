@@ -14,148 +14,148 @@ yellow: #ffdf00
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 #cssmenu {
-      margin-top: 46px;
-      margin-bottom: 46px;
+    margin-top: 46px;
+    margin-bottom: 46px;
     border-radius: 5px;
     height: 50px;
     max-width: 600px;
     min-width: 490px;
-  background: #f96e5b;
-  width: auto;
+    background: #f96e5b;
+    width: auto;
 }
 #cssmenu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  display: block;
-  zoom: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: block;
+    zoom: 1;
 }
 #cssmenu ul:after {
-  content: " ";
-  display: block;
-  font-size: 0;
-  height: 0;
-  clear: both;
-  visibility: hidden;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 #cssmenu ul li {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
 }
 #cssmenu.align-right ul li {
-  float: right;
+    float: right;
 }
 #cssmenu.align-center ul {
-  text-align: center;
+    text-align: center;
 }
 #cssmenu ul li a {
-  margin-top: 10px;
-  color: #ffffff;
-  text-decoration: none;
-  display: block;
-  padding: 15px 25px;
-  font-family: 'Mitr', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 16px;
-  position: relative;
-  -webkit-transition: color .25s;
-  -moz-transition: color .25s;
-  -ms-transition: color .25s;
-  -o-transition: color .25s;
-  transition: color .25s;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding: 15px 25px;
+    font-family: 'Mitr', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    position: relative;
+    -webkit-transition: color .25s;
+    -moz-transition: color .25s;
+    -ms-transition: color .25s;
+    -o-transition: color .25s;
+    transition: color .25s;
 }
 #cssmenu ul li a:hover {
-  color: #333333;
+    color: #333333;
 }
 #cssmenu ul li a:hover:before {
-  width: 100%;
+    width: 100%;
 }
 #cssmenu ul li a:after {
-  content: "";
-  display: block;
-  position: absolute;
-  right: -3px;
-  top: 19px;
-  height: 6px;
-  width: 6px;
-  background: #ffffff;
-  opacity: .5;
+    content: "";
+    display: block;
+    position: absolute;
+    right: -3px;
+    top: 19px;
+    height: 6px;
+    width: 6px;
+    background: #ffffff;
+    opacity: .5;
 }
 #cssmenu ul li a:before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 0;
-  background: #333333;
-  -webkit-transition: width .25s;
-  -moz-transition: width .25s;
-  -ms-transition: width .25s;
-  -o-transition: width .25s;
-  transition: width .25s;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: #333333;
+    -webkit-transition: width .25s;
+    -moz-transition: width .25s;
+    -ms-transition: width .25s;
+    -o-transition: width .25s;
+    transition: width .25s;
 }
 #cssmenu ul li.last > a:after,
 #cssmenu ul li:last-child > a:after {
-  display: none;
+    display: none;
 }
 #cssmenu ul li.active a {
-  color: #333333;
+    color: #333333;
 }
 #cssmenu ul li.active a:before {
-  width: 100%;
+    width: 100%;
 }
 #cssmenu.align-right li.last > a:after,
 #cssmenu.align-right li:last-child > a:after {
-  display: block;
+    display: block;
 }
 #cssmenu.align-right li:first-child a:after {
-  display: none;
+    display: none;
 }
 @media screen and (max-width: 768px) {
-  #cssmenu ul li {
-    float: none;
-    display: block;
-  }
-  #cssmenu ul li a {
-    width: 100%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border-bottom: 1px solid #fb998c;
-  }
-  #cssmenu ul li.last > a,
-  #cssmenu ul li:last-child > a {
-    border: 0;
-  }
-  #cssmenu ul li a:after {
-    display: none;
-  }
-  #cssmenu ul li a:before {
-    display: none;
-  }
+    #cssmenu ul li {
+        float: none;
+        display: block;
+    }
+    #cssmenu ul li a {
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-bottom: 1px solid #fb998c;
+    }
+    #cssmenu ul li.last > a,
+    #cssmenu ul li:last-child > a {
+        border: 0;
+    }
+    #cssmenu ul li a:after {
+        display: none;
+    }
+    #cssmenu ul li a:before {
+        display: none;
+    }
 }
 
 
 * {
-  box-sizing: border-box;
-  margin: 0;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 body {
-   background-image : url("shape.png") ;   //ที่อยู่ของรูปภาพ
-/*   background-repeat : no-repeat;         //กำหนดให้แสดงเพียงภาพเดียว
-   background-position :  top left;          //จัดตำแหน่งของรูปภาพ*/
-   background-attachment: fixed;         //กำหนดตรึงภาพ เพื่อไม่ให้ภาพเลื่อนตามสกอลบาร์
-  margin: 0;
-  line-height: 0.5;
-  color: #003489;
-/*  background: #ffdf00;*/
- font-family: 'Mitr', sans-serif;
+    background-image : url("shape.png");   /*ที่อยู่ของรูปภาพ*/
+    /*   background-repeat : no-repeat;         //กำหนดให้แสดงเพียงภาพเดียว
+       background-position :  top left;          //จัดตำแหน่งของรูปภาพ*/
+    background-attachment: fixed;         /*กำหนดตรึงภาพ เพื่อไม่ให้ภาพเลื่อนตามสกอลบาร์*/
+    margin: 0;
+    line-height: 0.5;
+    color: #003489;
+    /*  background: #ffdf00;*/
+    font-family: 'Mitr', sans-serif;
 }
 
 /* fonts */
@@ -163,87 +163,87 @@ body {
 h1 {
     font-weight: normal;
 
-  font-size: 2.15em;
-  font-weight: 900;
-  line-height: 1.2em;
-  margin-bottom: 34px;
+    font-size: 2.15em;
+    font-weight: 900;
+    line-height: 1.2em;
+    margin-bottom: 34px;
 }
 
 h2, button {
-  font-variant: small-caps;
-  font-weight: normal;
-  font-size: 1.24em;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: #003489;
+    font-variant: small-caps;
+    font-weight: normal;
+    font-size: 1.24em;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #003489;
 }
 
 h3, a {
- font-family: 'Mitr', sans-serif;
-  font-variant: small-caps;
-  font-size: .9em;
-  letter-spacing: 1px;
-  font-weight: 700;
-  line-height: 0;
-  margin-bottom: 4px;
+    font-family: 'Mitr', sans-serif;
+    font-variant: small-caps;
+    font-size: .9em;
+    letter-spacing: 1px;
+    font-weight: 700;
+    line-height: 0;
+    margin-bottom: 4px;
 }
 
 
 /* form */
 
 .form {
-  max-width: 600px;
-  min-width: 490px;
-  width: 80%;
-  position: absolute;
-  padding: 50px;
-  padding-right: 54px;
-  top: 100px;
-  left: 50%;
-  transform: translate(-50%,0);
-  border-radius: 5px;
-  background: #fff;
-  border: 2px solid #003489;
-  box-shadow: 8px 8px 0px 0px #003489;
-  margin-bottom: 100px;
-  
+    max-width: 600px;
+    min-width: 490px;
+    width: 80%;
+    position: absolute;
+    padding: 50px;
+    padding-right: 54px;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%,0);
+    border-radius: 5px;
+    background: #fff;
+    border: 2px solid #003489;
+    box-shadow: 8px 8px 0px 0px #003489;
+    margin-bottom: 100px;
+
 }
 
 .sign-in-form {
-  opacity: 1;
-  float: left;
-  width: 100%;
+    opacity: 1;
+    float: left;
+    width: 100%;
 }
 
 .sign-up-form {
-  opacity: 1;
-  float: left;
-  margin-top: -373px;
+    opacity: 1;
+    float: left;
+    margin-top: -373px;
 }
 
 .sign-in-container {
-  outline: none;
-  cursor: pointer;
-  float: left;
+    outline: none;
+    cursor: pointer;
+    float: left;
 }
 
 .sign-up-container {
-  cursor: pointer;
-  float: right;
+    cursor: pointer;
+    float: right;
 }
 
 .header {
-  overflow: visible;
-  height: 60px;
-/*   margin-bottom: 50px; */
-  line-height: .8em;
+    overflow: visible;
+    height: 60px;
+    /*   margin-bottom: 50px; */
+    line-height: .8em;
 }
 
 .underline-thick {
-  margin-top: 10px;
-  width: 60px;
-  height: 3px;
-  background: #003489;
+    margin-top: 10px;
+    width: 60px;
+    height: 3px;
+    background: #003489;
 }
 input[type=radio] {
     border: 0px;
@@ -252,85 +252,85 @@ input[type=radio] {
 }
 
 input {
-  font-family: 'Mitr', sans-serif;
-  outline: none;
-  background: transparent;
-  color: #003489;
-  border: 2px solid #003489;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  margin-bottom: 30px;
-  font-size: .9em;
-  width: 100%;
-  height: 2.5em;
+    font-family: 'Mitr', sans-serif;
+    outline: none;
+    background: transparent;
+    color: #003489;
+    border: 2px solid #003489;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-bottom: 30px;
+    font-size: .9em;
+    width: 100%;
+    height: 2.5em;
 }
 
 button {
-  font-family: 'Mitr', sans-serif;
-  box-sizing: border-box;
-  outline: none;
-  border: 2px solid #003489;
-  background: #f6eee3;
-  border-radius: 4px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 10px;
-  padding-bottom: 13px;
-  margin-bottom: 30px;
-  transition: transform .2s, box-shadow .2s;
-  transform: translate(-4px,-4px);
-  box-shadow: 4px 4px 0px 0px #003489;
-  text-align: center;
+    font-family: 'Mitr', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid #003489;
+    background: #f6eee3;
+    border-radius: 4px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 13px;
+    margin-bottom: 30px;
+    transition: transform .2s, box-shadow .2s;
+    transform: translate(-4px,-4px);
+    box-shadow: 4px 4px 0px 0px #003489;
+    text-align: center;
 }
 
 .button-text {
-	font-family: 'Mitr', sans-serif;
-  margin: 0;
-  line-height: 1;
+    font-family: 'Mitr', sans-serif;
+    margin: 0;
+    line-height: 1;
 }
 
 button:hover {
-  transform: translate(-6px,-6px);
-  box-shadow: 6px 6px 0px 0px #003489;
+    transform: translate(-6px,-6px);
+    box-shadow: 6px 6px 0px 0px #003489;
 }
 
 button:active {
-  transition-delay:-.15s;
-  transform: translate(-2px,-2px);
-  box-shadow: 2px 2px 0px 0px #003489;
+    transition-delay:-.15s;
+    transform: translate(-2px,-2px);
+    box-shadow: 2px 2px 0px 0px #003489;
 }
 
 .forgot {
-  text-decoration: underline;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 30px;
+    text-decoration: underline;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 30px;
 }
 
 .forgot:hover {
-  color: #5174ad;
+    color: #5174ad;
 }
 
 .underline-thick {
-  transition: transform cubic-bezier(.29,.17,.03,1) .4s;
-  transform: scale(0,1);
-  transform-origin: left;
+    transition: transform cubic-bezier(.29,.17,.03,1) .4s;
+    transform: scale(0,1);
+    transform-origin: left;
 }
 
 /* animations */
 
 .sign-in-container.selected .underline-thick, .sign-up-container.selected .underline-thick {
-  transform: scale(1,1);
+    transform: scale(1,1);
 }
 
 .sign-in-container:hover h2, .sign-up-container:hover h2 {
-/*   color: #5174ad; */
+    /*   color: #5174ad; */
 }
 
 .sign-in-container:hover .underline-thick, .sign-up-container:hover .underline-thick {
-  transform: scale(1,1);
-/*   background: #5174ad; */
+    transform: scale(1,1);
+    /*   background: #5174ad; */
 }
 
 
@@ -339,15 +339,15 @@ button:active {
 
 
 .product-quantity {
-  float: left;
-  width: 10%;
+    float: left;
+    width: 10%;
 }
 .product-line-price {
-  float: left;
-  width: 12%;
-  text-align: right;
-  margin-top: 15px;
-  margin-left: 50px;
+    float: left;
+    width: 12%;
+    text-align: right;
+    margin-top: 15px;
+    margin-left: 50px;
 }
 
 /* This is used as the traditional .clearfix class */
@@ -357,29 +357,29 @@ button:active {
 .column-labels:after,
 .product:after,
 .totals-item:after {
-  content: '';
-  display: table;
+    content: '';
+    display: table;
 }
 
 .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
-  clear: both;
+    clear: both;
 }
 
 .group, .shopping-cart, .column-labels, .product, .totals-item {
-  zoom: 1;
+    zoom: 1;
 }
 
 /* Apply clearfix in a few places */
 /* Apply dollar signs */
 .product .product-price:after, .product .product-line-price:after, .totals-value:before {
-  content: '฿';
+    content: '฿';
 }
 
 /* Product entries */
 .product {
 }
 .product .product-quantity input {
-  width: 40px;
+    width: 40px;
 
 }
 
@@ -387,19 +387,18 @@ button:active {
 
 
 [type="date"] {   
- background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 100% 50% no-repeat;
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 100% 50% no-repeat;
     font-family: 'Mitr', sans-serif;
     width: 27%;
 }
 [type="date"]::-webkit-inner-spin-button {
-  display: none;
+    display: none;
 }
 [type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
+    opacity: 0;
 }
 
 .createorder {
     -webkit-column-count: 1;}
-    
-    
-    
+
+

@@ -14,7 +14,7 @@ public class file_create {
     }
     
     public void fileCreate(String name, InputStream file) throws FileNotFoundException{
-        File path = new File("//TranslatorMarketplace/web/file_create" + name + ".pdf");
+        File path = new File("/Users/ASUS/Desktop/Translator-Marketplace/TranslatorMarketplace/web/file_create/" + name + ".pdf");
         FileOutputStream outputStream = new FileOutputStream(path);
 
         byte[] buffer = new byte[1024];
@@ -26,7 +26,6 @@ public class file_create {
             file_create = "file_create/"+ name +".pdf";
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
-        
+        }   
     }
 }

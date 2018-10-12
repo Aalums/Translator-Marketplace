@@ -50,21 +50,22 @@ public class CreateOrderServlet extends HttpServlet {
             //เช็ค
             out.println("<br>"+title+"<br>"+translate+"<br>"+num_page+"<br>"+price+"<br>"+description+"<br>"+date+"<br>");
             out.println("alert('Get Parameter Complete!!')");
+            out.println("<br>"+conn);
             
             String sql = "INSERT INTO create_order (id_customer, title, file_create, translate_type, description, num_page, price, due_date) "
                     + "VALUES (?,?,?,?,?,?,?,?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "admin");
-            stmt.setString(2, title);
-            stmt.setString(3, file_create.create());
-            stmt.setString(4, translate);
-            stmt.setString(5, description);
-            stmt.setInt(6, num_page);
-            stmt.setFloat(7, price);
-            stmt.setDate(8, date);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, "admin");
+            pstmt.setString(2, title);
+            pstmt.setString(3, file_create.create());
+            pstmt.setString(4, translate);
+            pstmt.setString(5, description);
+            pstmt.setInt(6, num_page);
+            pstmt.setFloat(7, price);
+            pstmt.setDate(8, date);
             
-            stmt.executeUpdate();
-            stmt.close();
+            pstmt.executeUpdate();
+            pstmt.close();
             
             //เช็ค
             out.println("<br>alert('INSERT Complete!!')");

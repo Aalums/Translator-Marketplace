@@ -13,10 +13,10 @@ public class Init implements ServletContextListener {
     private Connection conn;
     
     @Override
-    public void contextInitialized(ServletContextEvent arg0) {
-        try {
+    public void contextInitialized(ServletContextEvent sce) {
+        try{
             conn = getData().getConnection();
-            arg0.getServletContext().setAttribute("connection", conn);
+            sce.getServletContext().setAttribute("connection", conn);
         } catch (Exception e) {
             e.printStackTrace();
         }

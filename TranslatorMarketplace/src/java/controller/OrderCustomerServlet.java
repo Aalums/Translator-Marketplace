@@ -8,7 +8,12 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,42 +40,48 @@ public class OrderCustomerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            
             ArrayList list_ord = new ArrayList<>();
-            String[] title = {"test1", "test2"};
-            String[] name = {"eye", "eye"};
-            String[] status = {"yes", "no"};
 
-            for (int i = 0; i < title.length; i++) {
-                ord_cus = new Order_customer(title[i], name[i], status[i]);
+            String id_customer = "admin";
+
+            PreparedStatement order_cus = conn.prepareStatement(
+                    "SELECT id_order"
+                    + " FROM create_order"
+                    + " WHERE id_customer = ? ");
+
+            PreparedStatement tran_name = conn.prepareStatement(
+                    "SELECT create_order.title, customers.name_customer, ordered.status"
+                    + " FROM create_order"
+                    + " JOIN ordered"
+                    + " ON (create_order.id_order = ordered.id_order)"
+                    + " JOIN translators"
+                    + " ON (ordered.id_translator = translators.id_translator)"
+                    + " JOIN customers"
+                    + " ON (translators.id_customer = customers.id_customer)"
+                    + " WHERE create_order.id_order = ? "
+            );
+
+            order_cus.setString(1, id_customer);
+            ResultSet rs_order = order_cus.executeQuery();
+
+            while (rs_order.next()) {
+                out.print(rs_order.getString("id_order"));
+
+                tran_name.setInt(1, rs_order.getInt("id_order"));
+                ResultSet rs_tran = tran_name.executeQuery();
+                rs_tran.next();
+                out.print(" " + rs_tran.getString("title"));
+                ord_cus = new Order_customer(rs_tran.getString("title"), rs_tran.getString("name_customer"), rs_tran.getString("status"));
                 list_ord.add(ord_cus);
             }
-
-/*            String id_customer = "admin";
-
-             PreparedStatement ps = conn.prepareStatement(
-             "SELECT create_order.title, customer.name, ordered.status "
-             + "FROM customer"
-             + "JOIN create_order"
-             + "ON (customer.id_cus = create_order.id_order)"
-             + "JOIN ordered"
-             + "ON (create_order.id_order = ordered.id_order)"
-             + "JOIN translator"
-             + "ON (ordered.id_order = translator.id_trans)"
-             + "WHERE customer.id_customer = "+id_customer+" "
-             );
-
-             ResultSet rs = ps.executeQuery();
-             while(rs.next()){
-             ord_cus = new Order_customer(rs.getString("title"), rs.getString("name"), rs.getString("status"));
-             list_ord.add(ord_cus);
-             }
-*/
             HttpSession session = request.getSession();
             session.setAttribute("list_order", list_ord);
 
-            response.sendRedirect("Order_customer.jsp");
+            response.sendRedirect("Profile_cus.jsp");
 
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

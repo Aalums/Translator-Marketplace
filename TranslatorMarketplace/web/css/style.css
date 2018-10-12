@@ -402,3 +402,25 @@ button:active {
     -webkit-column-count: 1;}
 
 
+/*Popup คำว่าสร้างรายการจ้าง*/
+
+/*โค้ดเพิ่มเติม++++++++++++++++++++++++++++++*/
+
+div.appear {
+    width: 200px; 
+    border: #000;
+    position: relative;
+    top: 10px;
+    left:20px;
+    display:none;
+    z-index: 10000;
+    
+}
+div.popup  {
+    cursor:pointer;
+    width: 1px;
+}
+div.popup:hover div.appear {
+    display:  block;
+}
+

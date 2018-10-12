@@ -1,7 +1,7 @@
 <%-- 
-    Document   : translator
-    Created on : Oct 11, 2018, 11:32:48 AM
-    Author     : porpiraya
+     Document   : translator
+     Created on : Oct 11, 2018, 11:32:48 AM
+     Author     : porpiraya
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,25 +31,11 @@
                 margin-bottom: 30px;
                 letter-spacing: 1px;
             }
-            .column {
-                padding: 2%;
-                height: 100%;
-                float: left;
-                margin: 0;
-                transition: all 0.5s ease;
-                position: absolute;
-            }
-            .col1 {
-                position: absolute;
-                left: 100px;
-            }
-            .col2 {
-                position: absolute;
-                left: 550px;
-            }
-            .col3 {
-                position: absolute;
-                left: 1000px;
+            .column{
+                padding: 5%;
+                -moz-column-count:3; /* Firefox */
+                -webkit-column-count:3; /* Safari and Chrome */
+                column-count:3;
             }
             .profile-form {
                 max-width: 400px;
@@ -77,6 +63,7 @@
             }
         </style>
     </head>
+
     <body>
         <br><br>
         <div class="header">
@@ -84,69 +71,59 @@
         </div>
 
         <div class="column">
-            <div class="col1">
-                <div class="profile-form">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
-                    <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                    <h3>SKILL : </h3>
-                    <h3>LANGUAGE : </h3>
-                    <center><button>
-                            <div class = "button-text">จ้าง</div>
-                        </button></center>
-                </div>
-                <div class="profile-form">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile4" class="img"/><br><br><br><br><br><br>
-                    <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                    <h3>SKILL : </h3>
-                    <h3>LANGUAGE : </h3>
-                    <center><button>
-                            <div class = "button-text">จ้าง</div>
-                        </button></center>
-                </div>
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <center><button>
+                        <div class = "button-text">จ้าง</div>
+                    </button></center>
             </div>
-        </div>
-        <div class="column">
-            <div class="col2">
-                <div class="profile-form">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample2.jpg" alt="profile2" class="img"/><br><br><br><br><br><br>
-                    <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                    <h3>SKILL : </h3>
-                    <h3>LANGUAGE : </h3>
-                    <center><button>
-                            <div class = "button-text">จ้าง</div>
-                        </button></center>
-                </div>
-                <div class="profile-form">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample7.jpg" alt="profile5" class="img"/><br><br><br><br><br><br>
-                    <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                    <h3>SKILL : </h3>
-                    <h3>LANGUAGE : </h3>
-                    <center><button>
-                            <div class = "button-text">จ้าง</div>
-                        </button></center>
-                </div>
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile4" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <center><button>
+                        <div class = "button-text">จ้าง</div>
+                    </button></center>
             </div>
-        </div>
-        <div class="column">
-            <div class="col3">
-                <div class="profile-form">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample5.jpg" alt="profile3" class="img" /><br><br><br><br><br><br>
-                    <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                    <h3>SKILL : </h3>
-                    <h3>LANGUAGE : </h3>
-                    <center><button>
-                            <div class = "button-text">จ้าง</div>
-                        </button></center>
-                </div>
-                <div class="profile-form">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile6" class="img" /><br><br><br><br><br><br>
-                    <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                    <h3>SKILL : </h3>
-                    <h3>LANGUAGE : </h3>
-                    <center><button>
-                            <div class = "button-text">จ้าง</div>
-                        </button></center>
-                </div>
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample2.jpg" alt="profile2" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <center><button>
+                        <div class = "button-text">จ้าง</div>
+                    </button></center>
+            </div>
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample7.jpg" alt="profile5" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <center><button>
+                        <div class = "button-text">จ้าง</div>
+                    </button></center>
+            </div>
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample5.jpg" alt="profile3" class="img" /><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <center><button>
+                        <div class = "button-text">จ้าง</div>
+                    </button></center>
+            </div>
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile6" class="img" /><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <center><button>
+                        <div class = "button-text">จ้าง</div>
+                    </button></center>
             </div>
         </div>
     </body>

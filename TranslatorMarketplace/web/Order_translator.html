@@ -15,39 +15,43 @@ and open the template in the editor.
     </head>
 
     <body>
-        <form action="RegisterTranslator" method="POST">
-            <div class="createorder">
-                <div class = "form">
-                    <center><a href="https://www.picz.in.th/image/kC2A9R"><img src="https://www.picz.in.th/images/2018/10/10/kC2A9R.png" alt="kC2A9R.png" border="0" width ="180px" hight ="160px"/></a></center>
+    <center>
+        <a href="https://www.picz.in.th/image/kC2A9R"><img src="https://www.picz.in.th/images/2018/10/10/kC2A9R.png" alt="kC2A9R.png" border="0" width ="180px" hight ="160px"/></a>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='#'><span>หน้าหลัก</span></a></li>
+                <li><a href='#'><span>รายการจ้าง</span></a></li>
+                <li><a href='#'><span>รับจ้างแปล</span></a></li>
+                <li><a href='#'><span>ออกจากระบบ</span></a></li>
+            </ul>
+        </div>
 
+
+        <div class="createorder">
+            <form action="RegisterTranslator" method="POST">
+                <div class = "formPattern">
                     <div class = "TableEmploy">
                         <!-- Tab links -->
-                        <center>
-                            <div class="tab"><BR>
-                                <button class="tablinks" onclick="openCity(event, 'จ้างแปล')"> จ้างแปล </button>
-                                <button class="tablinks" onclick="openCity(event, 'รับจ้างแปล')"> รับจ้างแปล </button>
-                            </div>
-                            
-                            <!-- Create Table -->
-                            <BR><font fontsize="lange"> รายการที่ถูกจ้าง </font><BR><BR>
-                            <TABLE Border="4" style="width: -webkit-fill-available" size="auto">
-                                <TR>
-                                    <TH> รายละเอียดการจ้าง </TH>
-                                    <TH> รับ/ปฏิเสธ </TH>
-                                </TR>
-                                <TR>
-                                    <TD> ข้อมูล </TD>
-                                    <TD> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</TD>
-                                </TR>
-                                <TR>
-                                    <TD> ข้อมูล </TD>
-                                    <TD> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</TD>
-                                </TR>
-                            </TABLE>
+
+                        <div class = "header">
+                            <center><h1>รายการที่ถูกจ้าง</h1></center>     
+                        </div>
+
+                        <!-- Create Table -->
+                        <TABLE Border="4" style="width: -webkit-fill-available" size="auto">
+                            <TR>
+                                <TH> รายละเอียดการจ้าง </TH>
+                                <TH> รับ/ปฏิเสธ </TH>
+                            </TR>
+                            <TR>
+                                <TD> ข้อมูล </TD>
+                                <TD> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</TD>
+                            </TR>
+                        </TABLE>
                         </center>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </body>
 </html>

@@ -3,7 +3,8 @@
      Created on : Oct 11, 2018, 11:32:48 AM
      Author     : porpiraya
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -65,66 +66,42 @@
     </head>
 
     <body>
+        
+        <sql:setDataSource var="data" 
+                           driver="com.mysql.jdbc.Driver" 
+                           user="root" 
+                           password="root" 
+                           url="jdbc:mysql://localhost:3306/test"/>
+
+        <sql:query dataSource="${data}" var="result">
+            SELECT *
+            FROM translators
+            JOIN customers
+            USING (id_customer);
+        </sql:query>
+            
         <br><br>
         <div class="header">
             <center><h1>นักแปล</h1></center>
         </div>
 
         <div class="column">
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <center><button>
-                        <div class = "button-text">จ้าง</div>
-                    </button></center>
-            </div>
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile4" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <center><button>
-                        <div class = "button-text">จ้าง</div>
-                    </button></center>
-            </div>
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample2.jpg" alt="profile2" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <center><button>
-                        <div class = "button-text">จ้าง</div>
-                    </button></center>
-            </div>
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample7.jpg" alt="profile5" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <center><button>
-                        <div class = "button-text">จ้าง</div>
-                    </button></center>
-            </div>
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample5.jpg" alt="profile3" class="img" /><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <center><button>
-                        <div class = "button-text">จ้าง</div>
-                    </button></center>
-            </div>
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile6" class="img" /><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <center><button>
-                        <div class = "button-text">จ้าง</div>
-                    </button></center>
-            </div>
+            <c:forEach var="row" items="${result.rows}">
+                <div class="profile-form">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
+                    <h2>ชื่อนักแปล : ${row.name_customer}</h2><br><br><br><br>
+                    <!--profile เป็น Text แสดงข้อมูลยาวๆ แบบถ้าเต็มจอแล้วขึ้นบรรทัดใหม่-->
+                    <h3>รายละเอียด : <p>${row.profile}</p></h3><br>
+                    <h3>SKILL : ${row.type_skill}</h3>
+                    <h3>LANGUAGE : ${row.level_skill}</h3>
+                    <center>
+                        <!--ตั้ง value ของ button เป็น id นักแปล น่าจะช่วยแสดงในหน้า pop up ได้-->
+                        <button name="id_translator" value="${row.id_translator}">
+                            <div class = "button-text">จ้าง</div>
+                        </button>
+                    </center>
+                </div>
+            </c:forEach>
         </div>
     </body>
 </html>

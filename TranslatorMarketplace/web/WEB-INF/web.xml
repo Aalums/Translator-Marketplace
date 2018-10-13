@@ -9,6 +9,9 @@
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>Order_customer.jsp</welcome-file>
+    </welcome-file-list>
     <resource-ref>
         <description>jdbc:mysql://localhost:3306/test?zeroDateTimeBehavior=convertToNull</description>
         <res-ref-name>data</res-ref-name>

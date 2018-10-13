@@ -209,6 +209,23 @@ h3, a {
 
 }
 
+.formPattern{
+    max-width: 600px;
+    min-width: 490px;
+    width: 80%;
+    position: absolute;
+    padding: 50px;
+    padding-right: 54px;
+    top: 320px;
+    left: 50%;
+    transform: translate(-50%,0);
+    border-radius: 5px;
+    background: #fff;
+    border: 2px solid #003489;
+    box-shadow: 8px 8px 0px 0px #003489;
+    margin-bottom: 100px;
+}
+
 .sign-in-form {
     opacity: 1;
     float: left;

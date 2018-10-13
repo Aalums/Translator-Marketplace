@@ -40,7 +40,7 @@ public class OrderCustomerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             ArrayList list_ord = new ArrayList<>();
 
             String id_customer = "admin";
@@ -66,16 +66,17 @@ public class OrderCustomerServlet extends HttpServlet {
             ResultSet rs_order = order_cus.executeQuery();
 
             while (rs_order.next()) {
-                out.print(rs_order.getString("id_order"));
+//                out.print("order = "+rs_order.getString("id_order"));
 
                 tran_name.setInt(1, rs_order.getInt("id_order"));
                 ResultSet rs_tran = tran_name.executeQuery();
                 rs_tran.next();
-                out.print(" " + rs_tran.getString("title"));
                 ord_cus = new Order_customer(rs_tran.getString("title"), rs_tran.getString("name_customer"), rs_tran.getString("status"));
                 list_ord.add(ord_cus);
             }
-            HttpSession session = request.getSession();
+            conn.close();
+//            out.print(" size = "+list_ord.size());
+            HttpSession session = request.getSession(true);
             session.setAttribute("list_order", list_ord);
 
             response.sendRedirect("Profile_cus.jsp");

@@ -34,7 +34,7 @@
     </center>
 
     <body>
-        <% ArrayList list_ord = (ArrayList) session.getAttribute("list_ord"); %>
+        <% ArrayList list_ord = (ArrayList) session.getAttribute("list_order"); %>
 
         <div class = "form">
             <div class = "sign-in-form">

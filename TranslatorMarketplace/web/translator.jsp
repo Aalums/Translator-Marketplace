@@ -67,6 +67,8 @@
                 max-width: 300px;
                 min-width: 190px;
                 width: 100%;
+                top: 40%;
+                left: 40%;
                 position: absolute;
                 padding: 10px;
                 padding-right: 20px;
@@ -79,7 +81,6 @@
                 z-index: 1;
                 display: none;
             }
-
             button {
                 cursor: pointer;
             }
@@ -109,10 +110,14 @@
         <script>
                     function button_employ() {
                         document.getElementById("pop-up").style.display = "block";
+                        document.getElementsByClassName("column")[0].style.WebkitFilter = 'blur(4px)';
+                        document.getElementsByClassName("column")[0].style.filter = 'blur(4px)';
                     }
 
                     function button_no() {
                         document.getElementById("pop-up").style.display = "none";
+                        document.getElementsByClassName("column")[0].style.WebkitFilter = 'blur(0px)';
+                        document.getElementsByClassName("column")[0].style.filter = 'blur(0px)';
                     }
         </script>
 

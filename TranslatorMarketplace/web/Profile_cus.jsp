@@ -84,9 +84,14 @@
                                                     String title = item.getTitle();
                                                     String name = item.getName();
                                                     String status = item.getStatus();
-                                                    if (name.equals("null")) { 
-                                                        //button SELECT TRANSLATOR
-                                                    } else { %>
+                                                    if (name==null) { %>
+                                                        <!--button SELECT TRANSLATOR-->
+                                                        <tr>
+                                                            <td><p><%= title%></p></td>
+                                                            <td><p>Button</p></td>
+                                                            <td><p>NO</p></td>
+                                                        </tr>
+                                                    <% } else { %>
                                                         <tr>
                                                             <td><p><%= title%></p></td>
                                                             <td><p><%= name%></p></td>

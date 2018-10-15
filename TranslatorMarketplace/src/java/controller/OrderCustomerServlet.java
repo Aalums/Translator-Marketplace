@@ -45,21 +45,22 @@ public class OrderCustomerServlet extends HttpServlet {
 
             String id_customer = "admin";
 
+            //เรียก id_order เฉพาะลูกค้าชื่อ admin
             PreparedStatement order_cus = conn.prepareStatement(
                     "SELECT id_order"
-                    + " FROM create_order"
+                    + " FROM customers"
+                    + " JOIN create_order USING (id_customer)"
                     + " WHERE id_customer = ? ");
 
+            // ดึง title, translator's name, status
             PreparedStatement tran_name = conn.prepareStatement(
-                    "SELECT create_order.title, customers.name_customer, ordered.status"
-                    + " FROM create_order"
-                    + " JOIN ordered"
-                    + " ON (create_order.id_order = ordered.id_order)"
-                    + " JOIN translators"
-                    + " ON (ordered.id_translator = translators.id_translator)"
-                    + " JOIN customers"
-                    + " ON (translators.id_customer = customers.id_customer)"
-                    + " WHERE create_order.id_order = ? "
+                    "SELECT c.title, cu.name_customer, o.status"
+                    + " FROM create_order c"
+                    + " LEFT JOIN ordered o ON (c.id_order=o.id_order)"
+                    + " LEFT JOIN translators t ON (o.id_translator=t.id_translator)"
+                    + " LEFT JOIN customers cu ON (t.id_customer=cu.id_customer)"
+                    + " WHERE c.id_order = ?"
+                    + " ORDER BY c.id_order"
             );
 
             order_cus.setString(1, id_customer);
@@ -67,10 +68,10 @@ public class OrderCustomerServlet extends HttpServlet {
 
             while (rs_order.next()) {
 //                out.print("order = "+rs_order.getString("id_order"));
-
                 tran_name.setInt(1, rs_order.getInt("id_order"));
                 ResultSet rs_tran = tran_name.executeQuery();
                 rs_tran.next();
+//                out.print("title = "+rs_tran.getString("title")+" name = "+rs_tran.getString("name_customer")+" status = "+rs_tran.getString("status"));
                 ord_cus = new Order_customer(rs_tran.getString("title"), rs_tran.getString("name_customer"), rs_tran.getString("status"));
                 list_ord.add(ord_cus);
             }

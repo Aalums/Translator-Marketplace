@@ -3,8 +3,7 @@
      Created on : Oct 11, 2018, 11:32:48 AM
      Author     : porpiraya
 --%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="style.css">
+
         <style>
             h2 {
                 font-weight: normal;
@@ -62,46 +62,141 @@
                 opacity: 1;
                 box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             }
+            .pop-up-body {
+                /* Hides pop-up when there is "no active" class */
+                max-width: 300px;
+                min-width: 190px;
+                width: 100%;
+                position: absolute;
+                padding: 10px;
+                padding-right: 20px;
+                transform: translate(0%,0);
+                border-radius: 5px;
+                background: #fff;
+                border: 2px solid #003489;
+                box-shadow: 8px 8px 0px 0px #003489;
+                margin-bottom: 100px;
+                z-index: 1;
+                display: none;
+            }
+
+            button {
+                cursor: pointer;
+            }
         </style>
     </head>
 
     <body>
-        
-        <sql:setDataSource var="data" 
-                           driver="com.mysql.jdbc.Driver" 
-                           user="root" 
-                           password="root" 
-                           url="jdbc:mysql://localhost:3306/test"/>
 
-        <sql:query dataSource="${data}" var="result">
-            SELECT *
-            FROM translators
-            JOIN customers
-            USING (id_customer);
-        </sql:query>
-            
-        <br><br>
+        <!-- Creates pop-up Body -->
+        <div class="pop-up-body" id="pop-up">
+            <!-- Creates pop-up Text -->
+            <div id="pop-up-text">
+                <h2>ยืนยันการจ้าง</h2><br><br>
+                <h3>คุณเลือกนักแปล : _____________</h3><br>
+                <h3>สำหรับรายการ : _____________</h3><br>
+                <!-- pop-up's button when you select Translator -->
+                <button class="yes">Yes</button>     <button class="no" onclick="button_no()">No</button>
+            </div>
+        </div>
+
+        <!-- Include jQuery -->
+        <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+        <!-- Include jQuery Popup Overlay -->
+        <script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+
+        <script>
+                    function button_employ() {
+                        document.getElementById("pop-up").style.display = "block";
+                    }
+
+                    function button_no() {
+                        document.getElementById("pop-up").style.display = "none";
+                    }
+        </script>
+
+        <!-- Create Header -->
+        <br><br>     
         <div class="header">
             <center><h1>นักแปล</h1></center>
         </div>
 
+        <!-- Create Column-->
         <div class="column">
-            <c:forEach var="row" items="${result.rows}">
-                <div class="profile-form">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
-                    <h2>ชื่อนักแปล : ${row.name_customer}</h2><br><br><br><br>
-                    <!--profile เป็น Text แสดงข้อมูลยาวๆ แบบถ้าเต็มจอแล้วขึ้นบรรทัดใหม่-->
-                    <h3>รายละเอียด : <p>${row.profile}</p></h3><br>
-                    <h3>SKILL : ${row.type_skill}</h3>
-                    <h3>LANGUAGE : ${row.level_skill}</h3>
-                    <center>
-                        <!--ตั้ง value ของ button เป็น id นักแปล น่าจะช่วยแสดงในหน้า pop up ได้-->
-                        <button name="id_translator" value="${row.id_translator}">
-                            <div class = "button-text">จ้าง</div>
-                        </button>
-                    </center>
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <div class="employ">
+                    <center><button>
+                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
+                        </button></center>
+                </div> 
+            </div>
+
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile4" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <div class="employ">
+                    <center><button>
+                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
+                        </button></center>
                 </div>
-            </c:forEach>
+            </div>
+
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample2.jpg" alt="profile2" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <div class="employ">
+                    <center><button>
+                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
+                        </button></center>
+                </div>
+            </div>
+
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample7.jpg" alt="profile5" class="img"/><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <div class="employ">
+                    <center><button>
+                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
+                        </button></center>
+                </div>
+            </div>
+
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample5.jpg" alt="profile3" class="img" /><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <div class="employ">
+                    <center><button>
+                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
+                        </button></center>
+                </div>
+            </div>
+
+            <div class="profile-form">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile6" class="img" /><br><br><br><br><br><br>
+                <h2>ชื่อนักแปล</h2><br><br><br><br> 
+                <h3>SKILL : </h3>
+                <h3>LANGUAGE : </h3>
+                <div class="employ">
+                    <center><button>
+                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
+                        </button></center>
+                </div>
+            </div>
         </div>
     </body>
+
+
 </html>

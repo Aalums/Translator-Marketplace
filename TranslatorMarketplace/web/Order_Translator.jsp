@@ -37,42 +37,42 @@
                         <!-- Tab links -->
 
                         <div class = "header">
-                            <center><h1>รายการที่ถูกจ้าง</h1></center>     
+                            <a href="https://www.picz.in.th/image/kC2A9R"><img src="https://www.picz.in.th/images/2018/10/10/kC2A9R.png" alt="kC2A9R.png" border="0" width ="180px" hight ="160px"/></a>
+                            <center><h1>รายการที่ถูกจ้าง</h1></center>
+                            <!-- Create Table -->
+                            <table Border="4" style="width: -webkit-fill-available" size="auto">
+                                <tr>
+                                    <th bgcolor = "orange"> รายละเอียดการจ้าง </th>
+                                    <th bgcolor = "orange"> รับ/ปฏิเสธ </th>
+                                </tr>
+
+
+                                <sql:setDataSource var="data" 
+                                                   driver="com.mysql.jdbc.Driver" 
+                                                   user="root" 
+                                                   password="root" 
+                                                   url="jdbc:mysql://localhost:3306/mysql"/>
+
+                                <!-- query data from database-->
+                                <sql:query dataSource="${data}" var="result">
+                                    select * from customers;
+                                </sql:query>
+
+                                <!--แสดงรายละเอียดข้อมูลการจ้าง-->
+                                <c:forEach var="row" items="${result.rows}">
+                                    <div class="profile-form">
+                                        <tr>
+                                            <td> <p>รายละเอียดการจ้าง <br>${row.name_customer}</p><br></td>
+                                            <td> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</td>
+                                        </tr>
+                                    </div>
+                                </c:forEach>
+                            </table>
                         </div>
-
-                        <!-- Create Table -->
-                        <table Border="4" style="width: -webkit-fill-available" size="auto">
-                            <tr>
-                                <th> รายละเอียดการจ้าง </th>
-                                <th> รับ/ปฏิเสธ </th>
-                            </tr>
-
-
-                            <sql:setDataSource var="data" 
-                                               driver="com.mysql.jdbc.Driver" 
-                                               user="root" 
-                                               password="root" 
-                                               url="jdbc:mysql://localhost:3306/test"/>
-
-                            <!-- query data from database-->
-                            <sql:query dataSource="${data}" var="result">
-                                select * from customers;
-                            </sql:query>
-
-                            <!--แสดงรายละเอียดข้อมูลการจ้าง-->
-                            <c:forEach var="row" items="${result.rows}">
-                                <div class="profile-form">
-                                    <tr>
-                                        <td> <p>รายละเอียดการจ้าง <br>${row.name_customer}</p><br></td>
-                                        <td> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</td>
-                                    </tr>
-                                </div>
-                            </c:forEach>
-                        </table>
-                        </center>
                     </div>
                 </div>
             </form>
         </div>
-    </body>
+    </center>
+</body>
 </html>

@@ -48,27 +48,26 @@ public class CreateOrderServlet extends HttpServlet {
             file_create.fileCreate(title, inputStream);
             
             //เช็ค
-            out.println("<br>"+title+"<br>"+translate+"<br>"+num_page+"<br>"+price+"<br>"+description+"<br>"+date+"<br>");
-            out.println("alert('Get Parameter Complete!!')");
-            out.println("<br>"+conn);
+            //out.println("<br>"+title+"<br>"+translate+"<br>"+num_page+"<br>"+price+"<br>"+description+"<br>"+date+"<br>");
+            //out.println("alert('Get Parameter Complete!!')");
+            //out.println("<br>"+conn);
             
-            String sql = "INSERT INTO create_order (id_customer, title, file_create, translate_type, description, num_page, price, due_date) "
-                    + "VALUES (?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO create_order (id_customer, file_create, translate_type, description, num_page, price, due_date) "
+                    + "VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, "admin");
-            pstmt.setString(2, title);
-            pstmt.setString(3, file_create.create());
-            pstmt.setString(4, translate);
-            pstmt.setString(5, description);
-            pstmt.setInt(6, num_page);
-            pstmt.setFloat(7, price);
-            pstmt.setDate(8, date);
+            pstmt.setString(2, file_create.create());
+            pstmt.setString(3, translate);
+            pstmt.setString(4, description);
+            pstmt.setInt(5, num_page);
+            pstmt.setFloat(6, price);
+            pstmt.setDate(7, date);
             
             pstmt.executeUpdate();
             pstmt.close();
             
             //เช็ค
-            out.println("<br>alert('INSERT Complete!!')");
+            //out.println("<br>alert('INSERT Complete!!')");
             
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderServlet.class.getName()).log(Level.SEVERE, null, ex);

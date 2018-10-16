@@ -10,21 +10,29 @@
 
         <link rel="stylesheet" href="css/style.css">
 
-    </head>
-
-    <body>
-
+        <div class="container">
+        <div class="logo">  
+        <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
+    </div>
     <center>
         <div id='cssmenu'>
             <ul>
-                <li><a href='#'><span>หน้าหลัก</span></a></li>
-                <li class='active'><a href='#'><span>จ้างแปล</span></a></li>
-                <li><a href='#'><span>นักแปล</span></a></li>
-                <li class='last'><a href='#'><span>รับจ้างแปล</span></a></li>
+    <li><a href='#'>หน้าหลัก</a></li>
+   <li class='active'><a href='#'>สร้างรายการ</a></li>
+   <li><a href='#'>ออเดอร์</a></li>
+   <li><a href='#'>สถานะ</a></li>
+   <li><a href='#'>โปรไฟล์</a></li>
             </ul>
         </div>
     </center>
+        </div>
 
+
+    </head>
+
+<body>
+    <div class="content-wrapper" style="padding-bottom: 699px;">
+<div class="container">
     <div class="createorder">
         <form action="CreateOrderServlet" enctype='multipart/form-data' method="POST">
             <div class = "form">
@@ -35,12 +43,12 @@
 
                 <div class = "sign-in-form">
                     <table style="width:100%">
-                        <tr>
+                       <!--  <tr>
                             <td>
                                 <h3>ชื่องาน</h3>
                                 <input type="text" name="title" value="" />
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td>
                                 <h3>การแปล</h3><br><br><br>
@@ -96,6 +104,8 @@
                 </div>
             </div>
         </form>
+    </div>
+    </div>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>

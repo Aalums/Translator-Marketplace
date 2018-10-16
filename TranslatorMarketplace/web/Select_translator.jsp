@@ -4,6 +4,8 @@
      Author     : porpiraya
 --%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,7 +30,7 @@
                 font-size: 0.9em;
                 letter-spacing: 0.5px;
                 font-weight: 200;
-                line-height: 0em;
+                line-height: initial; /* ให้ตัวอักษรไม่ซ้อนทับกัน */
                 margin-bottom: 30px;
                 letter-spacing: 1px;
             }
@@ -50,7 +52,7 @@
                 background: #fff;
                 border: 2px solid #003489;
                 box-shadow: 8px 8px 0px 0px #003489;
-                margin-bottom: 100px;
+                margin-bottom: 100%;
             }
             .profile-form .img {
                 border-radius: 50%;
@@ -89,13 +91,30 @@
 
     <body>
 
+        <!-- Query ข้อมูลนักแปล -->
+        <sql:setDataSource var="data" 
+                           driver="com.mysql.jdbc.Driver" 
+                           user="root" 
+                           password="root" 
+                           url="jdbc:mysql://localhost:3306/test"/>
+
+        <sql:query dataSource="${data}" var="result">
+            SELECT *
+            FROM translators
+            JOIN customers
+            USING (id_customer);
+        </sql:query>
+
+        <!-- รับค่า id_order รายการที่เลือกจากหน้า Order_customer -->
+        <% String id_order = (String) session.getAttribute("Order");%>
+
         <!-- Creates pop-up Body -->
         <div class="pop-up-body" id="pop-up">
             <!-- Creates pop-up Text -->
             <div id="pop-up-text">
                 <h2>ยืนยันการจ้าง</h2><br><br>
-                <h3>คุณเลือกนักแปล : _____________</h3><br>
-                <h3>สำหรับรายการ : _____________</h3><br>
+                <h3 id="select_translator">คุณเลือกนักแปล : _____________</h3><br>
+                <h3 id="select_order">สำหรับรายการ : _____________</h3><br>
                 <!-- pop-up's button when you select Translator -->
                 <button class="yes">Yes</button>     <button class="no" onclick="button_no()">No</button>
             </div>
@@ -108,10 +127,13 @@
         <script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
 
         <script>
-                    function button_employ() {
+                    function button_employ(id_translator, id_order) {
                         document.getElementById("pop-up").style.display = "block";
                         document.getElementsByClassName("column")[0].style.WebkitFilter = 'blur(4px)';
                         document.getElementsByClassName("column")[0].style.filter = 'blur(4px)';
+
+                        document.getElementById("select_translator").innerHTML = "คุณเลือกนักแปล : " + id_translator;
+                        document.getElementById("select_order").innerHTML = "สำหรับรายการ : " + id_order;
                     }
 
                     function button_no() {
@@ -129,79 +151,24 @@
 
         <!-- Create Column-->
         <div class="column">
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <div class="employ">
-                    <center><button>
-                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
-                        </button></center>
-                </div> 
-            </div>
-
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile4" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <div class="employ">
-                    <center><button>
-                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
-                        </button></center>
+            <c:forEach var="row" items="${result.rows}">
+                <div class="profile-form">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile1" class="img"/><br><br><br><br><br><br>
+                    <h2>${row.name_customer}</h2><br><br><br><br>
+                    <h3>รายละเอียด : ${row.profile}</h3><br>
+                    <h3>SKILL : ${row.type_skill}</h3>
+                    <h3>LANGUAGE : ${row.level_skill}</h3>
+                    <div class="employ">
+                        <center>
+                            <!-- ส่งค่า id_translator, id_order ไป button_employ() เพื่อแสดงในหน้า pop up  -->
+                            <button id="select_employ" name="select" onclick="button_employ(${row.id_translator},<%=id_order%>)">
+                                <div class = "button-text">จ้าง</div>
+                            </button>
+                        </center>
+                    </div> 
                 </div>
-            </div>
-
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample2.jpg" alt="profile2" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <div class="employ">
-                    <center><button>
-                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
-                        </button></center>
-                </div>
-            </div>
-
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample7.jpg" alt="profile5" class="img"/><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <div class="employ">
-                    <center><button>
-                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
-                        </button></center>
-                </div>
-            </div>
-
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample5.jpg" alt="profile3" class="img" /><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <div class="employ">
-                    <center><button>
-                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
-                        </button></center>
-                </div>
-            </div>
-
-            <div class="profile-form">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile6" class="img" /><br><br><br><br><br><br>
-                <h2>ชื่อนักแปล</h2><br><br><br><br> 
-                <h3>SKILL : </h3>
-                <h3>LANGUAGE : </h3>
-                <div class="employ">
-                    <center><button>
-                            <div class = "button-text" onclick="button_employ()">จ้าง</div>
-                        </button></center>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </body>
-
 
 </html>

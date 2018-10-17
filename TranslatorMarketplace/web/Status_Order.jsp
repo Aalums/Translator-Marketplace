@@ -35,24 +35,18 @@
     </center>
 
     <body>
-         ArrayList list_ord = (ArrayList) session.getAttribute("list_order");%>
+        <% ArrayList list_status = (ArrayList) session.getAttribute("list_status"); %>
 
         <div class = "form">
             <div class = "sign-in-form">
                 <br><br>
-
                 <tr>
                     <td>
                         <h2 align="center">รายการจ้างแปล</h2> 
                         <br><br><br>
-
-
             </div>
-
-
             <title>ตารางยังไม่ได้วนลูปนะ</title>
             <div>
-
                 <center>
                     <table border="2" width = "80%" height = "50%">
                         <thead>
@@ -64,38 +58,27 @@
                         </thead>
                         <tbody>
                             <% //put in TABLE
-                                for (int i = 0; i < list_ord.size(); i++) {
-                                    model.Order_customer item = (model.Order_customer) list_ord.get(i);
-                                    String title = item.getTitle();
-                                    String name = item.getName();
-                                    String status = item.getStatus();
-                                    if (name == null) {%>
-                            <!--button SELECT TRANSLATOR-->
+                                for (int i = 0; i < list_status.size(); i++) {
+                                    model.Status_order item = (model.Status_order) list_status.get(i);
+                                    String desc = item.getDescription();
+                                    String name = item.getTranslator_name();
+                                    String status = item.getStatus();%>
                             <tr>
-                                <td><p><%= title%></p></td>
-                                <td><p>Button</p></td>
-                                <td><p>NO</p></td>
-                            </tr>
-                            <% } else {%>
-                            <tr>
-                                <td><p><%= title%></p></td>
+                                <td><p><%= desc%></p></td>
                                 <td><p><%= name%></p></td>
                                 <td><p><%= status%></p></td>
                             </tr>
-                            <% }
-                                     }%>
+                            <% }%>
                         </tbody>
                     </table>
                 </center>
             </div>
         </div>
-    </td>    
-</tr>    
+       
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+        <script  src="js/index.js"></script>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script  src="js/index.js"></script>
-
-</body>
+    </body>
 
 </html>

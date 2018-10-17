@@ -6,52 +6,47 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html lang="en" >
+
+    <head>
+        <meta charset="UTF-8">
+        <title>สร้างรายการจ้างแปล</title>
+        <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
-        <div class="logo">  
-            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="CSS_ProCus.css" type="text/css"/>
+        <link rel="stylesheet" href="CSS_ProCus.css" type="text/css">
 
-        <html lang="en" >
+
+
+
+    </head>
+    
+    <body>
+
+    <div class="logo">  
+        <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
+    </div>
+
+    <center>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='#'>หน้าหลัก</a></li>
+                <li><a href='#'>สร้างรายการ</a></li>
+                <li><a href='#'>ออเดอร์</a></li>
+                <li><a href='#'>สถานะ</a></li>
+                <li class='active''>โปรไฟล์</a></li>
+            </ul>
+        </div>
+    </center>
 
     
+        
 
-            
-
-            <center>
-                <div id='cssmenu'>
-                    <ul>
-                        <li><a href='#'>หน้าหลัก</a></li>
-                        <li><a href='#'>สร้างรายการ</a></li>
-                        <li><a href='#'>ออเดอร์</a></li>
-                        <li><a href='#'>สถานะ</a></li>
-                        <li class='active'><a href='#'>โปรไฟล์</a></li>
-                    </ul>
-                </div>
-            </center>
-
-            <meta charset="UTF-8">
-            <title>MY PROFILE</title>
-            <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-            <link rel="stylesheet" href="css/style.css">
-            <link rel="stylesheet" href="CSS_ProCus.css" type="text/css"/>
-            <link rel="stylesheet" href="CSS_ProCus.css" type="text/css">
-
-
-            
-
-          
-
-            <body>
-
-                <!-- this is the markup. you can change the details (your own name, your own avatar etc.) but don’t change the basic structure! -->
-
-                
-
-                        <aside class="profile-card">
+                        <div class="profile-card">
 
                             <header>
 
@@ -77,28 +72,35 @@
 
 
 
+                            <center>
+                                <button type="submit">
+                                    <div class = "button-text" >
+                                        <a href="Regist_translator.html">สมัครเป็นนักแปล</a> 
+                                    </div>
+                                </button>
+                                
+                                 <button type="submit">
+                                    <div class = "button-text">
+                                         <a href="Order_Translator.jsp">รายชื่อนักแปล</a> 
+                                    </div>
+                                </button>
+                            </center>
+                            
+                            
 
-                            <!-- add or remove social profiles as you see fit -->
-                            </ul>
 
-                            <div class = "button-text">สมัครเป็นนักแปล</div>
-                        </aside>
-                          
 
-                        <!-- that’s all folks! -->
-                    </div>
-                </div>
-                
+                        </div>
+
+                      
+               
+
+    
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+        <script  src="js/index.js"></script>
+
 </body>
 
 
-
-                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-                <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-                <script  src="js/index.js"></script>
-
-
-
-            
-
-            </html>
+</html>

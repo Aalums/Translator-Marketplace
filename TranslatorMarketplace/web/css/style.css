@@ -120,9 +120,9 @@ yellow: #ffdf00
 }
 
 body {
-    background-image : url("shape.png");   /*ที่อยู่ของรูปภาพ*/
-    /*   background-repeat : no-repeat;         //กำหนดให้แสดงเพียงภาพเดียว
-       background-position :  top left;          //จัดตำแหน่งของรูปภาพ*/
+    background-image : url("bg.jpg");   /*ที่อยู่ของรูปภาพ*/
+       background-repeat : no-repeat;         /*//กำหนดให้แสดงเพียงภาพเดียว*/
+       background-position :  top left;          /*//จัดตำแหน่งของรูปภาพ*/
     background-attachment: fixed;         /*กำหนดตรึงภาพ เพื่อไม่ให้ภาพเลื่อนตามสกอลบาร์*/
     margin: 0;
     line-height: 0.5;

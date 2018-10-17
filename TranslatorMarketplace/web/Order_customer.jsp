@@ -4,6 +4,8 @@
     Author     : porpiraya
 --%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +21,7 @@
         <style>
             .order-form {
                 width: 750px;
-                height: 300px;
+                height: 250px;
                 position: relative;
                 padding: 10px;
                 padding-right: 20px;
@@ -29,7 +31,8 @@
                 border: 2px solid #003489;
                 box-shadow: 8px 8px 0px 0px #003489;
                 margin-bottom: 100px;
-                left: 25%;
+                margin-left: auto;
+                margin-right: auto;
             }
             .order-text {
                 left: 10px;
@@ -51,49 +54,38 @@
         </style>
     </head>
     <body>
+
+        <sql:setDataSource var="data" 
+                           driver="com.mysql.jdbc.Driver" 
+                           user="root" 
+                           password="root" 
+                           url="jdbc:mysql://localhost:3306/test"/>
+
+        <sql:query dataSource="${data}" var="result">
+            SELECT *
+            FROM create_order;
+        </sql:query>
+
     <center><h1>รายการที่สร้าง</h1></center>
 
-    <div class="row">
-        <div class="order-form">
-            <div class="order-text">
-                <h3>ไฟล์ : นิยาย.pdf</h3><br><br><br>
-                <h3>การแปล : ThaiEng</h3><br><br><br>
-                <h3>คำอธิบาย : แปลเป็นภาษาอังกฤษระดับปานกลาง ศัพท์ไม่ยากเกินไป</h3><br><br><br>
-                <h3>จำนวนหน้า : 5</h3><br><br><br>
-                <h3>ไฟล์ : 600.-</h3><br><br><br>
-                <h3>วันรับงานแปล : 16-10-2018</h3>
-            </div>
-            <button class="button_edit">edit</button>
-            <button class="button_select">เลือกนักแปล</button>
+    <form action="OrderCustomerServlet" method="POST">
+        <div class="row">
+            <c:forEach var="row" items="${result.rows}">
+                <div class="order-form">
+                    <!--<div class="order-text">-->
+                        <h3>ไฟล์ : ${row.file_create}</h3>
+                        <h3>การแปล : ${row.translate_type}</h3>
+                        <h3>คำอธิบาย : ${row.description}</h3>
+                        <h3>จำนวนหน้า : ${row.num_page}</h3>
+                        <h3>ไฟล์ : ${row.price}</h3>
+                        <h3>วันรับงานแปล : ${row.due_date}</h3>
+                    <!--</div>-->
+                    <button class="button_edit">edit</button>
+                    <button class="button_select" value="${row.id_order}">เลือกนักแปล</button>
+                </div>
+            </c:forEach>
         </div>
-
-        <div class="order-form">
-            <div class="order-text">
-                <h3>ไฟล์ : magazine.pdf</h3><br><br><br>
-                <h3>การแปล : EngThai</h3><br><br><br>
-                <h3>คำอธิบาย : แปลเป็นภาษาไทย ที่อ่านเข้าใจได้ง่าย</h3><br><br><br>
-                <h3>จำนวนหน้า : 8</h3><br><br><br>
-                <h3>ไฟล์ : 960.-</h3><br><br><br>
-                <h3>วันรับงานแปล : 20-10-2018</h3>
-            </div>
-            <button class="button_edit">edit</button>
-            <button class="button_select">เลือกนักแปล</button>
-        </div>
-
-        <div class="order-form">
-            <div class="order-text">
-                <h3>ไฟล์ : วรรณคดี.pdf</h3><br><br><br>
-                <h3>การแปล : EngThai</h3><br><br><br>
-                <h3>คำอธิบาย : แปลเป็นภาษาอังกฤษระดับสูง มีคำศัพท์เฉพาะ</h3><br><br><br>
-                <h3>จำนวนหน้า : 12</h3><br><br><br>
-                <h3>ไฟล์ : 1,440.-</h3><br><br><br>
-                <h3>วันรับงานแปล : 27-10-2018</h3>
-            </div>
-            <button class="button_edit">edit</button>
-            <button class="button_select">เลือกนักแปล</button>
-        </div>
-    </div>
-
+    </form>
 
 </body>
 </html>

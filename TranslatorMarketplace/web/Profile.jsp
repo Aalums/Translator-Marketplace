@@ -24,83 +24,77 @@
 
 
     </head>
-    
+
     <body>
 
-    <div class="logo">  
-        <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
-    </div>
+        <div class="logo">  
+            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
+        </div>
 
     <center>
         <div id='cssmenu'>
             <ul>
                 <li><a href='#'>หน้าหลัก</a></li>
                 <li><a href='#'>สร้างรายการ</a></li>
-                <li><a href='#'>ออเดอร์</a></li>
+                <li><a href='#'>ออเดอร์</a></li>       
                 <li><a href='#'>สถานะ</a></li>
-                <li class='active''>โปรไฟล์</a></li>
+                <li class='active'><a href='#'>โปรไฟล์</a></li>
             </ul>
         </div>
     </center>
 
-    
+    <body>
         
+       <aside class="profile-card">
 
-                        <div class="profile-card">
+            <header>
 
-                            <header>
+                <!-- here’s the avatar -->
+                <a href=#>
+                    <img src="https://preview.ibb.co/fH4K5f/eye.jpg" alt="eye"></a>
+                </a>
 
-                                <!-- here’s the avatar -->
-                                <a href=#>
-                                    <img src="https://preview.ibb.co/fH4K5f/eye.jpg" alt="eye"></a>
-                                </a>
+                <!-- the username -->
+                <h1>นันทพร ชูสวัสดิ์</h1>
 
-                                <!-- the username -->
-                                <h1>นันทพร ชูสวัสดิ์</h1>
+                <!-- and role or location -->
+                <h2>Web Developer</h2>
 
-                                <!-- and role or location -->
-                                <h2>Web Developer</h2>
+            </header>
 
-                            </header>
+            <!-- bit of a bio; who are you? -->
+            <div class="profile-bio">
 
-                            <!-- bit of a bio; who are you? -->
-                            <div class="profile-bio">
+                <p>ได้หมดถ้าสดชื่น เพราะการเรียนมันง่ายไป</p>
 
-                                <p>ได้หมดถ้าสดชื่น เพราะการเรียนมันง่ายไป</p>
-
-                            </div>
-
-
-
-                            <center>
-                                <button type="submit">
-                                    <div class = "button-text" >
-                                        <a href="Regist_translator.html">สมัครเป็นนักแปล</a> 
-                                    </div>
-                                </button>
-                                
-                                 <button type="submit">
-                                    <div class = "button-text">
-                                         <a href="Order_Translator.jsp">รายชื่อนักแปล</a> 
-                                    </div>
-                                </button>
-                            </center>
-                            
-                            
+            </div>
+            
+            
+        
+            <center>
+                <button type="submit">
+                    <div class = "button-text">
+                        สมัครเป็นนักแปล
+                    </div>
+                </button>
+            
+                <button type="submit">
+                    <div class = "button-text">
+                        <a href="Order_Translator.jsp">รายการงาน</a>
+                    </div>
+                </button>
+            </center>
 
 
 
-                        </div>
+        </aside>
 
-                      
-               
 
+    </body>
     
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-        <script  src="js/index.js"></script>
-
-</body>
+    <br><br>
+    
+    
 
 
 </html>

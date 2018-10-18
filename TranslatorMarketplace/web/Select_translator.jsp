@@ -105,9 +105,6 @@
             USING (id_customer);
         </sql:query>
 
-        <!-- รับค่า id_order รายการที่เลือกจากหน้า Order_customer -->
-        <% String id_order = (String) session.getAttribute("Order");%>
-
         <!-- Creates pop-up Body -->
         <div class="pop-up-body" id="pop-up">
             <!-- Creates pop-up Text -->
@@ -160,9 +157,9 @@
                     <h3>LANGUAGE : ${row.level_skill}</h3>
                     <div class="employ">
                         <center>
-                            <!--ส่งชื่อนักแปลที่เลือกไป servlet-->
+                            <!--ส่ง id นักแปลที่เลือกไป-->
                             <form action="SelectTranslatorServlet" method="POST">
-                                <button id="select_employ" name="select" value="${row.name_customer}">
+                                <button id="select_employ" name="select_employ" value="${row.id_translator}">
                                     <div class = "button-text">จ้าง</div>
                                 </button>
                             </form>

@@ -19,12 +19,17 @@ public class SelectTranslatorServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             ServletContext session = request.getServletContext();
-            String order = "สำหรับรายการ : " + ((String) session.getAttribute("Order"));
-            String translator = "คุณเลือกนักแปล : " + request.getParameter("select");
-            String msg = translator
-                    + "                                                                 "
-                    + order;
             
+            String id_order = "สำหรับรายการ : " + ((String) session.getAttribute("id_order"));
+            String id_translator = "คุณเลือกนักแปล : " + request.getParameter("select_employ");
+            
+            session.setAttribute("id_translator", request.getParameter("select_employ"));
+            
+            String msg = id_translator
+                    + "                                                                 "
+                    + id_order;
+            
+            //Confirm javascript
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -32,7 +37,7 @@ public class SelectTranslatorServlet extends HttpServlet {
             out.println("<SCRIPT LANGUAGE=javascript>");
             out.println("<!--");
             out.println("var select = confirm('"+msg+"')");
-            out.println("if (select == true) {window.location.replace(\"StatusOrderServlet\");}");
+            out.println("if (select == true) {window.location.replace(\"AddOrderedServlet\");}");
             out.println("else {window.location.replace(\"Select_translator.jsp\");}");
             out.println("//-->");
             out.println("</SCRIPT>");

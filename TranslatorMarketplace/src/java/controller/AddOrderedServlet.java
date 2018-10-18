@@ -2,6 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,23 +14,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "OrderCustomerServlet", urlPatterns = {"/OrderCustomerServlet"})
-public class OrderCustomerServlet extends HttpServlet {
+@WebServlet(name = "AddOrderedServlet", urlPatterns = {"/AddOrderedServlet"})
+public class AddOrderedServlet extends HttpServlet {
 
+    private Connection conn;
+    public void init(){
+        conn = (Connection) getServletContext().getAttribute("connection");
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            String id_order = request.getParameter("select_order");
             
             ServletContext session = request.getServletContext();
-            session.setAttribute("id_order", id_order);
             
-            System.out.println(id_order);
+            int id_order = Integer.parseInt((String) session.getAttribute("id_order"));
+            int id_translator = Integer.parseInt((String) session.getAttribute("id_translator"));
+            String status = "รอการตอบรับ";
             
-            response.sendRedirect("Select_translator.jsp");
+            //เช็ค
+            //out.println("alert('Get Parameter Complete!!')");
             
+            String sql = "INSERT INTO ordered (id_order, id_translator, status) "
+                    + "VALUES (?,?,?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id_order);
+            pstmt.setInt(2, id_translator);
+            pstmt.setString(3, status);
+            
+            pstmt.executeUpdate();
+            pstmt.close();
+            
+            //เช็ค
+            //out.println("<br>alert('INSERT Complete!!')");
+            
+            response.sendRedirect("StatusOrderServlet");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AddOrderedServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

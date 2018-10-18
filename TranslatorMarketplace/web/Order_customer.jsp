@@ -21,7 +21,7 @@
         <style>
             .order-form {
                 width: 750px;
-                height: 250px;
+                height: 270px;
                 position: relative;
                 padding: 10px;
                 padding-right: 20px;
@@ -60,7 +60,7 @@
                            user="root" 
                            password="root"  
                            url="jdbc:mysql://localhost:3306/test"/>
-        
+
         <c:set var="id" value="admin" />
 
         <sql:query dataSource="${data}" var="result">
@@ -78,15 +78,16 @@
             <c:forEach var="row" items="${result.rows}">
                 <div class="order-form">
                     <!--<div class="order-text">-->
-                        <h3>ไฟล์ : ${row.file_create}</h3>
-                        <h3>การแปล : ${row.translate_type}</h3>
-                        <h3>คำอธิบาย : ${row.description}</h3>
-                        <h3>จำนวนหน้า : ${row.num_page}</h3>
-                        <h3>ไฟล์ : ${row.price}</h3>
-                        <h3>วันรับงานแปล : ${row.due_date}</h3>
+                    <h3>รายการ : ${row.id_order}</h3>
+                    <h3>ไฟล์ : ${row.file_create}</h3>
+                    <h3>การแปล : ${row.translate_type}</h3>
+                    <h3>คำอธิบาย : ${row.description}</h3>
+                    <h3>จำนวนหน้า : ${row.num_page}</h3>
+                    <h3>ไฟล์ : ${row.price}</h3>
+                    <h3>วันรับงานแปล : ${row.due_date}</h3>
                     <!--</div>-->
                     <button class="button_edit">edit</button>
-                    <button class="button_select" name="id_order" value="${row.id_order}">เลือกนักแปล</button>
+                    <button class="button_select" name="select_order" value="${row.id_order}">เลือกนักแปล</button>
                 </div>
             </c:forEach>
         </div>

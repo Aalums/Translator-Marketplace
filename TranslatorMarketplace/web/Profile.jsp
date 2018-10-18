@@ -17,8 +17,6 @@
 
 
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="CSS_ProCus.css" type="text/css"/>
-        <link rel="stylesheet" href="CSS_ProCus.css" type="text/css">
 
 
 
@@ -58,13 +56,14 @@
                 <h1>นันทพร ชูสวัสดิ์</h1>
 
                 <!-- and role or location -->
-                <h2>Web Developer</h2>
+                <h2>นักแปล</h2>
 
             </header>
 
             <!-- bit of a bio; who are you? -->
             <div class="profile-bio">
-
+                <p> E-mail: eyelovekmitl@gmail.com </p><br><br>
+                <p>เบอร์โทร: 066-6787654</p><br><br>
                 <p>ได้หมดถ้าสดชื่น เพราะการเรียนมันง่ายไป</p>
 
             </div>
@@ -72,17 +71,18 @@
             
         
             <center>
-                <button type="submit">
-                    <div class = "button-text">
+<!--                <form action="Translator.html">
+    <button type="submit" value="" /> 
+    <div class = "button-text">
                         สมัครเป็นนักแปล
                     </div>
-                </button>
-            
-                <button type="submit">
+              </form>
+            -->
+                 <form action="Order_Translator.jsp"><button type="submit" value="" />
                     <div class = "button-text">
-                        <a href="Order_Translator.jsp">รายการงาน</a>
+                       ออเดอร์นักแปล
                     </div>
-                </button>
+             </form>
             </center>
 
 

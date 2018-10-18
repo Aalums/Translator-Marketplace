@@ -39,6 +39,7 @@ yellow: #ffdf00
     height: 0;
 }
 #cssmenu {
+    background: transparent;
     margin-top: 30px;
     margin-bottom: 30px;
     width: max-content;
@@ -47,7 +48,7 @@ yellow: #ffdf00
     line-height: 1;
 }
 #cssmenu ul {
-    background: #ffffff;
+    background: transparent;
 }
 #cssmenu > ul > li {
     float: left;
@@ -92,7 +93,7 @@ yellow: #ffdf00
     bottom: 0;
     right: 0;
     z-index: -1;
-    width: 100%;
+    width: 97%;
     height: 120%;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -401,20 +402,15 @@ button:active {
 
 /*-----------------CSS PROFILE-------------------*/
 .profile-card {
-
-    max-width: 600px;
-    min-width: 600px;
     position: absolute;
     left: 50%;
     transform: translate(50%,0);
-    border: 2px solid #24305e;
     box-shadow: 8px 8px 0px 0px #24305e;
     margin-bottom: 100px;
     background: #fff; 
-    border: 2px solid #003489;
     box-shadow: 4px 4px 0px 0px #003489;
     margin-bottom: 100px;
-    background: blanchedalmond;
+    background: #F76c6c;
     width: 56px;
     height: 56px;
     position: absolute;
@@ -427,19 +423,15 @@ button:active {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, 0%);
     -webkit-border-radius: 50%;
-
     -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
-    box-shadow: 0px 3px 6px rgba(0 ,0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
     -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia_landscape 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
 
 }
 
 
 .profile-card header {
-
     display: inline;
-
-    border-right: 2px dashed #EEEEEE;
+    border-right: 2px dashed #24305E;
     background: #FFFFFF;
     color: #000000;
     margin-top: 50px;
@@ -449,7 +441,7 @@ button:active {
 
 }
 .profile-card header h1 {
-    color: #FF5722;
+    color: #F76c6c;
 }
 .profile-card header a {
     display: inline-block;
@@ -462,32 +454,22 @@ button:active {
 .profile-card header a:after {
     position: absolute;
     content: "";
-
     border: 4px solid #FFFFFF;
     -webkit-transform: scale(0);
-    transform: scale(0);
-    background: -webkit-linear-gradient(top, #2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
-    background: linear-gradient(#2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
+    background: -webkit-linear-gradient(top, #A8d0a6 0%, #A8d0a6 50%, #F76c6c 50%, #F76c6c 100%);
     -webkit-border-radius: 50%;
-    border-radius: 50%;
     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
     -webkit-animation: scaleIn 0.3s 3.5s ease forwards;
-    animation: scaleIn 0.3s 3.5s ease forwards;
 }
 .profile-card header a > img {
     width: 120px;
     max-width: 100%;
     -webkit-border-radius: 50%;
-    border-radius: 50%;
     -webkit-transition: -webkit-box-shadow 0.3s ease;
-    transition: box-shadow 0.3s ease;
     -webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
-    box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
 }
 .profile-card header a:hover > img {
     -webkit-box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
 }
 .profile-card .profile-bio {
     width: 175px;        
@@ -500,7 +482,6 @@ button:active {
     text-align: center;
     opacity: 0;
     -webkit-animation: moveIn 1s 3.1s ease forwards;
-    animation: moveIn 1s 3.1s ease forwards;
 }
 
 
@@ -512,18 +493,6 @@ button:active {
         width: 0px;
     }
     @-webkit-keyframes puff {
-        0% {
-            top: 100%;
-            width: 0px;
-            padding-bottom: 0px;
-        }
-        100% {
-            top: 50%;
-            width: 100%;
-            padding-bottom: 100%;
-        }	
-    }
-    @keyframes puff {
         0% {
             top: 100%;
             width: 0px;
@@ -578,18 +547,7 @@ button:active {
         opacity: 1;
     }	
 }
-@keyframes init {
-    0% {
-        width: 0px;
-        height: 0px;
-    }
-    100% {
-        width: 56px;
-        height: 56px;
-        margin-top: 0px;
-        opacity: 1;
-    }	
-}
+
 @-webkit-keyframes puff_portrait {
     0% {
         top: 100%;
@@ -602,18 +560,7 @@ button:active {
         padding: 0px 100%;
     }	
 }
-@keyframes puff_portrait {
-    0% {
-        top: 100%;
-        height: 0px;
-        padding: 0px;
-    }
-    100% {
-        top: 50%;
-        height: 100%;
-        padding: 0px 100%;
-    }	
-}
+
 @-webkit-keyframes puff_landscape {
     0% {
         top: 100%;
@@ -626,18 +573,7 @@ button:active {
         padding-bottom: 100%;
     }	
 }
-@keyframes puff_landscape {
-    0% {
-        top: 100%;
-        width: 0px;
-        padding-bottom: 0px;
-    }
-    100% {
-        top: 50%;
-        width: 100%;
-        padding-bottom: 100%;
-    }	
-}
+
 @-webkit-keyframes borderRadius {
     0% {
         -webkit-border-radius: 50%;
@@ -646,14 +582,7 @@ button:active {
         -webkit-border-radius: 0px;
     }	
 }
-@keyframes borderRadius {
-    0% {
-        -webkit-border-radius: 50%;
-    }
-    100% {
-        border-radius: 0px;
-    }	
-}
+
 @-webkit-keyframes moveDown {
     0% {
         top: 50%;
@@ -665,20 +594,10 @@ button:active {
         top: 100%;
     }	
 }
-@keyframes moveDown {
-    0% {
-        top: 50%;
-    }
-    50% {
-        top: 40%;
-    }
-    100% {
-        top: 100%;
-    }	
-}
+
 @-webkit-keyframes moveUp {
     0% {
-        background: #FFB300;
+        background: #F8e9a1;
         top: 100%;
     }
     50% {
@@ -686,76 +605,37 @@ button:active {
     }
     100% {
         top: 50%;
-        background: #E0E0E0;
+        background: #24305e;
     }	
 }
-@keyframes moveUp {
-    0% {
-        background: #FFB300;
-        top: 100%;
-    }
-    50% {
-        top: 40%;
-    }
-    100% {
-        top: 50%;
-        background: #E0E0E0;
-    }	
-}
+
 @-webkit-keyframes materia_landscape {
     0% {
-        background: #E0E0E0;
+        background: #24305e;
     }
     50% {
         -webkit-border-radius: 4px;
     }
     100% {
-        width: 440px;
-        height: 280px;
+        width: 500px;
+        height: 600px;
         background: #FFFFFF;
         -webkit-border-radius: 4px;
     }
 }
-@keyframes materia_landscape {
-    0% {
-        background: #E0E0E0;
-    }
-    50% {
-        border-radius: 4px;
-    }
-    100% {
-        width: 440px;
-        height: 280px;
-        background: #FFFFFF;
-        border-radius: 4px;
-    }
-}
+
 @-webkit-keyframes materia_portrait {
     0% {
-        background: #E0E0E0;
+        background: #24305E;
     }
     50% {
         -webkit-border-radius: 4px;
     }
     100% {
-        width: 280px;
-        height: 440px;
+        width: 600px;
+        height: 500px;
         background: #FFFFFF;
         -webkit-border-radius: 4px;
-    }
-}
-@keyframes materia_portrait {
-    0% {
-        background: #E0E0E0;
-    }
-    50% {
-        border-radius: 4px;
-    }
-    100% {
-        width: 280px;
-        height: 440px;
-        background: #FFFFFF;
-        border-radius: 4px;
     }
 }
 @-webkit-keyframes moveIn {
@@ -768,16 +648,7 @@ button:active {
         margin-top: -20px;
     }	
 }
-@keyframes moveIn {
-    0% {
-        margin-top: 50px;
-        opacity: 0;
-    }
-    100% { 
-        opacity: 1;
-        margin-top: -20px;
-    }	
-}
+
 @-webkit-keyframes scaleIn {
     0% {
         -webkit-transform: scale(0);
@@ -786,31 +657,13 @@ button:active {
         -webkit-transform: scale(1);
     }	
 }
-@keyframes scaleIn {
-    0% {
-        transform: scale(0);
-    }
-    100% { 
-        transform: scale(1);
-    }	
-}
+
 @-webkit-keyframes ripple {
     0% {
         transform: scale3d(0, 0, 0); 
     }
     50%, 100% {
         -webkit-transform: scale3d(1, 1, 1);
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@keyframes ripple {
-    0% {
-        transform: scale3d(0, 0, 0); 
-    }
-    50%, 100% {
-        transform: scale3d(1, 1, 1);
     }
     100% {
         opacity: 0;

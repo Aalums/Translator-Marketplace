@@ -31,7 +31,7 @@
         </div>
 
         <div class="createorder">
-            <form action="RegisterTranslator" method="POST">
+            <form action="Order_TranslatorServlet" method="POST">
                 <div class = "formPattern">
                     <div class = "TableEmploy">
                         <!-- Tab links -->
@@ -42,8 +42,8 @@
                             <!-- Create Table -->
                             <table Border="4" style="width: -webkit-fill-available" size="auto">
                                 <tr>
-                                    <th bgcolor = "orange"> รายละเอียดการจ้าง </th>
-                                    <th bgcolor = "orange"> รับ/ปฏิเสธ </th>
+                                    <th> รายละเอียดการจ้าง </th>
+                                    <th> รับ/ปฏิเสธ </th>
                                 </tr>
 
 
@@ -63,11 +63,12 @@
                                     <div class="profile-form">
                                         <tr>
                                             <td> <p>รายละเอียดการจ้าง <br>${row.name_customer}</p><br></td>
-                                            <td> <input type="radio" name="การรับจ้าง" value="รับ" /> รับจ้าง   <input type="radio" name="การรับจ้าง" value="ไม่รับ" /> ปฏิเสธ</td>
+                                            <td> <input type="radio" name="select" value="${row.id_order}+_YES" /> Yes   <input type="radio" name="select" value="${row.id_order}+_NO" /> No</td>
                                         </tr>
                                     </div>
                                 </c:forEach>
                             </table>
+                            <input type="submit" value="Confirm" name="Confirm" />
                         </div>
                     </div>
                 </div>

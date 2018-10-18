@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,23 +10,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "OrderCustomerServlet", urlPatterns = {"/OrderCustomerServlet"})
-public class OrderCustomerServlet extends HttpServlet {
+@WebServlet(name = "SelectTranslatorServlet", urlPatterns = {"/SelectTranslatorServlet"})
+public class SelectTranslatorServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String id_order = request.getParameter("id_order");
-            
             ServletContext session = request.getServletContext();
-            session.setAttribute("Order", id_order);
+            String order = "สำหรับรายการ : " + ((String) session.getAttribute("Order"));
+            String translator = "คุณเลือกนักแปล : " + request.getParameter("select");
+            String msg = translator
+                    + "                                                                 "
+                    + order;
             
-            System.out.println(id_order);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
             
-            response.sendRedirect("Select_translator.jsp");
+            out.println("<SCRIPT LANGUAGE=javascript>");
+            out.println("<!--");
+            out.println("var select = confirm('"+msg+"')");
+            out.println("if (select == true) {window.location.replace(\"StatusOrderServlet\");}");
+            out.println("else {window.location.replace(\"Select_translator.jsp\");}");
+            out.println("//-->");
+            out.println("</SCRIPT>");
             
+            out.println("</head>");
+            out.println("<body>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

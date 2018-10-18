@@ -116,7 +116,7 @@
                 <h3 id="select_translator">คุณเลือกนักแปล : _____________</h3><br>
                 <h3 id="select_order">สำหรับรายการ : _____________</h3><br>
                 <!-- pop-up's button when you select Translator -->
-                <button class="yes">Yes</button>     <button class="no" onclick="button_no()">No</button>
+                <button class="yes" onclick="button_yes()">Yes</button>     <button class="no" onclick="button_no()">No</button>
             </div>
         </div>
 
@@ -160,10 +160,12 @@
                     <h3>LANGUAGE : ${row.level_skill}</h3>
                     <div class="employ">
                         <center>
-                            <!-- ส่งค่า id_translator, id_order ไป button_employ() เพื่อแสดงในหน้า pop up  -->
-                            <button id="select_employ" name="select" onclick="button_employ(${row.id_translator},<%=id_order%>)">
-                                <div class = "button-text">จ้าง</div>
-                            </button>
+                            <!--ส่งชื่อนักแปลที่เลือกไป servlet-->
+                            <form action="SelectTranslatorServlet" method="POST">
+                                <button id="select_employ" name="select" value="${row.name_customer}">
+                                    <div class = "button-text">จ้าง</div>
+                                </button>
+                            </form>
                         </center>
                     </div> 
                 </div>

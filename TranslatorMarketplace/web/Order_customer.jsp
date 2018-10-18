@@ -58,12 +58,17 @@
         <sql:setDataSource var="data" 
                            driver="com.mysql.jdbc.Driver" 
                            user="root" 
-                           password="root" 
+                           password="root"  
                            url="jdbc:mysql://localhost:3306/test"/>
+        
+        <c:set var="id" value="admin" />
 
         <sql:query dataSource="${data}" var="result">
             SELECT *
-            FROM create_order;
+            FROM customers
+            JOIN create_order USING (id_customer) 
+            WHERE id_customer = ?;
+            <sql:param value="${id}"/>
         </sql:query>
 
     <center><h1>รายการที่สร้าง</h1></center>
@@ -81,7 +86,7 @@
                         <h3>วันรับงานแปล : ${row.due_date}</h3>
                     <!--</div>-->
                     <button class="button_edit">edit</button>
-                    <button class="button_select" value="${row.id_order}">เลือกนักแปล</button>
+                    <button class="button_select" name="id_order" value="${row.id_order}">เลือกนักแปล</button>
                 </div>
             </c:forEach>
         </div>

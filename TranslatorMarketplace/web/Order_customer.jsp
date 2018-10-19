@@ -86,8 +86,12 @@
                     <h3>ไฟล์ : ${row.price}</h3>
                     <h3>วันรับงานแปล : ${row.due_date}</h3>
                     <!--</div>-->
-                    <button class="button_edit">edit</button>
-                    <button class="button_select" name="select_order" value="${row.id_order}">เลือกนักแปล</button>
+                    <form action="Edit_order.jsp" method="POST">
+                        <button class="button_edit" name="edit_order" value="${row.id_order}">แก้ไข</button>
+                    </form>
+                    <form action="OrderCustomerServlet" method="POST">
+                        <button class="button_select" name="select_order" value="${row.id_order}">เลือกนักแปล</button>
+                    </form>
                 </div>
             </c:forEach>
         </div>

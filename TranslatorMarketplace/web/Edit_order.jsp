@@ -63,20 +63,42 @@
         }
     </style>
 </head>
-<body>
-<center><h1>แก้ไขรายการที่สร้าง</h1></center>
-<div class="row">
-    <div class="edit-form">
-        <div class="edit-text">
-            ไฟล์ : นิยาย.pdf<br><br><br><input type="file" name="file_create"/><br><br><br>
-            การแปล :<br><br><br><input placeholder="ThaiEng"></input><br><br><br>
-            คำอธิบาย :<br><br><br><input placeholder="แปลเป็นภาษาอังกฤษระดับปานกลาง ศัพท์ไม่ยากเกินไป"></input><br><br><br>
-            จำนวนหน้า :<br><br><br><input placeholder="5"></input><br><br><br>
-            ไฟล์ :<br><br><br><input placeholder="600.-"></input><br><br><br>
-            วันรับงานแปล :<br><br><br><input placeholder="16-10-2018"></input>
-            <button onclick="location.href = 'Order_customer.jsp';">SAVE</button>
+    <body>
+        <% int id_order = Integer.parseInt(request.getParameter("edit_order"));%>
+
+        <!-- Query ข้อมูลนักแปล -->
+        <sql:setDataSource var="data" 
+                           driver="com.mysql.jdbc.Driver" 
+                           user="root" 
+                           password="root" 
+                           url="jdbc:mysql://localhost:3306/test"/>
+
+        <c:set var="id" value="${id_order}" />
+
+        <sql:query dataSource="${data}" var="result">
+            SELECT *
+            FROM create_order 
+            WHERE id_order = ?;
+            <sql:param value="${id}"/>
+        </sql:query>
+
+        <center><h1>แก้ไขรายการที่สร้าง</h1></center>
+        <div class="row">
+            <div class="edit-form">
+                <div class="edit-text">
+                    <c:forEach var="row" items="${result.rows}">
+                        <form action="EditOrderServlet" method="POST">
+                            ไฟล์ : ${row.file_create}<br><br><br><input type="file" name="file_create"/><br><br><br>
+                            การแปล :<br><br><br><input placeholder="${row.translate_type}" name="translate_type" value=""></input><br><br><br>
+                            คำอธิบาย :<br><br><br><input placeholder="${row.description}" name="desc" value=""></input><br><br><br>
+                            จำนวนหน้า :<br><br><br><input placeholder="${row.num_page}" name="num_page" value=""></input><br><br><br>
+                            ไฟล์ :<br><br><br><input placeholder="${row.price}.-" name="price" value=""></input><br><br><br>
+                            วันรับงานแปล :<br><br><br><input placeholder="${row.due_date}" name="due_date" value=""></input>
+                            <button>SAVE</button>
+                        </form>
+                    </c:forEach>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>

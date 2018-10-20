@@ -94,7 +94,7 @@
                             จำนวนหน้า :<br><br><br><input placeholder="${row.num_page}" name="num_page" value=""></input><br><br><br>
                             ไฟล์ :<br><br><br><input placeholder="${row.price}.-" name="price" value=""></input><br><br><br>
                             วันรับงานแปล :<br><br><br><input placeholder="${row.due_date}" name="due_date" value=""></input>
-                            <button>SAVE</button>
+                            <button name="save_order" value="${row.id_order}">SAVE</button>
                         </form>
                     </c:forEach>
                 </div>

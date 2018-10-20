@@ -11,24 +11,32 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Translate</title>
+        <title>Order_Translate</title>
         <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
 
-    <body>
-    <center>
-        <a href="https://www.picz.in.th/image/kC2A9R"><img src="https://www.picz.in.th/images/2018/10/10/kC2A9R.png" alt="kC2A9R.png" border="0" width ="180px" hight ="160px"/></a>
-        <div id='cssmenu'>
-            <ul>
-                <li><a href='#'><span>หน้าหลัก</span></a></li>
-                <li><a href='#'><span>รายการจ้าง</span></a></li>
-                <li><a href='#'><span>รับจ้างแปล</span></a></li>
-                <li><a href='#'><span>ออกจากระบบ</span></a></li>
-            </ul>
+    <div class="container">
+        <div class="logo">  
+            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
         </div>
+        <center>
+            <div id='cssmenu'>
+                <ul>
+                    <li><a href='#'>หน้าหลัก</a></li>
+                    <li><a href='#'>สร้างรายการ</a></li>
+                    <li><a href='#'>ออเดอร์</a></li>
+                    <li><a href='#'>สถานะ</a></li>
+                    <li class='active'><a href='#'>โปรไฟล์</a></li>
+                </ul>
+            </div>
+        </center>
+    </div>
+
+    <body>
+
 
         <div class="createorder">
             <form action="Order_TranslatorServlet" method="POST">
@@ -37,7 +45,7 @@
                         <!-- Tab links -->
 
                         <div class = "header">
-                            <a href="https://www.picz.in.th/image/kC2A9R"><img src="https://www.picz.in.th/images/2018/10/10/kC2A9R.png" alt="kC2A9R.png" border="0" width ="180px" hight ="160px"/></a>
+
                             <center><h1>รายการที่ถูกจ้าง</h1></center>
                             <!-- Create Table -->
                             <table Border="4" style="width: -webkit-fill-available" size="auto">
@@ -56,24 +64,37 @@
                                 <!-- query data from database-->
                                 <sql:query dataSource="${data}" var="result">
                                     select * from customers;
-                                </sql:query>
+                                </sql:query> 
 
                                 <!--แสดงรายละเอียดข้อมูลการจ้าง-->
                                 <c:forEach var="row" items="${result.rows}">
                                     <div class="profile-form">
                                         <tr>
-                                            <td> <p>รายละเอียดการจ้าง <br>${row.name_customer}</p><br></td>
-                                            <td> <input type="radio" name="select" value="${row.id_order}+_YES" /> Yes   <input type="radio" name="select" value="${row.id_order}+_NO" /> No</td>
-                                        </tr>
+                                            <td> <p>รายละเอียดการจ้าง<br> <br></td>
+                                            <td>  
+
+
+                                                <div class="bottonOrder"><center>
+                                                        <br>
+                                                        <button class="button_select" name="select" value="${row.id_order}+YES">YES</button>
+                                                        <button class="button_select" name="select" value="${row.id_order}+NO">NO</button>
+                                                    </center>
+                                                </div>
                                     </div>
-                                </c:forEach>
-                            </table>
-                            <input type="submit" value="Confirm" name="Confirm" />
-                        </div>
+                                    </tr>
+
+
+                            </div>
+                        </c:forEach>
+                        </table>
+                        <br>
+                        <center> <button class="button_select" value="Confirm" name="Confirm">ยืนยันการจ้าง</button> </center>
                     </div>
                 </div>
-            </form>
         </div>
-    </center>
+    </form>
+</div>
+
+</center>
 </body>
 </html>

@@ -27,8 +27,8 @@
             <ul>
                 <li><a href='#'>หน้าหลัก</a></li>
                 <li><a href='#'>สร้างรายการ</a></li>
-                <li class='active'><a href='#'>ออเดอร์</a></li>
-                <li><a href='#'>สถานะ</a></li>
+                <li><a href='#'>ออเดอร์</a></li>
+               <li class='active'><a href='#'>สถานะ</a></li>
                 <li><a href='#'>โปรไฟล์</a></li>
             </ul>
         </div>

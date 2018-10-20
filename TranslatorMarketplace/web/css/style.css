@@ -669,3 +669,14 @@ button:active {
         opacity: 0;
     }
 }
+
+/*จบ CSS PROFILE*/
+
+/*ตำแหน่งปุ่มของหน้าorder_trans*/
+
+.bottonOrder{
+    top:40%;
+    left:40%;
+    margin-top: 30px;
+    margin-left:10px;
+}

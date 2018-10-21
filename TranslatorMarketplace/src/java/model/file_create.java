@@ -17,13 +17,16 @@ public class file_create {
         File path = new File("/Users/ASUS/Desktop/Translator-Marketplace/TranslatorMarketplace/web/file_create/" + name + ".pdf");
         FileOutputStream outputStream = new FileOutputStream(path);
 
+        if(!path.exists()){
+            file_create = "file_create/" + name + ".pdf";
+        }
+        
         byte[] buffer = new byte[1024];
         try {
             while(file.read(buffer)>0){
                 outputStream.write(buffer);
             }
             outputStream.close();
-            file_create = "file_create/"+ name +".pdf";
         } catch (IOException ex) {
             ex.printStackTrace();
         }   

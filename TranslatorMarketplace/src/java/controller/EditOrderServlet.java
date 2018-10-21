@@ -6,6 +6,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import model.file_create;
 
 /**
  *
@@ -56,7 +59,7 @@ public class EditOrderServlet extends HttpServlet {
                     + " WHERE id_order = ?");
 
             //get data from Edit_order.jsp
-//            Part file = request.getPart("file_create");
+            Part file = request.getPart("file_create");
 
             String type = request.getParameter("translate_type");
             String desc = request.getParameter("desc");
@@ -97,7 +100,17 @@ public class EditOrderServlet extends HttpServlet {
                     row = ps_edit.executeUpdate();
 //                    out.println("price = "+row);
                 }
+                if(!file.equals("")){
+                    //เอาชื่อไฟล์ออกมา
+                    String[] title = rs_order.getString("file_create").split("/|\\.");
+                    
+                    InputStream inputStream = file.getInputStream();
+                    file_create file_cre = new file_create();
+                    file_cre.fileCreate(title[1], inputStream);
+                }
             }
+            
+            rs_order.close();
             ps_order.close();
             conn.close();
             

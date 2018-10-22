@@ -73,13 +73,11 @@
                            password="root" 
                            url="jdbc:mysql://localhost:3306/test"/>
 
-        <c:set var="id" value="${id_order}" />
-
         <sql:query dataSource="${data}" var="result">
             SELECT *
             FROM create_order 
             WHERE id_order = ?;
-            <sql:param value="${id}"/>
+            <sql:param value="<%= id_order %>"/>
         </sql:query>
 
         <center><h1>แก้ไขรายการที่สร้าง</h1></center>
@@ -87,7 +85,7 @@
             <div class="edit-form">
                 <div class="edit-text">
                     <c:forEach var="row" items="${result.rows}">
-                        <form action="EditOrderServlet" method="POST">
+                        <form action="EditOrderServlet" method="POST" enctype="multipart/form-data">
                             ไฟล์ : ${row.file_create}<br><br><br><input type="file" name="file_create"/><br><br><br>
                             การแปล :<br><br><br><input placeholder="${row.translate_type}" name="translate_type" value=""></input><br><br><br>
                             คำอธิบาย :<br><br><br><input placeholder="${row.description}" name="desc" value=""></input><br><br><br>

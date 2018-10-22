@@ -4,9 +4,8 @@
     Author     : may
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,10 +35,10 @@
     </div>
 
     <body>
-
+        <% ArrayList list_order = (ArrayList) getServletContext().getAttribute("list_order"); %>
 
         <div class="createorder">
-            <form action="Order_TranslatorServlet" method="POST">
+            <form action="AcceptOrderServlet" method="POST">
                 <div class = "formPattern">
                     <div class = "TableEmploy">
                         <!-- Tab links -->
@@ -53,48 +52,38 @@
                                     <th> รายละเอียดการจ้าง </th>
                                     <th> รับ/ปฏิเสธ </th>
                                 </tr>
-
-
-                                <sql:setDataSource var="data" 
-                                                   driver="com.mysql.jdbc.Driver" 
-                                                   user="root" 
-                                                   password="root" 
-                                                   url="jdbc:mysql://localhost:3306/mysql"/>
-
-                                <!-- query data from database-->
-                                <sql:query dataSource="${data}" var="result">
-                                    select * from customers;
-                                </sql:query> 
-
-                                <!--แสดงรายละเอียดข้อมูลการจ้าง-->
-                                <c:forEach var="row" items="${result.rows}">
-                                    <div class="profile-form">
-                                        <tr>
-                                            <td> <p>รายละเอียดการจ้าง<br> <br></td>
-                                            <td>  
-
-
-                                                <div class="bottonOrder"><center>
-                                                        <br>
-                                                        <button class="button_select" name="select" value="${row.id_order}+YES">YES</button>
-                                                        <button class="button_select" name="select" value="${row.id_order}+NO">NO</button>
-                                                    </center>
-                                                </div>
-                                    </div>
-                                    </tr>
-
-
-                            </div>
-                        </c:forEach>
-                        </table>
-                        <br>
-                        <center> <button class="button_select" value="Confirm" name="Confirm">ยืนยันการจ้าง</button> </center>
+                                <div class="profile-form">
+                                    <!--แสดงรายละเอียดข้อมูลการจ้าง-->
+                                    <% for (int i = 0; i < list_order.size(); i++) {
+                                            model.OrderTranslator item = (model.OrderTranslator) list_order.get(i);
+                                                int id_order = item.getId_order();
+                                                String desc = item.getDesc();
+                                                String status = item.getStatus();%>
+                                            <tr>
+                                                <td> <p><%= desc %><br></p><br></td>
+                                                <td>
+                                                    <% if(status.equals("YES")){ %>
+                                                        <h1>ยอมรับ</h1>
+                                                    <% } if(status.equals("NO")) { %> 
+                                                        <h1>ปฎิเสธ</h1>
+                                                    <% } else { %>
+                                                        <div class="bottonOrder">
+                                                            <center>
+                                                                <br>
+                                                                <button class="button_select" name="select" value=<%= id_order %>_YES>YES</button>
+                                                                <button class="button_select" name="select" value=<%= id_order %>_NO>NO</button>
+                                                            </center>
+                                                        </div>
+                                                    <% } %>  
+                                                </td>
+                                            </tr>    
+                                </div>
+                            </table>
+                        </div>
                     </div>
                 </div>
+            </form>
         </div>
-    </form>
-</div>
-
 </center>
 </body>
 </html>

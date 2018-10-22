@@ -7,23 +7,33 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.annotation.Resource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
+import model.OrderTranslator;
 
 /**
  *
  * @author may
  */
-@WebServlet(name = "Order_TranslatorServlet", urlPatterns = {"/Order_TranslatorServlet"})
-public class Order_TranslatorServlet extends HttpServlet {
-
-    @Resource(name = "test")
-    private DataSource test;
+@WebServlet(name = "OrderTranslatorServlet", urlPatterns = {"/OrderTranslatorServlet"})
+public class OrderTranslatorServlet extends HttpServlet {
+    
+    private Connection conn;
+    
+    public void init(){
+        conn = (Connection) getServletContext().getAttribute("connection");
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,21 +48,31 @@ public class Order_TranslatorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            String[] select = request.getParameter("select").split("_");
-            String id_order = select[0];
-            String status = select[1];
             
-            //รอคิวรี่การเก็บค่าอีกที
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet OrderTranslatorServlet</title>");
-//            out.println("</head>");
-//            out.println("<body>");
-            out.println("<h1> +++ ยืนยันคำตอบเรียบร้อย +++ </h1>");
-//            out.println("</body>");
-//            out.println("</html>");
+            OrderTranslator ord_tran;
+            ArrayList list_order = new ArrayList();
+
+            PreparedStatement ps_order = conn.prepareStatement(
+                    "SELECT * FROM create_order"
+                    + " JOIN ordered USING (id_order)"
+                    + " WHERE id_translator = ?");
+            
+            //set id_translator
+            ps_order.setInt(1, 2);
+            
+            ResultSet rs = ps_order.executeQuery();
+            
+            while(rs.next()){
+                ord_tran = new OrderTranslator(rs.getInt("id_order"), rs.getString("description"), rs.getString("status"));
+                list_order.add(ord_tran);
+            }
+            
+            ServletContext sc = request.getServletContext();
+            sc.setAttribute("list_order", list_order);
+            
+            response.sendRedirect("Order_Translator.jsp");
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderTranslatorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

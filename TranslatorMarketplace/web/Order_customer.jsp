@@ -16,7 +16,22 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="style.css">
-
+<div class="container">
+        <div class="logo">  
+            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
+        </div>
+        <center>
+            <div id='cssmenu'>
+                <ul>
+                    <li><a href='index.html'>หน้าหลัก</a></li>
+                    <li><a href='Create_order.html'>สร้างรายการ</a></li>
+                    <li class='active'><a href='Order_customer.jsp'>ออเดอร์</a></li>
+                    <li><a href='Status_Order.jsp'>สถานะ</a></li>
+                    <li><a href='Profile.jsp'>โปรไฟล์</a></li>
+                </ul>
+            </div>
+        </center>
+    </div>
         <!-- CSS -->
         <style>
             .order-form {
@@ -52,6 +67,7 @@
                 top: 180px;
             }
         </style>
+        
     </head>
     <body>
 

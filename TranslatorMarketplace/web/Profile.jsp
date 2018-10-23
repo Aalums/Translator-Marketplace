@@ -14,32 +14,27 @@
         <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
         <link rel="stylesheet" href="css/style.css">
-
+<div class="container">
+        <div class="logo">  
+            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
+        </div>
+        <center>
+            <div id='cssmenu'>
+                <ul>
+                    <li><a href='index.html'>หน้าหลัก</a></li>
+                    <li><a href='Create_order.html'>สร้างรายการ</a></li>
+                    <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
+                    <li><a href='Status_Order.jsp'>สถานะ</a></li>
+                    <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
+                </ul>
+            </div>
+        </center>
+    </div>
 
 
 
     </head>
-
-    <body>
-
-        <div class="logo">  
-            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
-        </div>
-
-    <center>
-        <div id='cssmenu'>
-            <ul>
-                <li><a href='#'>หน้าหลัก</a></li>
-                <li><a href='#'>สร้างรายการ</a></li>
-                <li><a href='#'>ออเดอร์</a></li>       
-                <li><a href='#'>สถานะ</a></li>
-                <li class='active'><a href='#'>โปรไฟล์</a></li>
-            </ul>
-        </div>
-    </center>
 
     <body>
         

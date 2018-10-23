@@ -18,9 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "SelectTranslatorServlet", urlPatterns = {"/SelectTranslatorServlet"})
 public class SelectTranslatorServlet extends HttpServlet {
-    
+
     private Connection conn;
-    public void init () {
+
+    public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
 
@@ -30,48 +31,68 @@ public class SelectTranslatorServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             ServletContext session = request.getServletContext();
-            
-            //รับค่า id ของ order ที่เลือก และ นักแปล ที่กดจ้าง
+
             String id_order = (String) session.getAttribute("id_order");
             int id_translator = Integer.parseInt(request.getParameter("select_employ"));
-            
             String name_translator = "";
+
+            //ดึงข้อมูล ordered จากฐานข้อมูล
+            String sql_ordered = "SELECT * FROM ordered "
+                    + "WHERE id_translator = ? "
+                    + "AND id_order = ?";
+            PreparedStatement data_ordered = conn.prepareStatement(sql_ordered);
+            data_ordered.setInt(1, id_translator);
+            data_ordered.setInt(2, Integer.parseInt(id_order));
+            ResultSet rs_ordered = data_ordered.executeQuery();
             
-            //ดึงข้อมูลนักแปลจากฐานข้อมูล
-            String sql = "SELECT * FROM translators "
-                    + "JOIN customers "
-                    + "USING (id_customer) "
-                    + "WHERE id_translator = ?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, id_translator);
-            
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                name_translator = rs.getString("name_customer");
+            if (rs_ordered.next()) {
+                //Alert javascript
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<SCRIPT LANGUAGE=javascript>");
+                out.println("alert(\" สำหรับรายการนี้ คุณได้เลือกนักแปลคนนี้แล้ว \")");
+                out.println("window.location.replace(\"Select_translator.jsp\");");
+                out.println("</SCRIPT>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body>");
+                out.println("</html>");
+            } else {
+                //ดึงข้อมูล นักแปล จากฐานข้อมูล
+                String sql_translator = "SELECT * FROM translators "
+                        + "JOIN customers "
+                        + "USING (id_customer) "
+                        + "WHERE id_translator = ?";
+                PreparedStatement data_translator = conn.prepareStatement(sql_translator);
+                data_translator.setInt(1, id_translator);
+                ResultSet rs_translator = data_translator.executeQuery();
+                rs_translator.next();
+                name_translator = rs_translator.getString("name_customer");
+
+                //ข้อความโชว์ใน Confirm
+                String msg = "คุณเลือกนักแปล : " + name_translator + "   -->   สำหรับรายการที่ : " + id_order;
+
+                //เก็บ id นักแปล เพื่อใช้ในการเพิ่มข้อมูลลงฐานข้อมูลใน AddOrderedServlet
+                session.setAttribute("id_translator", id_translator);
+
+                //Confirm javascript
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<SCRIPT LANGUAGE=javascript>");
+                out.println("<!--");
+                out.println("var select = confirm('" + msg + "')");
+                out.println("if (select == true) {window.location.replace(\"AddOrderedServlet\");}");
+                out.println("else {window.location.replace(\"Select_translator.jsp\");}");
+                out.println("//-->");
+                out.println("</SCRIPT>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body>");
+                out.println("</html>");
             }
-            
-            //ข้อความโชว์ใน Confirm
-            String msg = "คุณเลือกนักแปล : " + name_translator + "   -->   สำหรับรายการที่ : " +  id_order;
-            
-            //เก็บ id นักแปล เพื่อใช้ในการเพิ่มข้อมูลลงฐานข้อมูลใน AddOrderedServlet
-            session.setAttribute("id_translator", id_translator);
-            
-            //Confirm javascript
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<SCRIPT LANGUAGE=javascript>");
-            out.println("<!--");
-            out.println("var select = confirm('"+msg+"')");
-            out.println("if (select == true) {window.location.replace(\"AddOrderedServlet\");}");
-            out.println("else {window.location.replace(\"Select_translator.jsp\");}");
-            out.println("//-->");
-            out.println("</SCRIPT>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("</body>");
-            out.println("</html>");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(SelectTranslatorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

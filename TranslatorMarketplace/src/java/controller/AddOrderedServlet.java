@@ -36,8 +36,7 @@ public class AddOrderedServlet extends HttpServlet {
             //เช็ค
             //out.println("alert('Get Parameter Complete!!')");
             
-            String sql = "INSERT INTO ordered (id_order, id_translator, status) "
-                    + "VALUES (?,?,?)";
+            String sql = "INSERT INTO ordered (id_order, id_translator, status) VALUES (?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, id_order);
             pstmt.setInt(2, id_translator);

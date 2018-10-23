@@ -73,7 +73,6 @@
 
     <center><h1>รายการที่สร้าง</h1></center>
 
-    <form action="OrderCustomerServlet" method="POST">
         <div class="row">
             <c:forEach var="row" items="${result.rows}">
                 <div class="order-form">
@@ -95,7 +94,6 @@
                 </div>
             </c:forEach>
         </div>
-    </form>
 
 </body>
 </html>

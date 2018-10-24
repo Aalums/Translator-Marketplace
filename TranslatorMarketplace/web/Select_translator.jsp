@@ -143,15 +143,36 @@
 
     <body>
 
+        <!-- Query ข้อมูลนักแปล -->
+        <sql:setDataSource var="data" 
+                           driver="com.mysql.jdbc.Driver" 
+                           user="root" 
+                           password="root" 
+                           url="jdbc:mysql://localhost:3306/test"/>
+        
+        <sql:query dataSource="${data}" var="result">
+            SELECT *
+            FROM translators
+            JOIN customers
+            USING (id_customer)
+            WHERE id_customer not in ("admin");
+        </sql:query>
+
         <!-- Create Header -->
-        <br><br>     
+        <br>
+        <br>     
         <div class="header">
-            <center><h1>นักแปล</h1></center>
+            <center>
+                <h1>นักแปล</h1>
+            </center>
         </div>
 
         <!-- Create Column-->
         <div class="container">
+            
+            <!--ดึงข้อมูลจากตารางมาแสดง-->
             <c:forEach var="row" items="${result.rows}">
+                
                 <figure class="snip1336">
                     <!--รูปบนโปรไฟล์-->
                     <img src="bgprofile.jpg" alt="sample87" height="170" width="300" />
@@ -159,7 +180,10 @@
                         <!--รูปโปรไฟล์-->
                         <img src="profile.png" class="profile" />
                         <h1>${row.name_customer}</h1>
-                        <h2><span>SKILL : ${row.type_skill}</span><span>LANGUAGE : ${row.level_skill}</span></h2>
+                        <h2>
+                            <span>SKILL : ${row.type_skill}</span>
+                            <span>LANGUAGE : ${row.level_skill}</span>
+                        </h2>
                         <p>${row.profile}</p>
                     </figcaption>
                     <select_employ>
@@ -172,7 +196,9 @@
                         </form>
                     </select_employ>
                 </figure>
+                                    
             </c:forEach>
+            
         </div>
     </body>
 

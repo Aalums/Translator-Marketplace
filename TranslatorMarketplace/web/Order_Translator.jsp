@@ -25,7 +25,7 @@
                     <li><a href='index.html'>หน้าหลัก</a></li>
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                    <li><a href='Status_Order.jsp'>สถานะ</a></li>
+                    <li><a href='StatusOrderServlet'>สถานะ</a></li>
                     <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
             </div>
@@ -34,17 +34,19 @@
 </head>
 
 <body>
+    
     <% ArrayList list_order = (ArrayList) getServletContext().getAttribute("list_order"); %>
 
     <div class="createorder">
         <form action="AcceptOrderServlet" method="POST">
             <div class = "formPattern">
-                <div class = "TableEmploy">
-                    <!-- Tab links -->
-
+                <div class = "TableEmploy">            
                     <div class = "header">
 
-                        <center><h1>รายการที่ถูกจ้าง</h1></center>
+                        <center>
+                            <h1>รายการที่ถูกจ้าง</h1>
+                        </center>
+                        
                         <!-- Create Table -->
                         <table Border="4" style="width: -webkit-fill-available" size="auto">
                             <tr>
@@ -56,27 +58,32 @@
                                 <% for (int i = 0; i < list_order.size(); i++) {
                                         model.OrderTranslator item = (model.OrderTranslator) list_order.get(i);
                                         int id_order = item.getId_order();
-                                            String desc = item.getDesc();
-                                            String status = item.getStatus();%>
+                                        String desc = item.getDesc();
+                                        String status = item.getStatus();%>
                                 <tr>
-                                    <td> <p><%= desc%><br></p><br></td>
+                                    <td>
+                                        <p><%= desc%><br></p><br>
+                                    </td>
                                     <td>
                                         <% if (status.equals("YES")) { %>
-                                        <h1>ยอมรับ</h1>
-                                        <% }
-                                                        if (status.equals("NO")) { %> 
-                                        <h1>ปฎิเสธ</h1>
+                                            <center><h3>ยอมรับ</h3></center>
+                                        <% } else if (status.equals("NO")) { %> 
+                                            <center><h3>ปฎิเสธ</h3></center>
+                                        <% } else if (status.equals("รายการนี้ถูกรับแล้ว")) { %> 
+                                            <center><h3>รายการนี้ถูกรับแล้ว</h3></center>
                                         <% } else {%>
                                         <div class="bottonOrder">
                                             <center>
                                                 <br>
-                                                <button class="button_select" name="select" value=<%= id_order%>_YES>YES</button>
-                                                <button class="button_select" name="select" value=<%= id_order%>_NO>NO</button>
+                                                <!--ให้นักแปลเป็น 2 ไปก่อน-->
+                                                <button class="button_select" name="select" value=<%= id_order%>_2_YES>YES</button>
+                                                <button class="button_select" name="select" value=<%= id_order%>_2_NO>NO</button>
                                             </center>
                                         </div>
                                         <% }%>  
                                     </td>
-                                </tr>    
+                                </tr>
+                                <% }%>
                             </div>
                         </table>
                     </div>
@@ -84,6 +91,5 @@
             </div>
         </form>
     </div>
-</center>
 </body>
 </html>

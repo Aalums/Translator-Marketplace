@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
@@ -21,28 +16,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.OrderTranslator;
 
-/**
- *
- * @author may
- */
 @WebServlet(name = "AcceptOrderServlet", urlPatterns = {"/AcceptOrderServlet"})
 public class AcceptOrderServlet extends HttpServlet {
 
     private Connection conn;
     private OrderTranslator ord_tran;
     
+    @Override
     public void init(){
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -52,26 +36,37 @@ public class AcceptOrderServlet extends HttpServlet {
             ArrayList list_order = (ArrayList) sc.getAttribute("list_order");
             
             String[] select = request.getParameter("select").split("_");
-            String status = select[1];
+            int id_translator = Integer.parseInt(select[1]);
+            String status = select[2];
             int id_order = Integer.parseInt(select[0]);
             
-            PreparedStatement ps_order = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ?");
-            ps_order.setString(1, status);
-            ps_order.setInt(2, id_order);
+            PreparedStatement ps_order_y = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ? AND id_translator = ?");
+            ps_order_y.setString(1, status);
+            ps_order_y.setInt(2, id_order);
+            ps_order_y.setInt(3, id_translator);
             
-            int row = ps_order.executeUpdate();
+            int row = ps_order_y.executeUpdate();
+            
+            PreparedStatement ps_order_n = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ? AND id_translator not in (?)");
+            ps_order_n.setString(1, "รายการนี้ถูกรับแล้ว");
+            ps_order_n.setInt(2, id_order);
+            ps_order_n.setInt(3, id_translator);
+            ps_order_n.executeUpdate();
             
             for(int i=0; i<list_order.size(); i++){
                 OrderTranslator item = (OrderTranslator) list_order.get(i);
                 
-                if(item.getId_order()==(id_order)){
+                if(item.getId_order() == id_order){
                     item.setStatus(status);
                 }
             }
             
-            ps_order.close();
+            ps_order_y.close();
+            ps_order_n.close();
             conn.close();
+
             response.sendRedirect("Order_Translator.jsp");
+            
         } catch (SQLException ex) {
             Logger.getLogger(AcceptOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

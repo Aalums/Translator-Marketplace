@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
@@ -22,28 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.OrderTranslator;
 
-/**
- *
- * @author may
- */
 @WebServlet(name = "OrderTranslatorServlet", urlPatterns = {"/OrderTranslatorServlet"})
 public class OrderTranslatorServlet extends HttpServlet {
     
     private Connection conn;
     
+    @Override
     public void init(){
         conn = (Connection) getServletContext().getAttribute("connection");
     }
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -71,6 +54,7 @@ public class OrderTranslatorServlet extends HttpServlet {
             sc.setAttribute("list_order", list_order);
             
             response.sendRedirect("Order_Translator.jsp");
+            
         } catch (SQLException ex) {
             Logger.getLogger(OrderTranslatorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,9 +1,5 @@
-<%-- 
-    Document   : Edit_order
-    Created on : Oct 18, 2018, 7:45:22 PM
-    Author     : porpiraya
---%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

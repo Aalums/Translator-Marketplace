@@ -27,12 +27,15 @@ public class AddOrderedServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+            //แสดงผลลัพธ์เป็นภาษาไทยได้ถูกต้อง
+            request.setCharacterEncoding("UTF-8");
+            
             ServletContext session = request.getServletContext();
             
             //รับค่าจาก session จากหน้า SelectTranslatorServlet
             int id_order = Integer.parseInt((String) session.getAttribute("id_order"));
             int id_translator = (int) session.getAttribute("id_translator");
-            String status = "รอการตอบรับ";
+            String status = "WAIT";
             
             //เช็ค
             //out.println("alert('Get Parameter Complete!!')");

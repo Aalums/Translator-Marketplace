@@ -14,12 +14,10 @@ public class file_create {
     }
     
     public void fileCreate(String name, InputStream file) throws FileNotFoundException{
-        File path = new File("/Users/ASUS/Desktop/Translator-Marketplace/TranslatorMarketplace/web/file_create/" + name + ".pdf");
+        File path = new File("/Users/eyenach/Documents/GitHub/Translator-Marketplace/TranslatorMarketplace/web/file_create/" + name + ".pdf");
         FileOutputStream outputStream = new FileOutputStream(path);
 
-        if(!path.exists()){
-            file_create = "file_create/" + name + ".pdf";
-        }
+        file_create = "file_create/" + name + ".pdf";
         
         byte[] buffer = new byte[1024];
         try {

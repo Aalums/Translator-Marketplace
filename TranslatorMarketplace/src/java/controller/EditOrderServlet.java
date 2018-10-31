@@ -114,7 +114,6 @@ public class EditOrderServlet extends HttpServlet {
             
             rs_order.close();
             ps_order.close();
-            conn.close();
             
             response.sendRedirect("Order_customer.jsp");
             

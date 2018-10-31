@@ -31,6 +31,7 @@ public class CreateOrderServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
             //แสดงผลลัพธ์เป็นภาษาไทยได้ถูกต้อง
             request.setCharacterEncoding("UTF-8");
             
@@ -65,6 +66,8 @@ public class CreateOrderServlet extends HttpServlet {
             
             pstmt.executeUpdate();
             pstmt.close();
+            
+            response.sendRedirect("Order_customer.jsp");
             
             //เช็ค
             //out.println("<br>alert('INSERT Complete!!')");

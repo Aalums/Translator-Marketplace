@@ -4,6 +4,10 @@
     Author     : porpiraya
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -72,45 +76,52 @@
     </style>
 </head>
 <body>
+    <!-- -->
+    <% Connection conn = (Connection) getServletContext().getAttribute("connection");
 
-    <sql:setDataSource var="data" 
-                       driver="com.mysql.jdbc.Driver" 
-                       user="root" 
-                       password="root"  
-                       url="jdbc:mysql://localhost:3306/test"/>
+        ArrayList id_order = new ArrayList();
 
-    <c:set var="id" value="admin" />
+        PreparedStatement ordered = conn.prepareStatement(
+                "SELECT id_order FROM ordered"
+        );
 
-    <sql:query dataSource="${data}" var="result">
-        SELECT *
-        FROM customers
-        JOIN create_order USING (id_customer) 
-        WHERE id_customer = ?;
-        <sql:param value="${id}"/>
-    </sql:query>
+        PreparedStatement create_order = conn.prepareStatement(
+                "SELECT * FROM customers"
+                + " JOIN create_order USING (id_customer) "
+                + " WHERE id_customer = 'admin';"
+        );
+
+        ResultSet rs_ordered = ordered.executeQuery();
+        ResultSet rs_create = create_order.executeQuery();
+
+        while (rs_ordered.next()) {
+            id_order.add(rs_ordered.getInt("id_order"));
+        }
+    %>
 
 <center><h1>รายการที่สร้าง</h1></center>
 
 <div class="row">
-    <c:forEach var="row" items="${result.rows}">
-        <div class="order-form">
-            <!--<div class="order-text">-->
-            <h3>รายการ : ${row.id_order}</h3>
-            <h3>ไฟล์ : ${row.file_create}</h3>
-            <h3>การแปล : ${row.translate_type}</h3>
-            <h3>คำอธิบาย : ${row.description}</h3>
-            <h3>จำนวนหน้า : ${row.num_page}</h3>
-            <h3>ไฟล์ : ${row.price}</h3>
-            <h3>วันรับงานแปล : ${row.due_date}</h3>
-            <!--</div>-->
-            <form action="Edit_order.jsp" method="POST">
-                <button class="button_edit" name="edit_order" value="${row.id_order}">แก้ไข</button>
-            </form>
-            <form action="OrderCustomerServlet" method="POST">
-                <button class="button_select" name="select_order" value="${row.id_order}">เลือกนักแปล</button>
-            </form>
-        </div>
-    </c:forEach>
+    <% while (rs_create.next()) {%>
+    <div class="order-form">
+        <!--<div class="order-text">-->
+        <h3>รายการ : <%= rs_create.getInt("id_order")%> </h3>
+        <h3>ไฟล์ : <%= rs_create.getString("file_create")%> </h3>
+        <h3>การแปล : <%= rs_create.getString("translate_type")%> </h3>
+        <h3>คำอธิบาย : <%= rs_create.getString("description")%> </h3>
+        <h3>จำนวนหน้า : <%= rs_create.getInt("num_page")%> </h3>
+        <h3>ราคา : <%= rs_create.getFloat("price")%> </h3>
+        <h3>วันรับงานแปล : <%= rs_create.getDate("due_date")%> </h3>
+        <% if (!id_order.contains(rs_create.getInt("id_order"))) { %>
+        <form action="Edit_order.jsp" method="POST">
+            <button class="button_edit" name="edit_order" value=<%= rs_create.getInt("id_order") %>>แก้ไข</button>
+        </form>
+        <% } %>
+        <form action="OrderCustomerServlet" method="POST">
+            <button class="button_select" name="select_order" value=<%= rs_create.getInt("id_order") %>>เลือกนักแปล</button>
+        </form>
+    </div>
+    <% }%>
 </div>
 
 </body>

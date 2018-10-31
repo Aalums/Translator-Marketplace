@@ -67,7 +67,7 @@
                            driver="com.mysql.jdbc.Driver" 
                            user="root" 
                            password="root" 
-                           url="jdbc:mysql://localhost:3306/test"/>
+                           url="jdbc:mysql://localhost:3307/project"/>
 
         <sql:query dataSource="${data}" var="result">
             SELECT *

@@ -86,7 +86,6 @@ public class StatusOrderServlet extends HttpServlet {
 
             ps_order.close();
             ps_trans.close();
-            conn.close();
             
             HttpSession session = request.getSession(true);
             session.setAttribute("list_status", list_status);

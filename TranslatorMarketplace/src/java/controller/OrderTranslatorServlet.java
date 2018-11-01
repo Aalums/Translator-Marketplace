@@ -41,7 +41,7 @@ public class OrderTranslatorServlet extends HttpServlet {
                     + " WHERE id_translator = ?");
             
             //set id_translator
-            ps_order.setInt(1, 2);
+            ps_order.setInt(1, 3);
             
             ResultSet rs = ps_order.executeQuery();
             

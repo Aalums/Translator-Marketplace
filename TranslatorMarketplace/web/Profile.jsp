@@ -43,7 +43,7 @@
                        driver="com.mysql.jdbc.Driver" 
                        user="root" 
                        password="root"  
-                       url="jdbc:mysql://localhost:3307/project"/>
+                       url="jdbc:mysql://localhost:3306/test"/>
 
     <c:set var="id" value="admin" />
 

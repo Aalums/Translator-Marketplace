@@ -33,7 +33,6 @@
         </center>
     </div>
 </head>
-</head>
 <body>
     <% int id_order = Integer.parseInt(request.getParameter("edit_order"));%>
 

@@ -35,7 +35,7 @@ public class AddOrderedServlet extends HttpServlet {
             //รับค่าจาก session จากหน้า SelectTranslatorServlet
             int id_order = Integer.parseInt((String) session.getAttribute("id_order"));
             int id_translator = (int) session.getAttribute("id_translator");
-            String status = "WAIT";
+            String status = "รอการตอบรับ";
             
             //เช็ค
             //out.println("alert('Get Parameter Complete!!')");

@@ -66,7 +66,6 @@ public class EditOrderServlet extends HttpServlet {
             String type = request.getParameter("translate_type");
             String desc = request.getParameter("desc");
             String page = request.getParameter("num_page");
-            String price = request.getParameter("price");
             
             ps_order.setInt(1, save_order);
             ResultSet rs_order = ps_order.executeQuery();
@@ -93,14 +92,11 @@ public class EditOrderServlet extends HttpServlet {
                     ps_edit.setInt(1, Integer.parseInt(page));
                     ps_edit.setInt(2, save_order);
                     row = ps_edit.executeUpdate();
-//                    out.println("page = "+row);
-                }
-                if(!price.equals(rs_order.getFloat("price")) && !price.equals("")){
                     ps_edit = conn.prepareStatement("UPDATE create_order SET price = ? WHERE id_order = ?");
-                    ps_edit.setFloat(1, Float.parseFloat(price));
+                    ps_edit.setFloat(1, Integer.parseInt(page)*120);
                     ps_edit.setInt(2, save_order);
                     row = ps_edit.executeUpdate();
-//                    out.println("price = "+row);
+//                    out.println("page = "+row);
                 }
                 if(!file.equals("")){
                     //เอาชื่อไฟล์ออกมา

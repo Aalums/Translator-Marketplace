@@ -40,6 +40,13 @@ public class AcceptOrderServlet extends HttpServlet {
             String status = select[2];
             int id_order = Integer.parseInt(select[0]);
             
+            //แก้ไขสถานะเพื่อเก็บเข้าฐานข้อมูล
+            if (status.equals("YES")) {
+                status = "ยอมรับ";
+            } else if (status.equals("NO")) {
+                status = "ปฏิเสธ";
+            }
+            
             PreparedStatement ps_order_y = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ? AND id_translator = ?");
             ps_order_y.setString(1, status);
             ps_order_y.setInt(2, id_order);
@@ -48,7 +55,7 @@ public class AcceptOrderServlet extends HttpServlet {
             int row = ps_order_y.executeUpdate();
             
             PreparedStatement ps_order_n = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ? AND id_translator not in (?)");
-            ps_order_n.setString(1, "This order has been accepted");
+            ps_order_n.setString(1, "รายการนี้ถูกจ้างเเล้ว");
             ps_order_n.setInt(2, id_order);
             ps_order_n.setInt(3, id_translator);
             ps_order_n.executeUpdate();
@@ -63,7 +70,6 @@ public class AcceptOrderServlet extends HttpServlet {
             
             ps_order_y.close();
             ps_order_n.close();
-            conn.close();
 
             response.sendRedirect("Order_Translator.jsp");
             

@@ -11,14 +11,24 @@ package model;
  */
 public class Status_order {
     
+    int id_order;
     String description;
     String translator_name;
     String status;
 
-    public Status_order(String description, String translator_name, String status) {
+    public Status_order(int id_order, String description, String translator_name, String status) {
+        this.id_order = id_order;
         this.description = description;
         this.translator_name = translator_name;
         this.status = status;
+    }
+    
+    public int getId_order() {
+        return id_order;
+    }
+
+    public void setId_order(int id_order) {
+        this.id_order = id_order;
     }
     
     public String getDescription() {

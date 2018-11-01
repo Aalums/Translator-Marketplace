@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Connection"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,7 +16,7 @@
         <link rel="stylesheet" href="css/style.css">
 
         <!-- Create Container + Logo -->
-<div class="container">
+    <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
         </div>
@@ -29,70 +33,108 @@
         </center>
     </div>
 </head>
-    <!-- CSS -->
-    <style>
-        .edit-form {
-            width: 750px;
-            height: 700px;
-            position: absolute;
-            padding: 10px;
-            padding-right: 20px;
-            transform: translate(0%,0);
-            border-radius: 5px;
-            background: #fff;
-            border: 2px solid #003489;
-            box-shadow: 8px 8px 0px 0px #003489;
-            margin-bottom: 100px;
-            left: 25%;
-        }
-        .edit-text {
-            left: 10px;
-            top: 25px;
-            position: relative;
-            padding: 3%;
-        }
-        button {
-            cursor: pointer;
-            position: relative;
-            bottom: 10px;
-            left: 290px;
-        }
-    </style>
 </head>
-    <body>
-        <% int id_order = Integer.parseInt(request.getParameter("edit_order"));%>
+<body>
+    <% int id_order = Integer.parseInt(request.getParameter("edit_order"));%>
 
-        <!-- Query ข้อมูลนักแปล -->
-        <sql:setDataSource var="data" 
-                           driver="com.mysql.jdbc.Driver" 
-                           user="root" 
-                           password="root" 
-                           url="jdbc:mysql://localhost:3306/test"/>
+    <!-- Query ข้อมูลนักแปล -->
+    <% Connection conn = (Connection) getServletContext().getAttribute("connection");
 
-        <sql:query dataSource="${data}" var="result">
-            SELECT *
-            FROM create_order 
-            WHERE id_order = ?;
-            <sql:param value="<%= id_order %>"/>
-        </sql:query>
+        PreparedStatement order = conn.prepareStatement(
+                "SELECT * FROM create_order"
+                + " WHERE id_order = ?;"
+        );
+        order.setInt(1, id_order);
 
-        <center><h1>แก้ไขรายการที่สร้าง</h1></center>
-        <div class="row">
-            <div class="edit-form">
-                <div class="edit-text">
-                    <c:forEach var="row" items="${result.rows}">
-                        <form action="EditOrderServlet" method="POST" enctype="multipart/form-data">
-                            ไฟล์ : ${row.file_create}<br><br><br><input type="file" name="file_create"/><br><br><br>
-                            การแปล :<br><br><br><input placeholder="${row.translate_type}" name="translate_type" value=""></input><br><br><br>
-                            คำอธิบาย :<br><br><br><input placeholder="${row.description}" name="desc" value=""></input><br><br><br>
-                            จำนวนหน้า :<br><br><br><input placeholder="${row.num_page}" name="num_page" value=""></input><br><br><br>
-                            ไฟล์ :<br><br><br><input placeholder="${row.price}.-" name="price" value=""></input><br><br><br>
-                            วันรับงานแปล :<br><br><br><input placeholder="${row.due_date}" name="due_date" value=""></input>
-                            <button name="save_order" value="${row.id_order}">SAVE</button>
-                        </form>
-                    </c:forEach>
+        ResultSet rs_order = order.executeQuery();
+    %>
+
+    <!--หน้า order-->
+    <div class="container">
+        <div class="createorder">
+            <div class = "form">
+
+                <div class = "header">
+                    <center><h1>แก้ไขรายการที่สร้าง</h1></center>     
                 </div>
+
+                <% while (rs_order.next()) { %>
+                <form action="EditOrderServlet" method="POST" enctype="multipart/form-data">
+                    <div class = "sign-in-form">
+                        <table style="width:100%">
+                            <tr>
+                                <td>
+                                    <h3>ชื่องาน</h3>
+                                    <input type="text" name="title" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!--โชว์การเลือกเดิม-->
+                                    <h3>การแปล</h3><br><br><br>
+                                    <% if (rs_order.getString("translate_type").equals("thaieng")) {%>
+                                    <input type="radio" name="translate_type" value="thaieng" checked="True"> ไทย -> อังกฤษ
+                                    <input type="radio" name="translate_type" value="engthai" > อังกฤษ -> ไทย
+                                    <% } else { %>
+                                    <input type="radio" name="translate_type" value="thaieng" > ไทย -> อังกฤษ
+                                    <input type="radio" name="translate_type" value="engthai" checked="True"> อังกฤษ -> ไทย
+                                    <% }%>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <h3>จำนวนหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา</h3>
+                                    <div class="product">
+                                        <div class="product-quantity">
+                                            <input type="number" name="num_page" value="<%= rs_order.getInt("num_page")%>" min="1">
+                                        </div>
+                                        <div class="product-line-price"><%= 120 * rs_order.getInt("num_page")%></div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <h3>รายละเอียดงาน</h3>
+                                    <input placeholder="<%= rs_order.getString("description")%>" type="text" name="desc"/> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>กำหนดวันรับงานแปล</h3><br>
+                                    <input type="date" name="due_date" id="orderdate" value="<%= rs_order.getDate("due_date")%>">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <h3>ไฟล์</h3><br> <%= rs_order.getString("file_create")%> <br><br><br>
+                                    <input type="file" name="file_create" /><br><br>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                            <center>
+                                <button type="submit" name="save_order" value="<%= rs_order.getInt("id_order")%>">
+                                    <div class = "button-text">
+                                        บันทึก
+                                    </div>
+                                </button>
+                            </center>
+                            </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+                <%}%>
             </div>
         </div>
-    </body>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src="js/index.js"></script>
+
+</body>
 </html>

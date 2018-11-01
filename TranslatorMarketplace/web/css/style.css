@@ -387,7 +387,7 @@ button:active {
 [type="date"] {   
     background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 100% 50% no-repeat;
     font-family: 'Mitr', sans-serif;
-    width: 27%;
+    width: 33%;
 }
 [type="date"]::-webkit-inner-spin-button {
     display: none;
@@ -437,7 +437,7 @@ button:active {
     margin-top: 50px;
     opacity: 0;
     text-align: center;
-    -webkit-animation: moveIn 1s 3.1s ease forwards;
+    -webkit-animation: moveIn 1s 1.1s ease forwards;
 
 }
 .profile-card header h1 {

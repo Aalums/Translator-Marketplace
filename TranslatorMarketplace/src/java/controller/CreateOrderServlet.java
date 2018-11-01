@@ -23,18 +23,19 @@ import model.file_create;
 public class CreateOrderServlet extends HttpServlet {
 
     private Connection conn;
+
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             //แสดงผลลัพธ์เป็นภาษาไทยได้ถูกต้อง
             request.setCharacterEncoding("UTF-8");
-            
+
             //รับค่า parameter จาก Create_order.html
             String title = request.getParameter("title");
             String translate = request.getParameter("translate");
@@ -42,16 +43,14 @@ public class CreateOrderServlet extends HttpServlet {
             float price = num_page * 120;
             String description = request.getParameter("description");
             Date date = Date.valueOf(request.getParameter("orderdate"));
-            
+
             Part file = request.getPart("file_create");
             InputStream inputStream = file.getInputStream();
             file_create file_create = new file_create();
             file_create.fileCreate(title, inputStream);
-            
+
             //เช็ค
-            //out.println("<br>"+title+"<br>"+translate+"<br>"+num_page+"<br>"+price+"<br>"+description+"<br>"+date+"<br>");
             //out.println("alert('Get Parameter Complete!!')");
-            //out.println("<br>"+conn);
             
             String sql = "INSERT INTO create_order (id_customer, file_create, translate_type, description, num_page, price, due_date) "
                     + "VALUES (?,?,?,?,?,?,?)";
@@ -63,12 +62,12 @@ public class CreateOrderServlet extends HttpServlet {
             pstmt.setInt(5, num_page);
             pstmt.setFloat(6, price);
             pstmt.setDate(7, date);
-            
+
             pstmt.executeUpdate();
             pstmt.close();
-            
+
             response.sendRedirect("Order_customer.jsp");
-            
+
             //เช็ค
             //out.println("<br>alert('INSERT Complete!!')");
             

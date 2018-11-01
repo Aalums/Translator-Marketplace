@@ -66,17 +66,21 @@
             box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.23);
         }
         .responsive-table .col-1 {
-            flex-basis: 30%;
+            flex-basis: 10%;
+            line-height: 20px;
         }
         .responsive-table .col-2 {
             flex-basis: 40%;
+            line-height: 20px;
         }
         .responsive-table .col-3 {
             flex-basis: 30%;
+            line-height: 20px;
         }
-        /*        .responsive-table .col-4 {
-                    flex-basis: 25%;
-                }*/
+        .responsive-table .col-4 {
+            flex-basis: 20%;
+            line-height: 20px;
+        }
         @media all and (max-width: 767px) {
             .responsive-table .table-header {
                 display: none;
@@ -110,30 +114,32 @@
         <!--    <title>ตารางยังไม่ได้วนลูปนะ</title>-->
         <ul class="responsive-table">
             <li class="table-header">
-                <div class="col col-1">รายการจ้าง</div>
-                <div class="col col-2">นักแปล</div>
-                <div class="col col-3">สถานะ</div>
-                <!--      <div class="col col-4">Payment Status</div>-->
+                <div class="col col-1">รายการ</div>
+                <div class="col col-2">รายละเอียด</div>
+                <div class="col col-3">นักแปล</div>
+                <div class="col col-4">สถานะ</div>
             </li>
-                <% //put in TABLE
-                    for (int i = 0; i < list_status.size(); i++) {
-                        model.Status_order item = (model.Status_order) list_status.get(i);
-                        String desc = item.getDescription();
-                        String name = item.getTranslator_name();
-                        String status = item.getStatus();%>
-                   <li class="table-row">
-                <div class="col col-1" data-label="รายการจ้าง"><%= desc%></div>
-                <div class="col col-2" data-label="นักแปล"><%= name%></div>
-                <div class="col col-3" data-label="สถานะ"><%= status%></div>
+            <% //put in TABLE
+                for (int i = 0; i < list_status.size(); i++) {
+                    model.Status_order item = (model.Status_order) list_status.get(i);
+                    int id_order = item.getId_order();
+                    String desc = item.getDescription();
+                    String name = item.getTranslator_name();
+                    String status = item.getStatus();%>
+            <li class="table-row">
+                <div class="col col-1" data-label="รายการ"><%= id_order%></div>  
+                <div class="col col-2" data-label="รายละเอียด"><%= desc%></div>
+                <div class="col col-3" data-label="นักแปล"><%= name%></div>
+                <div class="col col-4" data-label="สถานะ"><%= status%></div>
                 <!--    <div class="col col-4" data-label="Payment Status">Pending</div> -->
             </li>
-                <% }%>
+            <% }%>
         </ul>
     </div>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-        <script  src="js/index.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script  src="js/index.js"></script>
 
-    </body>
+</body>
 
 </html>

@@ -79,7 +79,7 @@ public class StatusOrderServlet extends HttpServlet {
 
                 ResultSet rs_trans = ps_trans.executeQuery();
                 while(rs_trans.next()){
-                    sta_ord = new Status_order(rs_order.getString("description"), rs_trans.getString("name_customer"), rs_trans.getString("status"));
+                    sta_ord = new Status_order(rs_order.getInt("id_order"), rs_order.getString("description"), rs_trans.getString("name_customer"), rs_trans.getString("status"));
                     list_status.add(sta_ord);
                 }
             }

@@ -4,6 +4,7 @@
     Author     : may
 --%>
 
+<%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -161,15 +162,19 @@
                             <% for (int i = 0; i < list_order.size(); i++) {
                                     model.OrderTranslator item = (model.OrderTranslator) list_order.get(i);
                                     int id_order = item.getId_order();
+                                    String employer = item.getEmployer();
                                     String desc = item.getDesc();
+                                    String[] file = item.getFile_name().split("/");
+                                    int num_page = item.getPage();
+                                    Date date = item.getDate();
                                     String status = item.getStatus();%>
 
                             <li class="table-row">
-                                <div class="col col-1" data-label ="ผู้จ้าง">คนสวย</div>
-                                <div class="col col-2" data-label ="รายละเอียด"><%= desc%></div>
-                                <div class="col col-3" data-label ="ไฟล์งาน">xxx.pdf</div>
-                                <div class="col col-4" data-label ="จำนวนหน้า">2</div>
-                                <div class="col col-5" data-label ="วันที่ส่งมอบ">21-12-2017</div>
+                                <div class="col col-1" data-label ="ผู้จ้าง"><%= employer %></div>
+                                <div class="col col-2" data-label ="รายละเอียด"><%= desc %></div>
+                                <div class="col col-3" data-label ="ไฟล์งาน"><%= file[1] %></div>
+                                <div class="col col-4" data-label ="จำนวนหน้า"><%= num_page %></div>
+                                <div class="col col-5" data-label ="วันที่ส่งมอบ"><%= date %></div>
                                 <div class="col col-6" data-label ="รับ/ปฏิเสธ">
                                     <% if (status.equals("ยอมรับ")) { %>
                                     <center><h3>ยอมรับ</h3></center>
@@ -177,7 +182,7 @@
                                     <center><h3>ปฎิเสธ</h3></center>
                                         <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
                                     <center><h3>รายการนี้ถูกจ้างเเล้ว</h3></center>
-                                        <% } else {%>
+                                        <% } else { %>
                                     <div class="bottonOrder">
                                         <center>
                                             <br>
@@ -186,36 +191,10 @@
                                             <button class="button_select" name="select" value=<%= id_order%>_3_NO>NO</button>
                                         </center>
                                     </div>
-                                    <% }%>  
+                                    <% } %>  
                                 </div>
-                            </li>       
-                            <!--
-                                                            <tr>
-                                                                <td>
-                                                                    <p><%= desc%><br></p><br>
-                                                                </td>
-                                                                <td>
-                            <% if (status.equals("ยอมรับ")) { %>
-                    <center><h3>ยอมรับ</h3></center>
-                            <% } else if (status.equals("ปฏิเสธ")) { %> 
-                        <center><h3>ปฎิเสธ</h3></center>
-                            <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
-                        <center><h3>รายการนี้ถูกจ้างเเล้ว</h3></center>
-                            <% } else {%>
-                        <div class="bottonOrder">
-                            <center>
-                                <br>
-                                ให้นักแปลเป็น 3 ไปก่อน
-                                <button class="button_select" name="select" value=<%= id_order%>_3_YES>YES</button>
-                                <button class="button_select" name="select" value=<%= id_order%>_3_NO>NO</button>
-                            </center>
-                        </div>
-                            <% }%>  
-                        </td>
-                    </tr>-->
-
-                            <% }%>
-
+                            </li>
+                            <% } %>
                         </ul>
                     </div>
                 </div>

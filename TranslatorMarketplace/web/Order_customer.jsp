@@ -1,15 +1,9 @@
-<%-- 
-    Document   : Order_customer
-    Created on : Oct 16, 2018, 7:04:13 PM
-    Author     : porpiraya
---%>
+
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
@@ -83,6 +77,7 @@
 
         PreparedStatement ordered = conn.prepareStatement(
                 "SELECT id_order FROM ordered"
+                + " GROUP BY id_order;"
         );
 
         PreparedStatement create_order = conn.prepareStatement(

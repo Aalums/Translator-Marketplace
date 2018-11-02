@@ -9,7 +9,6 @@ yellow: #ffdf00
 
 */
 
-
 /*menu bar
 ไฟล์ที่เป็น id # ต้องไว้ก่อน class . */
 
@@ -438,7 +437,7 @@ button:active {
     margin-top: 50px;
     opacity: 0;
     text-align: center;
-    -webkit-animation: moveIn 1s 0.1s ease forwards;
+    -webkit-animation: moveIn 1s 1.1s ease forwards;
 
 }
 .profile-card header h1 {
@@ -460,7 +459,7 @@ button:active {
     background: -webkit-linear-gradient(top, #A8d0a6 0%, #A8d0a6 50%, #F76c6c 50%, #F76c6c 100%);
     -webkit-border-radius: 50%;
     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    -webkit-animation: scaleIn 0.3s 1.5s ease forwards;
+    -webkit-animation: scaleIn 0.3s 3.5s ease forwards;
 }
 .profile-card header a > img {
     width: 120px;
@@ -482,7 +481,7 @@ button:active {
     margin-top: 50px;
     text-align: center;
     opacity: 0;
-    -webkit-animation: moveIn 1s 1.1s ease forwards;
+    -webkit-animation: moveIn 1s 3.1s ease forwards;
 }
 
 

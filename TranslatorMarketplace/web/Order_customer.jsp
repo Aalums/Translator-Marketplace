@@ -32,41 +32,111 @@
     </div>
     <!-- CSS -->
     <style>
-        .order-form {
-            width: 750px;
-            height: 270px;
+        #pricing-table {
+            margin: 50px auto;
+            width: 642px;
+            /*            width: 222px;  total computed width = 222 x 3 + 226 */
+        }
+
+        #pricing-table .plan {
+            font: 12px;
+            text-shadow: 0 1px rgba(255,255,255,.8);        
+            background: #fff;      
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 20px;
+            width: 642px; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */      
+            float: center;
             position: relative;
-            padding: 10px;
-            padding-right: 20px;
-            transform: translate(0%,0);
+        }
+
+        #pricing-table #most-popular {
+            z-index: 2;
+            top: -13px;
+            border-width: 3px;
+            padding: 30px 20px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
             border-radius: 5px;
-            background: #fff;
-            border: 2px solid #003489;
-            box-shadow: 8px 8px 0px 0px #003489;
-            margin-bottom: 100px;
+            -moz-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+            -webkit-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+            box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);    
+        }
+
+        #pricing-table .plan:nth-child(1) {
+            -moz-border-radius: 5px 0 0 5px;
+            -webkit-border-radius: 5px 0 0 5px;
+            border-radius: 5px 5px 5px 5px;        
+        }
+
+        #pricing-table .plan:nth-child(4) {
+            -moz-border-radius: 0 5px 5px 0;
+            -webkit-border-radius: 0 5px 5px 0;
+            border-radius: 0 5px 5px 0;        
+        }
+
+        /* --------------- */	
+
+        #pricing-table h3 {
+            color:white;
+            height: 50px;
+            font-size: 20px;
+            font-weight: normal;
+            padding: 20px;
+            padding-top: 25px;
+            padding-bottom: 15px;
+            margin: -20px -20px 0px -20px;
+            background-color: #24305e;
+            background-image: #24305e;
+        }
+
+        #pricing-table #most-popular h3 {
+
+            background-color: #ddd;
+            margin-top: -30px;
+            padding-top: 30px;
+            border-radius: 5px 5px 0 0; 		
+        }
+
+        #pricing-table .plan:nth-child(1) h3 {
+
+            border-radius: 5px 5px 0 0;        
+        }	
+
+        #pricing-table ul {
+            /*	margin: 20px 0 0 0;*/
+            padding: 0;
+            list-style: none;
+        }
+
+        #pricing-table li {
+            border-top: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+        .button_edit{
+            box-shadow: 2px 2px 0px 0px #f76d6d;
+            border: 2px solid #f76d6d;
+            transition: transform .2s, box-shadow .2s;
+            transform: translate(-2px,-2px);
+            position: absolute;
+            top: 3%;
+            left: 90%;
+            padding: 3px;
+            font-size: 15px;
+
+        }
+        .button_select{
+            margin-top: 10px;
+        }
+        .container {
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
         }
-        .order-text {
-            left: 10px;
-            top: 25px;
-            position: relative;
-            padding: 3%;
-        }
-        .order-form h3, a{
-            line-height: 2;
-        }
-        button {
-            cursor: pointer;
-            position: fixed;
-            right: 10px;
-        }
-        .button_edit {
-            top: 80px;
-        }
-        .button_select {
-            top: 180px;
-        }
+
     </style>
 </head>
 <body>
@@ -95,29 +165,35 @@
     %>
 
 <center><h1>รายการที่สร้าง</h1></center>
-
-<div class="row">
-    <% while (rs_create.next()) {%>
-    <div class="order-form">
-        <!--<div class="order-text">-->
-        <h3>รายการ : <%= rs_create.getInt("id_order")%> </h3>
-        <h3>ไฟล์ : <%= rs_create.getString("file_create")%> </h3>
-        <h3>การแปล : <%= rs_create.getString("translate_type")%> </h3>
-        <h3>คำอธิบาย : <%= rs_create.getString("description")%> </h3>
-        <h3>จำนวนหน้า : <%= rs_create.getInt("num_page")%> </h3>
-        <h3>ราคา : <%= rs_create.getFloat("price")%> </h3>
-        <h3>วันรับงานแปล : <%= rs_create.getDate("due_date")%> </h3>
-        <% if (!id_order.contains(rs_create.getInt("id_order"))) { %>
-        <form action="Edit_order.jsp" method="POST">
-            <button class="button_edit" name="edit_order" value=<%= rs_create.getInt("id_order") %>>แก้ไข</button>
-        </form>
-        <% } %>
-        <form action="OrderCustomerServlet" method="POST">
-            <button class="button_select" name="select_order" value=<%= rs_create.getInt("id_order") %>>เลือกนักแปล</button>
-        </form>
+<div class="container">
+    <div class="row">
+        <% while (rs_create.next()) {%>
+        <div id="pricing-table">
+            <div class="plan">
+                <h3>รายการที่  <%= rs_create.getInt("id_order")%>
+                    <% if (!id_order.contains(rs_create.getInt("id_order"))) {%>
+                    <form action="Edit_order.jsp" method="POST">
+                        <button class="button_edit" name="edit_order"  style="float: right; margin:0;" value=<%= rs_create.getInt("id_order")%>>แก้ไข</button>
+                    </form>
+                    <% }%>
+                    <!--<a class="signup" href="" style="float: right; margin:0;">Sign up</a>-->
+                </h3>    
+                <ul>
+                    <li><b>การแปล&nbsp;:</b>&nbsp;<%= rs_create.getString("translate_type")%></li>
+                    <li><b>จำนวนหน้า&nbsp;:</b>&nbsp;<%= rs_create.getInt("num_page")%></li>
+                    <li><b>ราคา&nbsp;:</b>&nbsp;<%= rs_create.getFloat("price")%> </li>
+                    <li><b>วันที่ส่งงาน&nbsp;:</b>&nbsp;<%= rs_create.getDate("due_date")%> </li>
+                    <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create")%> </li>
+                    <li><b>คำอธิบาย&nbsp;:</b>&nbsp;<%= rs_create.getString("description")%> </li>
+                    <form action="OrderCustomerServlet" method="POST">
+                        <center><button class="button_select" name="select_order" value=<%= rs_create.getInt("id_order")%>>เลือกนักแปล</button></center>
+                    </form>		
+                </ul> 
+            </div>
+        </div>
+        <% }%>
     </div>
-    <% }%>
 </div>
-
+<script  src="js/index.js"></script>
 </body>
 </html>

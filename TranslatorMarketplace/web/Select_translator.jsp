@@ -137,19 +137,38 @@
                 box-shadow: 4px 4px 0px 0px  #f76d6d;
                 border: 2px solid #f76d6d;
             }
+            a {
+                font-size: 35px;
+                width: 20px;
+                height: 20px;
+                padding-right: 20px;
+                padding-left: 20px;
+                border-radius: 50%;
+                top:60px;
+                left:20%;
+                background-color: #f76d6d;
+                color: white;
+                position: relative;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            a:hover {
+                background-color: #333333;
+            }
 
         </style>
     </head>
 
     <body>
-
+        <a href='Order_customer.jsp' class="button6">&#8249;</a>
         <!-- Query ข้อมูลนักแปล -->
         <sql:setDataSource var="data" 
                            driver="com.mysql.jdbc.Driver" 
                            user="root" 
                            password="root" 
                            url="jdbc:mysql://localhost:3306/test"/>
-        
+
         <sql:query dataSource="${data}" var="result">
             SELECT *
             FROM translators
@@ -162,6 +181,7 @@
         <br>
         <br>     
         <div class="header">
+
             <center>
                 <h1>นักแปล</h1>
             </center>
@@ -169,10 +189,10 @@
 
         <!-- Create Column-->
         <div class="container">
-            
+
             <!--ดึงข้อมูลจากตารางมาแสดง-->
             <c:forEach var="row" items="${result.rows}">
-                
+
                 <figure class="snip1336">
                     <!--รูปบนโปรไฟล์-->
                     <img src="bgprofile.jpg" alt="sample87" height="170" width="300" />
@@ -196,9 +216,9 @@
                         </form>
                     </select_employ>
                 </figure>
-                                    
+
             </c:forEach>
-            
+
         </div>
     </body>
 </html>

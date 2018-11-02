@@ -48,51 +48,55 @@
         }
 
         .responsive-table li {
+            table-layout: fixed;
             border-radius: 3px;
             padding: 25px 30px;
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
-          
+
         }
         .responsive-table .table-header {
+            table-layout: fixed;
             background-color: #24305e;
             font-size: 17px;
             text-transform: uppercase;
             letter-spacing: 0.03em;
             color: #ffffff;
-           
+
         }
         .responsive-table .table-row {
+            table-layout: fixed;
             border-left: 1px solid #ddd;
             background-color: #ffffff;
             box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.23);
-           
+
         }
         .responsive-table .col-1 {
+            table-layout: fixed;
             text-align: center;
             flex-basis: 15%;
             line-height: 20px;
-          
+
         }
         .responsive-table .col-2 {
-             text-align: center;
+            text-align: center;
             flex-basis: 35%;
             line-height: 20px;
-             border-left: 1px solid #ddd;
-            
+            border-left: 1px solid #ddd;
+
         }
         .responsive-table .col-3 {
             flex-basis: 15%;
             line-height: 20px;
             border-left: 1px solid #ddd;
-             text-align: center;
+            text-align: center;
         }
         .responsive-table .col-4 {
             flex-basis: 10%;
             line-height: 20px;
             border-left: 1px solid #ddd;
-              text-align: center;
+            text-align: center;
         }
         .responsive-table .col-5 {
             flex-basis: 15%;
@@ -127,6 +131,12 @@
                 flex-basis: 50%;
                 text-align: right;
             }
+        }
+        .button_select{
+            width: 60px;
+            padding-left: 5px;
+            padding-right: 5px;
+            font-size: 0.9em;
         }
 
     </style>
@@ -170,20 +180,20 @@
                                     String status = item.getStatus();%>
 
                             <li class="table-row">
-                                <div class="col col-1" data-label ="ผู้จ้าง"><%= employer %></div>
-                                <div class="col col-2" data-label ="รายละเอียด"><%= desc %></div>
-                                <div class="col col-3" data-label ="ไฟล์งาน"><%= file[1] %></div>
-                                <div class="col col-4" data-label ="จำนวนหน้า"><%= num_page %></div>
-                                <div class="col col-5" data-label ="วันที่ส่งมอบ"><%= date %></div>
+                                <div class="col col-1" data-label ="ผู้จ้าง"><%= employer%></div>
+                                <div class="col col-2" data-label ="รายละเอียด"><%= desc%></div>
+                                <div class="col col-3" data-label ="ไฟล์งาน"><%= file[1]%></div>
+                                <div class="col col-4" data-label ="จำนวนหน้า"><%= num_page%></div>
+                                <div class="col col-5" data-label ="วันที่ส่งมอบ"><%= date%></div>
                                 <div class="col col-6" data-label ="รับ/ปฏิเสธ">
                                     <% if (status.equals("ยอมรับ")) { %>
-                                    <center><h3>ยอมรับ</h3></center>
+                                    <center><h3 style="padding-top: 10px;">ยอมรับ</h3></center>
                                         <% } else if (status.equals("ปฏิเสธ")) { %> 
-                                    <center><h3>ปฎิเสธ</h3></center>
+                                    <center><h3 style="padding-top: 10px;">ปฎิเสธ</h3></center>
                                         <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
-                                    <center><h3>รายการนี้ถูกจ้างเเล้ว</h3></center>
-                                        <% } else { %>
-                                    <div class="bottonOrder">
+                                    <center><h3 style="padding-top: 10px;">รายการนี้ถูกจ้างเเล้ว</h3></center>
+                                        <% } else {%>
+                                    <div class="bottonOrder" style="margin-top: 0px;">
                                         <center>
                                             <br>
                                             <!--ให้นักแปลเป็น 3 ไปก่อน-->
@@ -194,7 +204,7 @@
                                     <% } %>  
                                 </div>
                             </li>
-                            <% } %>
+                            <% }%>
                         </ul>
                     </div>
                 </div>

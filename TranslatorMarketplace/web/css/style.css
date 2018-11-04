@@ -424,7 +424,7 @@ button:active {
     transform: translate(-50%, 0%);
     -webkit-border-radius: 50%;
     -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
-    -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia_landscape 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+    -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
 
 }
 
@@ -437,7 +437,7 @@ button:active {
     margin-top: 50px;
     opacity: 0;
     text-align: center;
-    -webkit-animation: moveIn 1s 1.1s ease forwards;
+    -webkit-animation: moveIn 0.5s 0.5s forwards;
 
 }
 .profile-card header h1 {
@@ -459,7 +459,7 @@ button:active {
     background: -webkit-linear-gradient(top, #A8d0a6 0%, #A8d0a6 50%, #F76c6c 50%, #F76c6c 100%);
     -webkit-border-radius: 50%;
     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    -webkit-animation: scaleIn 0.3s 3.5s ease forwards;
+    -webkit-animation: scaleIn 0.3s 0.5s ease forwards;
 }
 .profile-card header a > img {
     width: 120px;
@@ -481,7 +481,7 @@ button:active {
     margin-top: 50px;
     text-align: center;
     opacity: 0;
-    -webkit-animation: moveIn 1s 3.1s ease forwards;
+    -webkit-animation: moveIn 0.5s 0.5s forwards;
 }
 
 
@@ -507,8 +507,8 @@ button:active {
 }
 @media screen and (min-height: 480px) {
     .profile-card {
-        -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia_portrait 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-        animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia_portrait 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+        -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia_portrait 0.5s 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+        animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia_portrait 0.5s 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
     }
     .profile-card header {
         width: auto;
@@ -531,8 +531,8 @@ button:active {
     }
     body:before {
         width: 0px;
-        -webkit-animation: puff_landscape 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
-        animation: puff_landscape 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
+        -webkit-animation: puff_landscape 0.5s 1.8s cubic-bezier(1.55, 1.055, 1.675, 1.19) forwards, borderRadius 0.2s 2.3s linear forwards;
+        animation: puff_landscape 0.5s 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 0.5s linear forwards;
     }
 }
 @-webkit-keyframes init {
@@ -571,41 +571,6 @@ button:active {
         top: 50%;
         width: 100%;
         padding-bottom: 100%;
-    }	
-}
-
-@-webkit-keyframes borderRadius {
-    0% {
-        -webkit-border-radius: 50%;
-    }
-    100% {
-        -webkit-border-radius: 0px;
-    }	
-}
-
-@-webkit-keyframes moveDown {
-    0% {
-        top: 50%;
-    }
-    50% {
-        top: 40%;
-    }
-    100% {
-        top: 100%;
-    }	
-}
-
-@-webkit-keyframes moveUp {
-    0% {
-        background: #F8e9a1;
-        top: 100%;
-    }
-    50% {
-        top: 40%;
-    }
-    100% {
-        top: 50%;
-        background: #24305e;
     }	
 }
 

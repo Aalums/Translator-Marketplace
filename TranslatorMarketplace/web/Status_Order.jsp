@@ -68,18 +68,37 @@
         .responsive-table .col-1 {
             flex-basis: 10%;
             line-height: 20px;
+            padding: 10px;
+            text-align: center;
+            padding-bottom: 0px;
+            padding-top: 0px;
         }
         .responsive-table .col-2 {
             flex-basis: 40%;
             line-height: 20px;
+            border-left: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            padding-bottom: 0px;
+            padding-top: 0px;
         }
         .responsive-table .col-3 {
             flex-basis: 30%;
             line-height: 20px;
+            border-left: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            padding-bottom: 0px;
+            padding-top: 0px;
         }
         .responsive-table .col-4 {
             flex-basis: 20%;
             line-height: 20px;
+            border-left: 1px solid #ddd;
+            padding: 10px;
+            padding-bottom: 0px;
+            padding-top: 0px;
+            text-align: center;
         }
         @media all and (max-width: 767px) {
             .responsive-table .table-header {

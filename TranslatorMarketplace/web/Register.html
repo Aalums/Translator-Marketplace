@@ -20,6 +20,11 @@ and open the template in the editor.
     </div>
 </head>
 <body>
+
+    <script type="text/javascript">
+        
+    </script>
+
     <!-- Create Container + Logo -->
     <div class="content-wrapper" style="padding-bottom: 699px;">
         <div class="container">
@@ -29,63 +34,68 @@ and open the template in the editor.
                         <center><h1>สมัครสมาชิก</h1></center>     
                     </div>
 
-                    <div class = "sign-in-form">
-                        <table style="width:100%">
-                            <tr>
-                                <td>
-                                    <h3>ID_CUSTOMER</h3>
-                                    <input type="text" name="title" value="" />
-                                </td>
-                            </tr>
+                    <form action="RegisterServlet" method="POST" enctype="multipart/form-data">
 
-                            <tr>
-                                <td>
-                                    <h3>PASSWORD</h3>
-                                    <input type="text" name="title" value="" />
-                                </td>
-                            </tr>
+                        <div class = "sign-in-form">
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <h3>ID_CUSTOMER</h3>
+                                        <input type="text" name="id_customer" value="" />
+                                    </td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <h3>NAME_CUSTOMER</h3>
-                                    <input type="text" name="title" value="" />
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    <h3>E-MAIL</h3>
-                                    <input type="text" name="title" value="" />
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <h3>PASSWORD</h3>
+                                        <input type="text" name="password" value="" />
+                                    </td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <h3>PHONE</h3>
-                                    <input type="text" name="title" value="" />
+                                <tr>
+                                    <td>
+                                        <h3>NAME_CUSTOMER</h3>
+                                        <input type="text" name="name_customer" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h3>E-MAIL</h3>
+                                        <input type="text" name="email" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h3>PHONE</h3>
+                                        <input type="text" name="phone" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h3>PICTURE</h3><br><br>
+                                        <input type="file" name="picture" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                <center>
+                                    <button type="submit">
+                                        <div class = "button-text">
+                                            REGISTER
+                                        </div>
+                                    </button>
+                                </center>
                                 </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    <h3>PICTURE</h3><br><br>
-                                    <input type="file" name="file_create" />
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    <center>
-                                        <button type="submit">
-                                            <div class = "button-text">
-                                                REGISTER
-                                            </div>
-                                        </button>
-                                    </center>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </form>
+
                 </div>
             </div>
         </div>

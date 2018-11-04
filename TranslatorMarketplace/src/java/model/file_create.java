@@ -29,4 +29,21 @@ public class file_create {
             ex.printStackTrace();
         }   
     }
+    
+    public void picture(String name, InputStream file) throws FileNotFoundException{
+        File path = new File("/Users/Planoi/Documents/GitHub/Translator-Marketplace/TranslatorMarketplace/web/picture/" + name + ".jpg");
+        FileOutputStream outputStream = new FileOutputStream(path);
+
+        file_create = "picture/" + name + ".jpg";
+        
+        byte[] buffer = new byte[1024];
+        try {
+            while(file.read(buffer)>0){
+                outputStream.write(buffer);
+            }
+            outputStream.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }   
+    }
 }

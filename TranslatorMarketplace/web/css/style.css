@@ -646,5 +646,8 @@ button:active {
     margin-left:10px;
 }
 
+/*-----------------CSS Login-------------------*/
 
+.login {
+    -webkit-column-count: 1;}
 

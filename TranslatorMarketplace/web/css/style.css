@@ -410,7 +410,6 @@ button:active {
     background: #fff; 
     box-shadow: 4px 4px 0px 0px #003489;
     margin-bottom: 100px;
-    background: #F76c6c;
     width: 56px;
     height: 56px;
     position: absolute;
@@ -441,7 +440,7 @@ button:active {
 
 }
 .profile-card header h1 {
-    color: #F76c6c;
+    color: #FFFFFF;
 }
 .profile-card header a {
     display: inline-block;
@@ -493,11 +492,7 @@ button:active {
         width: 0px;
     }
     @-webkit-keyframes puff {
-        0% {
-            top: 100%;
-            width: 0px;
-            padding-bottom: 0px;
-        }
+        
         100% {
             top: 50%;
             width: 100%;
@@ -525,16 +520,7 @@ button:active {
     }
 
 }
-@media screen and (min-aspect-ratio: 4/3) {
-    body {
-        background-size: 100% auto;
-    }
-    body:before {
-        width: 0px;
-        -webkit-animation: puff_landscape 0.5s 1.8s cubic-bezier(1.55, 1.055, 1.675, 1.19) forwards, borderRadius 0.2s 2.3s linear forwards;
-        animation: puff_landscape 0.5s 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 0.5s linear forwards;
-    }
-}
+
 @-webkit-keyframes init {
     0% {
         width: 0px;
@@ -590,9 +576,7 @@ button:active {
 }
 
 @-webkit-keyframes materia_portrait {
-    0% {
-        background: #24305E;
-    }
+    
     50% {
         -webkit-border-radius: 4px;
     }

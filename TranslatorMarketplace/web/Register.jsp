@@ -27,6 +27,46 @@
 </head>
 <body>
 
+    <script type="text/javascript">
+
+        function validate() {
+            var mysql = require('mysql');
+
+            var con = mysql.createConnection({
+                host: "localhost",
+                user: "root",
+                password: "root",
+                database: "test"
+            });
+
+            con.connect(function (err) {
+                if (err)
+                    throw err;
+                console.log("Connected!");
+
+                con.query("SELECT id_customer FORM customers", function (err, id_customer, fields) {
+                    if (err)
+                        throw err;
+                    console.log(id_customer);
+
+                    const id = document.forms["Form"]["id_customer"].value;
+                    for (var s = 0; s < id_customer.length; s++) {
+                        
+                        // ถ้าเท่ากันแสดงว่าซ้ำ
+                        if (id_customer[s].id_customer == id) {
+
+                            // ซ้ำให้แสดงกรอบสีแดง
+                            document.forms["Form"]["id_customer"].style.borderColor = 'red';
+
+                            return false;
+                        }
+                    }
+                });
+            });
+        }
+        
+    </script>
+
     <%
         Connection conn = (Connection) getServletContext().getAttribute("connection");
         
@@ -53,7 +93,7 @@
                         <center><h1>สมัครสมาชิก</h1></center>     
                     </div>
 
-                    <form action="RegisterServlet" method="POST" enctype="multipart/form-data">
+                    <form name="Form" action="RegisterServlet" method="POST" enctype="multipart/form-data">
 
                         <div class = "sign-in-form">
                             <table style="width:100%">

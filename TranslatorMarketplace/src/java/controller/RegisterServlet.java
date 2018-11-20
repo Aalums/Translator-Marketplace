@@ -6,7 +6,10 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
             file_create.picture(id_customer, inputStream);
 
             //เช็ค
-            //out.println("alert('Get Parameter Complete!!')");
+            out.println("alert('Get Parameter Complete!!')");
             
             String sql = "INSERT INTO customers (id_customer, password, name_customer, email, phone, picture) "
                     + "VALUES (?,?,?,?,?,?)";
@@ -64,6 +67,8 @@ public class RegisterServlet extends HttpServlet {
             //เช็ค
             //out.println("<br>alert('INSERT Complete!!')");
             
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

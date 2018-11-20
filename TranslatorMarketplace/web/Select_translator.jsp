@@ -207,12 +207,12 @@
                         <p>${row.profile}</p>
                     </figcaption>
                     <select_employ>
-                        <form action="SelectTranslatorServlet" method="POST">
-                            <center>
-                                <button id="select_employ" name="select_employ" value="${row.id_translator}">
-                                    <div class = "button-text">จ้าง</div>
-                                </button>
-                            </center>
+                        <form action="Confirm_select_tran.jsp" method="POST">
+                        <center>
+                            <button id="select_employ" name="select_employ" value="${row.id_translator}">
+                                <div class = "button-text">จ้าง</div>
+                            </button>
+                        </center>
                         </form>
                     </select_employ>
                 </figure>
@@ -220,5 +220,6 @@
             </c:forEach>
 
         </div>
+
     </body>
 </html>

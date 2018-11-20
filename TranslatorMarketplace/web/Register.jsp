@@ -28,19 +28,20 @@
 <body>
 
     <%
-        Connection conn = (Connection) getServletContext().getAttribute("connection");
+        //รับค่าที่เคยกรอกมาแสดง
+        String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+        String password = (String) session.getServletContext().getAttribute("password");
+        String name_customer = (String) session.getServletContext().getAttribute("name_customer");
+        String email = (String) session.getServletContext().getAttribute("email");
+        String phone = (String) session.getServletContext().getAttribute("phone");
+        //String picture = (String) session.getServletContext().getAttribute("picture");
         
-        PreparedStatement id_customer = conn.prepareStatement(
-                "SELECT id_customer FROM customers;"
-        );
-        
-        ResultSet rs_customer = id_customer.executeQuery();
-        
-        //เก็บ id ของลูกค้าทั้งหมดในตารางไว้เช็ค id ที่ลูกค้าใหม่จะสมัครเข้ามา
-        ArrayList id_cus = new ArrayList();
-        
-        while (rs_customer.next()) {
-            id_cus.add(rs_customer.getString("id_customer"));
+        if (id_customer == null) {
+            id_customer = "";
+            password = "";
+            name_customer = "";
+            email = "";
+            phone = "";
         }
     %>
 
@@ -60,44 +61,44 @@
                                 <tr>
                                     <td>
                                         <h3>ID_CUSTOMER</h3>
-                                        <input type="text" name="id_customer" value="" />
+                                        <input type="text" name="id_customer" value="<%= id_customer%>" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
                                         <h3>PASSWORD</h3>
-                                        <input type="text" name="password" value="" />
+                                        <input type="text" name="password" value="<%= password%>" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
                                         <h3>NAME_CUSTOMER</h3>
-                                        <input type="text" name="name_customer" value="" />
+                                        <input type="text" name="name_customer" value="<%= name_customer%>" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
                                         <h3>E-MAIL</h3>
-                                        <input type="text" name="email" value="" />
+                                        <input type="text" name="email" value="<%= email%>" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
                                         <h3>PHONE</h3>
-                                        <input type="text" name="phone" value="" />
+                                        <input type="text" name="phone" value="<%= phone%>" />
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <td>
-                                        <h3>PICTURE</h3><br><br>
-                                        <input type="file" name="picture" />
-                                    </td>
-                                </tr>
+                                <!--                                <tr>
+                                                                    <td>
+                                                                        <h3>PICTURE</h3><br><br>
+                                                                        <input type="file" name="picture" />
+                                                                    </td>
+                                                                </tr>-->
 
                                 <tr>
                                     <td>

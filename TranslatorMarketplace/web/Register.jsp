@@ -35,7 +35,7 @@
         String email = (String) session.getServletContext().getAttribute("email");
         String phone = (String) session.getServletContext().getAttribute("phone");
         //String picture = (String) session.getServletContext().getAttribute("picture");
-        
+
         if (id_customer == null) {
             id_customer = "";
             password = "";
@@ -93,12 +93,12 @@
                                     </td>
                                 </tr>
 
-                                <!--                                <tr>
-                                                                    <td>
-                                                                        <h3>PICTURE</h3><br><br>
-                                                                        <input type="file" name="picture" />
-                                                                    </td>
-                                                                </tr>-->
+                                <tr>
+                                    <td>
+                                        <h3>PICTURE</h3><br><br>
+                                        <input type="file" name="picture" />
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <td>

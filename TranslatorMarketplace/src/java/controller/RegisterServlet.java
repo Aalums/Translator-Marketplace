@@ -37,37 +37,29 @@ public class RegisterServlet extends HttpServlet {
             //แสดงผลลัพธ์เป็นภาษาไทยได้ถูกต้อง
             request.setCharacterEncoding("UTF-8");
 
-            //รับค่า parameter จาก Register.html
+            //รับค่า parameter จาก Register.jsp
             String id_customer = request.getParameter("id_customer");
             String password = request.getParameter("password");
             String name_customer = request.getParameter("name_customer");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
 
-//            Part picture = request.getPart("picture");
-//            InputStream inputStream = picture.getInputStream();
-//            file_create file_create = new file_create();
-//            file_create.picture(id_customer, inputStream);
+            Part picture = request.getPart("picture");
+            InputStream inputStream = picture.getInputStream();
+            file_create file_create = new file_create();
+            file_create.picture(id_customer, inputStream);
             //เช็ค
             //out.println("alert('Get Parameter Complete!!')");
-//            String sql = "INSERT INTO customers (id_customer, password, name_customer, email, phone, picture) "
-//                    + "VALUES (?,?,?,?,?,?)";
-//            PreparedStatement pstmt = conn.prepareStatement(sql);
-//            pstmt.setString(1, id_customer);
-//            pstmt.setString(2, password);
-//            pstmt.setString(3, name_customer);
-//            pstmt.setString(4, email);
-//            pstmt.setString(5, phone);
-//            pstmt.setString(6, file_create.create());
-//            pstmt.executeUpdate();
-//            pstmt.close();
+
             ServletContext session = request.getServletContext();
 
+            //เช็ค id ว่าซ้ำมั้ย
             String sql = "SELECT * FROM customers WHERE id_customer=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id_customer);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
+                //ถ้าซ้ำ กลับไปหน้ารีจิสและแสดงข้อมูลที่เคยกรอกไว้
                 session.setAttribute("id_customer", id_customer);
                 session.setAttribute("password", password);
                 session.setAttribute("name_customer", name_customer);
@@ -76,7 +68,20 @@ public class RegisterServlet extends HttpServlet {
 
                 response.sendRedirect("Register.jsp");
             } else {
-                out.println("SUCCESS");
+                //Insert Data
+                String sql_insert = "INSERT INTO customers (id_customer, password, name_customer, email, phone, picture) "
+                        + "VALUES (?,?,?,?,?,?)";
+                PreparedStatement pstmt_insert = conn.prepareStatement(sql_insert);
+                pstmt_insert.setString(1, id_customer);
+                pstmt_insert.setString(2, password);
+                pstmt_insert.setString(3, name_customer);
+                pstmt_insert.setString(4, email);
+                pstmt_insert.setString(5, phone);
+                pstmt_insert.setString(6, file_create.create());
+                pstmt_insert.executeUpdate();
+                pstmt_insert.close();
+
+                response.sendRedirect("Login.html");
             }
 
             //เช็ค

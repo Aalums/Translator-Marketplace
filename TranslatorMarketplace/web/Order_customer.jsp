@@ -183,7 +183,9 @@
                     <li><b>จำนวนหน้า&nbsp;:</b>&nbsp;<%= rs_create.getInt("num_page")%></li>
                     <li><b>ราคา&nbsp;:</b>&nbsp;<%= rs_create.getFloat("price")%> </li>
                     <li><b>วันที่ส่งงาน&nbsp;:</b>&nbsp;<%= rs_create.getDate("due_date")%> </li>
-                    <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create")%> </li>
+                    <form action="View_Filecreate.jsp" method="POST">
+                        <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create") %> <button name="file_create" value=<%= rs_create.getInt("id_order")%>>เปิดไฟล์</button></li>
+                    </form>
                     <li><b>คำอธิบาย&nbsp;:</b>&nbsp;<%= rs_create.getString("description")%> </li>
                     <form action="OrderCustomerServlet" method="POST">
                         <center><button class="button_select" name="select_order" value=<%= rs_create.getInt("id_order")%>>เลือกนักแปล</button></center>

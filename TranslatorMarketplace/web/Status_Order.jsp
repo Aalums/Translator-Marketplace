@@ -153,7 +153,7 @@
                 <div class="col col-3" data-label="นักแปล"><%= name%></div>
                 <div class="col col-4" data-label="สถานะ"><%= status%></div>
                 <% if(status.equals("YES") && file_order!=null){ //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
-                <form action="View_File.jsp" method="POST">
+                <form action="View_Fileorder.jsp" method="POST">
                     <div class="col col-4" data-label="งานส่งมอบ"><button name="file_create" value=<%= id_order %> ><%= file_order %></button></div>
                 </form>
                 <% } else if(status.equals("YES") && file_order==null){ //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>

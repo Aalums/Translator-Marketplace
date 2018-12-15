@@ -68,7 +68,7 @@
                                 <tr>
                                     <td>
                                         <h3>PASSWORD</h3>
-                                        <input type="text" name="password" value="<%= password%>" />
+                                        <input type="password" name="password" value="<%= password%>" />
                                     </td>
                                 </tr>
 
@@ -82,7 +82,7 @@
                                 <tr>
                                     <td>
                                         <h3>E-MAIL</h3>
-                                        <input type="text" name="email" value="<%= email%>" />
+                                        <input type="email" pattern=".+@gmail.com" name="email" value="<%= email%>" />
                                     </td>
                                 </tr>
 

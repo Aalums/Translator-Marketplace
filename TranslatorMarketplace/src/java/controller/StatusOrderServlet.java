@@ -65,7 +65,7 @@ public class StatusOrderServlet extends HttpServlet {
 
             /* get translator's name, status จาก id_order-Ordered */
             PreparedStatement ps_trans = conn.prepareStatement(
-                    "SELECT name_customer, status"
+                    "SELECT name_customer, status, file_order"
                     + " FROM ordered"
                     + " JOIN translators USING (id_translator)"
                     + " JOIN customers USING (id_customer)"
@@ -74,13 +74,14 @@ public class StatusOrderServlet extends HttpServlet {
             ResultSet rs_order = ps_order.executeQuery();
 
             while (rs_order.next()) {
-//                System.out.println(rs_order.getInt("id_order") + "->");
                 ps_trans.setInt(1, rs_order.getInt("id_order"));
 
                 ResultSet rs_trans = ps_trans.executeQuery();
                 while(rs_trans.next()){
-                    sta_ord = new Status_order(rs_order.getInt("id_order"), rs_order.getString("description"), rs_trans.getString("name_customer"), rs_trans.getString("status"));
+                    System.out.println(rs_order.getInt("id_order") + "->" + rs_trans.getString("file_order"));
+                    sta_ord = new Status_order(rs_order.getInt("id_order"), rs_order.getString("description"), rs_trans.getString("name_customer"), rs_trans.getString("status"), rs_trans.getString("file_order"));
                     list_status.add(sta_ord);
+//                    System.out.println("size = " + list_status.size());
                 }
             }
 

@@ -137,6 +137,7 @@
                 <div class="col col-2">รายละเอียด</div>
                 <div class="col col-3">นักแปล</div>
                 <div class="col col-4">สถานะ</div>
+                <div class="col col-4">งานส่งมอบ</div>
             </li>
             <% //put in TABLE
                 for (int i = 0; i < list_status.size(); i++) {
@@ -144,15 +145,24 @@
                     int id_order = item.getId_order();
                     String desc = item.getDescription();
                     String name = item.getTranslator_name();
-                    String status = item.getStatus();%>
+                    String status = item.getStatus();
+                    String file_order = item.getFile_order(); %>
             <li class="table-row">
                 <div class="col col-1" data-label="รายการ"><%= id_order%></div>  
                 <div class="col col-2" data-label="รายละเอียด"><%= desc%></div>
                 <div class="col col-3" data-label="นักแปล"><%= name%></div>
                 <div class="col col-4" data-label="สถานะ"><%= status%></div>
-                <!--    <div class="col col-4" data-label="Payment Status">Pending</div> -->
+                <% if(status.equals("YES") && file_order!=null){ //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
+                <form action="View_File.jsp" method="POST">
+                    <div class="col col-4" data-label="งานส่งมอบ"><button name="file_create" value=<%= id_order %> ><%= file_order %></button></div>
+                </form>
+                <% } else if(status.equals("YES") && file_order==null){ //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
+                    <div class="col col-4" data-label="งานส่งมอบ">รอแปล</div>
+                <% } else { %>
+                    <div class="col col-4" data-label="งานส่งมอบ">-</div>
+                <% } %>
             </li>
-            <% }%>
+            <% } %>
         </ul>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>

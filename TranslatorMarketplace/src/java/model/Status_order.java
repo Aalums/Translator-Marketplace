@@ -15,12 +15,14 @@ public class Status_order {
     String description;
     String translator_name;
     String status;
+    String file_order;
 
-    public Status_order(int id_order, String description, String translator_name, String status) {
+    public Status_order(int id_order, String description, String translator_name, String status, String file_order) {
         this.id_order = id_order;
         this.description = description;
         this.translator_name = translator_name;
         this.status = status;
+        this.file_order = file_order;
     }
     
     public int getId_order() {
@@ -53,6 +55,14 @@ public class Status_order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    
+    public String getFile_order() {
+        return file_order;
+    }
+
+    public void setFile_order(String file_order) {
+        this.file_order = file_order;
     }
     
 }

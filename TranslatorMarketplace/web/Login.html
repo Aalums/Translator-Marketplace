@@ -19,57 +19,60 @@ and open the template in the editor.
         </div>
     </div>
 </head>
+
 <body>
-    <!-- Create Container + Logo -->
-    <div class="content-wrapper" style="padding-bottom: 699px;">
-        <div class="container">
-            <div class="login">
-                <div class = "form">
-                    <div class = "header">
-                        <center><h1>เข้าสู่ระบบ</h1></center>     
-                    </div>
+    <form action="LoginServlet">
+        <!-- Create Container + Logo -->
+        <div class="content-wrapper" style="padding-bottom: 699px;">
+            <div class="container">
+                <div class="login">
+                    <div class = "form">
+                        <div class = "header">
+                            <center><h1>เข้าสู่ระบบ</h1></center>     
+                        </div>
 
-                    <div class = "sign-in-form">
-                        <table style="width:100%">
-                            <tr>
-                                <td>
-                                    <h3>ID</h3>
-                                    <input type="text" name="title" value="" />
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    <h3>PASSWORD</h3><br><br><br>
-                                    <input type="text" name="title" value="" />
-                                </td>
-                            </tr>
+                        <div class = "sign-in-form">
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <h3>ID</h3>
+                                        <input type="text" name="id" value="" />
+                                    </td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <center>
-                                        <button type="submit">
-                                            <div class = "button-text">
-                                                LOGIN
-                                            </div>
-                                        </button>
-                                    </center>
+                                <tr>
+                                    <td>
+                                        <h3>PASSWORD</h3><br><br><br>
+                                        <input type="text" name="password" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                <center>
+                                    <button type="submit">
+                                        <div class = "button-text">
+                                            LOGIN
+                                        </div>
+                                    </button>
+                                </center>
                                 </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    <center>
-                                        <a href='Register.html'>REGISTER</a><br><br><br>
-                                    </center>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                <center>
+                                    <a href='Register.html'>REGISTER</a><br><br><br>
+                                </center>
                                 </td>
-                            </tr>
-                    
-                        </table>
+                                </tr>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

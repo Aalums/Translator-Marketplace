@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,7 +47,6 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -58,7 +57,6 @@ public class LoginServlet extends HttpServlet {
             //รับค่า parameter จาก Login.html
             String id = request.getParameter("id");
             String password = request.getParameter("password");
-            
 
             ServletContext session = request.getServletContext();
 
@@ -67,14 +65,21 @@ public class LoginServlet extends HttpServlet {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery();
-            
-            //ถ้ามีก็ไปเช็ค password ว่าตรงกับที่รีจิสไว้หรือไม่
-            if (id.equals("sql.id_customer") && password.equals("sql.password")) {
-                //ถ้าตรงก็ให้ไปหน้า Order_customer
-                response.sendRedirect("Order_customer.jsp");
+
+            if (rs.next()) {
+                //ถ้ามีก็ไปเช็ค password ว่าตรงกับที่รีจิสไว้หรือไม่
+                if (id.equals(rs.getString("id_customer")) && password.equals(rs.getString("password"))) {
+                    //ถ้าตรงก็ให้ไปหน้า Order_customer
+                    session.setAttribute("id_customer", id);
+                    response.sendRedirect("Order_customer.jsp");
+                } else {
+                    //ถ้าไม่ตรงให้แจ้งเตือน
+                    out.println("alert('Invalid ID or Password, please try again!!')");
+                    response.sendRedirect("Login.html");
+                }
             } else {
-                //ถ้าไม่ตรงให้แจ้งเตือน *** ยังไม่แน่ใจหน้าที่ response อ้ะ ต้อง response ป้ะ***
-                out.println("alert('Invalid ID or Password, please try again!!')");
+                //ถ้าไม่มี id ใน database ให้แจ้งเตือนไป Register ก่อน
+                out.println("alert('Please Register!!')");
                 response.sendRedirect("Login.html");
             }
 

@@ -1,0 +1,164 @@
+/* 
+
+colors
+
+blue: #24305e
+off-white: #f6eee3
+red: #c50058 
+yellow: #ffdf00
+
+*/
+
+/*menu bar
+ไฟล์ที่เป็น id # ต้องไว้ก่อน class . */
+
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#cssmenu:after,
+#cssmenu > ul:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+#cssmenu {
+    background: transparent;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: max-content;
+    border-bottom: 3px solid #24305e;
+    font-family: Raleway, sans-serif;
+    line-height: 1;
+}
+#cssmenu ul {
+    background: transparent;
+}
+#cssmenu > ul > li {
+    float: left;
+}
+#cssmenu.align-center > ul {
+    font-size: 0;
+    text-align: center;
+}
+#cssmenu.align-center > ul > li {
+    display: inline-block;
+    float: none;
+}
+#cssmenu.align-right > ul > li {
+    float: right;
+}
+#cssmenu.align-right > ul > li > a {
+    margin-right: 0;
+    margin-left: -4px;
+}
+#cssmenu > ul > li > a {
+    z-index: 2;
+    padding: 18px 25px 12px 25px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #444444;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    margin-right: -4px;
+}
+#cssmenu > ul > li.active > a,
+#cssmenu > ul > li:hover > a,
+#cssmenu > ul > li > a:hover {
+    color: #ffffff;
+}
+#cssmenu > ul > li > a:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    width: 97%;
+    height: 120%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    content: "";
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    -webkit-transform: perspective(5px) rotateX(2deg);
+    -webkit-transform-origin: bottom;
+    -moz-transform: perspective(5px) rotateX(2deg);
+    -moz-transform-origin: bottom;
+    transform: perspective(5px) rotateX(2deg);
+    transform-origin: bottom;
+}
+#cssmenu > ul > li.active > a:after,
+#cssmenu > ul > li:hover > a:after,
+#cssmenu > ul > li > a:hover:after {
+    background: #24305e;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    line-height: 0.5;
+    color: #24305e;
+    /*  background: #ffdf00;*/
+    font-family: 'Mitr', sans-serif;
+}
+
+/* fonts */
+
+h1 {
+    font-weight: normal;
+
+    font-size: 2.15em;
+    font-weight: 900;
+    line-height: 1.2em;
+    margin-bottom: 34px;
+}
+
+h2, button {
+    font-variant: small-caps;
+    font-weight: normal;
+    font-size: 1.24em;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #24305e;
+}
+
+h3, a {
+    font-family: 'Mitr', sans-serif;
+    font-variant: small-caps;
+    font-size: .9em;
+    letter-spacing: 1px;
+    font-weight: 700;
+    line-height: 0;
+    margin-bottom: 4px;
+}
+
+/*/LOGO/*/
+.logo {
+    text-align: center;
+    margin: 30px 0;}

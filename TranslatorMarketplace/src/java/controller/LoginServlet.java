@@ -74,12 +74,16 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("Order_customer.jsp");
                 } else {
                     //ถ้าไม่ตรงให้แจ้งเตือน
-                    out.println("alert('Invalid ID or Password, please try again!!')");
+//                    out.println("<script type=\"text/javascript\">");       
+                    out.println("alert('Invalid ID or Password, please try again!!');");
+//                    out.println("</script>");
                     response.sendRedirect("Login.html");
                 }
             } else {
                 //ถ้าไม่มี id ใน database ให้แจ้งเตือนไป Register ก่อน
-                out.println("alert('Please Register!!')");
+//                out.println("<script type=\"text/javascript\">");       
+                out.println("alert('Please Register!!');");
+//                out.println("</script>");
                 response.sendRedirect("Login.html");
             }
 

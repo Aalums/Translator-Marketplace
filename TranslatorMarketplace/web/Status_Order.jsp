@@ -180,14 +180,14 @@
                 <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("id_customer") %></div>
                 <div class="col col-4" data-label="สถานะ"><%= rs_order.getString("status") %></div>
                 
-                <% if(rs_order.getString("status").equals("YES") && rs_order.getString("file_order")!=null){ //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
+                <% if(rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order")!=null){ //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
                     <form action="View_Fileorder.jsp" method="POST">
                         <div class="col col-2" data-label="งานส่งมอบ">
                             <%= rs_order.getString("file_order") %><br>
                             <button name="view" value=<%= rs_order.getInt("id_order") %>>ดูไฟล์</button>
                         </div>
                     </form>
-                <% } else if(rs_order.getString("status").equals("YES") && rs_order.getString("file_order")==null){ //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
+                <% } else if(rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order")==null){ //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
                     <div class="col col-2" data-label="งานส่งมอบ">กำลังแปล</div>
                 <% } else { %>
                     <div class="col col-2" data-label="งานส่งมอบ">-</div>

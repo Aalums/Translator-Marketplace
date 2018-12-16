@@ -36,25 +36,42 @@
             </div>
         </center>
     </div>
+    <style>
+        #name {
+            color: #000000;
+        }
+    </style>
 
 </head>
 
 <body>
 
-    <% Connection conn = (Connection) getServletContext().getAttribute("connection");
+    <%
+        Connection conn = (Connection) getServletContext().getAttribute("connection");
 
+        //id_cus จาก session หน้า login
         String id_customer = (String) session.getServletContext().getAttribute("id_customer");
 
-        PreparedStatement translator = conn.prepareStatement(
-                "SELECT * FROM customers"
-                + " JOIN translators USING (id_customer) "
+        //เช็คก่อนว่าเป็นนักแปล ?
+        PreparedStatement check_translator = conn.prepareStatement(
+                "SELECT * FROM translators"
                 + " WHERE id_customer = ?;"
         );
-        translator.setString(1, id_customer);
+        check_translator.setString(1, id_customer);
 
-        ResultSet rs_translator = translator.executeQuery();
+        ResultSet rs_check_translator = check_translator.executeQuery();
+        if (rs_check_translator.next()) {
+            //เป็นนักแปล
+            PreparedStatement translator = conn.prepareStatement(
+                    "SELECT * FROM customers"
+                    + " JOIN translators USING (id_customer) "
+                    + " WHERE id_customer = ?;"
+            );
+            translator.setString(1, id_customer);
 
-        while (rs_translator.next()) {%>
+            ResultSet rs_translator = translator.executeQuery();
+            while (rs_translator.next()) {
+    %>
 
     <aside class="profile-card">
 
@@ -66,7 +83,7 @@
             </a>
 
             <!-- the username -->
-            <h1><%= rs_translator.getString("name_customer")%></h1>
+            <h1 id="name"><%= rs_translator.getString("name_customer")%></h1>
 
             <!-- and role or location -->
             <h2>นักแปล</h2>
@@ -94,7 +111,53 @@
         </center>
     </aside>
 
-    <% } %>
+    <%
+        }
+    } else {
+        //ไม่เป็นนักแปล
+        PreparedStatement customer = conn.prepareStatement(
+                "SELECT * FROM customers"
+                + " WHERE id_customer = ?;"
+        );
+        customer.setString(1, id_customer);
+
+        ResultSet rs_customer = customer.executeQuery();
+        while (rs_customer.next()) {
+    %>
+    <aside class="profile-card">
+
+        <header>
+
+            <!-- here’s the avatar -->
+            <a href=#>
+                <img src="profile.png" alt="eye"></a>
+            </a>
+
+            <!-- the username -->
+            <h1 id="name"><%= rs_customer.getString("name_customer")%></h1>
+
+        </header>
+
+        <!-- bit of a bio; who are you? -->
+        <div class="profile-bio">
+            <p>E-mail: <%= rs_customer.getString("email")%></p><br><br>
+            <p>Phone : <%= rs_customer.getString("phone")%></p><br><br>
+        </div>
+
+        <center>
+            <form action="register_translator.jsp">
+                <button type="submit">
+                    <div class = "button-text">
+                        สมัครเป็นนักแปล
+                    </div>
+                </button>
+            </form>
+        </center>
+    </aside>
+    <%
+        }
+        }
+    %>
 
 </body>
 

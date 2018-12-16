@@ -20,27 +20,24 @@
         </style>
     </head>
     <body>
-        <% Connection conn = (Connection) getServletContext().getAttribute("connection");
-        
-            int id_order = Integer.parseInt(request.getParameter("file_create")); %>
-            
-            <h1><%= id_order %></h1>
+        <% int id_order = Integer.parseInt(request.getParameter("view"));
 
-        <%    PreparedStatement ps = conn.prepareStatement("SELECT * FROM ordered WHERE id_order = ? AND status = ?");
+            Connection conn = (Connection) getServletContext().getAttribute("connection");
+
+            PreparedStatement ps = conn.prepareStatement(
+                    "SELECT file_order FROM ordered WHERE id_order = ?"
+            );
             ps.setInt(1, id_order);
-            ps.setString(2, "YES");
-            
-            ResultSet rs = ps.executeQuery();
 
-            while(rs.next()) {
-                String file = rs.getString("file_order");%>
-        
-                <h1><%= file %></h1>
-                <div class="container">
-                    <center> <embed src=<%= file %> type="application/pdf" style="width: 80%; height: 45em;"/> </center> 
-                </div>
-                
-            <% } %>
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+
+            String file = rs.getString("file_order");%>
+
+        <h1><%= file%></h1>
+        <div class="container">
+            <center> <embed src=<%= file%> type="application/pdf" style="width: 80%; height: 45em;"/> </center> 
+        </div>
 
     </body>
 </html>

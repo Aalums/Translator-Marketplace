@@ -29,12 +29,11 @@
 
     <%
         //รับค่าที่เคยกรอกมาแสดง
-        String id_customer = (String) session.getServletContext().getAttribute("id_customer");
-        String password = (String) session.getServletContext().getAttribute("password");
-        String name_customer = (String) session.getServletContext().getAttribute("name_customer");
-        String email = (String) session.getServletContext().getAttribute("email");
-        String phone = (String) session.getServletContext().getAttribute("phone");
-        //String picture = (String) session.getServletContext().getAttribute("picture");
+        String id_customer = (String) session.getServletContext().getAttribute("regis_id_customer");
+        String password = (String) session.getServletContext().getAttribute("regis_password");
+        String name_customer = (String) session.getServletContext().getAttribute("regis_name_customer");
+        String email = (String) session.getServletContext().getAttribute("regis_email");
+        String phone = (String) session.getServletContext().getAttribute("regis_phone");
 
         if (id_customer == null) {
             id_customer = "";

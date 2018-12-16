@@ -60,11 +60,11 @@ public class RegisterServlet extends HttpServlet {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 //ถ้าซ้ำ กลับไปหน้ารีจิสและแสดงข้อมูลที่เคยกรอกไว้
-                session.setAttribute("id_customer", id_customer);
-                session.setAttribute("password", password);
-                session.setAttribute("name_customer", name_customer);
-                session.setAttribute("email", email);
-                session.setAttribute("phone", phone);
+                session.setAttribute("regis_id_customer", id_customer);
+                session.setAttribute("regis_password", password);
+                session.setAttribute("regis_name_customer", name_customer);
+                session.setAttribute("regis_email", email);
+                session.setAttribute("regis_phone", phone);
 
                 response.sendRedirect("Register.jsp");
             } else {

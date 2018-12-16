@@ -143,6 +143,8 @@
     <!-- -->
     <% Connection conn = (Connection) getServletContext().getAttribute("connection");
 
+        String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+
         ArrayList id_order = new ArrayList();
 
         PreparedStatement ordered = conn.prepareStatement(
@@ -153,8 +155,9 @@
         PreparedStatement create_order = conn.prepareStatement(
                 "SELECT * FROM customers"
                 + " JOIN create_order USING (id_customer) "
-                + " WHERE id_customer = 'admin';"
+                + " WHERE id_customer = ?;"
         );
+        create_order.setString(1, id_customer);
 
         ResultSet rs_ordered = ordered.executeQuery();
         ResultSet rs_create = create_order.executeQuery();
@@ -184,7 +187,7 @@
                     <li><b>ราคา&nbsp;:</b>&nbsp;<%= rs_create.getFloat("price")%> </li>
                     <li><b>วันที่ส่งงาน&nbsp;:</b>&nbsp;<%= rs_create.getDate("due_date")%> </li>
                     <form action="View_Filecreate.jsp" method="POST">
-                        <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create") %> <button name="file_create" value=<%= rs_create.getInt("id_order")%>>เปิดไฟล์</button></li>
+                        <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create")%> <button name="file_create" value=<%= rs_create.getInt("id_order")%>>เปิดไฟล์</button></li>
                     </form>
                     <li><b>คำอธิบาย&nbsp;:</b>&nbsp;<%= rs_create.getString("description")%> </li>
                     <form action="OrderCustomerServlet" method="POST">

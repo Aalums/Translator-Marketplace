@@ -32,9 +32,9 @@ public class AddOrderedServlet extends HttpServlet {
             
             ServletContext session = request.getServletContext();
             
-            //รับค่าจาก session จากหน้า SelectTranslatorServlet
+            //รับค่าจาก session
             int id_order = Integer.parseInt((String) session.getAttribute("id_order"));
-            int id_translator = (int) session.getAttribute("id_translator");
+            int id_translator = Integer.parseInt((String) session.getAttribute("select_id_translator"));
             String status = "รอการตอบรับ";
             
             //เช็ค

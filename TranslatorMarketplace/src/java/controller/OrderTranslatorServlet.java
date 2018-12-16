@@ -34,16 +34,21 @@ public class OrderTranslatorServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             ArrayList list_order = new ArrayList();
+            
+            //id cus จากตอน login
+            ServletContext session = request.getServletContext();
+            String id_customer = (String) session.getAttribute("id_customer");
+            int id_translator = (Integer) session.getAttribute("id_translator");
 
-            //sql translator's id_order = 3
+            //sql translator's
             PreparedStatement ps_order = conn.prepareStatement(
                     "SELECT id_order, status"
                     + " FROM translators"
                     + " JOIN ordered USING (id_translator)"
                     + " WHERE id_translator = ?");
 
-            //set id_translator = 3
-            ps_order.setInt(1, 3);
+            //set id_translator
+            ps_order.setInt(1, id_translator);
 
             //sql employer's name
             PreparedStatement ps_name = conn.prepareStatement(
@@ -52,7 +57,7 @@ public class OrderTranslatorServlet extends HttpServlet {
                     + " JOIN create_order USING (id_customer)"
                     + " WHERE id_order = ?;");
 
-            //query translator's id_order = 3
+            //query translator's
             ResultSet rs_order = ps_order.executeQuery();
 
             while (rs_order.next()) {

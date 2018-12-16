@@ -196,9 +196,11 @@
                                     <div class="bottonOrder" style="margin-top: 0px;">
                                         <center>
                                             <br>
-                                            <!--ให้นักแปลเป็น 3 ไปก่อน-->
-                                            <button class="button_select" name="select" value=<%= id_order%>_3_YES>YES</button>
-                                            <button class="button_select" name="select" value=<%= id_order%>_3_NO>NO</button>
+                                            
+                                            <% int id_translator = (Integer) session.getServletContext().getAttribute("id_translator"); %>
+                                            
+                                            <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_YES>YES</button>
+                                            <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_NO>NO</button>
                                         </center>
                                     </div>
                                     <% } %>  

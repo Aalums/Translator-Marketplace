@@ -22,7 +22,7 @@
             String id_order = (String) session.getServletContext().getAttribute("id_order");
 
             //รับค่า id_tran มาจากตอนกดเลือกนักแปล
-            int id_translator = Integer.parseInt(request.getParameter("select_employ"));
+            String id_translator = request.getParameter("select_employ");
             String name_translator = "";
 
             Connection conn = (Connection) getServletContext().getAttribute("connection");
@@ -32,7 +32,7 @@
                     + "WHERE id_translator = ? "
                     + "AND id_order = ?";
             PreparedStatement data_ordered = conn.prepareStatement(sql_ordered);
-            data_ordered.setInt(1, id_translator);
+            data_ordered.setInt(1, Integer.parseInt(id_translator));
             data_ordered.setInt(2, Integer.parseInt(id_order));
             ResultSet rs_ordered = data_ordered.executeQuery();
 
@@ -52,19 +52,19 @@
                     + "USING (id_customer) "
                     + "WHERE id_translator = ?";
             PreparedStatement data_translator = conn.prepareStatement(sql_translator);
-            data_translator.setInt(1, id_translator);
+            data_translator.setInt(1, Integer.parseInt(id_translator));
             ResultSet rs_translator = data_translator.executeQuery();
             rs_translator.next();
             name_translator = rs_translator.getString("name_customer");
 
             //เก็บ id นักแปล เพื่อใช้ในการเพิ่มข้อมูลลงฐานข้อมูลใน AddOrderedServlet
-            session.setAttribute("id_translator", id_translator);%>
+            session.getServletContext().setAttribute("select_id_translator", id_translator);%>
 
         <!--แสดงข้อความและปุ่ม-->
         <h3> 
             สำหรับรายการ <%=id_order%> <br> คุณเลือกนักแปล <%= id_translator%>
         </h3>
-        
+
         <form action="Select_translator.jsp" method="POST">
             <button >BACK</button>
         </form>

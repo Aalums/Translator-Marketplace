@@ -39,13 +39,16 @@
 
 <body>
     
+    <!-- id cus จากตอน login -->
+    <% String id_customer = (String) session.getServletContext().getAttribute("id_customer"); %>
+    
     <sql:setDataSource var="data" 
                        driver="com.mysql.jdbc.Driver" 
                        user="root" 
                        password="root"  
                        url="jdbc:mysql://localhost:3306/test"/>
 
-    <c:set var="id" value="admin" />
+    <c:set var="id" value="<%=id_customer%>" />
 
     <sql:query dataSource="${data}" var="result">
         SELECT *

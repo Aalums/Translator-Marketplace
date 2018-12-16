@@ -162,6 +162,10 @@
 
     <body>
         <a href='Order_customer.jsp' class="button6">&#8249;</a>
+      
+        <!-- id cus จากตอน login -->
+        <% String id_customer = (String) session.getServletContext().getAttribute("id_customer"); %>
+        
         <!-- Query ข้อมูลนักแปล -->
         <sql:setDataSource var="data" 
                            driver="com.mysql.jdbc.Driver" 
@@ -174,7 +178,7 @@
             FROM translators
             JOIN customers
             USING (id_customer)
-            WHERE id_customer not in ("admin");
+            WHERE id_customer not in ("<%=id_customer%>");
         </sql:query>
 
         <!-- Create Header -->

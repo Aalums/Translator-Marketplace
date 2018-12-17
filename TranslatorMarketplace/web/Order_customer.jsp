@@ -14,13 +14,32 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
-   <div class="topnav">
+        
+   <%
+            String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+            if (id_customer == null) {
+                //ยังไม่เข้าสู่ระบบ
+        %>
+
+    <div class="topnav">
         <div class="topnav-right">
             <a href="index.html">หน้าหลัก</a>
             <a href="Register.jsp">สมัครสมาชิก</a>
-            <a href="Login.html">เข้าสู่ระบบ</a>
+            <a href="Login.jsp">เข้าสู่ระบบ</a>
         </div>
     </div>
+
+    <% } else { %>
+
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="LogoutServlet">ออกจากระบบ</a>
+        </div>
+    </div>
+
+    <% }
+    %>
 
     <div class="container">
         <div class="logo">  
@@ -150,7 +169,7 @@
     <!-- -->
     <% Connection conn = (Connection) getServletContext().getAttribute("connection");
 
-        String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+        //String id_customer = (String) session.getServletContext().getAttribute("id_customer");
 
         ArrayList id_order = new ArrayList();
 

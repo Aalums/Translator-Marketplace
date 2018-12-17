@@ -1,9 +1,11 @@
+<%-- 
+    Document   : Login
+    Created on : Dec 18, 2018, 12:03:23 AM
+    Author     : user
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Login</title>
@@ -12,13 +14,32 @@ and open the template in the editor.
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
+
+        <%
+            String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+            if (id_customer == null) {
+                //ยังไม่เข้าสู่ระบบ
+        %>
+
     <div class="topnav">
         <div class="topnav-right">
             <a href="index.html">หน้าหลัก</a>
             <a href="Register.jsp">สมัครสมาชิก</a>
-            <a href="Login.html">เข้าสู่ระบบ</a>
+            <a href="Login.jsp">เข้าสู่ระบบ</a>
         </div>
     </div>
+
+    <% } else { %>
+
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="LogoutServlet">ออกจากระบบ</a>
+        </div>
+    </div>
+
+    <% }
+    %>
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">

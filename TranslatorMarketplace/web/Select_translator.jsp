@@ -158,29 +158,6 @@
             }
 
         </style>
-    <div class="topnav">
-        <div class="topnav-right">
-            <a href="index.html">หน้าหลัก</a>
-            <a href="Register.jsp"></i>สมัครสมาชิก</a>
-            <a href="Login.html">เข้าสู่ระบบ</a>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="logo">  
-            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
-        </div>
-        <center>
-            <div id='cssmenu'>
-                <ul>
-                    <li class='active'><a href='#'>สร้างรายการ</a></li>
-                    <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                    <li><a href='StatusOrderServlet'>สถานะ</a></li>
-                    <li><a href='Profile.jsp'>โปรไฟล์</a></li>
-                </ul>
-            </div>
-        </center>
-    </div>
 </head>
 
 <body>

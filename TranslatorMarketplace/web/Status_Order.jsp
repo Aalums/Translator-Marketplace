@@ -147,7 +147,7 @@
         );
 
         PreparedStatement ps_trans = conn.prepareStatement(
-                "SELECT * FROM ordered"
+                "SELECT status, file_order, id_customer FROM ordered"
                 + " JOIN translators USING (id_translator)"
                 + " WHERE id_order = ?"
         );
@@ -177,30 +177,28 @@
                     จำนวนหน้า : <%= rs_order.getString("num_page")%><br>
                     ราคา : <%= rs_order.getString("price")%><br>
                     วันส่งงาน : <%= rs_order.getString("due_date")%><br>
-                    ไฟล์ : <%= rs_order.getString("file_create")%><br>
                     <form action="View_Filecreate.jsp" method="POST">
                         <button name="view" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
                     </form>
                 </div>
 
                 <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("id_customer")%></div>
-                <div class="col col-4" data-label="สถานะ"><%= rs_order.getString("status")%></div>
+                <div class="col col-4" data-label="สถานะ"><%= rs_trans.getString("status")%></div>
 
-                <% if (rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) { //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
+                <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) { //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
                 <form action="View_Fileorder.jsp" method="POST">
                     <div class="col col-2" data-label="งานส่งมอบ">
-                        <%= rs_order.getString("file_order")%><br>
                         <button name="view" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
                     </div>
                 </form>
-                <% } else if (rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
+                <% } else if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
                 <div class="col col-2" data-label="งานส่งมอบ">กำลังแปล</div>
                 <% } else { %>
                 <div class="col col-2" data-label="งานส่งมอบ">-</div>
                 <% } %>
             </li>
             <% }
-                 }%>
+            }%>
         </ul>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>

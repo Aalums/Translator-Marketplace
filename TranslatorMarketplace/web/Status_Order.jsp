@@ -147,8 +147,9 @@
         );
 
         PreparedStatement ps_trans = conn.prepareStatement(
-                "SELECT status, file_order, id_customer FROM ordered"
+                "SELECT name_customer, status, file_order, id_customer FROM ordered"
                 + " JOIN translators USING (id_translator)"
+                + "JOIN customers USING (id_customer)"
                 + " WHERE id_order = ?"
         );
 
@@ -182,7 +183,7 @@
                     </form>
                 </div>
 
-                <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("id_customer")%></div>
+                <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("name_customer")%></div>
                 <div class="col col-4" data-label="สถานะ"><%= rs_trans.getString("status")%></div>
 
                 <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) { //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 

@@ -48,7 +48,7 @@
                 box-shadow: 8px 8px 0px 0px #003489;
                 margin-bottom: 100px;
             }
-/*             Base for label styling 
+            /* Base for label styling */
             [type="checkbox"]:not(:checked),
             [type="checkbox"]:checked {
                 position: absolute;
@@ -61,7 +61,7 @@
                 cursor: pointer;
                 line-height: 25pt;
             }
-             checkbox aspect 
+            /* checkbox aspect */
             [type="checkbox"]:not(:checked) + label:before,
             [type="checkbox"]:checked + label:before {
                 content: '';
@@ -73,7 +73,7 @@
                 border-radius: 4px;
                 box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
             }
-             checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox
+            /* checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
             [type="checkbox"]:not(:checked) + label:after,
             [type="checkbox"]:checked + label:after {
                 content: '\2713\0020';
@@ -85,7 +85,7 @@
                 transition: all .2s;
                 font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
             }
-             checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้
+            /* checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
             [type="checkbox"]:not(:checked) + label:after {
                 opacity: 0;
                 transform: scale(0);
@@ -93,35 +93,35 @@
             [type="checkbox"]:checked + label:after {
                 opacity: 1;
                 transform: scale(1);
-            }*/
+            }
+            /* disabled checkbox */
+            [type="checkbox"]:disabled:not(:checked) + label:before,
+            [type="checkbox"]:disabled:checked + label:before {
+                box-shadow: none;
+                border-color: #bbb;
+                background-color: #ddd;
+            }
+            [type="checkbox"]:disabled:checked + label:after {
+                color: #999;
+            }
+            [type="checkbox"]:disabled + label {
+                color: #aaa;
+            }
+            /* accessibility */
+            [type="checkbox"]:checked:focus + label:before,
+            [type="checkbox"]:not(:checked):focus + label:before {
+                border: 2px dotted blue;
+            }
             /* hover style just for information */
             label:hover:before {
                 border: 2px solid #4778d9!important;
             }
-
-
         </style>
-<div class="topnav">
-        <div class="topnav-right">
-            <a href="index.html">หน้าหลัก</a>
-            <a href="Register.jsp">สมัครสมาชิก</a>
-            <a href="Login.html">เข้าสู่ระบบ</a>
-        </div>
-    </div>
+
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
         </div>
-        <center>
-            <div id='cssmenu'>
-                <ul>
-                    <li><a href='Create_order.html'>สร้างรายการ</a></li>
-                    <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                    <li><a href='Status_Order.jsp'>สถานะ</a></li>
-                    <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
-                </ul>
-            </div>
-        </center>
     </div>
 </head>
 <body>
@@ -129,45 +129,40 @@
     <div class="content-wrapper" style="padding-bottom: 699px;">
         <div class="container">
             <div class="login">
-                
-                <form action="RegisterTranslatorServlet" method="POST">
-                    
-                    <div class = "form">
-                        <div class = "header">
-                            <center><h1>สมัครนักแปล</h1></center>     
-                        </div>
-
-                        <div class = "sign-in-form">
-                            <h3>DESCRIPTION</h3>
-                            <textarea name="describe" rows="10" cols="50">
-                            </textarea><br><br><br><br>
-
-                            <h3>LANGUAGE LEVEL</h3>
-                            <input type="radio" name="translate" value="สูง"> สูง
-                            <input type="radio" name="translate" value="ปานกลาง" > ปานกลาง
-                            <input type="radio" name="translate" value="พื้นฐาน"> พื้นฐาน
-
-                            <h3>SKILL</h3>
-                            <input type="checkbox" name="box" value="Cartoon"/>Cartoon
-                            <input type="checkbox" name="box" value="Novel"/>Novel
-                            <input type="checkbox" name="box" value="Academic"/>Academic
-                            <input type="checkbox" name="box" value="Poet"/>Poet
-                            <input type="checkbox" name="box" value="Documentary"/>Documentary
-                            <br><br><br><br><br>
-
-                            <center>
-                                <button type="submit">
-                                    <div class = "button-text">
-                                        REGISTER
-                                    </div>
-                                </button>
-                            </center>
-
-                        </div>
+                <div class = "form">
+                    <div class = "header">
+                        <center><h1>สมัครนักแปล</h1></center>     
                     </div>
-                    
-                </form>
-                
+
+                    <div class = "sign-in-form">
+                        <h3>DESCRIPTION</h3>
+                        <textarea name="describe" rows="10" cols="50">
+                        </textarea><br><br><br><br>
+
+                        <h3>LANGUAGE LEVEL</h3>
+                        <input type="radio" name="translate" value="highlv"> สูง
+                        <input type="radio" name="translate" value="mediumlv" > ปานกลาง
+                        <input type="radio" name="translate" value="standardlv"> พื้นฐาน
+
+                        <form action="#">
+                            <h3>SKILL</h3>
+                            <input type="checkbox" id="box1" /><label for="box1">Cartoon</label>
+                            <input type="checkbox" id="box2" /><label for="box2">Novel</label>
+                            <input type="checkbox" id="box3" /><label for="box3">Academic</label>
+                            <input type="checkbox" id="box4" /><label for="box4">Poet</label>
+                            <input type="checkbox" id="box5" /><label for="box5">Documentary</label>
+                        </form>
+                        <br><br><br><br><br>
+
+                        <center>
+                            <button type="submit">
+                                <div class = "button-text">
+                                    REGISTER
+                                </div>
+                            </button>
+                        </center>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

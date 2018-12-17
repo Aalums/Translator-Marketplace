@@ -20,6 +20,13 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
+   <div class="topnav">
+        <div class="topnav-right">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="Register.jsp">สมัครสมาชิก</a>
+            <a href="Login.html">เข้าสู่ระบบ</a>
+        </div>
+    </div>
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
@@ -27,7 +34,6 @@
         <center>
             <div id='cssmenu'>
                 <ul>
-                    <li><a href='index.html'>หน้าหลัก</a></li>
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
@@ -155,7 +161,7 @@
         </center>
     </aside>
     <%
-        }
+            }
         }
     %>
 

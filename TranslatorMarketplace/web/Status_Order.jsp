@@ -19,6 +19,13 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
+    <div class="topnav">
+        <div class="topnav-right">
+             <a href="index.html">หน้าหลัก</a>
+            <a href="Register.jsp"></i>สมัครสมาชิก</a>
+            <a href="Login.html">เข้าสู่ระบบ</a>
+        </div>
+    </div>
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
@@ -26,11 +33,10 @@
         <center>
             <div id='cssmenu'>
                 <ul>
-                    <li><a href='index.html'>หน้าหลัก</a></li>
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
                     <li class='active'><a href='Status_Order.jsp'>สถานะ</a></li>
-                    <li><a href='Profile.jsp'>โปรไฟล์</a></li>
+                     <li><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
             </div>
         </center>
@@ -132,21 +138,21 @@
 <body>
     <% Connection conn = (Connection) getServletContext().getAttribute("connection");
 
-            PreparedStatement ps_order = conn.prepareStatement(
-                    "SELECT * FROM customers"
-                            + " JOIN create_order USING (id_customer)"
-                            + " JOIN ordered USING (id_order)"
-                            + " WHERE id_customer = 'admin'"
-                            + " GROUP BY id_order"
-            );
-            
-            PreparedStatement ps_trans = conn.prepareStatement(
-                    "SELECT * FROM ordered"
-                            + " JOIN translators USING (id_translator)"
-                            + " WHERE id_order = ?"
-            );
-            
-            ResultSet rs_order = ps_order.executeQuery();%>
+        PreparedStatement ps_order = conn.prepareStatement(
+                "SELECT * FROM customers"
+                + " JOIN create_order USING (id_customer)"
+                + " JOIN ordered USING (id_order)"
+                + " WHERE id_customer = 'admin'"
+                + " GROUP BY id_order"
+        );
+
+        PreparedStatement ps_trans = conn.prepareStatement(
+                "SELECT * FROM ordered"
+                + " JOIN translators USING (id_translator)"
+                + " WHERE id_order = ?"
+        );
+
+        ResultSet rs_order = ps_order.executeQuery();%>
     <div class="container">
         <h2 align="center">รายการจ้างแปล</h2> 
         <!--    <title>ตารางยังไม่ได้วนลูปนะ</title>-->
@@ -158,43 +164,43 @@
                 <div class="col col-4">สถานะ</div>
                 <div class="col col-2">งานส่งมอบ</div>
             </li>
-            <% while(rs_order.next()){ 
-                ps_trans.setInt(1, rs_order.getInt("id_order"));
-                ResultSet rs_trans = ps_trans.executeQuery();
-                while(rs_trans.next()) { %>
+            <% while (rs_order.next()) {
+                    ps_trans.setInt(1, rs_order.getInt("id_order"));
+                    ResultSet rs_trans = ps_trans.executeQuery();
+                    while (rs_trans.next()) {%>
             <li class="table-row">
-                <div class="col col-1" data-label="รายการ"><%= rs_order.getInt("id_order") %></div>
-                
+                <div class="col col-1" data-label="รายการ"><%= rs_order.getInt("id_order")%></div>
+
                 <div class="col col-2" data-label="รายละเอียด">
-                    คำอธิบาย : <%= rs_order.getString("description") %><br>
-                    แปล : <%= rs_order.getString("translate_type") %><br>
-                    จำนวนหน้า : <%= rs_order.getString("num_page") %><br>
-                    ราคา : <%= rs_order.getString("price") %><br>
-                    วันส่งงาน : <%= rs_order.getString("due_date") %><br>
-                    ไฟล์ : <%= rs_order.getString("file_create") %><br>
+                    คำอธิบาย : <%= rs_order.getString("description")%><br>
+                    แปล : <%= rs_order.getString("translate_type")%><br>
+                    จำนวนหน้า : <%= rs_order.getString("num_page")%><br>
+                    ราคา : <%= rs_order.getString("price")%><br>
+                    วันส่งงาน : <%= rs_order.getString("due_date")%><br>
+                    ไฟล์ : <%= rs_order.getString("file_create")%><br>
                     <form action="View_Filecreate.jsp" method="POST">
-                        <button name="view" value=<%= rs_order.getInt("id_order") %>>ดูไฟล์</button>
+                        <button name="view" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
                     </form>
                 </div>
-                    
-                <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("id_customer") %></div>
-                <div class="col col-4" data-label="สถานะ"><%= rs_order.getString("status") %></div>
-                
-                <% if(rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order")!=null){ //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
-                    <form action="View_Fileorder.jsp" method="POST">
-                        <div class="col col-2" data-label="งานส่งมอบ">
-                            <%= rs_order.getString("file_order") %><br>
-                            <button name="view" value=<%= rs_order.getInt("id_order") %>>ดูไฟล์</button>
-                        </div>
-                    </form>
-                <% } else if(rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order")==null){ //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
-                    <div class="col col-2" data-label="งานส่งมอบ">กำลังแปล</div>
+
+                <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("id_customer")%></div>
+                <div class="col col-4" data-label="สถานะ"><%= rs_order.getString("status")%></div>
+
+                <% if (rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) { //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
+                <form action="View_Fileorder.jsp" method="POST">
+                    <div class="col col-2" data-label="งานส่งมอบ">
+                        <%= rs_order.getString("file_order")%><br>
+                        <button name="view" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
+                    </div>
+                </form>
+                <% } else if (rs_order.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
+                <div class="col col-2" data-label="งานส่งมอบ">กำลังแปล</div>
                 <% } else { %>
-                    <div class="col col-2" data-label="งานส่งมอบ">-</div>
+                <div class="col col-2" data-label="งานส่งมอบ">-</div>
                 <% } %>
             </li>
-             <% }
-            }%>
+            <% }
+                 }%>
         </ul>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>

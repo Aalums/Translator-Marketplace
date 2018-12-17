@@ -158,72 +158,95 @@
             }
 
         </style>
-    </head>
-
-    <body>
-        <a href='Order_customer.jsp' class="button6">&#8249;</a>
-      
-        <!-- id cus จากตอน login -->
-        <% String id_customer = (String) session.getServletContext().getAttribute("id_customer"); %>
-        
-        <!-- Query ข้อมูลนักแปล -->
-        <sql:setDataSource var="data" 
-                           driver="com.mysql.jdbc.Driver" 
-                           user="root" 
-                           password="root" 
-                           url="jdbc:mysql://localhost:3306/test"/>
-
-        <sql:query dataSource="${data}" var="result">
-            SELECT *
-            FROM translators
-            JOIN customers
-            USING (id_customer)
-            WHERE id_customer not in ("<%=id_customer%>");
-        </sql:query>
-
-        <!-- Create Header -->
-        <br>
-        <br>     
-        <div class="header">
-
-            <center>
-                <h1>นักแปล</h1>
-            </center>
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="Register.jsp"></i>สมัครสมาชิก</a>
+            <a href="Login.html">เข้าสู่ระบบ</a>
         </div>
+    </div>
 
-        <!-- Create Column-->
-        <div class="container">
+    <div class="container">
+        <div class="logo">  
+            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
+        </div>
+        <center>
+            <div id='cssmenu'>
+                <ul>
+                    <li class='active'><a href='#'>สร้างรายการ</a></li>
+                    <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
+                    <li><a href='StatusOrderServlet'>สถานะ</a></li>
+                    <li><a href='Profile.jsp'>โปรไฟล์</a></li>
+                </ul>
+            </div>
+        </center>
+    </div>
+</head>
 
-            <!--ดึงข้อมูลจากตารางมาแสดง-->
-            <c:forEach var="row" items="${result.rows}">
+<body>
+    <a href='Order_customer.jsp' class="button6">&#8249;</a>
 
-                <figure class="snip1336">
-                    <!--รูปบนโปรไฟล์-->
-                    <img src="bgprofile.jpg" alt="sample87" height="170" width="300" />
-                    <figcaption>
-                        <!--รูปโปรไฟล์-->
-                        <img src="profile.png" class="profile" />
-                        <h1>${row.name_customer}</h1>
-                        <h2>
-                            <span>SKILL : ${row.type_skill}</span>
-                            <span>LANGUAGE : ${row.level_skill}</span>
-                        </h2>
-                        <p>${row.profile}</p>
-                    </figcaption>
-                    <select_employ>
-                        <form action="Confirm_select_tran.jsp" method="POST">
+    <!-- id cus จากตอน login -->
+    <% String id_customer = (String) session.getServletContext().getAttribute("id_customer");%>
+
+    <!-- Query ข้อมูลนักแปล -->
+    <sql:setDataSource var="data" 
+                       driver="com.mysql.jdbc.Driver" 
+                       user="root" 
+                       password="root" 
+                       url="jdbc:mysql://localhost:3306/test"/>
+
+    <sql:query dataSource="${data}" var="result">
+        SELECT *
+        FROM translators
+        JOIN customers
+        USING (id_customer)
+        WHERE id_customer not in ("<%=id_customer%>");
+    </sql:query>
+
+    <!-- Create Header -->
+    <br>
+    <br>     
+    <div class="header">
+
+        <center>
+            <h1>นักแปล</h1>
+        </center>
+    </div>
+
+    <!-- Create Column-->
+    <div class="container">
+
+        <!--ดึงข้อมูลจากตารางมาแสดง-->
+        <c:forEach var="row" items="${result.rows}">
+
+            <figure class="snip1336">
+                <!--รูปบนโปรไฟล์-->
+                <img src="bgprofile.jpg" alt="sample87" height="170" width="300" />
+                <figcaption>
+                    <!--รูปโปรไฟล์-->
+                    <img src="profile.png" class="profile" />
+                    <h1>${row.name_customer}</h1>
+                    <h2>
+                        <span>SKILL : ${row.type_skill}</span>
+                        <span>LANGUAGE : ${row.level_skill}</span>
+                    </h2>
+                    <p>${row.profile}</p>
+                </figcaption>
+                <select_employ>
+                    <form action="Confirm_select_tran.jsp" method="POST">
                         <center>
                             <button id="select_employ" name="select_employ" value="${row.id_translator}">
                                 <div class = "button-text">จ้าง</div>
                             </button>
                         </center>
-                        </form>
-                    </select_employ>
-                </figure>
+                    </form>
+                </select_employ>
+            </figure>
 
-            </c:forEach>
+        </c:forEach>
 
-        </div>
+    </div>
 
-    </body>
+</body>
 </html>

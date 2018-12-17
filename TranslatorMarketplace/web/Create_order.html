@@ -8,7 +8,14 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
-        
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="Register.jsp">สมัครสมาชิก</a>
+            <a href="Login.html">เข้าสู่ระบบ</a>
+        </div>
+    </div>
+
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
@@ -16,7 +23,6 @@
         <center>
             <div id='cssmenu'>
                 <ul>
-                    <li><a href='#'>หน้าหลัก</a></li>
                     <li class='active'><a href='#'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
                     <li><a href='StatusOrderServlet'>สถานะ</a></li>
@@ -39,7 +45,7 @@
             var e = document.forms["Form"]["orderdate"].value;
             var f = document.forms["Form"]["file_create"].value;
             if (a == null || a == "", b == null || b == "", c == null || c == "",
-            d == null || d == "", e == null || e == "", f == null || f == "")
+                    d == null || d == "", e == null || e == "", f == null || f == "")
             {
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
                 return false;

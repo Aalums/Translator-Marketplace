@@ -14,6 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -65,7 +66,38 @@
                             <table style="width:100%">
                                 <tr>
                                     <td>
-                                        <h3>ID_CUSTOMER</h3>
+                                        <div class="text-center">
+                                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" max-width: 50%;">
+                                            <h6>เลือกภาพโปรไฟล์</h6>
+                                            <input type="file" class="text-center center-block file-upload" name="picture" >
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <h3>ชื่อ-นามสกุล</h3>
+                                        <input type="text" name="name_customer" value="<%= name_customer%>" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h3>อีเมลล์</h3>
+                                        <input type="email" pattern=".+@gmail.com" name="email" value="<%= email%>" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h3>เบอร์โทรศัพท์</h3>
+                                        <input type="text" name="phone" value="<%= phone%>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h3>USERNAME</h3>
                                         <input type="text" name="id_customer" value="<%= id_customer%>" />
                                     </td>
                                 </tr>
@@ -76,41 +108,12 @@
                                         <input type="password" name="password" value="<%= password%>" />
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td>
-                                        <h3>NAME_CUSTOMER</h3>
-                                        <input type="text" name="name_customer" value="<%= name_customer%>" />
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <h3>E-MAIL</h3>
-                                        <input type="email" pattern=".+@gmail.com" name="email" value="<%= email%>" />
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <h3>PHONE</h3>
-                                        <input type="text" name="phone" value="<%= phone%>" />
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <h3>PICTURE</h3><br><br>
-                                        <input type="file" name="picture" />
-                                    </td>
-                                </tr>
-
                                 <tr>
                                     <td>
                                 <center>
                                     <button type="submit">
                                         <div class = "button-text">
-                                            REGISTER
+                                            สมัคร
                                         </div>
                                     </button>
                                 </center>
@@ -125,6 +128,9 @@
             </div>
         </div>
     </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
 

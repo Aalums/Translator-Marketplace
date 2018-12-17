@@ -50,7 +50,12 @@
                         <!--แสดงข้อความว่าเลือกนักแปลซ้ำ-->
                          <div class = "sign-in-form">
                              <center><h1>  สำหรับรายการ <%=id_order%> <br> คุณเลือกนักแปลคนนี้แล้ว</h1></center>  
-                          
+                          <center>
+                                        <br><br>
+                                        <form action="Select_translator.jsp" method="POST">
+                                            <button>ย้อนกลับ</button>
+                                        </form>
+                                    </center>
                         </div>
 
                         <% } //ถ้าไม่มี แสดงปุ่ม ยืนยัน ย้อนกลับ

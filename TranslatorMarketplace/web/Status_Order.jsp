@@ -189,7 +189,8 @@
                 <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) { //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
                 <form action="View_Fileorder.jsp" method="POST">
                     <div class="col col-2" data-label="งานส่งมอบ">
-                        <button name="view" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
+                        <br><br>
+                        <button name="view" style="margin-top: 30px;" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
                     </div>
                 </form>
                 <% } else if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>

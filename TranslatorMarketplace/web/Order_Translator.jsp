@@ -31,7 +31,6 @@
         <center>
             <div id='cssmenu'>
                 <ul>
-                    <li><a href='index.html'>หน้าหลัก</a></li>
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>

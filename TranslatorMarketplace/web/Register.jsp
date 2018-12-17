@@ -84,7 +84,7 @@
 
                                 <tr>
                                     <td>
-                                        <h3>อีเมลล์</h3>
+                                        <h3>อีเมล</h3>
                                         <input type="email" pattern=".+@gmail.com" name="email" value="<%= email%>" />
                                     </td>
                                 </tr>

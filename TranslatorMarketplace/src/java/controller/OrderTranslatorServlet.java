@@ -42,20 +42,20 @@ public class OrderTranslatorServlet extends HttpServlet {
 
             //sql translator's
             PreparedStatement ps_order = conn.prepareStatement(
-                    "SELECT id_order, status"
-                    + " FROM translators"
-                    + " JOIN ordered USING (id_translator)"
-                    + " WHERE id_translator = ?");
+                    "SELECT * FROM customers"
+                            + " JOIN create_order USING (id_customer)"
+                            + " JOIN ordered USING (id_order)"
+                            + "WHERE id_translator = ?"
+            );
 
             //set id_translator
             ps_order.setInt(1, id_translator);
 
-            //sql employer's name
+            /* sql employer's name
             PreparedStatement ps_name = conn.prepareStatement(
-                    "SELECT name_customer, description, file_create, num_page, due_date"
-                    + " FROM customers"
+                    "SELECT * FROM customers"
                     + " JOIN create_order USING (id_customer)"
-                    + " WHERE id_order = ?;");
+                    + " WHERE id_order = ?;"); */
 
             //query translator's
             ResultSet rs_order = ps_order.executeQuery();
@@ -63,22 +63,20 @@ public class OrderTranslatorServlet extends HttpServlet {
             while (rs_order.next()) {
                 int id_order = rs_order.getInt("id_order");
                 
-                //set translator's id_order
-                ps_name.setInt(1, id_order);
+                rs_order.next();
                 
-                //query employer's name
-                ResultSet rs_name = ps_name.executeQuery();
-                rs_name.next();
+                String employer = rs_order.getString("name_customer");
+                String desc = rs_order.getString("description");
+                String type = rs_order.getString("translate_type");
+                int page = rs_order.getInt("num_page");
+                float price = rs_order.getInt("price");
+                Date date = rs_order.getDate("due_date");
+                String file_name = rs_order.getString("file_create");
                 
-                String employer = rs_name.getString("name_customer");
-                String desc = rs_name.getString("description");
-                String file_name = rs_name.getString("file_create");
-                int page = rs_name.getInt("num_page");
-                Date date = rs_name.getDate("due_date");
                 String status = rs_order.getString("status");
 
                 out.print(" name_hire = "+employer+" Date = "+date);
-                OrderTranslator item = new OrderTranslator(id_order, employer, desc, file_name, page, date, status);
+                OrderTranslator item = new OrderTranslator(id_order, employer, desc, file_name, page, date, status, type, price);
                 list_order.add(item);
             }
                         

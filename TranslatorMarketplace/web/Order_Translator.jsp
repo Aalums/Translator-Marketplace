@@ -148,28 +148,6 @@
         }
 
     </style>
-     <div class="topnav">
-        <div class="topnav-right">
-            <a href="Register.jsp"></i>สมัครสมาชิก</a>
-            <a href="Login.html">เข้าสู่ระบบ</a>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="logo">  
-            <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
-        </div>
-        <center>
-            <div id='cssmenu'>
-                <ul>
-                    <li><a href='#'>หน้าหลัก</a></li>
-                    <li><a href='#'>สร้างรายการ</a></li>
-                    <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                    <li class='active'><a href='StatusOrderServlet'>สถานะ</a></li>
-                </ul>
-            </div>
-        </center>
-    </div>
 </head>
 
 <body>
@@ -177,7 +155,6 @@
     <% ArrayList list_order = (ArrayList) getServletContext().getAttribute("list_order"); %>
 
     <div class="createorder">
-        <form action="AcceptOrderServlet" method="POST">
             <div class="container">
                 <div class = "TableEmploy">            
                     <div class = "header">
@@ -191,10 +168,8 @@
                             <li class="table-header">
                                 <div class="col col-1">ผู้จ้าง</div>
                                 <div class="col col-2">รายละเอียด</div>
-                                <div class="col col-3">ไฟล์งาน</div>
-                                <div class="col col-4">จำนวนหน้า</div>
-                                <div class="col col-5">วันที่ส่งมอบ</div>
                                 <div class="col col-6">รับ/ปฏิเสธ</div>
+                                <div class="col col-6">งานส่งมอบ</div>
                             </li>
 
 
@@ -207,18 +182,26 @@
                                     String[] file = item.getFile_name().split("/");
                                     int num_page = item.getPage();
                                     Date date = item.getDate();
-                                    String status = item.getStatus();%>
+                                    String status = item.getStatus();
+                                    String type = item.getType();
+                                    float price = item.getPrice(); %>
 
                             <li class="table-row">
                                 <div class="col col-1" data-label ="ผู้จ้าง"><%= employer%></div>
-                                <div class="col col-2" data-label ="รายละเอียด"><%= desc%></div>
-                                <div class="col col-3" data-label ="ไฟล์งาน"><%= file[1]%></div>
-                                <div class="col col-4" data-label ="จำนวนหน้า"><%= num_page%></div>
-                                <div class="col col-5" data-label ="วันที่ส่งมอบ"><%= date%></div>
+                                <div class="col col-2" data-label ="รายละเอียด">
+                                    คำอธิบาย : <%= desc %><br>
+                                    แปล : <%= type %><br>
+                                    จำนวนหน้า : <%= num_page  %><br>
+                                    ราคา : <%= price %><br>
+                                    วันส่งงาน : <%= date %><br>
+                                    <form action="View_Filecreate.jsp" method="POST">
+                                        <button name="view" value=<%= id_order %>>ดูไฟล์</button>
+                                    </form>
+                                </div>
                                 <div class="col col-6" data-label ="รับ/ปฏิเสธ">
                                     <% if (status.equals("ยอมรับ")) { %>
                                     <center><h3 style="padding-top: 10px;">ยอมรับ</h3></center>
-                                        <% } else if (status.equals("ปฏิเสธ")) { %> 
+                                        <% } else if (status.equals("ปฎิเสธ")) { %> 
                                     <center><h3 style="padding-top: 10px;">ปฎิเสธ</h3></center>
                                         <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
                                     <center><h3 style="padding-top: 10px;">รายการนี้ถูกจ้างเเล้ว</h3></center>
@@ -226,14 +209,32 @@
                                     <div class="bottonOrder" style="margin-top: 0px;">
                                         <center>
                                             <br>
-                                            
                                             <% int id_translator = (Integer) session.getServletContext().getAttribute("id_translator"); %>
-                                            
-                                            <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_YES>YES</button>
-                                            <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_NO>NO</button>
+                                            <%-- int id_translator = 2; --%>
+                                            <form action="AcceptOrderServlet" method="POST">
+                                                <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_YES>YES</button>
+                                                <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_NO>NO</button>
+                                            </form>
                                         </center>
                                     </div>
                                     <% } %>  
+                                </div>
+                                <div class="col col-6" data-label ="งานส่งมอบ">
+                                    <%  if(status.equals("ยอมรับ") && file!=null){ %>
+                                        <%= file[1] %><br>
+                                        <input type="file" name="file_order" value="" />
+                                        <form action="View_Fileorder.jsp" method="POST">
+                                            <button name="view"  style="float: right; margin:0;" value=<%= id_order %>>ดูไฟล์</button>
+                                        </form>
+                                        <form action="" method="POST">
+                                            <button name="send"  style="float: right; margin:0;" value=<%= id_order %>>บันทึก</button>
+                                        </form>
+                                    <% } else if(status.equals("ยอมรับ") && file==null) {%>
+                                    <input type="file" name="file_order" value="" />
+                                    <form action="" method="POST">
+                                        <button name="send"  style="float: right; margin:0;" value=<%= id_order %>>บันทึก</button>
+                                    </form>
+                                <% } %>
                                 </div>
                             </li>
                             <% }%>
@@ -241,7 +242,6 @@
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </body>
 </html>

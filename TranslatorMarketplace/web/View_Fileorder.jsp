@@ -25,7 +25,7 @@
             Connection conn = (Connection) getServletContext().getAttribute("connection");
 
             PreparedStatement ps = conn.prepareStatement(
-                    "SELECT file_order FROM ordered WHERE id_order = ? AND file_create is not null"
+                    "SELECT file_order FROM ordered WHERE id_order = ? AND file_order is not null"
             );
             ps.setInt(1, id_order);
 

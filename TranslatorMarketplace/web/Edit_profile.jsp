@@ -309,11 +309,11 @@
 
                                 <form action="#">
                                     <h3>SKILL</h3>
-                                    <input type="checkbox" id="box1" /><label for="box1">Cartoon</label>
-                                    <input type="checkbox" id="box2" /><label for="box2">Novel</label>
-                                    <input type="checkbox" id="box3" /><label for="box3">Academic</label>
-                                    <input type="checkbox" id="box4" /><label for="box4">Poet</label>
-                                    <input type="checkbox" id="box5" /><label for="box5">Documentary</label>
+                                    <input type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">Cartoon</label>
+                                    <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">Novel</label>
+                                    <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">Academic</label>
+                                    <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">Poet</label>
+                                    <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
                                 </form>
                                 <br><br><br><br><br>
 

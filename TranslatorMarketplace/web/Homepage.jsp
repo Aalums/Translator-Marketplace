@@ -16,13 +16,32 @@
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+   <%
+            String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+            if (id_customer == null) {
+                //ยังไม่เข้าสู่ระบบ
+        %>
+
     <div class="topnav">
         <div class="topnav-right">
-            <a href="index.html">หน้าหลัก</a>
+            <a href="Homepage.jsp">หน้าหลัก</a>
             <a href="Register.jsp">สมัครสมาชิก</a>
             <a href="Login.jsp">เข้าสู่ระบบ</a>
         </div>
     </div>
+
+    <% } else { %>
+
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="Homepage.jsp">หน้าหลัก</a>
+            <a href="Profile.jsp"> <%= id_customer%> </a>
+            <a href="LogoutServlet">ออกจากระบบ</a>
+        </div>
+    </div>
+
+    <% }
+    %>
 
     <script type="text/javascript">
         var speed = 80; // lower number for faster

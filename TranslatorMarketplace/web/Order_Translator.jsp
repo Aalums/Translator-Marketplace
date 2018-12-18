@@ -16,11 +16,11 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
-    
+
         <%
             String id_customer = (String) session.getServletContext().getAttribute("id_customer");
         %>
-        
+
     <div class="topnav">
         <div class="topnav-right">
             <a href="Homepage.jsp">หน้าหลัก</a>
@@ -45,7 +45,104 @@
             </div>
         </center>
     </div>
-    <style> 
+    <style>
+        #pricing-table {
+            margin: 50px auto;
+            width: 642px;
+            /*            width: 222px;  total computed width = 222 x 3 + 226 */
+        }
+
+        #pricing-table .plan {
+            font: 12px;
+            text-shadow: 0 1px rgba(255,255,255,.8);        
+            background: #fff;      
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 20px;
+            width: 642px; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */      
+            float: center;
+            position: relative;
+        }
+
+        #pricing-table #most-popular {
+            z-index: 2;
+            top: -13px;
+            border-width: 3px;
+            padding: 30px 20px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+            -webkit-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+            box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);    
+        }
+
+        #pricing-table .plan:nth-child(1) {
+            -moz-border-radius: 5px 0 0 5px;
+            -webkit-border-radius: 5px 0 0 5px;
+            border-radius: 5px 5px 5px 5px;        
+        }
+
+        #pricing-table .plan:nth-child(4) {
+            -moz-border-radius: 0 5px 5px 0;
+            -webkit-border-radius: 0 5px 5px 0;
+            border-radius: 0 5px 5px 0;        
+        }
+
+        /* --------------- */	
+
+        #pricing-table h3 {
+            color:white;
+            height: 50px;
+            font-size: 20px;
+            font-weight: normal;
+            padding: 20px;
+            padding-top: 25px;
+            padding-bottom: 15px;
+            margin: -20px -20px 0px -20px;
+            background-color: #24305e;
+            background-image: #24305e;
+        }
+
+        #pricing-table #most-popular h3 {
+
+            background-color: #ddd;
+            margin-top: -30px;
+            padding-top: 30px;
+            border-radius: 5px 5px 0 0; 		
+        }
+
+        #pricing-table .plan:nth-child(1) h3 {
+
+            border-radius: 5px 5px 0 0;        
+        }	
+
+        #pricing-table ul {
+            /*	margin: 20px 0 0 0;*/
+            padding: 0;
+            list-style: none;
+        }
+
+        #pricing-table li {
+            border-top: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+        .button_edit{
+            box-shadow: 2px 2px 0px 0px #f76d6d;
+            border: 2px solid #f76d6d;
+            transition: transform .2s, box-shadow .2s;
+            transform: translate(-2px,-2px);
+            position: absolute;
+            top: 3%;
+            left: 90%;
+            padding: 3px;
+            font-size: 15px;
+
+        }
+        .button_select{
+            margin-top: 10px;
+        }
         .container {
             max-width: 1000px;
             margin-left: auto;
@@ -53,103 +150,20 @@
             padding-left: 10px;
             padding-right: 10px;
         }
-
-        h2 {
-            font-size: 26px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .responsive-table li {
-            table-layout: fixed;
-            border-radius: 3px;
-            padding: 25px 30px;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-
-        }
-        .responsive-table .table-header {
-            table-layout: fixed;
-            background-color: #24305e;
-            font-size: 17px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            color: #ffffff;
-
-        }
-        .responsive-table .table-row {
-            table-layout: fixed;
-            border-left: 1px solid #ddd;
-            background-color: #ffffff;
-            box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.23);
-
-        }
-        .responsive-table .col-1 {
-            table-layout: fixed;
-            text-align: center;
-            flex-basis: 15%;
-            line-height: 20px;
-
-        }
-        .responsive-table .col-2 {
-            text-align: center;
-            flex-basis: 35%;
-            line-height: 20px;
-            border-left: 1px solid #ddd;
-
-        }
-        .responsive-table .col-3 {
-            flex-basis: 15%;
-            line-height: 20px;
-            border-left: 1px solid #ddd;
-            text-align: center;
-        }
-        .responsive-table .col-4 {
-            flex-basis: 10%;
-            line-height: 20px;
-            border-left: 1px solid #ddd;
-            text-align: center;
-        }
-        .responsive-table .col-5 {
-            flex-basis: 15%;
-            line-height: 20px;
-            border-left: 1px solid #ddd;
-            text-align: center;;
-        }
-        .responsive-table .col-6 {
-            flex-basis: 10%;
-            line-height: 20px;
-            border-left: 1px solid #ddd;
-            text-align: center;
-        }
-        @media all and (max-width: 767px) {
-            .responsive-table .table-header {
-                display: none;
-            }
-            .responsive-table li {
-                display: block;
-            }
-            .responsive-table .col {
-                flex-basis: 100%;
-            }
-            .responsive-table .col {
-                display: flex;
-                padding: 10px 0;
-            }
-            .responsive-table .col:before {
-                color: #6C7A89;
-                padding-right: 10px;
-                content: attr(data-label);
-                flex-basis: 50%;
-                text-align: right;
-            }
-        }
-        .button_select{
-            width: 60px;
-            padding-left: 5px;
-            padding-right: 5px;
-            font-size: 0.9em;
+        input {
+            font-family: 'Mitr', sans-serif;
+            outline: none;
+            margin-top: 10px;
+            background: transparent;
+            color: #24305e;
+            border: 2px solid #24305e;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            margin-bottom: 30px;
+            font-size: .9em;
+            width: 80%;
+            height: 2.5em;
         }
 
     </style>
@@ -158,96 +172,128 @@
 <body>
 
     <% ArrayList list_order = (ArrayList) getServletContext().getAttribute("list_order"); %>
-
-    <div class="createorder">
-            <div class="container">
-                <div class = "TableEmploy">            
-                    <div class = "header">
-
-                        <center>
-                            <h1>รายการที่ถูกจ้าง</h1>
-                        </center>
-
-                        <!-- Create Table -->
-                        <ul class="responsive-table">
-                            <li class="table-header">
-                                <div class="col col-1">ผู้จ้าง</div>
-                                <div class="col col-2">รายละเอียด</div>
-                                <div class="col col-6">รับ/ปฏิเสธ</div>
-                                <div class="col col-6">งานส่งมอบ</div>
-                            </li>
+<center><h1>รายการที่ถูกจ้าง</h1></center>
 
 
-                            <!--แสดงรายละเอียดข้อมูลการจ้าง-->
-                            <% for (int i = 0; i < list_order.size(); i++) {
-                                    model.OrderTranslator item = (model.OrderTranslator) list_order.get(i);
-                                    int id_order = item.getId_order();
-                                    String employer = item.getEmployer();
-                                    String desc = item.getDesc();
-                                    String file = item.getFile_order();
-                                    int num_page = item.getPage();
-                                    Date date = item.getDate();
-                                    String status = item.getStatus();
-                                    String type = item.getType();
-                                    float price = item.getPrice(); %>
+<!--แสดงรายละเอียดข้อมูลการจ้าง-->
+<% for (int i = 0; i < list_order.size(); i++) {
+        model.OrderTranslator item = (model.OrderTranslator) list_order.get(i);
+        int id_order = item.getId_order();
+        String employer = item.getEmployer();
+        String desc = item.getDesc();
+        String file = item.getFile_order();
+        int num_page = item.getPage();
+        Date date = item.getDate();
+        String status = item.getStatus();
+        String type = item.getType();
+        float price = item.getPrice();%>
 
-                            <li class="table-row">
-                                <div class="col col-1" data-label ="ผู้จ้าง"><%= employer%></div>
-                                <div class="col col-2" data-label ="รายละเอียด">
-                                    คำอธิบาย : <%= desc %><br>
-                                    แปล : <%= type %><br>
-                                    จำนวนหน้า : <%= num_page  %><br>
-                                    ราคา : <%= price %><br>
-                                    วันส่งงาน : <%= date %><br>
-                                    <form action="View_Filecreate.jsp" method="POST">
-                                        <button name="view" value=<%= id_order %>>ดูไฟล์</button>
-                                    </form>
-                                </div>
-                                <div class="col col-6" data-label ="รับ/ปฏิเสธ">
-                                    <% if (status.equals("ยอมรับ")) { %>
-                                    <center><h3 style="padding-top: 10px;">ยอมรับ</h3></center>
-                                        <% } else if (status.equals("ปฎิเสธ")) { %> 
-                                    <center><h3 style="padding-top: 10px;">ปฎิเสธ</h3></center>
-                                        <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
-                                    <center><h3 style="padding-top: 10px;">รายการนี้ถูกจ้างเเล้ว</h3></center>
-                                        <% } else {%>
-                                    <div class="bottonOrder" style="margin-top: 0px;">
-                                        <center>
-                                            <br>
-                                            <% int id_translator = (Integer) session.getServletContext().getAttribute("id_translator"); %>
-                                            <%-- int id_translator = 2; --%>
-                                            <form action="AcceptOrderServlet" method="POST">
-                                                <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_YES>YES</button>
-                                                <button class="button_select" name="select" value=<%= id_order%>_<%= id_translator%>_NO>NO</button>
-                                            </form>
-                                        </center>
-                                    </div>
-                                    <% } %>  
-                                </div>
-                                <div class="col col-6" data-label ="งานส่งมอบ">
-                                    <%  if(status.equals("ยอมรับ") && file!=null){ 
-                                            String[] file_order = file.split("/"); %>
-                                            <%= file_order[1] %><br>
-                                            <input type="file" name="file_order" value="" />
-                                            <form action="View_Fileorder.jsp" method="POST">
-                                                <button name="view"  style="float: right; margin:0;" value=<%= id_order %>>ดูไฟล์</button>
-                                            </form>
-                                            <form action="" method="POST">
-                                                <button name="send"  style="float: right; margin:0;" value=<%= id_order %>>บันทึก</button>
-                                            </form>
-                                    <% } else if(status.equals("ยอมรับ") && file==null) {%>
-                                    <input type="file" name="file_order" value="" />
-                                    <form action="" method="POST">
-                                        <button name="send"  style="float: right; margin:0;" value=<%= id_order %>>บันทึก</button>
-                                    </form>
-                                <% } %>
-                                </div>
-                            </li>
-                            <% }%>
-                        </ul>
-                    </div>
-                </div>
+<div class="container">
+    <div class="row">
+        <div id="pricing-table">
+            <div class="plan">
+                <h3>ผู้จ้าง  <%= employer%></h3>
+                <ul>
+                    <li><b>รายละเอียด&nbsp;:</b>&nbsp; <%= desc%></li>
+                    <li><b>แปล&nbsp;:</b>&nbsp;<%= type%></li>
+                    <li><b>จำนวนหน้า&nbsp;:</b>&nbsp; <%= num_page%></li>
+                    <li><b>ราคา&nbsp;:</b>&nbsp;<%= price%> </li>
+                    <form action="View_Filecreate.jsp" method="POST">
+                        <li><b>ไฟล์งานต้นฉบับ&nbsp;:</b>&nbsp;<button name="view" style="
+                                                                      margin-left: 30px;
+                                                                      padding-top: 5px;
+                                                                      padding-left: 5px;
+                                                                      padding-bottom: 5px;
+                                                                      padding-right: 5px;
+                                                                      margin-bottom: 0px;
+                                                                      font-size: 14px;
+                                                                      "value=<%= id_order%>>เปิดไฟล์</button>
+                        </li>
+                    </form>
+                    <li><b>สถานะรับงาน&nbsp;:</b>&nbsp;
+                        <% if (status.equals("ยอมรับ")) { %>
+                        ยอมรับ
+                        <% } else if (status.equals("ปฎิเสธ")) { %> 
+                        ปฎิเสธ
+                        <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
+                        รายการนี้ถูกจ้างเเล้ว
+                        <% } else {%>
+                        <% int id_translator = (Integer) session.getServletContext().getAttribute("id_translator");%>
+                        <%-- int id_translator = 2; --%>
+                        <form action="AcceptOrderServlet" method="POST">
+                            <button class="button_select" name="select" style="
+                                    margin-left: 30px;
+                                    padding-top: 5px;
+                                    padding-left: 5px;
+                                    padding-bottom: 5px;
+                                    padding-right: 5px;
+                                    margin-bottom: 0px;
+                                    font-size: 14px;
+                                    "value=<%= id_order%>_<%= id_translator%>_YES>รับ</button>
+                            <button class="button_select" name="select" style="
+                                    margin-left: 30px;
+                                    padding-top: 5px;
+                                    padding-left: 5px;
+                                    padding-bottom: 5px;
+                                    padding-right: 5px;
+                                    margin-bottom: 0px;
+                                    font-size: 14px;
+                                    "value=<%= id_order%>_<%= id_translator%>_NO>ปฎิเสธ</button>
+                        </form>
+                        <% } %>  
+                    </li>
+                    <li><b>งานส่งมอบ&nbsp;:</b>&nbsp;<br>
+                        <%  if (status.equals("ยอมรับ") && file != null) {
+                                String[] file_order = file.split("/");%>
+                        <%= file_order[1]%><br>
+
+                        <form action="View_Fileorder.jsp" method="POST">
+                            <button name="view"  style="
+                                    margin-left: 30px;
+                                    padding-top: 5px;
+                                    padding-left: 5px;
+                                    padding-bottom: 5px;
+                                    padding-right: 5px;
+                                    margin-bottom: 0px;
+                                    font-size: 18px;
+                                    " value=<%= id_order%>>เปิดไฟล์</button>
+                        </form>
+
+                        <form action="SendOrderServlet"  enctype='multipart/form-data' method="POST">
+                            <input type="file" name="file_order" value="" style="margin-top: 10px;"/>
+                            <button name="send" style="
+                                    margin-left: 10px;
+                                    padding-top: 10px;
+                                    padding-left: 10px;
+                                    padding-bottom: 10px;
+                                    padding-right: 10px;
+                                    margin-bottom: 0px;
+                                    font-size: 18px;
+                                    "value=<%= id_order%>>ส่งงาน</button>
+                        </form>
+
+                        <% } else if (status.equals("ยอมรับ") && file == null) {%>
+
+
+                        <form action="" enctype='multipart/form-data' method="POST">
+                            <input type="file" name="file_order" value="" />
+                            <button name="send" style="
+                                    margin-left: 10px;
+                                    padding-top: 10px;
+                                    padding-left: 10px;
+                                    padding-bottom: 10px;
+                                    padding-right: 10px;
+                                    margin-bottom: 0px;
+                                    font-size: 18px;
+                                    "value=""<%= id_order%>>ส่งงาน</button>
+                        </form>
+                        <% } %>
+                    </li>
+                    <% }%>
+                </ul>
             </div>
+        </div>
     </div>
+</div>
 </body>
 </html>

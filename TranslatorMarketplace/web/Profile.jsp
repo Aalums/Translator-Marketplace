@@ -67,12 +67,7 @@
             </div>
         </center>
     </div>
-    <style>
-        #name {
-            color: #000000;
-        }
-    </style>
-
+    
 </head>
 
 <body>

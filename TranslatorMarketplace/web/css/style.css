@@ -463,7 +463,7 @@ button:active {
     display: inline;
     border-right: 2px dashed #24305E;
     background: #FFFFFF;
-    color: #000000;
+    color: black;
     margin-top: 50px;
     opacity: 0;
     text-align: center;
@@ -471,7 +471,7 @@ button:active {
 
 }
 .profile-card header h1 {
-    color: #FFFFFF;
+    color: black;
 }
 .profile-card header a {
     display: inline-block;
@@ -507,7 +507,7 @@ button:active {
     display: inline-block;
     padding: 50px 20px 30px 20px;
     background: #FFFFFF;
-    color: #333333;
+    color: black;
     margin-top: 50px;
     text-align: center;
     opacity: 0;
@@ -515,6 +515,8 @@ button:active {
 }
 
 
+
+/*------------------------------------*/
 @media screen and (min-aspect-ratio: 4/3) {
     body {
         background-size: 100% auto;

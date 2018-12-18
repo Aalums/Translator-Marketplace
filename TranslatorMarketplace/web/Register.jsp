@@ -57,7 +57,7 @@
 
     <%
         //รับค่าที่เคยกรอกมาแสดง
-        String id_customer = (String) session.getServletContext().getAttribute("regis_id_customer");
+        String regis_id_customer = (String) session.getServletContext().getAttribute("regis_id_customer");
         String password = (String) session.getServletContext().getAttribute("regis_password");
         String name_customer = (String) session.getServletContext().getAttribute("regis_name_customer");
         String email = (String) session.getServletContext().getAttribute("regis_email");

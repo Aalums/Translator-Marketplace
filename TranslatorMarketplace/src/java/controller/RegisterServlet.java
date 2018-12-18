@@ -81,7 +81,7 @@ public class RegisterServlet extends HttpServlet {
                 pstmt_insert.executeUpdate();
                 pstmt_insert.close();
 
-                response.sendRedirect("Login.html");
+                response.sendRedirect("Login.jsp");
             }
 
             //เช็ค

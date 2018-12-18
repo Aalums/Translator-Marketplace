@@ -182,7 +182,7 @@
                 "SELECT * FROM customers"
                 + " JOIN create_order USING (id_customer) "
                 + " WHERE id_customer = ?"
-                + " GROUP BY due_date;"
+                + " GROUP BY due_date DESC;"
         );
         create_order.setString(1, id_customer);
 

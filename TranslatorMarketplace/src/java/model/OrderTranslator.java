@@ -20,20 +20,20 @@ public class OrderTranslator {
     int page;
     float price;
     Date date;
-    String file_name;
+    String file_order;
     
     String status;
     
-    public OrderTranslator(int id_order, String employer, String desc, String file_name, int page, Date date, String status, String type, float price) {
+    public OrderTranslator(int id_order, String employer, String desc, int page, Date date, String status, String type, float price, String file_order) {
         this.id_order = id_order;
         this.employer = employer;
         this.desc = desc;
-        this.file_name = file_name;
         this.page = page;
         this.date = date;
         this.status = status;
         this.type = type;
         this.price = price;
+        this.file_order = file_order;
     }
     
     public int getId_order() {
@@ -60,12 +60,12 @@ public class OrderTranslator {
         this.desc = desc;
     }
 
-    public String getFile_name() {
-        return file_name;
+    public String getFile_order() {
+        return file_order;
     }
 
-    public void setFile_name(String file_name) {
-        this.file_name = file_name;
+    public void setFile_order(String file_order) {
+        this.file_order = file_order;
     }
 
     public int getPage() {

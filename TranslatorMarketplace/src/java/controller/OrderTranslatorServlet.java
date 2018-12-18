@@ -69,12 +69,12 @@ public class OrderTranslatorServlet extends HttpServlet {
                 int page = rs_order.getInt("num_page");
                 float price = rs_order.getInt("price");
                 Date date = rs_order.getDate("due_date");
-                String file_name = rs_order.getString("file_create");
+                String file_order = rs_order.getString("file_order");
                 
                 String status = rs_order.getString("status");
 
                 out.print(" name_hire = "+employer+" Date = "+date);
-                OrderTranslator item = new OrderTranslator(id_order, employer, desc, file_name, page, date, status, type, price);
+                OrderTranslator item = new OrderTranslator(id_order, employer, desc, page, date, status, type, price, file_order);
                 list_order.add(item);
             }
                         

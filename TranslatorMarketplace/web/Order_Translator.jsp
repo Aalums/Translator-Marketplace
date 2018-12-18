@@ -183,7 +183,7 @@
                                     int id_order = item.getId_order();
                                     String employer = item.getEmployer();
                                     String desc = item.getDesc();
-                                    String[] file = item.getFile_name().split("/");
+                                    String file = item.getFile_order();
                                     int num_page = item.getPage();
                                     Date date = item.getDate();
                                     String status = item.getStatus();
@@ -224,15 +224,16 @@
                                     <% } %>  
                                 </div>
                                 <div class="col col-6" data-label ="งานส่งมอบ">
-                                    <%  if(status.equals("ยอมรับ") && file!=null){ %>
-                                        <%= file[1] %><br>
-                                        <input type="file" name="file_order" value="" />
-                                        <form action="View_Fileorder.jsp" method="POST">
-                                            <button name="view"  style="float: right; margin:0;" value=<%= id_order %>>ดูไฟล์</button>
-                                        </form>
-                                        <form action="" method="POST">
-                                            <button name="send"  style="float: right; margin:0;" value=<%= id_order %>>บันทึก</button>
-                                        </form>
+                                    <%  if(status.equals("ยอมรับ") && file!=null){ 
+                                            String[] file_order = file.split("/"); %>
+                                            <%= file_order[1] %><br>
+                                            <input type="file" name="file_order" value="" />
+                                            <form action="View_Fileorder.jsp" method="POST">
+                                                <button name="view"  style="float: right; margin:0;" value=<%= id_order %>>ดูไฟล์</button>
+                                            </form>
+                                            <form action="" method="POST">
+                                                <button name="send"  style="float: right; margin:0;" value=<%= id_order %>>บันทึก</button>
+                                            </form>
                                     <% } else if(status.equals("ยอมรับ") && file==null) {%>
                                     <input type="file" name="file_order" value="" />
                                     <form action="" method="POST">

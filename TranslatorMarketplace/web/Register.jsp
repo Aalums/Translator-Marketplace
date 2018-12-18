@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Register
-    Created on : Nov 5, 2018, 8:43:30 PM
-    Author     : porpiraya
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -123,7 +117,7 @@
 
                                 <tr>
                                     <td>
-                                        <h3>อีเมล</h3>
+                                        <h3>อีเมล </h3> <br><font color="red" size="0.3px"> **กรุณาใช้ @gmail.com เท่านั้น!!! </font>
                                         <input type="email" pattern=".+@gmail.com" name="email" value="<%= email%>" />
                                     </td>
                                 </tr>

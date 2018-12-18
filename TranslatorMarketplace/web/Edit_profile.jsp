@@ -230,7 +230,7 @@
 
                                         <tr>
                                             <td>
-                                                <h3>อีเมล</h3>
+                                                <h3>อีเมล</h3> <br><font color="red" size="0.3px"> **กรุณาใช้ @gmail.com เท่านั้น!!! </font>
                                                 <input type="email" pattern=".+@gmail.com" name="email" value="<%= rs_profile.getString("email")%>" />
                                             </td>
                                         </tr>

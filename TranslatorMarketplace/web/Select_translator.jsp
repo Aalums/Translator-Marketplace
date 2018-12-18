@@ -4,8 +4,9 @@
      Author     : porpiraya
 --%>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -158,62 +159,64 @@
             }
 
         </style>
-</head>
+    </head>
 
-<body>
-    <a href='Order_customer.jsp' class="button6">&#8249;</a>
+    <body>
+        <a href='Order_customer.jsp' class="button6">&#8249;</a>
 
-    <!-- id cus จากตอน login -->
-    <% String id_customer = (String) session.getServletContext().getAttribute("id_customer");%>
+        <!-- id cus จากตอน login -->
+        <%
+            String id_customer = (String) session.getServletContext().getAttribute("id_customer");
 
-    <!-- Query ข้อมูลนักแปล -->
-    <sql:setDataSource var="data" 
-                       driver="com.mysql.jdbc.Driver" 
-                       user="root" 
-                       password="root" 
-                       url="jdbc:mysql://localhost:3306/test"/>
+            Connection conn = (Connection) getServletContext().getAttribute("connection");
+            PreparedStatement translator = conn.prepareStatement(
+                    "SELECT * FROM translators"
+                    + " JOIN customers USING (id_customer) "
+                    + " WHERE id_customer not in (?);"
+            );
+            translator.setString(1, id_customer);
 
-    <sql:query dataSource="${data}" var="result">
-        SELECT *
-        FROM translators
-        JOIN customers
-        USING (id_customer)
-        WHERE id_customer not in ("<%=id_customer%>");
-    </sql:query>
+            ResultSet rs_translator = translator.executeQuery();
+        %>
 
-    <!-- Create Header -->
-    <br>
-    <br>     
-    <div class="header">
+        <!-- Create Header -->
+        <br>
+        <br>     
+        <div class="header">
 
-        <center>
-            <h1>นักแปล</h1>
-        </center>
-    </div>
+            <center>
+                <h1>นักแปล</h1>
+            </center>
+        </div>
 
-    <!-- Create Column-->
-    <div class="container">
+        <!-- Create Column-->
+        <div class="container">
 
-        <!--ดึงข้อมูลจากตารางมาแสดง-->
-        <c:forEach var="row" items="${result.rows}">
+            <!--ดึงข้อมูลจากตารางมาแสดง-->
+            <% while (rs_translator.next()) { %>
 
             <figure class="snip1336">
                 <!--รูปบนโปรไฟล์-->
                 <img src="bgprofile.jpg" alt="sample87" height="170" width="300" />
                 <figcaption>
                     <!--รูปโปรไฟล์-->
+
+                    <% if (rs_translator.getString("picture") == null) {%>
                     <img src="profile.png" class="profile" />
-                    <h1>${row.name_customer}</h1>
+                    <% } else {%>
+                    <img src="<%= rs_translator.getString("picture")%>" class="profile" />
+                    <% }%>
+                    <h1><%= rs_translator.getString("name_customer")%></h1>
                     <h2>
-                        <span>SKILL : ${row.type_skill}</span>
-                        <span>LANGUAGE : ${row.level_skill}</span>
+                        <span>SKILL : <%= rs_translator.getString("type_skill")%></span>
+                        <span>LANGUAGE : <%= rs_translator.getString("level_skill")%></span>
                     </h2>
-                    <p>${row.profile}</p>
+                    <p><%= rs_translator.getString("profile")%></p>
                 </figcaption>
                 <select_employ>
                     <form action="Confirm_select_tran.jsp" method="POST">
                         <center>
-                            <button id="select_employ" name="select_employ" value="${row.id_translator}">
+                            <button id="select_employ" name="select_employ" value="<%= rs_translator.getString("id_translator")%>">
                                 <div class = "button-text">จ้าง</div>
                             </button>
                         </center>
@@ -221,9 +224,9 @@
                 </select_employ>
             </figure>
 
-        </c:forEach>
+            <% }%>
 
-    </div>
+        </div>
 
-</body>
+    </body>
 </html>

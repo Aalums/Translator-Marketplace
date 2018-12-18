@@ -48,7 +48,7 @@
                 box-shadow: 8px 8px 0px 0px #003489;
                 margin-bottom: 100px;
             }
-            
+
             /* Base for label styling */
             [type="checkbox"]:not(:checked),
             [type="checkbox"]:checked {
@@ -62,7 +62,7 @@
                 cursor: pointer;
                 line-height: 25pt;
             }
-            
+
             /* checkbox aspect */
             [type="checkbox"]:not(:checked) + label:before,
             [type="checkbox"]:checked + label:before {
@@ -75,7 +75,7 @@
                 border-radius: 4px;
                 box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
             }
-            
+
             /* checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
             [type="checkbox"]:not(:checked) + label:after,
             [type="checkbox"]:checked + label:after {
@@ -88,7 +88,7 @@
                 transition: all .2s;
                 font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
             }
-            
+
             /* checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
             [type="checkbox"]:not(:checked) + label:after {
                 opacity: 0;
@@ -98,7 +98,7 @@
                 opacity: 1;
                 transform: scale(1);
             }
-            
+
             /* disabled checkbox */
             [type="checkbox"]:disabled:not(:checked) + label:before,
             [type="checkbox"]:disabled:checked + label:before {
@@ -112,13 +112,13 @@
             [type="checkbox"]:disabled + label {
                 color: #aaa;
             }
-            
+
             /* accessibility */
             [type="checkbox"]:checked:focus + label:before,
             [type="checkbox"]:not(:checked):focus + label:before {
                 border: 2px dotted blue;
             }
-            
+
             /* hover style just for information */
             label:hover:before {
                 border: 2px solid #4778d9!important;
@@ -146,7 +146,7 @@
                 <ul>
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                     <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
+                    <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
                     <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
@@ -155,12 +155,38 @@
     </div>
 </head>
 <body>
+
+    <script type="text/javascript">
+        function isEmpty(form)
+        {
+            var a = document.forms["Form"]["describe"].value;
+            if (a == null || a == "") {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return false;
+            }
+            if (form.translate[0].checked==false && 
+                    form.translate[1].checked==false && 
+                    form.translate[2].checked==false) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return false;
+            }
+            if (form.box[0].checked==false && 
+                    form.box[1].checked==false &&
+                    form.box[2].checked==false &&
+                    form.box[3].checked==false &&
+                    form.box[4].checked==false) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return false;
+            }
+        }
+    </script>
+
     <!-- Create Container + Logo -->
     <div class="content-wrapper" style="padding-bottom: 699px;">
         <div class="container">
             <div class="login">
 
-                <form action="RegisterTranslatorServlet" method="POST">
+                <form action="RegisterTranslatorServlet" method="POST" name="Form" onsubmit="return isEmpty(this)">
 
                     <div class = "form">
                         <div class = "header">
@@ -169,7 +195,7 @@
 
                         <div class = "sign-in-form">
                             <h3>DESCRIPTION</h3>
-                            <textarea name="describe" rows="10" cols="50">
+                            <textarea name="describe" rows="10" cols="50" value="">
                             </textarea><br><br><br><br>
 
                             <h3>LANGUAGE LEVEL</h3>

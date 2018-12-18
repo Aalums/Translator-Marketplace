@@ -58,10 +58,34 @@
             var d = document.forms["Form"]["id_customer"].value;
             var e = document.forms["Form"]["password"].value;
             var f = document.forms["Form"]["picture"].value;
-            if (a == null || a == "", b == null || b == "", c == null || c == "",
-                    d == null || d == "", e == null || e == "", f == null || f == "")
-            {
+            if (a == null || a == ""){
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                //document.forms["Form"]["name_customer"].style.backgroundColor = "red";
+                return false;
+            }
+            if (b == null || b == ""){
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                //document.forms["Form"]["email"].focus();
+                return false;
+            }
+            if (c == null || c == ""){
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                //document.forms["Form"]["phone"].focus();
+                return false;
+            }
+            if (d == null || d == ""){
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                //document.forms["Form"]["id_customer"].focus();
+                return false;
+            }
+            if (e == null || e == ""){
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                //document.forms["Form"]["password"].focus();
+                return false;
+            }
+            if (f == null || f == ""){
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                //document.forms["Form"]["picture"].focus();
                 return false;
             }
         }

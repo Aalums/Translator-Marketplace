@@ -254,18 +254,6 @@
                                                 <input type="password" name="password" value="<%= rs_profile.getString("password")%>" />
                                             </td>
                                         </tr>
-
-                                        <tr>
-                                            <td>
-                                        <center>
-                                            <button type="submit">
-                                                <div class = "button-text">
-                                                    บันทึก
-                                                </div>
-                                            </button>
-                                        </center>
-                                        </td>
-                                        </tr>
                                     </table>
                                 </div>
 
@@ -299,7 +287,7 @@
 
                             <div class = "sign-in-form">
                                 <h3>DESCRIPTION</h3>
-                                <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile") %>
+                                <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile")%>
                                 </textarea><br><br><br><br>
 
                                 <h3>LANGUAGE LEVEL</h3>
@@ -316,14 +304,6 @@
                                     <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
                                 </form>
                                 <br><br><br><br><br>
-
-                                <center>
-                                    <button type="submit">
-                                        <div class = "button-text">
-                                            บันทึก
-                                        </div>
-                                    </button>
-                                </center>
                             </div>
                         </div>
                     </div>
@@ -332,6 +312,14 @@
                 <% }
                     }
                 %>
+
+                <center>
+                    <button type="submit">
+                        <div class = "button-text">
+                            บันทึก
+                        </div>
+                    </button>
+                </center>
 
             </div>
         </div>

@@ -45,6 +45,10 @@
                     <%
                         Connection conn = (Connection) getServletContext().getAttribute("connection");
 
+                        //column
+                        int column = 12;
+                        boolean check = false;
+
                         //เช็คว่าเป็นนักแปล?
                         PreparedStatement chk_translator = conn.prepareStatement(
                                 "SELECT * FROM customers"
@@ -55,6 +59,8 @@
 
                         ResultSet rs_chk_translator = chk_translator.executeQuery();
                         if (rs_chk_translator.next()) {
+                            column = 6;
+                            check = true;
                             session.getServletContext().setAttribute("id_translator", rs_chk_translator.getInt("id_translator"));
                     %>
                     <li><a href='OrderTranslatorServlet'>ออเดอร์นักแปล</a></li>
@@ -173,7 +179,7 @@
 
     <%
         PreparedStatement profile = conn.prepareStatement(
-                "SELECT * FROM customer"
+                "SELECT * FROM customers"
                 + " WHERE id_customer = ?;"
         );
         profile.setString(1, id_customer);
@@ -186,7 +192,7 @@
     <div class="row">
         <div class="content-wrapper" style="padding-bottom: 699px;">
             <div class="container">
-                <div class="col-sm-6">
+                <div class="col-sm-<%= column%>">
                     <div class="login">
                         <div class = "form">
                             <div class = "header">
@@ -196,13 +202,19 @@
                             <form name="Form" action="RegisterServlet" method="POST" enctype="multipart/form-data">
 
                                 <% while (rs_profile.next()) {%>
-                                
+
                                 <div class = "sign-in-form">
                                     <table style="width:100%">
                                         <tr>
                                             <td>
                                                 <div class="text-center">
+                                                    <%
+                                                        if (rs_profile.getString("picture") == null) { %>
                                                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" max-width: 50%;">
+                                                    <% } else {
+                                                    %>
+                                                    <img src="<%= rs_profile.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" max-width: 50%;">
+                                                    <% }%>
                                                     <h6>เลือกภาพโปรไฟล์</h6>
                                                     <input type="file" class="text-center center-block file-upload" name="picture" >
                                                 </div>
@@ -212,34 +224,34 @@
                                         <tr>
                                             <td>
                                                 <h3>ชื่อ-นามสกุล</h3>
-                                                <input type="text" name="name_customer" value="<%= rs_profile.getString("name_customer") %>" />
+                                                <input type="text" name="name_customer" value="<%= rs_profile.getString("name_customer")%>" />
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
                                                 <h3>อีเมล</h3>
-                                                <input type="email" pattern=".+@gmail.com" name="email" value="<%= rs_profile.getString("email") %>" />
+                                                <input type="email" pattern=".+@gmail.com" name="email" value="<%= rs_profile.getString("email")%>" />
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
                                                 <h3>เบอร์โทรศัพท์</h3>
-                                                <input type="text" name="phone" value="<%= rs_profile.getString("phone") %>" />
+                                                <input type="text" name="phone" value="<%= rs_profile.getString("phone")%>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <h3>USERNAME</h3>
-                                                <input type="text" name="id_customer" value="<%= rs_profile.getString("id_customer") %>" />
+                                                <input type="text" name="id_customer" value="<%= rs_profile.getString("id_customer")%>" />
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
                                                 <h3>PASSWORD</h3>
-                                                <input type="password" name="password" value="<%= rs_profile.getString("password") %>" />
+                                                <input type="password" name="password" value="<%= rs_profile.getString("password")%>" />
                                             </td>
                                         </tr>
 
@@ -258,13 +270,27 @@
                                 </div>
 
                                 <% }%>
-                                
+
                             </form>  
-                                
+
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+
+                <%
+                    if (check) {
+                        PreparedStatement translator = conn.prepareStatement(
+                                "SELECT * FROM customers"
+                                + " JOIN translators USING (id_customer) "
+                                + " WHERE id_customer = ?;"
+                        );
+                        translator.setString(1, id_customer);
+
+                        ResultSet rs_translator = translator.executeQuery();
+                        if (rs_translator.next()) {
+                %>
+
+                <div class="col-sm-<%= column%>">
                     <div class="login">
                         <div class = "form">
                             <div class = "header">
@@ -273,7 +299,7 @@
 
                             <div class = "sign-in-form">
                                 <h3>DESCRIPTION</h3>
-                                <textarea name="describe" rows="10" cols="50">
+                                <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile") %>
                                 </textarea><br><br><br><br>
 
                                 <h3>LANGUAGE LEVEL</h3>
@@ -302,6 +328,11 @@
                         </div>
                     </div>
                 </div>
+
+                <% }
+                    }
+                %>
+
             </div>
         </div>
     </div>

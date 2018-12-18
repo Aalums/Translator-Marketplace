@@ -48,6 +48,7 @@
                 box-shadow: 8px 8px 0px 0px #003489;
                 margin-bottom: 100px;
             }
+            
             /* Base for label styling */
             [type="checkbox"]:not(:checked),
             [type="checkbox"]:checked {
@@ -61,7 +62,8 @@
                 cursor: pointer;
                 line-height: 25pt;
             }
-/*             checkbox aspect */
+            
+            /* checkbox aspect */
             [type="checkbox"]:not(:checked) + label:before,
             [type="checkbox"]:checked + label:before {
                 content: '';
@@ -73,7 +75,8 @@
                 border-radius: 4px;
                 box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
             }
-/*             checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
+            
+            /* checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
             [type="checkbox"]:not(:checked) + label:after,
             [type="checkbox"]:checked + label:after {
                 content: '\2713\0020';
@@ -85,7 +88,8 @@
                 transition: all .2s;
                 font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
             }
-/*             checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
+            
+            /* checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
             [type="checkbox"]:not(:checked) + label:after {
                 opacity: 0;
                 transform: scale(0);
@@ -94,7 +98,8 @@
                 opacity: 1;
                 transform: scale(1);
             }
-/*            disabled checkbox */
+            
+            /* disabled checkbox */
             [type="checkbox"]:disabled:not(:checked) + label:before,
             [type="checkbox"]:disabled:checked + label:before {
                 box-shadow: none;
@@ -107,11 +112,13 @@
             [type="checkbox"]:disabled + label {
                 color: #aaa;
             }
-/*            accessibility */
+            
+            /* accessibility */
             [type="checkbox"]:checked:focus + label:before,
             [type="checkbox"]:not(:checked):focus + label:before {
                 border: 2px dotted blue;
             }
+            
             /* hover style just for information */
             label:hover:before {
                 border: 2px solid #4778d9!important;

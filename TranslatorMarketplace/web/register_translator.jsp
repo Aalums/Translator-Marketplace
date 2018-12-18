@@ -117,13 +117,19 @@
                 border: 2px solid #4778d9!important;
             }
         </style>
+    
+        <%
+            String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+        %>
+        
     <div class="topnav">
         <div class="topnav-right">
-            <a href="index.html">หน้าหลัก</a>
-            <a href="Register.jsp">สมัครสมาชิก</a>
-            <a href="Login.html">เข้าสู่ระบบ</a>
+            <a href="Homepage.jsp">หน้าหลัก</a>
+            <a href="Profile.jsp"> <%= id_customer%> </a>
+            <a href="LogoutServlet">ออกจากระบบ</a>
         </div>
     </div>
+        
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">

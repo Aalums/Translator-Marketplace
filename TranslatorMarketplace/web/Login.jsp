@@ -23,7 +23,7 @@
 
     <div class="topnav">
         <div class="topnav-right">
-            <a href="index.html">หน้าหลัก</a>
+            <a href="Homepage.jsp">หน้าหลัก</a>
             <a href="Register.jsp">สมัครสมาชิก</a>
             <a href="Login.jsp">เข้าสู่ระบบ</a>
         </div>
@@ -33,13 +33,15 @@
 
     <div class="topnav">
         <div class="topnav-right">
-            <a href="index.html">หน้าหลัก</a>
+            <a href="Homepage.jsp">หน้าหลัก</a>
+            <a href="Profile.jsp"> <%= id_customer %> </a>
             <a href="LogoutServlet">ออกจากระบบ</a>
         </div>
     </div>
 
     <% }
     %>
+    
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">

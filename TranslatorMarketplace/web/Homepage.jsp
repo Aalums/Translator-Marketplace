@@ -21,7 +21,7 @@
             var flakes = 100; // number of flakes
             var colour = "#ffcccc"; // colour of flakes
             var slush = 10; // set to '0' for no slush or otherwise set to height at which slush melts
-           
+
             var flks = new Array();
             var flkx = new Array();
             var flky = new Array();
@@ -144,121 +144,148 @@
             }
 // ]]>
         </script>
-        
-        
-
-    </head>
-
-    <body>
 
 
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div class="header-content-inner">
-                        <h1>Welcome To <br> Translator Market Place</h1>
-                        <p>เว็บไซต์ที่เป็นเครื่องมือช่วยคุณในการแปลเอกสาร การันตีคุณภาพผลงานจากนักแปลมือดี</p>
-                         
-                        <a href="Login.html" class="gradient-button gradient-button-1">Log in</a><br />
-                        <a href="Register.jsp" class="gradient-button gradient-button-2">Sign in</a><br />
-                        
-                    </div>
+        <!-- สามปุ่มบนขวา -->
+        <%
+            String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+            if (id_customer == null) {
+                //ยังไม่เข้าสู่ระบบ
+        %>
+
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="Homepage.jsp">หน้าหลัก</a>
+            <a href="Register.jsp">สมัครสมาชิก</a>
+            <a href="Login.jsp">เข้าสู่ระบบ</a>
+        </div>
+    </div>
+
+    <% } else { %>
+
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="Homepage.jsp">หน้าหลัก</a>
+            <a href="Profile.jsp"> <%= id_customer%> </a>
+            <a href="LogoutServlet">ออกจากระบบ</a>
+        </div>
+    </div>
+
+    <% }
+    %>
+
+</head>
+
+<body>
+
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-content-inner">
+                    <h1>Welcome To <br> Translator Market Place</h1>
+                    <p>เว็บไซต์ที่เป็นเครื่องมือช่วยคุณในการแปลเอกสาร การันตีคุณภาพผลงานจากนักแปลมือดี</p>
+
+                    <a href="Login.html" class="gradient-button gradient-button-1">Log in</a><br />
+                    <a href="Register.jsp" class="gradient-button gradient-button-2">Sign in</a><br />
+
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <div style ="background-color:white"width:600px:high:300px:">
-
-
-             <br>
-            <br>
-            <center> <h2>About This Site </h2> </center>
-            <center>________________________________________________</center>
+    <div style ="background-color:white"width:600px:high:300px:">
 
 
-            <div class="containers">
-                <div class="box first">
+         <br>
+        <br>
+        <center> <h2>About This Site </h2> </center>
+        <center>________________________________________________</center>
 
 
-                    <span class="icon-cont">
-                        <i> <img src="https://sv1.picz.in.th/images/2018/12/17/9fK3Mz.png" width="80px" ></i>
-                    </span>
-
-                    <h3>Hire</h3>
+        <div class="containers">
+            <div class="box first">
 
 
-                    <h7>คุณสามารถเลือก <br> นักแปลที่คุณ <br> ต้องการได้</h7>
+                <span class="icon-cont">
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/17/9fK3Mz.png" width="80px" ></i>
+                </span>
+
+                <h3>Hire</h3>
 
 
+                <h7>คุณสามารถเลือก <br> นักแปลที่คุณ <br> ต้องการได้</h7>
 
-                </div>
-
-                <div class="box second">
-                    <span class="icon-cont">
-                        <i> <img src="https://sv1.picz.in.th/images/2018/12/17/9fkYr8.png" width="80px" ></i>
-                    </span> 
-
-                    <h3>Wait</h3>
-
-                    <h7>ใช้เวลาไม่นาน<br><br></h7>
-
-
-                </div>
-
-                <div class="box third">
-                    <span class="icon-cont">
-                        <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BITTy.png" width="80px" ></i>
-                    </span> 
-
-                    <h3>Get</h3>
-
-                    <h7> ได้งานจริง <br><br> รับประกันคุณภาพ <br><br></h7>
-
-
-                </div>
-
-                <div class="box fouth">
-                    <span class="icon-cont">
-                        <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BIQF8.png" width="80px" ></i>
-                    </span>
-
-                    <h3>Apply For</h3>
-
-                    <h7> ร่วมเป็นส่วนนึง <br><br> กับพวกเรา <br><br>เพียงสมัครเข้ามา</h7>
-
-                </div>
-                
-                <div class="box fifth">
-                    <span class="icon-cont">
-                        <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BIQF8.png" width="80px" ></i>
-                    </span>
-
-                    <h3>Apply For</h3>
-
-                    <h7> ร่วมเป็นส่วนนึง <br><br> กับพวกเรา <br><br>เพียงสมัครเข้ามา</h7>
-
-                </div>
-                
-                 <div class="box sixth">
-                    <span class="icon-cont">
-                        <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BIQF8.png" width="80px" ></i>
-                    </span>
-
-                    <h3>Apply For</h3>
-
-                    <h7> ร่วมเป็นส่วนนึง <br><br> กับพวกเรา <br><br>เพียงสมัครเข้ามา</h7>
-
-                </div>
 
 
             </div>
 
-            <br>
-            <br>
-            <div style ="background-color:black"width:50px:high:50px:">
-                   <p align = "right"><font size = "2"> By Pech-Pech.co.th</font></p><br>
+            <div class="box second">
+                <span class="icon-cont">
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/17/9fkYr8.png" width="80px" ></i>
+                </span> 
 
-                </div>
-                </body>
+                <h3>Wait</h3>
 
-                </html>
+                <h7>ใช้เวลาไม่นาน<br><br></h7>
+
+
+            </div>
+
+            <div class="box third">
+                <span class="icon-cont">
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BITTy.png" width="80px" ></i>
+                </span> 
+
+                <h3>Get</h3>
+
+                <h7> ได้งานจริง <br><br> รับประกันคุณภาพ <br><br></h7>
+
+
+            </div>
+
+            <div class="box fouth">
+                <span class="icon-cont">
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BIQF8.png" width="80px" ></i>
+                </span>
+
+                <h3>Apply For</h3>
+
+                <h7> ร่วมเป็นส่วนนึง <br><br> กับพวกเรา <br><br>เพียงสมัครเข้ามา</h7>
+
+            </div>
+
+            <div class="box fifth">
+                <span class="icon-cont">
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BIQF8.png" width="80px" ></i>
+                </span>
+
+                <h3>Apply For</h3>
+
+                <h7> ร่วมเป็นส่วนนึง <br><br> กับพวกเรา <br><br>เพียงสมัครเข้ามา</h7>
+
+            </div>
+
+            <div class="box sixth">
+                <span class="icon-cont">
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/16/9BIQF8.png" width="80px" ></i>
+                </span>
+
+                <h3>Apply For</h3>
+
+                <h7> ร่วมเป็นส่วนนึง <br><br> กับพวกเรา <br><br>เพียงสมัครเข้ามา</h7>
+
+            </div>
+
+
+        </div>
+
+        <br>
+        <br>
+        <div style ="background-color:black"width:50px:high:50px:">
+             <p align = "right"><font size = "2"> By Pech-Pech.co.th</font></p><br>
+
+        </div>
+</body>
+
+</html>

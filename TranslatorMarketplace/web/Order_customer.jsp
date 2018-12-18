@@ -7,7 +7,7 @@
 <html lang="en" >
     <head>
         <meta charset="UTF-8">
-        <title>รายการที่สร้าง</title>
+        <title>Orders</title>
         <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">

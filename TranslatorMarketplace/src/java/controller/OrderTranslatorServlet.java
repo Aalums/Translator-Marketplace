@@ -63,8 +63,6 @@ public class OrderTranslatorServlet extends HttpServlet {
             while (rs_order.next()) {
                 int id_order = rs_order.getInt("id_order");
                 
-                rs_order.next();
-                
                 String employer = rs_order.getString("name_customer");
                 String desc = rs_order.getString("description");
                 String type = rs_order.getString("translate_type");

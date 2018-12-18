@@ -148,7 +148,7 @@
                 "SELECT * FROM customers"
                 + " JOIN create_order USING (id_customer)"
                 + " JOIN ordered USING (id_order)"
-                + " WHERE id_customer = 'admin'"
+                + " WHERE id_customer = '" + id_customer + "' "
                 + " GROUP BY id_order"
         );
 
@@ -162,7 +162,7 @@
         ResultSet rs_order = ps_order.executeQuery();%>
     <div class="container">
         <h2 align="center">รายการจ้างแปล</h2> 
-        <!--    <title>ตารางยังไม่ได้วนลูปนะ</title>-->
+        
         <ul class="responsive-table">
             <li class="table-header">
                 <div class="col col-1">รายการที่</div>

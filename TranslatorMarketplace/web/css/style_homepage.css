@@ -1,0 +1,291 @@
+
+html,
+body {
+    background: url(https://sv1.picz.in.th/images/2018/12/18/9hHcen.jpg);
+    width: 100%;
+    height: 100%;
+    background-repeat : no-repeat;         /*//กำหนดให้แสดงเพียงภาพเดียว*/
+    background-position :  top left;          /*//จัดตำแหน่งของรูปภาพ*/
+    background-attachment: fixed;         /*กำหนดตรึงภาพ เพื่อไม่ให้ภาพเลื่อนตามสกอลบาร์*/
+    font-family: 'Mitr', sans-serif;
+}
+
+a {
+    color: white;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+a:hover,
+a:focus {
+    color: white;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+    left : 90px;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: #fff;
+    background-image: url('../images/header.jpg');
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .header-content {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px 70px;
+    text-align: center;
+}
+
+header .header-content .header-content-inner h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 100px;
+    font-weight: 300;
+    color: white;
+
+}
+
+header .header-content .header-content-inner p {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,.7);
+}
+
+.container{
+    width: 70%;
+    height: 800px;
+    margin: 0.2%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: inline-block;
+    background: black;
+    position: relative;
+    opacity: .9;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    cursor: pointer;
+
+}
+
+.containers {
+    width: 960px;
+    margin: 50px auto;
+    padding: 5px;
+    padding-left: 20px;
+    psdding-right: 0;
+}
+
+.box {
+    width: 24%;
+    height: 250px;
+    margin: 0.2%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: inline-block;
+    background: #036C81;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+.box .icon-cont {
+    border: 6px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    margin: 20px auto;
+    display: block; 
+    text-align: center;
+
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+
+    box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);
+}
+.box .icon-cont i {
+    vertical-align: middle;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+}
+.box:hover .icon-cont {
+    animation: shady 4s linear infinite;
+}
+
+@keyframes shady {
+    0% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+    20% {box-shadow: 0 0 0 100px rgba(255,255,255,0), 0 0 0 0px rgba(3, 108, 129, 0);}
+    20.1% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+    50% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+    70% {box-shadow: 0 0 0 100px rgba(255,255,255,0), 0 0 0 0px rgba(3, 108, 129, 0);}
+    70.1% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+    100% {box-shadow: 0 0 0 0px rgba(255,255,255,0.5), 0 0 0 0px rgba(3, 108, 129, 0.5);}
+}
+
+.box h3 {
+    color: #fff;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0);
+
+    position: absolute;
+    top: 100px;
+    width: 70%;
+    left: 15%;
+    z-index: 4;
+}
+
+.box h3 {
+    color: #fff;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0);
+
+    position: absolute;
+    top: 100px;
+    width: 70%;
+    left: 15%;
+    z-index: 4;
+}
+.h4{
+    color: #fff;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+}
+.box h7 {
+    color: #fff;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0);
+    position: absolute;
+    top: 145px;
+    width: 70%;
+    left: 15%;
+    z-index: 4;
+}
+
+.box a.expand {
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    font-weight: 600;
+    color: #036C81;
+    display: block;
+    margin: 15px auto 25px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+
+}
+.box a.expand span.minus {
+    opacity: 0;
+}
+.box a.expand span.plus {
+    opacity: 1;
+    padding-left: 5px;
+}
+.box.selected a.expand {
+    display: block;
+    position: absolute;
+    left: 180px;
+    right: -29px;
+    bottom: -39px;
+    width: 80px;
+    height: 50px;
+    background: #eee;
+    color: #036C81;
+    transform: rotate(-45deg);
+}
+.box.selected a.expand span {
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: 38px;
+    transform: rotate(45deg);
+    font-size: 24px;
+}
+
+
+.box.selected:hover .icon-cont {
+    animation: none;
+}
+
+h2 {
+
+    font-weight: normal;
+    color: black;
+    font-size: 2.15em;
+    font-weight: 900;
+    line-height: 1.2em;
+    margin-bottom: 3px;
+
+}
+
+.gradient-button {
+    margin: 10px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 20px;
+    padding: 15px;
+    font-weight:900;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
+}
+.gradient-button:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin: 8px 10px 12px;
+}
+.gradient-button-1 {background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)}
+.gradient-button-1:hover { background-position: right center; }
+
+.gradient-button-2 {background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%)}
+.gradient-button-2:hover { background-position: right center; }

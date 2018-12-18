@@ -93,7 +93,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("<head>");
                 out.println("<SCRIPT LANGUAGE=javascript>");
                 out.println("alert(\" Please Register!! \")");
-                out.println("window.location.replace(\"Login.jsp\");");
+                out.println("window.location.replace(\"Register.jsp\");");
                 out.println("</SCRIPT>");
                 out.println("</head>");
                 out.println("<body>");

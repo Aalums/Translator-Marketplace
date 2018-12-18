@@ -116,9 +116,12 @@
                                     <h3>จำนวนหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา</h3>
                                     <div class="product">
                                         <div class="product-quantity">
-                                            <input type="number" name="num_page" value="<%= rs_order.getInt("num_page")%>" min="1">
+                                            <input type="number" name="num_page" value="<%= rs_order.getInt("num_page")%>" min="1" style="width: 75px;">
                                         </div>
-                                        <div class="product-line-price"><%= 120 * rs_order.getInt("num_page")%></div>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div class="product-quantity" >
+                                                <input type="number" name="price" value="<%= rs_order.getInt("price")%>" min="1" style="margin-left: 80px; width: 80px;">
+                                            </div>
                                     </div>
                                 </td>
                             </tr>

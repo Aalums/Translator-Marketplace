@@ -117,9 +117,11 @@
                                         <h3>จำนวนหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา</h3>
                                         <div class="product">
                                             <div class="product-quantity">
-                                                <input type="number" name="num_page" value="1" min="1">
+                                                <input type="number" name="num_page" value="1" min="1" style="width: 75px;">
+                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div class="product-quantity" >
+                                                <input type="number" name="price" value="1" min="1" style="margin-left: 80px; width: 80px;">
                                             </div>
-                                            <div class="product-line-price">120.0</div>
                                         </div>
                                     </td>
                                 </tr>

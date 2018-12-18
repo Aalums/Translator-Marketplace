@@ -172,128 +172,127 @@
 <body>
 
     <% ArrayList list_order = (ArrayList) getServletContext().getAttribute("list_order"); %>
-<center><h1>รายการที่ถูกจ้าง</h1></center>
+    <center><h1>รายการที่ถูกจ้าง</h1></center>
+    
+    <div class="container">
+        <div class="row">
+            <!--แสดงรายละเอียดข้อมูลการจ้าง-->
+            <% for (int i = 0; i < list_order.size(); i++) {
+                    model.OrderTranslator item = (model.OrderTranslator) list_order.get(i);
+                    int id_order = item.getId_order();
+                    String employer = item.getEmployer();
+                    String desc = item.getDesc();
+                    String file = item.getFile_order();
+                    int num_page = item.getPage();
+                    Date date = item.getDate();
+                    String status = item.getStatus();
+                    String type = item.getType();
+                    float price = item.getPrice();%>
+
+                    <div id="pricing-table">
+                        <div class="plan">
+                            <h3>ผู้จ้าง  <%= employer%></h3>
+                            <ul>
+                                <li><b>รายละเอียด&nbsp;:</b>&nbsp; <%= desc%></li>
+                                <li><b>แปล&nbsp;:</b>&nbsp;<%= type%></li>
+                                <li><b>จำนวนหน้า&nbsp;:</b>&nbsp; <%= num_page%></li>
+                                <li><b>ราคา&nbsp;:</b>&nbsp;<%= price%> </li>
+                                <form action="View_Filecreate.jsp" method="POST">
+                                    <li><b>ไฟล์งานต้นฉบับ&nbsp;:</b>&nbsp;<button name="view" style="
+                                                                                  margin-left: 30px;
+                                                                                  padding-top: 5px;
+                                                                                  padding-left: 5px;
+                                                                                  padding-bottom: 5px;
+                                                                                  padding-right: 5px;
+                                                                                  margin-bottom: 0px;
+                                                                                  font-size: 14px;
+                                                                                  "value=<%= id_order%>>เปิดไฟล์</button>
+                                    </li>
+                                </form>
+                                <li><b>สถานะรับงาน&nbsp;:</b>&nbsp;
+                                    <% if (status.equals("ยอมรับ")) { %>
+                                    ยอมรับ
+                                    <% } else if (status.equals("ปฎิเสธ")) { %> 
+                                    ปฎิเสธ
+                                    <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
+                                    รายการนี้ถูกจ้างเเล้ว
+                                    <% } else {%>
+                                    <% int id_translator = (Integer) session.getServletContext().getAttribute("id_translator");%>
+                                    <%-- int id_translator = 2; --%>
+                                    <form action="AcceptOrderServlet" method="POST">
+                                        <button class="button_select" name="select" style="
+                                                margin-left: 30px;
+                                                padding-top: 5px;
+                                                padding-left: 5px;
+                                                padding-bottom: 5px;
+                                                padding-right: 5px;
+                                                margin-bottom: 0px;
+                                                font-size: 14px;
+                                                "value=<%= id_order%>_<%= id_translator%>_YES>รับ</button>
+                                        <button class="button_select" name="select" style="
+                                                margin-left: 30px;
+                                                padding-top: 5px;
+                                                padding-left: 5px;
+                                                padding-bottom: 5px;
+                                                padding-right: 5px;
+                                                margin-bottom: 0px;
+                                                font-size: 14px;
+                                                "value=<%= id_order%>_<%= id_translator%>_NO>ปฎิเสธ</button>
+                                    </form>
+                                    <% } %>  
+                                </li>
+                                <li><b>งานส่งมอบ&nbsp;:</b>&nbsp;<br>
+                                    <%  if (status.equals("ยอมรับ") && file != null) {
+                                            String[] file_order = file.split("/");%>
+                                    <%= file_order[1]%><br>
+
+                                    <form action="View_Fileorder.jsp" method="POST">
+                                        <button name="view"  style="
+                                                margin-left: 30px;
+                                                padding-top: 5px;
+                                                padding-left: 5px;
+                                                padding-bottom: 5px;
+                                                padding-right: 5px;
+                                                margin-bottom: 0px;
+                                                font-size: 18px;
+                                                " value=<%= id_order%>>เปิดไฟล์</button>
+                                    </form>
+
+                                    <form action="SendOrderServlet"  enctype='multipart/form-data' method="POST">
+                                        <input type="file" name="file_order" value="" style="margin-top: 10px;"/>
+                                        <button name="send" style="
+                                                margin-left: 10px;
+                                                padding-top: 10px;
+                                                padding-left: 10px;
+                                                padding-bottom: 10px;
+                                                padding-right: 10px;
+                                                margin-bottom: 0px;
+                                                font-size: 18px;
+                                                "value=<%= id_order%>>ส่งงาน</button>
+                                    </form>
+
+                                    <% } else if (status.equals("ยอมรับ") && file == null) {%>
 
 
-<!--แสดงรายละเอียดข้อมูลการจ้าง-->
-<% for (int i = 0; i < list_order.size(); i++) {
-        model.OrderTranslator item = (model.OrderTranslator) list_order.get(i);
-        int id_order = item.getId_order();
-        String employer = item.getEmployer();
-        String desc = item.getDesc();
-        String file = item.getFile_order();
-        int num_page = item.getPage();
-        Date date = item.getDate();
-        String status = item.getStatus();
-        String type = item.getType();
-        float price = item.getPrice();%>
-
-<div class="container">
-    <div class="row">
-        <div id="pricing-table">
-            <div class="plan">
-                <h3>ผู้จ้าง  <%= employer%></h3>
-                <ul>
-                    <li><b>รายละเอียด&nbsp;:</b>&nbsp; <%= desc%></li>
-                    <li><b>แปล&nbsp;:</b>&nbsp;<%= type%></li>
-                    <li><b>จำนวนหน้า&nbsp;:</b>&nbsp; <%= num_page%></li>
-                    <li><b>ราคา&nbsp;:</b>&nbsp;<%= price%> </li>
-                    <form action="View_Filecreate.jsp" method="POST">
-                        <li><b>ไฟล์งานต้นฉบับ&nbsp;:</b>&nbsp;<button name="view" style="
-                                                                      margin-left: 30px;
-                                                                      padding-top: 5px;
-                                                                      padding-left: 5px;
-                                                                      padding-bottom: 5px;
-                                                                      padding-right: 5px;
-                                                                      margin-bottom: 0px;
-                                                                      font-size: 14px;
-                                                                      "value=<%= id_order%>>เปิดไฟล์</button>
-                        </li>
-                    </form>
-                    <li><b>สถานะรับงาน&nbsp;:</b>&nbsp;
-                        <% if (status.equals("ยอมรับ")) { %>
-                        ยอมรับ
-                        <% } else if (status.equals("ปฎิเสธ")) { %> 
-                        ปฎิเสธ
-                        <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
-                        รายการนี้ถูกจ้างเเล้ว
-                        <% } else {%>
-                        <% int id_translator = (Integer) session.getServletContext().getAttribute("id_translator");%>
-                        <%-- int id_translator = 2; --%>
-                        <form action="AcceptOrderServlet" method="POST">
-                            <button class="button_select" name="select" style="
-                                    margin-left: 30px;
-                                    padding-top: 5px;
-                                    padding-left: 5px;
-                                    padding-bottom: 5px;
-                                    padding-right: 5px;
-                                    margin-bottom: 0px;
-                                    font-size: 14px;
-                                    "value=<%= id_order%>_<%= id_translator%>_YES>รับ</button>
-                            <button class="button_select" name="select" style="
-                                    margin-left: 30px;
-                                    padding-top: 5px;
-                                    padding-left: 5px;
-                                    padding-bottom: 5px;
-                                    padding-right: 5px;
-                                    margin-bottom: 0px;
-                                    font-size: 14px;
-                                    "value=<%= id_order%>_<%= id_translator%>_NO>ปฎิเสธ</button>
-                        </form>
-                        <% } %>  
-                    </li>
-                    <li><b>งานส่งมอบ&nbsp;:</b>&nbsp;<br>
-                        <%  if (status.equals("ยอมรับ") && file != null) {
-                                String[] file_order = file.split("/");%>
-                        <%= file_order[1]%><br>
-
-                        <form action="View_Fileorder.jsp" method="POST">
-                            <button name="view"  style="
-                                    margin-left: 30px;
-                                    padding-top: 5px;
-                                    padding-left: 5px;
-                                    padding-bottom: 5px;
-                                    padding-right: 5px;
-                                    margin-bottom: 0px;
-                                    font-size: 18px;
-                                    " value=<%= id_order%>>เปิดไฟล์</button>
-                        </form>
-
-                        <form action="SendOrderServlet"  enctype='multipart/form-data' method="POST">
-                            <input type="file" name="file_order" value="" style="margin-top: 10px;"/>
-                            <button name="send" style="
-                                    margin-left: 10px;
-                                    padding-top: 10px;
-                                    padding-left: 10px;
-                                    padding-bottom: 10px;
-                                    padding-right: 10px;
-                                    margin-bottom: 0px;
-                                    font-size: 18px;
-                                    "value=<%= id_order%>>ส่งงาน</button>
-                        </form>
-
-                        <% } else if (status.equals("ยอมรับ") && file == null) {%>
-
-
-                        <form action="" enctype='multipart/form-data' method="POST">
-                            <input type="file" name="file_order" value="" />
-                            <button name="send" style="
-                                    margin-left: 10px;
-                                    padding-top: 10px;
-                                    padding-left: 10px;
-                                    padding-bottom: 10px;
-                                    padding-right: 10px;
-                                    margin-bottom: 0px;
-                                    font-size: 18px;
-                                    "value=""<%= id_order%>>ส่งงาน</button>
-                        </form>
-                        <% } %>
-                    </li>
-                    <% }%>
-                </ul>
-            </div>
+                                    <form action="" enctype='multipart/form-data' method="POST">
+                                        <input type="file" name="file_order" value="" />
+                                        <button name="send" style="
+                                                margin-left: 10px;
+                                                padding-top: 10px;
+                                                padding-left: 10px;
+                                                padding-bottom: 10px;
+                                                padding-right: 10px;
+                                                margin-bottom: 0px;
+                                                font-size: 18px;
+                                                "value=""<%= id_order%>>ส่งงาน</button>
+                                    </form>
+                                    <% } %>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            <% } %>
         </div>
     </div>
-</div>
 </body>
 </html>

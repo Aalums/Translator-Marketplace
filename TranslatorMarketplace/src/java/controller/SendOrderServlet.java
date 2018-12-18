@@ -71,7 +71,7 @@ public class SendOrderServlet extends HttpServlet {
             ps.executeUpdate();
             ps.close();
 
-            response.sendRedirect("Order_customer.jsp");
+            response.sendRedirect("OrderTranslatorServlet");
 
             //เช็ค
             //out.println("<br>alert('INSERT Complete!!')");

@@ -102,7 +102,7 @@
 
             <!-- here’s the avatar -->
             <a href=#>
-                <img src="profile.png" alt="eye">
+                <img src="<%= rs_translator.getString("picture")%>" alt="eye">
             </a>
 
             <!-- the username -->
@@ -143,7 +143,7 @@
 
             <!-- here’s the avatar -->
             <a href=#>
-                <img src="profile.png" alt="eye"></a>
+                <img src="<%= rs_customer.getString("picture")%>" alt="eye"></a>
             
 
             <!-- the username -->

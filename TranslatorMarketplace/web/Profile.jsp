@@ -100,7 +100,7 @@
 
             <!-- here’s the avatar -->
             <a href=#>
-                <img src="profile.png" alt="eye"></a>
+                <img src="profile.png" alt="eye">
             </a>
 
             <!-- the username -->
@@ -142,7 +142,7 @@
             <!-- here’s the avatar -->
             <a href=#>
                 <img src="profile.png" alt="eye"></a>
-            </a>
+            
 
             <!-- the username -->
             <h1 id="name"><%= rs_customer.getString("name_customer")%></h1>

@@ -49,7 +49,7 @@
                 margin-bottom: 100px;
             }
             /* Base for label styling */
-/*            [type="checkbox"]:not(:checked),
+            [type="checkbox"]:not(:checked),
             [type="checkbox"]:checked {
                 position: absolute;
                 left: -9999px;
@@ -61,7 +61,7 @@
                 cursor: pointer;
                 line-height: 25pt;
             }
-             checkbox aspect 
+/*             checkbox aspect */
             [type="checkbox"]:not(:checked) + label:before,
             [type="checkbox"]:checked + label:before {
                 content: '';
@@ -73,7 +73,7 @@
                 border-radius: 4px;
                 box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
             }
-             checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox
+/*             checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
             [type="checkbox"]:not(:checked) + label:after,
             [type="checkbox"]:checked + label:after {
                 content: '\2713\0020';
@@ -85,7 +85,7 @@
                 transition: all .2s;
                 font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
             }
-             checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้
+/*             checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
             [type="checkbox"]:not(:checked) + label:after {
                 opacity: 0;
                 transform: scale(0);
@@ -94,7 +94,7 @@
                 opacity: 1;
                 transform: scale(1);
             }
-            disabled checkbox 
+/*            disabled checkbox */
             [type="checkbox"]:disabled:not(:checked) + label:before,
             [type="checkbox"]:disabled:checked + label:before {
                 box-shadow: none;
@@ -107,11 +107,11 @@
             [type="checkbox"]:disabled + label {
                 color: #aaa;
             }
-            accessibility 
+/*            accessibility */
             [type="checkbox"]:checked:focus + label:before,
             [type="checkbox"]:not(:checked):focus + label:before {
                 border: 2px dotted blue;
-            }*/
+            }
             /* hover style just for information */
             label:hover:before {
                 border: 2px solid #4778d9!important;
@@ -172,16 +172,11 @@
 
                             <form action="#">
                                 <h3>SKILL</h3>
-<!--                                <input type="checkbox" name="box" value="Cartoon" /><label for="box">Cartoon</label>
-                                <input type="checkbox" name="box" value="Novel" /><label for="box">Novel</label>
-                                <input type="checkbox" name="box" value="Academic" /><label for="box">Academic</label>
-                                <input type="checkbox" name="box" value="Poet" /><label for="box">Poet</label>
-                                <input type="checkbox" name="box" value="Documentary" /><label for="box">Documentary</label>-->
-                                <input type="checkbox" name="box" value="Cartoon"/>Cartoon
-                                <input type="checkbox" name="box" value="Novel"/>Novel
-                                <input type="checkbox" name="box" value="Academic"/>Academic
-                                <input type="checkbox" name="box" value="Poet"/>Poet
-                                <input type="checkbox" name="box" value="Documentary"/>Documentary
+                                <input type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">Cartoon</label>
+                                <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">Novel</label>
+                                <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">Academic</label>
+                                <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">Poet</label>
+                                <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
                             </form>
                             <br><br><br><br><br>
 

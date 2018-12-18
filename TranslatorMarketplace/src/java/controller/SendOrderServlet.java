@@ -1,86 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.OrderTranslator;
+import javax.servlet.http.Part;
+import model.file_order;
 
-@WebServlet(name = "OrderTranslatorServlet", urlPatterns = {"/OrderTranslatorServlet"})
-public class OrderTranslatorServlet extends HttpServlet {
+/**
+ *
+ * @author eyenach
+ */
+@MultipartConfig
+@WebServlet(name = "SendOrderServlet", urlPatterns = {"/SendOrderServlet"})
+public class SendOrderServlet extends HttpServlet {
 
     private Connection conn;
 
-    @Override
-    public void init(){
+    public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            ArrayList list_order = new ArrayList();
             
-            //id trans จากตอน login
+            //แสดงผลลัพธ์เป็นภาษาไทยได้ถูกต้อง
+            request.setCharacterEncoding("UTF-8");
+            
+            //รับค่า id_translator, id_order เพื่อ update file_order
             ServletContext session = request.getServletContext();
             int id_translator = (Integer) session.getAttribute("id_translator");
-           
-//            out.println(id_translator);
             
-            //sql translator's
-            PreparedStatement ps_order = conn.prepareStatement(
-                    "SELECT * FROM customers"
-                            + " JOIN create_order USING (id_customer)"
-                            + " JOIN ordered USING (id_order)"
-                            + "WHERE id_translator = ?"
+            //รับค่า parameter จาก Order_Translator.jsp
+            int id_order = Integer.parseInt(request.getParameter("send"));
+            
+            Part file = request.getPart("file_order");
+            InputStream inputStream = file.getInputStream();
+            
+            file_order file_order = new file_order();
+            
+            //เก็บชื่อไฟล์เป็น id_order_id_translator
+            file_order.fileOrder(id_order+"_"+id_translator, inputStream);
+
+            PreparedStatement ps = conn.prepareStatement(
+                    "UPDATE ordered SET file_order = ? WHERE id_order = ? AND id_translator = ?"
             );
-
-            //set id_translator
-            ps_order.setInt(1, id_translator);
-
-            ResultSet rs_order = ps_order.executeQuery();
-
-            while (rs_order.next()) {
-                int id_order = rs_order.getInt("id_order");
-                
-                String employer = rs_order.getString("name_customer");
-                String desc = rs_order.getString("description");
-                String type = rs_order.getString("translate_type");
-                int page = rs_order.getInt("num_page");
-                float price = rs_order.getInt("price");
-                Date date = rs_order.getDate("due_date");
-                String file_order = rs_order.getString("file_order");
-                
-                String status = rs_order.getString("status");
-
-//                out.print(" name_hire = "+employer+" Date = "+date);
-                OrderTranslator item = new OrderTranslator(id_order, employer, desc, page, date, status, type, price, file_order);
-                list_order.add(item);
-            }
-                        
-             ServletContext sc = request.getServletContext();
-             sc.setAttribute("list_order", list_order);
             
-             response.sendRedirect("Order_Translator.jsp");
-             
+            ps.setString(1, file_order.order());
+            ps.setInt(2, id_order);
+            ps.setInt(3, id_translator);
+
+            ps.executeUpdate();
+            ps.close();
+
+            response.sendRedirect("Order_customer.jsp");
+
+            //เช็ค
+            //out.println("<br>alert('INSERT Complete!!')");
+            
         } catch (SQLException ex) {
-            Logger.getLogger(OrderTranslatorServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+         
+}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

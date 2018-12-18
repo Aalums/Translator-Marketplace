@@ -54,6 +54,24 @@
     </div>
 </head>
 <body>
+    
+    <script type="text/javascript">
+        function isEmpty()
+        {
+            var a = document.forms["Form"]["name_customer"].value;
+            var b = document.forms["Form"]["email"].value;
+            var c = document.forms["Form"]["phone"].value;
+            var d = document.forms["Form"]["id_customer"].value;
+            var e = document.forms["Form"]["password"].value;
+            var f = document.forms["Form"]["picture"].value;
+            if (a == null || a == "", b == null || b == "", c == null || c == "",
+                    d == null || d == "", e == null || e == "", f == null || f == "")
+            {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return false;
+            }
+        }
+    </script>
 
     <%
         //รับค่าที่เคยกรอกมาแสดง
@@ -81,7 +99,7 @@
                         <center><h1>สมัครสมาชิก</h1></center>     
                     </div>
 
-                    <form name="Form" action="RegisterServlet" method="POST" enctype="multipart/form-data">
+                    <form name="Form" action="RegisterServlet" method="POST" name="Form" onsubmit="return isEmpty()" enctype="multipart/form-data">
 
                         <div class = "sign-in-form">
                             <table style="width:100%">

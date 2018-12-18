@@ -74,17 +74,31 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("Order_customer.jsp");
                 } else {
                     //ถ้าไม่ตรงให้แจ้งเตือน
-//                    out.println("<script type=\"text/javascript\">");       
-                    out.println("alert('Invalid ID or Password, please try again!!');");
-//                    out.println("</script>");
-                    response.sendRedirect("Login.jsp");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<SCRIPT LANGUAGE=javascript>");
+                    out.println("alert(\" Invalid ID or Password, please try again!! \")");
+                    out.println("window.location.replace(\"Login.jsp\");");
+                    out.println("</SCRIPT>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body>");
+                    out.println("</html>");
                 }
             } else {
                 //ถ้าไม่มี id ใน database ให้แจ้งเตือนไป Register ก่อน
-//                out.println("<script type=\"text/javascript\">");       
-                out.println("alert('Please Register!!');");
-//                out.println("</script>");
-                response.sendRedirect("Login.jsp");
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<SCRIPT LANGUAGE=javascript>");
+                out.println("alert(\" Please Register!! \")");
+                out.println("window.location.replace(\"Login.jsp\");");
+                out.println("</SCRIPT>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body>");
+                out.println("</html>");
             }
 
         } catch (SQLException ex) {

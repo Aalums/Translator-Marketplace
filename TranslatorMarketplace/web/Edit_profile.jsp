@@ -19,13 +19,19 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
+
+        <%
+            String id_customer = (String) session.getServletContext().getAttribute("id_customer");
+        %>
+
     <div class="topnav">
         <div class="topnav-right">
             <a href="Homepage.jsp">หน้าหลัก</a>
-            <a href="Register.jsp"></i>สมัครสมาชิก</a>
-            <a href="Login.html">เข้าสู่ระบบ</a>
+            <a href="Profile.jsp"> <%= id_customer%> </a>
+            <a href="LogoutServlet">ออกจากระบบ</a>
         </div>
     </div>
+
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
@@ -35,7 +41,25 @@
                 <ul>
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                     <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
+
+                    <%
+                        Connection conn = (Connection) getServletContext().getAttribute("connection");
+
+                        //เช็คว่าเป็นนักแปล?
+                        PreparedStatement chk_translator = conn.prepareStatement(
+                                "SELECT * FROM customers"
+                                + " JOIN translators USING (id_customer) "
+                                + " WHERE id_customer = ?;"
+                        );
+                        chk_translator.setString(1, id_customer);
+
+                        ResultSet rs_chk_translator = chk_translator.executeQuery();
+                        if (rs_chk_translator.next()) {
+                            session.getServletContext().setAttribute("id_translator", rs_chk_translator.getInt("id_translator"));
+                    %>
+                    <li><a href='OrderTranslatorServlet'>ออเดอร์นักแปล</a></li>
+                        <% } %>
+
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
                     <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
@@ -43,125 +67,118 @@
         </center>
     </div>
     <style>
-            h2 {
-                font-weight: normal;
-                font-size: 1.5em;
-                font-weight: 200;
-                line-height: 1.2em;
-                margin-top: 20px;
-            }
-            h3 {
-                font-variant: small-caps;
-                font-size: 0.9em;
-                letter-spacing: 0.5px;
-                font-weight: 200;
-                line-height: 0em;
-                margin-bottom: 30px;
-                letter-spacing: 1px;
-            }
-            .register-form {
-                max-width: 600px;
-                min-width: 490px;
-                width: 80%;
-                position: absolute;
-                padding: 50px;
-                padding-right: 54px;
-                top: 200px;
-                left: 50%;
-                transform: translate(-50%,0);
-                border-radius: 5px;
-                background: #fff;
-                border: 2px solid #003489;
-                box-shadow: 8px 8px 0px 0px #003489;
-                margin-bottom: 100px;
-            }
-            /* Base for label styling */
-            [type="checkbox"]:not(:checked),
-            [type="checkbox"]:checked {
-                position: absolute;
-                left: -9999px;
-            }
-            [type="checkbox"]:not(:checked) + label,
-            [type="checkbox"]:checked + label {
-                position: relative;
-                padding-left: 1.95em;
-                cursor: pointer;
-                line-height: 25pt;
-            }
-            /* checkbox aspect */
-            [type="checkbox"]:not(:checked) + label:before,
-            [type="checkbox"]:checked + label:before {
-                content: '';
-                position: absolute;
-                left: 0; top: 0;
-                width: 1.25em; height: 1.25em;
-                border: 2px solid #ccc;
-                background: #fff;
-                border-radius: 4px;
-                box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
-            }
-            /* checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
-            [type="checkbox"]:not(:checked) + label:after,
-            [type="checkbox"]:checked + label:after {
-                content: '\2713\0020';
-                position: absolute;
-                top: .15em; left: .22em;
-                font-size: 1.3em;
-                line-height: 0.8;
-                color: #09ad7e;
-                transition: all .2s;
-                font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
-            }
-            /* checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
-            [type="checkbox"]:not(:checked) + label:after {
-                opacity: 0;
-                transform: scale(0);
-            }
-            [type="checkbox"]:checked + label:after {
-                opacity: 1;
-                transform: scale(1);
-            }
-            /* disabled checkbox */
-            [type="checkbox"]:disabled:not(:checked) + label:before,
-            [type="checkbox"]:disabled:checked + label:before {
-                box-shadow: none;
-                border-color: #bbb;
-                background-color: #ddd;
-            }
-            [type="checkbox"]:disabled:checked + label:after {
-                color: #999;
-            }
-            [type="checkbox"]:disabled + label {
-                color: #aaa;
-            }
-            /* accessibility */
-            [type="checkbox"]:checked:focus + label:before,
-            [type="checkbox"]:not(:checked):focus + label:before {
-                border: 2px dotted blue;
-            }
-            /* hover style just for information */
-            label:hover:before {
-                border: 2px solid #4778d9!important;
-            }
-        </style>
+        h2 {
+            font-weight: normal;
+            font-size: 1.5em;
+            font-weight: 200;
+            line-height: 1.2em;
+            margin-top: 20px;
+        }
+        h3 {
+            font-variant: small-caps;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            font-weight: 200;
+            line-height: 0em;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .register-form {
+            max-width: 600px;
+            min-width: 490px;
+            width: 80%;
+            position: absolute;
+            padding: 50px;
+            padding-right: 54px;
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%,0);
+            border-radius: 5px;
+            background: #fff;
+            border: 2px solid #003489;
+            box-shadow: 8px 8px 0px 0px #003489;
+            margin-bottom: 100px;
+        }
+        /* Base for label styling */
+        [type="checkbox"]:not(:checked),
+        [type="checkbox"]:checked {
+            position: absolute;
+            left: -9999px;
+        }
+        [type="checkbox"]:not(:checked) + label,
+        [type="checkbox"]:checked + label {
+            position: relative;
+            padding-left: 1.95em;
+            cursor: pointer;
+            line-height: 25pt;
+        }
+        /* checkbox aspect */
+        [type="checkbox"]:not(:checked) + label:before,
+        [type="checkbox"]:checked + label:before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 1.25em; height: 1.25em;
+            border: 2px solid #ccc;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+        }
+        /* checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
+        [type="checkbox"]:not(:checked) + label:after,
+        [type="checkbox"]:checked + label:after {
+            content: '\2713\0020';
+            position: absolute;
+            top: .15em; left: .22em;
+            font-size: 1.3em;
+            line-height: 0.8;
+            color: #09ad7e;
+            transition: all .2s;
+            font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+        }
+        /* checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
+        [type="checkbox"]:not(:checked) + label:after {
+            opacity: 0;
+            transform: scale(0);
+        }
+        [type="checkbox"]:checked + label:after {
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* disabled checkbox */
+        [type="checkbox"]:disabled:not(:checked) + label:before,
+        [type="checkbox"]:disabled:checked + label:before {
+            box-shadow: none;
+            border-color: #bbb;
+            background-color: #ddd;
+        }
+        [type="checkbox"]:disabled:checked + label:after {
+            color: #999;
+        }
+        [type="checkbox"]:disabled + label {
+            color: #aaa;
+        }
+        /* accessibility */
+        [type="checkbox"]:checked:focus + label:before,
+        [type="checkbox"]:not(:checked):focus + label:before {
+            border: 2px dotted blue;
+        }
+        /* hover style just for information */
+        label:hover:before {
+            border: 2px solid #4778d9!important;
+        }
+    </style>
 </head>
 <body>
 
     <%
-        //รับค่าที่เคยกรอกมาแสดง
-        String id_customer = (String) session.getServletContext().getAttribute("regis_id_customer");
-        String password = (String) session.getServletContext().getAttribute("regis_password");
-        String name_customer = (String) session.getServletContext().getAttribute("regis_name_customer");
-        String email = (String) session.getServletContext().getAttribute("regis_email");
-        String phone = (String) session.getServletContext().getAttribute("regis_phone");
+        PreparedStatement profile = conn.prepareStatement(
+                "SELECT * FROM customer"
+                + " WHERE id_customer = ?;"
+        );
+        profile.setString(1, id_customer);
 
-        if (id_customer == null) {
-            id_customer = "";
-            password = "";
-            name_customer = "";
-            email = "";
-            phone = "";
-        }
+        ResultSet rs_profile = profile.executeQuery();
     %>
 
     <!-- Create Container + Logo -->
@@ -178,6 +195,8 @@
 
                             <form name="Form" action="RegisterServlet" method="POST" enctype="multipart/form-data">
 
+                                <% while (rs_profile.next()) {%>
+                                
                                 <div class = "sign-in-form">
                                     <table style="width:100%">
                                         <tr>
@@ -190,38 +209,37 @@
                                             </td>
                                         </tr>
 
-
                                         <tr>
                                             <td>
                                                 <h3>ชื่อ-นามสกุล</h3>
-                                                <input type="text" name="name_customer" value="<%= name_customer%>" />
+                                                <input type="text" name="name_customer" value="<%= rs_profile.getString("name_customer") %>" />
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
                                                 <h3>อีเมล</h3>
-                                                <input type="email" pattern=".+@gmail.com" name="email" value="<%= email%>" />
+                                                <input type="email" pattern=".+@gmail.com" name="email" value="<%= rs_profile.getString("email") %>" />
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
                                                 <h3>เบอร์โทรศัพท์</h3>
-                                                <input type="text" name="phone" value="<%= phone%>" />
+                                                <input type="text" name="phone" value="<%= rs_profile.getString("phone") %>" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <h3>USERNAME</h3>
-                                                <input type="text" name="id_customer" value="<%= id_customer%>" />
+                                                <input type="text" name="id_customer" value="<%= rs_profile.getString("id_customer") %>" />
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
                                                 <h3>PASSWORD</h3>
-                                                <input type="password" name="password" value="<%= password%>" />
+                                                <input type="password" name="password" value="<%= rs_profile.getString("password") %>" />
                                             </td>
                                         </tr>
 
@@ -238,7 +256,11 @@
                                         </tr>
                                     </table>
                                 </div>
-                            </form>                
+
+                                <% }%>
+                                
+                            </form>  
+                                
                         </div>
                     </div>
                 </div>

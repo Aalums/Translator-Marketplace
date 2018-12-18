@@ -71,6 +71,8 @@
 </head>
 
 <body>
+    
+    <a href='Edit_profile.jsp'>Edit</a>
 
     <%
         //เช็คก่อนว่าเป็นนักแปล ?

@@ -14,11 +14,11 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
-    
+
         <%
             String id_customer = (String) session.getServletContext().getAttribute("id_customer");
         %>
-        
+
     <div class="topnav">
         <div class="topnav-right">
             <a href="Homepage.jsp">หน้าหลัก</a>
@@ -26,8 +26,8 @@
             <a href="LogoutServlet">ออกจากระบบ</a>
         </div>
     </div>
-        
-        <!-- Create Container + Logo -->
+
+    <!-- Create Container + Logo -->
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
@@ -35,12 +35,30 @@
         <center>
             <div id='cssmenu'>
                 <ul>
-                    
+
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li class='active'><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                    <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
+
+                    <%
+                        Connection conn = (Connection) getServletContext().getAttribute("connection");
+
+                        //เช็คว่าเป็นนักแปล?
+                        PreparedStatement chk_translator = conn.prepareStatement(
+                                "SELECT * FROM customers"
+                                + " JOIN translators USING (id_customer) "
+                                + " WHERE id_customer = ?;"
+                        );
+                        chk_translator.setString(1, id_customer);
+
+                        ResultSet rs_chk_translator = chk_translator.executeQuery();
+                        if (rs_chk_translator.next()) {
+                            session.getServletContext().setAttribute("id_translator", rs_chk_translator.getInt("id_translator"));
+                    %>
+                    <li><a href='OrderTranslatorServlet'>ออเดอร์นักแปล</a></li>
+                        <% } %>
+
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
-                     <li><a href='Profile.jsp'>โปรไฟล์</a></li>
+                    <li><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
             </div>
         </center>
@@ -50,8 +68,7 @@
     <% int id_order = Integer.parseInt(request.getParameter("edit_order"));%>
 
     <!-- Query ข้อมูลนักแปล -->
-    <% Connection conn = (Connection) getServletContext().getAttribute("connection");
-
+    <% 
         PreparedStatement order = conn.prepareStatement(
                 "SELECT * FROM create_order"
                 + " WHERE id_order = ?;"

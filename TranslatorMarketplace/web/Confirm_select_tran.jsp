@@ -48,14 +48,14 @@
                             if (rs_ordered.next()) {%>
 
                         <!--แสดงข้อความว่าเลือกนักแปลซ้ำ-->
-                         <div class = "sign-in-form">
-                             <center><h1>  สำหรับรายการ <%=id_order%> <br> คุณเลือกนักแปลคนนี้แล้ว</h1></center>  
-                          <center>
-                                        <br><br>
-                                        <form action="Select_translator.jsp" method="POST">
-                                            <button>ย้อนกลับ</button>
-                                        </form>
-                                    </center>
+                        <div class = "sign-in-form">
+                            <center><h1>  สำหรับรายการ <%=id_order%> <br> คุณเลือกนักแปลคนนี้แล้ว</h1></center>  
+                            <center>
+                                <br><br>
+                                <form action="Select_translator.jsp" method="POST">
+                                    <button>ย้อนกลับ</button>
+                                </form>
+                            </center>
                         </div>
 
                         <% } //ถ้าไม่มี แสดงปุ่ม ยืนยัน ย้อนกลับ
@@ -83,18 +83,19 @@
                         <div class = "sign-in-form">
                             <center>
                                 <table style="width:100%">
+                                    
                                     <tr>
                                         <td>
                                     <center>
                                         <h3> 
-                                            สำหรับรายการที่ <%=id_order%> 
+                                            นักแปล <%= name_translator%>
                                         </h3>
                                     </center>
                                     </td>
                                     <td>
                                     <center>
                                         <h3> 
-                                            นักแปล <%= id_translator%>
+                                            สำหรับรายการที่ <%=id_order%> 
                                         </h3>
                                     </center>
                                     </td>

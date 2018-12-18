@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Create_order
+    Created on : Dec 18, 2018, 10:45:53 AM
+    Author     : ASUS
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
 

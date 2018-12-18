@@ -16,7 +16,7 @@
         <%
             String id_customer = (String) session.getServletContext().getAttribute("id_customer");
         %>
-        
+
     <div class="topnav">
         <div class="topnav-right">
             <a href="Homepage.jsp">หน้าหลัก</a>
@@ -196,7 +196,15 @@
                     <li><b>ราคา&nbsp;:</b>&nbsp;<%= rs_create.getFloat("price")%> </li>
                     <li><b>วันที่ส่งงาน&nbsp;:</b>&nbsp;<%= rs_create.getDate("due_date")%> </li>
                     <form action="View_Filecreate.jsp" method="POST">
-                        <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create")%> <button name="file_create" value=<%= rs_create.getInt("id_order")%>>เปิดไฟล์</button></li>
+                        <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create")%> <button name="file_create" style="
+                                                                                                     margin-left: 30px;
+                                                                                                     padding-top: 5px;
+                                                                                                     padding-left: 5px;
+                                                                                                     padding-bottom: 5px;
+                                                                                                     padding-right: 5px;
+                                                                                                     margin-bottom: 0px;
+                                                                                                     font-size: 14px;
+                                                                                                     " value=<%= rs_create.getInt("id_order")%>>เปิดไฟล์</button></li>
                     </form>
                     <li><b>คำอธิบาย&nbsp;:</b>&nbsp;<%= rs_create.getString("description")%> </li>
                     <form action="OrderCustomerServlet" method="POST">

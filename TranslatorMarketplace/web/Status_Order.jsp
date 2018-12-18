@@ -19,11 +19,11 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
-    
+
         <%
             String id_customer = (String) session.getServletContext().getAttribute("id_customer");
         %>
-        
+
     <div class="topnav">
         <div class="topnav-right">
             <a href="Homepage.jsp">หน้าหลัก</a>
@@ -31,7 +31,7 @@
             <a href="LogoutServlet">ออกจากระบบ</a>
         </div>
     </div>
-        
+
     <div class="container">
         <div class="logo">  
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
@@ -42,7 +42,7 @@
                     <li><a href='Create_order.jsp'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
                     <li class='active'><a href='Status_Order.jsp'>สถานะ</a></li>
-                     <li><a href='Profile.jsp'>โปรไฟล์</a></li>
+                    <li><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
             </div>
         </center>
@@ -178,14 +178,22 @@
             <li class="table-row">
                 <div class="col col-1" data-label="รายการ"><%= rs_order.getInt("id_order")%></div>
 
-                <div class="col col-2" data-label="รายละเอียด">
+                <div class="col col-2" data-label="รายละเอียดการจ้าง">
                     คำอธิบาย : <%= rs_order.getString("description")%><br>
                     แปล : <%= rs_order.getString("translate_type")%><br>
                     จำนวนหน้า : <%= rs_order.getString("num_page")%><br>
                     ราคา : <%= rs_order.getString("price")%><br>
                     วันส่งงาน : <%= rs_order.getString("due_date")%><br>
                     <form action="View_Filecreate.jsp" method="POST">
-                        <button name="view" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
+                        <button name="view" style="
+                                padding-left: 5px;
+                                padding-top: 5px;
+                                padding-right: 5px;
+                                padding-bottom: 5px;
+                                margin-top: 10px;
+                                margin-bottom: 5px;
+                                font-size: 14px;
+                                "value=<%= rs_order.getInt("id_order")%>>เปิดไฟล์</button>
                     </form>
                 </div>
 
@@ -193,20 +201,27 @@
                 <div class="col col-4" data-label="สถานะ"><%= rs_trans.getString("status")%></div>
 
                 <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) { //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
-                <form action="View_Fileorder.jsp" method="POST">
+                <form action="View_Fileorder.jsp"  method="POST">
                     <div class="col col-2" data-label="งานส่งมอบ">
                         <br><br>
-                        <button name="view" style="margin-top: 30px;" value=<%= rs_order.getInt("id_order")%>>ดูไฟล์</button>
-                    </div>
-                </form>
-                <% } else if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
-                <div class="col col-2" data-label="งานส่งมอบ">กำลังแปล</div>
-                <% } else { %>
-                <div class="col col-2" data-label="งานส่งมอบ">-</div>
-                <% } %>
+                        <button name="view" style="margin-top: 30px;" style="
+                                padding-left: 5px;
+                                padding-top: 5px;
+                                padding-right: 5px;
+                                padding-bottom: 5px;
+                                margin-top: 10px;
+                                margin-bottom: 5px;
+                                font-size: 14px; value=<%= rs_order.getInt("id_order")%>>เปิดไฟล์</button>
+                                </div>
+                                </form>
+                                <% } else if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
+                                <div class="col col-2" data-label="งานส่งมอบ">กำลังแปล</div>
+                        <% } else { %>
+                    <div class="col col-2" data-label="งานส่งมอบ">-</div>
+                    <% } %>
             </li>
             <% }
-            }%>
+                }%>
         </ul>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>

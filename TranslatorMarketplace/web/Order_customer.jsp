@@ -165,7 +165,8 @@
         PreparedStatement create_order = conn.prepareStatement(
                 "SELECT * FROM customers"
                 + " JOIN create_order USING (id_customer) "
-                + " WHERE id_customer = ?;"
+                + " WHERE id_customer = ?"
+                + " GROUP BY due_date;"
         );
         create_order.setString(1, id_customer);
 
@@ -198,7 +199,7 @@
                     <li><b>ราคา&nbsp;:</b>&nbsp;<%= rs_create.getFloat("price")%> </li>
                     <li><b>วันที่ส่งงาน&nbsp;:</b>&nbsp;<%= rs_create.getDate("due_date")%> </li>
                     <form action="View_Filecreate.jsp" method="POST">
-                        <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create")%> <button name="file_create" style="
+                        <li><b>ไฟล์&nbsp;:</b>&nbsp;<%= rs_create.getString("file_create")%> <button name="view" style="
                                                                                                      margin-left: 30px;
                                                                                                      padding-top: 5px;
                                                                                                      padding-left: 5px;

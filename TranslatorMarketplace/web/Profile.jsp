@@ -59,19 +59,19 @@
                             session.getServletContext().setAttribute("id_translator", rs_chk_translator.getInt("id_translator"));
                     %>
                     <li><a href='OrderTranslatorServlet'>ออเดอร์นักแปล</a></li>
-                    <% } %>
-                    
+                        <% } %>
+
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
                     <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
             </div>
         </center>
     </div>
-    
+
 </head>
 
 <body>
-    
+
     <a href='Edit_profile.jsp'>Edit</a>
 
     <%
@@ -101,9 +101,15 @@
         <header>
 
             <!-- here’s the avatar -->
+            <% if (rs_translator.getString("picture") == null) {%>
+            <a href=#>
+                <img src="profile.png" alt="eye">
+            </a>
+            <% } else {%>
             <a href=#>
                 <img src="<%= rs_translator.getString("picture")%>" alt="eye">
             </a>
+            <% }%>
 
             <!-- the username -->
             <h1 id="name"><%= rs_translator.getString("name_customer")%></h1>
@@ -121,7 +127,7 @@
             <p>Language : <%= rs_translator.getString("level_skill")%></p><br><br>
             <p>Skill : <%= rs_translator.getString("type_skill")%></p>
         </div>
-        
+
     </aside>
 
     <%
@@ -142,9 +148,14 @@
         <header>
 
             <!-- here’s the avatar -->
+            <% if (rs_customer.getString("picture") == null) {%>
+            <a href=#>
+                <img src="profile.png" alt="eye">
+            </a>
+            <% } else {%>
             <a href=#>
                 <img src="<%= rs_customer.getString("picture")%>" alt="eye"></a>
-            
+            <% }%>
 
             <!-- the username -->
             <h1 id="name"><%= rs_customer.getString("name_customer")%></h1>

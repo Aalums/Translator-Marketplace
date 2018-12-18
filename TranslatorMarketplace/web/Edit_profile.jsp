@@ -192,14 +192,13 @@
     <div class="row">
         <div class="content-wrapper" style="padding-bottom: 699px;">
             <div class="container">
+                <form name="Form" action="EditProfileServlet" method="POST" enctype="multipart/form-data">
                 <div class="col-sm-<%= column%>">
                     <div class="login">
                         <div class = "form">
                             <div class = "header">
                                 <center><h1>แก้ไขโปรไฟล์</h1></center>     
                             </div>
-
-                            <form name="Form" action="RegisterServlet" method="POST" enctype="multipart/form-data">
 
                                 <% while (rs_profile.next()) {%>
 
@@ -259,8 +258,6 @@
 
                                 <% }%>
 
-                            </form>  
-
                         </div>
                     </div>
                 </div>
@@ -290,19 +287,19 @@
                                 <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile")%>
                                 </textarea><br><br><br><br>
 
-                                <h3>LANGUAGE LEVEL</h3>
-                                <input type="radio" name="translate" value="highlv"> สูง
-                                <input type="radio" name="translate" value="mediumlv" > ปานกลาง
-                                <input type="radio" name="translate" value="standardlv"> พื้นฐาน
+                                <h3>LANGUAGE LEVEL</h3><!-- เช็คว่าอยู่เวลไหน if==สูง ให้สถานะเป็นเช็ค -->
+                                <input type="radio" name="translate" value="สูง"> สูง
+                                <input type="radio" name="translate" value="ปานกลาง" > ปานกลาง
+                                <input type="radio" name="translate" value="พื้นฐาน"> พื้นฐาน
 
-                                <form action="#">
+                                
                                     <h3>SKILL</h3>
                                     <input type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">Cartoon</label>
                                     <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">Novel</label>
                                     <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">Academic</label>
                                     <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">Poet</label>
                                     <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
-                                </form>
+                                
                                 <br><br><br><br><br>
                             </div>
                         </div>
@@ -320,7 +317,7 @@
                         </div>
                     </button>
                 </center>
-
+                </form>
             </div>
         </div>
     </div>

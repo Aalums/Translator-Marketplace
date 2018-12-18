@@ -165,7 +165,7 @@
         <!--    <title>ตารางยังไม่ได้วนลูปนะ</title>-->
         <ul class="responsive-table">
             <li class="table-header">
-                <div class="col col-1">รายการ</div>
+                <div class="col col-1">รายการที่</div>
                 <div class="col col-2">รายละเอียด</div>
                 <div class="col col-3">นักแปล</div>
                 <div class="col col-4">สถานะ</div>

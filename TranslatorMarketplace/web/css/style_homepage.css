@@ -111,7 +111,7 @@ header .header-content .header-content-inner p {
     margin-bottom: 6px;
 }
 .box .icon-cont {
-    border: 6px solid rgba(127,189,255,0.3);
+    border: 6px solid rgba(255,255,255,0.3);
     border-radius: 50%;
     width: 75px;
     height: 75px;
@@ -228,8 +228,8 @@ header .header-content .header-content-inner p {
     bottom: -39px;
     width: 80px;
     height: 50px;
-    background: #fff;
-    color: black;
+    background: #eee;
+    color: #036C81;
     transform: rotate(-45deg);
 }
 .box.selected a.expand span {

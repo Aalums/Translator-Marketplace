@@ -37,6 +37,7 @@
                 <ul>
                     <li class='active'><a href='#'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
+                    <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
                     <li><a href='StatusOrderServlet'>สถานะ</a></li>
                     <li><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>

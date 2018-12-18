@@ -38,6 +38,7 @@
                     
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li class='active'><a href='Order_customer.jsp'>ออเดอร์</a></li>
+                    <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
                      <li><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>

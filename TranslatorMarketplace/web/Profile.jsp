@@ -42,6 +42,7 @@
                 <ul>
                     <li><a href='Create_order.jsp'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
+                     <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
                     <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
@@ -108,7 +109,7 @@
             <p>Skill : <%= rs_translator.getString("type_skill")%></p>
         </div>
 
-        <center>
+<!--        <center>
             <form action="OrderTranslatorServlet">
                 <% session.getServletContext().setAttribute("id_translator", rs_translator.getInt("id_translator")); %>
                 <button type="submit">
@@ -117,7 +118,7 @@
                     </div>
                 </button>
             </form>
-        </center>
+        </center>-->
     </aside>
 
     <%

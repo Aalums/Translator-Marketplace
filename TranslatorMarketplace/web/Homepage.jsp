@@ -18,7 +18,7 @@
 
     <div class="topnav">
         <div class="topnav-right">
-            <a href="index.html">หน้าหลัก</a>
+            <a href="Homepage.jsp">หน้าหลัก</a>
             <a href="Register.jsp">สมัครสมาชิก</a>
             <a href="Login.jsp">เข้าสู่ระบบ</a>
         </div>

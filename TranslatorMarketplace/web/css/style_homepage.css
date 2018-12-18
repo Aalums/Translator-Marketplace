@@ -48,30 +48,30 @@ header {
 header .header-content {
     position: relative;
     width: 100%;
-    padding: 150px 15px 70px;
+    padding: 93px 15px 70px;
     text-align: center;
 }
 
 header .header-content .header-content-inner h1 {
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 100px;
+    font-size: 80px;
     font-weight: 300;
     color: white;
     line-height: initial;
-    font-family:'Mitr', sans-serif;
+    
 
 }
 
 header .header-content .header-content-inner p {
     margin-bottom: 50px;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 300;
     color: rgba(255,255,255,.7);
 }
 
 .container{
-    width: 70%;
+    width: 65%;
     height: 800px;
     margin: 0.2%;
     padding: 15px;
@@ -153,7 +153,7 @@ header .header-content .header-content-inner p {
     font-size: 18px;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     border-bottom: 1px solid rgba(255,255,255,0);
     position: absolute;
     top: 120px;
@@ -166,9 +166,9 @@ header .header-content .header-content-inner p {
 
 .h4{
     color: black;
-    font-family: 'Mitr', sans-serif;
+    
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -181,9 +181,9 @@ header .header-content .header-content-inner p {
 }
 .box h7 {
     color: black;
-    font-family: 'Mitr', sans-serif;
+
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;

@@ -8,9 +8,11 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="css/style.css">
         <meta charset="UTF-8">
         <title>View PDF</title>
         <style>
@@ -20,7 +22,7 @@
         </style>
     </head>
     <body>
-        <% int id_order = Integer.parseInt(request.getParameter("view"));
+        <%--- int id_order = Integer.parseInt(request.getParameter("view"));
 
             Connection conn = (Connection) getServletContext().getAttribute("connection");
 
@@ -32,7 +34,7 @@
             ResultSet rs = ps.executeQuery();
             rs.next();
 
-            String file = rs.getString("file_order");%>
+            String file = rs.getString("file_order");---%>
 
         <h1><%= file%></h1>
         <div class="container">

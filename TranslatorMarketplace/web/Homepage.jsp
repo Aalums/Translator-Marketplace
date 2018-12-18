@@ -13,8 +13,8 @@
 
 
         <link href="css/style_homepage.css" rel="stylesheet">
-
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
+       
 
    <%
             String id_customer = (String) session.getServletContext().getAttribute("id_customer");
@@ -183,11 +183,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-content-inner">
-                    <h1>Welcome To <br> Translator Market Place</h1>
+                    <h1>Welcome <br> To <br> Translator Market Place</h1>
                     <p>เว็บไซต์ที่เป็นเครื่องมือช่วยคุณในการแปลเอกสาร การันตีคุณภาพผลงานจากนักแปลมือดี</p>
-
-
-
                 </div>
             </div>
         </div>
@@ -195,14 +192,12 @@
 
     <div style ="background-color:#24305e"width:600px:high:300px:">
 
-
         <br>
         <br>
         <br>
         <br>
         <br>
         <center> <h2>About This Site </h2> </center>
-        <center><h2>________________________________________________</h2></center>
 
 
         <div class="containers">
@@ -223,35 +218,28 @@
                    <i> <img src="https://sv1.picz.in.th/images/2018/12/18/9kxczR.png" width="80px" ></i>
 
                 </span> 
-
+                
                 <h3>Create Order</h3>
-
+                
                 <h7>สร้างรายการจ้างแปล</h7>
-
-
+                
             </div>
 
             <div class="box third">
                 <span class="icon-cont">
                     <i> <img src="https://sv1.picz.in.th/images/2018/12/17/9fK3Mz.png" width="80px" ></i>
                 </span> 
-
+                
                 <h3>Choose</h3>
-
-                <h7> คุณสามารถ <br><br> เลือกนักแปล <br><br> ที่ต้องการได้</h7>
-
-
+                <h7>เลือกนักแปล <br><br> ที่ต้องการ</h7>
             </div>
 
             <div class="box fouth">
                 <span class="icon-cont">
                     <i> <img src="https://www.img.in.th/images/028b93f0b1f6fb1cd1c7d3fc22f17656.png" width="80px" ></i>
                 </span>
-
                 <h3>Wait</h3>
-
-                <h7> รอนักแปล <br><br> ตอบรับคำร้อง <br><br>แล้วรองานได้เลย</h7>
-
+                <h7> รองาน </h7>
             </div>
 
             <div class="box fifth">
@@ -261,7 +249,7 @@
 
                 <h3>Check</h3>
 
-                <h7> รอนักแปล <br><br> ตอบรับคำร้อง <br><br>แล้วรองานได้เลย</h7>
+                <h7> ตรวจสอบ <br><br> ความถูกต้อง</h7>
 
             </div>
             

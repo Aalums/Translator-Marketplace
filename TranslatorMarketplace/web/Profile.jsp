@@ -67,12 +67,84 @@
             </div>
         </center>
     </div>
-
+    <style>
+        /* Wrapper */
+        .icon-button {
+            background-color: #333e94;
+            /*background: url(picture/edit.png) no-repeat;*/
+            border-radius: 3.6rem;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 2.0rem;
+            height: 3.6rem;
+            line-height: 3.6rem;
+            margin: 0 5px;
+            position: fixed;
+            text-align: center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            width: 3.6rem;
+            right: 24%;
+            top: 50%;
+        }
+        /* Circle */
+        .icon-button span {
+            border-radius: 0;
+            display: block;
+            height: 0;
+            left: 50%;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            width: 0;
+        }
+        .icon-button:hover span {
+            width: 3.6rem;
+            height: 3.6rem;
+            border-radius: 3.6rem;
+            margin: -1.8rem;
+        }
+        .edit span {
+            background-color: #ffda44;
+            /*background: url(picture/edit-3.png) no-repeat;*/
+        }
+        /* Icons */
+        .icon-button i {
+            background: none;
+            color: white;
+            height: 3.6rem;
+            left: 0;
+            line-height: 3.6rem;
+            position: absolute;
+            top: 0;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            width: 3.6rem;
+            z-index: 10;
+        }
+        .icon-button .icon-edit {
+            color: #ffda44;
+            /*background: url(picture/edit-2.png) no-repeat;*/
+        }   
+        .icon-button:hover .icon-edit {
+            color: #333e94;
+        }
+    </style>
 </head>
 
 <body>
 
-    <a href='Edit_profile.jsp'>Edit</a>
+    <a href="Edit_profile.jsp" class="icon-button edit">
+        <i class="icon-edit" ><img src="picture/edit.png"/></i><span></span></a>
+    <!--<a href='Edit_profile.jsp'>Edit</a>-->
 
     <%
         //เช็คก่อนว่าเป็นนักแปล ?
@@ -155,7 +227,7 @@
             <% } else {%>
             <a href=#>
                 <img src="<%= rs_customer.getString("picture")%>" alt="eye"></a>
-            <% }%>
+                <% }%>
 
             <!-- the username -->
             <h1 id="name"><%= rs_customer.getString("name_customer")%></h1>

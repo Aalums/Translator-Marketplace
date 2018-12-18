@@ -180,29 +180,29 @@
 
 
     <header>
-        <div class="container">
+        
+             <img src="https://sv1.picz.in.th/images/2018/12/18/9kXyGf.png" alt="9kXyGf.png" border="0" />
             <div class="header-content">
                 <div class="header-content-inner">
-                    <h1>Welcome <br> To <br> Translator Market Place</h1>
-                    <p>เว็บไซต์ที่เป็นเครื่องมือช่วยคุณในการแปลเอกสาร การันตีคุณภาพผลงานจากนักแปลมือดี</p>
+                    <p>Welcome To  Translator Market Place</p>
+                    <p>เว็บไซต์ที่เป็นเครื่องมือช่วยคุณในการแปลเอกสาร<br> การันตีคุณภาพผลงานจากนักแปลมือดี</p>
                 </div>
             </div>
-        </div>
     </header>
 
-    <div style ="background-color:#24305e"width:600px:high:300px:">
+    <div style ="background: linear-gradient(to top, #ffcccc 80%, transparent 100%)"width:600px:high:300px:">
 
         <br>
         <br>
         <br>
         <br>
         <br>
-        <center> <h2>About This Site </h2> </center>
+        <center> <h2>วิธีการใช้งาน</h2> </center>
 
 
         <div class="containers">
             <div class="box first">
-               
+           
 
                 <span class="icon-cont">
                       <i> <img src="https://www.img.in.th/images/3ff09a432550034c065b2d801777b8de.png" width="80px" ></i>
@@ -291,9 +291,8 @@
 
         <br>
         <br>
-        <div style ="background-color:black"width:50px:high:50px:">
+        <div style ="background-color:#ffcccc"width:50px:high:50px:">
              <p align = "right"><font size = "2"> By Pech-Pech.co.th</font></p><br>
-
         </div>
 </body>
 

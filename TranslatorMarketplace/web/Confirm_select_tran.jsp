@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="css/style.css">
-        <title>ยืนยันการเลือกนักแปล/title>
+        <title>ยืนยันการเลือกนักแปล</title>
     </head>
     <body>
         <div class="content-wrapper" style="margin-top: 60px;">

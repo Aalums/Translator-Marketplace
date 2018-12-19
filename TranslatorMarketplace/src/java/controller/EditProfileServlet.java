@@ -97,7 +97,8 @@ public class EditProfileServlet extends HttpServlet {
                 row = ps_translator.executeUpdate();
                 ps_translator.close();
                 
-            } else if(picture.getSize()>0){
+            }
+            if(picture.getSize()>0){
                 System.out.println("chk 2 = "+id_customer);
                 //update กรณีที่เปลี่ยนรูป
                 ps_customer = conn.prepareStatement(

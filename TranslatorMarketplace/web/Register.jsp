@@ -60,32 +60,32 @@
             var f = document.forms["Form"]["picture"].value;
             if (a == null || a == ""){
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-                //document.forms["Form"]["name_customer"].style.backgroundColor = "red";
+                document.forms["Form"]["name_customer"].focus();
                 return false;
             }
             if (b == null || b == ""){
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-                //document.forms["Form"]["email"].focus();
+                document.forms["Form"]["email"].focus();
                 return false;
             }
             if (c == null || c == ""){
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-                //document.forms["Form"]["phone"].focus();
+                document.forms["Form"]["phone"].focus();
                 return false;
             }
             if (d == null || d == ""){
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-                //document.forms["Form"]["id_customer"].focus();
+                document.forms["Form"]["id_customer"].focus();
                 return false;
             }
             if (e == null || e == ""){
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-                //document.forms["Form"]["password"].focus();
+                document.forms["Form"]["password"].focus();
                 return false;
             }
             if (f == null || f == ""){
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-                //document.forms["Form"]["picture"].focus();
+                document.forms["Form"]["picture"].focus();
                 return false;
             }
         }

@@ -193,12 +193,12 @@
         <div class="content-wrapper" style="padding-bottom: 699px;">
             <div class="container">
                 <form name="Form" action="EditProfileServlet" method="POST" enctype="multipart/form-data">
-                <div class="col-sm-<%= column%>">
-                    <div class="login">
-                        <div class = "form">
-                            <div class = "header">
-                                <center><h1>แก้ไขโปรไฟล์</h1></center>     
-                            </div>
+                    <div class="col-sm-<%= column%>">
+                        <div class="login">
+                            <div class = "form">
+                                <div class = "header">
+                                    <center><h1>แก้ไขโปรไฟล์</h1></center>     
+                                </div>
 
                                 <% while (rs_profile.next()) {%>
 
@@ -258,65 +258,104 @@
 
                                 <% }%>
 
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <%
-                    if (check) {
-                        PreparedStatement translator = conn.prepareStatement(
-                                "SELECT * FROM customers"
-                                + " JOIN translators USING (id_customer) "
-                                + " WHERE id_customer = ?;"
-                        );
-                        translator.setString(1, id_customer);
+                    <%
+                        if (check) {
+                            PreparedStatement translator = conn.prepareStatement(
+                                    "SELECT * FROM customers"
+                                    + " JOIN translators USING (id_customer) "
+                                    + " WHERE id_customer = ?;"
+                            );
+                            translator.setString(1, id_customer);
 
-                        ResultSet rs_translator = translator.executeQuery();
-                        if (rs_translator.next()) {
-                %>
+                            ResultSet rs_translator = translator.executeQuery();
+                            if (rs_translator.next()) {
+                    %>
 
-                <div class="col-sm-<%= column%>">
-                    <div class="login">
-                        <div class = "form">
-                            <div class = "header">
-                                <center><h1>รายละเอียดนักแปล</h1></center>     
-                            </div>
+                    <div class="col-sm-<%= column%>">
+                        <div class="login">
+                            <div class = "form">
+                                <div class = "header">
+                                    <center><h1>รายละเอียดนักแปล</h1></center>     
+                                </div>
 
-                            <div class = "sign-in-form">
-                                <h3>DESCRIPTION</h3>
-                                <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile")%>
-                                </textarea><br><br><br><br>
+                                <div class = "sign-in-form">
+                                    <h3>DESCRIPTION</h3>
+                                    <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile")%>
+                                    </textarea><br><br><br><br>
 
-                                <h3>LANGUAGE LEVEL</h3><!-- เช็คว่าอยู่เวลไหน if==สูง ให้สถานะเป็นเช็ค -->
-                                <input type="radio" name="translate" value="สูง"> สูง
-                                <input type="radio" name="translate" value="ปานกลาง" > ปานกลาง
-                                <input type="radio" name="translate" value="พื้นฐาน"> พื้นฐาน
+                                    <%
+                                        //RadioButton
+                                        String chkRad1 = "";
+                                        String chkRad2 = "";
+                                        String chkRad3 = "";
+                                        String level = rs_translator.getString("level_skill");
+                                        if (level.equals("สูง")) {
+                                            chkRad1 = "checked";
+                                        } else if (level.equals("ปานกลาง")) {
+                                            chkRad2 = "checked";
+                                        } else if (level.equals("พื้นฐาน")) {
+                                            chkRad3 = "checked";
+                                        }
 
-                                
+                                        //CheckBox
+                                        String chkBox1 = "";
+                                        String chkBox2 = "";
+                                        String chkBox3 = "";
+                                        String chkBox4 = "";
+                                        String chkBox5 = "";
+                                        String[] type = rs_translator.getString("type_skill").split(" ");
+                                        for (int i = 0; i < type.length; i++) {
+                                            if (type[i].equals("Cartoon")) {
+                                                chkBox1 = "checked";
+                                            }
+                                            else if (type[i].equals("Novel")) {
+                                                chkBox2 = "checked";
+                                            }
+                                            else if (type[i].equals("Academic")) {
+                                                chkBox3 = "checked";
+                                            }
+                                            else if (type[i].equals("Poet")) {
+                                                chkBox4 = "checked";
+                                            }
+                                            else if (type[i].equals("Documentary")) {
+                                                chkBox5 = "checked";
+                                            }
+                                        }
+                                    %>
+
+                                    <h3>LANGUAGE LEVEL</h3>
+                                    <input <%= chkRad1%> id="chkRad1" type="radio" name="translate" value="สูง"> สูง
+                                    <input <%= chkRad2%> id="chkRad2" type="radio" name="translate" value="ปานกลาง" > ปานกลาง
+                                    <input <%= chkRad3%> id="chkRad3" type="radio" name="translate" value="พื้นฐาน"> พื้นฐาน
+
                                     <h3>SKILL</h3>
-                                    <input type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">Cartoon</label>
-                                    <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">Novel</label>
-                                    <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">Academic</label>
-                                    <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">Poet</label>
-                                    <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
-                                
-                                <br><br><br><br><br>
+                                    <input <%= chkBox1%> type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">Cartoon</label>
+                                    <input <%= chkBox2%> type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">Novel</label>
+                                    <input <%= chkBox3%> type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">Academic</label>
+                                    <input <%= chkBox4%> type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">Poet</label>
+                                    <input <%= chkBox5%> type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
+
+                                    <br><br><br><br><br>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <% }
-                    }
-                %>
+                    <% }
+                        }
+                    %>
 
-                <center>
-                    <button type="submit">
-                        <div class = "button-text">
-                            บันทึก
-                        </div>
-                    </button>
-                </center>
+                    <center>
+                        <button type="submit">
+                            <div class = "button-text">
+                                บันทึก
+                            </div>
+                        </button>
+                    </center>
                 </form>
             </div>
         </div>

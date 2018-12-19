@@ -53,7 +53,7 @@ public class AddOrderedServlet extends HttpServlet {
             //เช็ค
             //out.println("<br>alert('INSERT Complete!!')");
             
-            response.sendRedirect("StatusOrderServlet");
+            response.sendRedirect("Status_Order.jsp");
             
         } catch (SQLException ex) {
             Logger.getLogger(AddOrderedServlet.class.getName()).log(Level.SEVERE, null, ex);

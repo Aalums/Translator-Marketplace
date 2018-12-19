@@ -41,7 +41,7 @@
                 <ul>
                     <li><a href='Create_order.jsp'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                     
+
                     <%
                         Connection conn = (Connection) getServletContext().getAttribute("connection");
 
@@ -58,8 +58,8 @@
                             session.getServletContext().setAttribute("id_translator", rs_chk_translator.getInt("id_translator"));
                     %>
                     <li><a href='OrderTranslatorServlet'>ออเดอร์นักแปล</a></li>
-                    <% } %>
-                    
+                        <% } %>
+
                     <li class='active'><a href='Status_Order.jsp'>สถานะ</a></li>
                     <li><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
@@ -134,6 +134,15 @@
             padding-top: 0px;
             text-align: center;
         }
+        .responsive-table .col-5 {
+            flex-basis: 10%;
+            line-height: 20px;
+            border-left: 1px solid #ddd;
+            padding: 10px;
+            padding-bottom: 0px;
+            padding-top: 0px;
+            text-align: center;
+        }
         @media all and (max-width: 767px) {
             .responsive-table .table-header {
                 display: none;
@@ -161,7 +170,7 @@
 </head>
 
 <body>
-    <% 
+    <%
         PreparedStatement ps_order = conn.prepareStatement(
                 "SELECT * FROM customers"
                 + " JOIN create_order USING (id_customer)"
@@ -177,17 +186,18 @@
                 + " WHERE id_order = ?"
         );
 
-        ResultSet rs_order = ps_order.executeQuery();%>
+        ResultSet rs_order = ps_order.executeQuery();
+    %>
     <div class="container">
         <h2 align="center">รายการจ้างแปล</h2> 
-        
+
         <ul class="responsive-table">
             <li class="table-header">
                 <div class="col col-1">รายการ</div>
                 <div class="col col-2">รายละเอียด</div>
                 <div class="col col-3">นักแปล</div>
                 <div class="col col-4">สถานะ</div>
-                <div class="col col-2">งานส่งมอบ</div>
+                <div class="col col-5">งานส่งมอบ</div>
             </li>
             <% while (rs_order.next()) {
                     ps_trans.setInt(1, rs_order.getInt("id_order"));
@@ -210,33 +220,37 @@
                                 padding-bottom: 5px;
                                 margin-top: 10px;
                                 margin-bottom: 5px;
-                                font-size: 14px;
-                                "value=<%= rs_order.getInt("id_order")%>>เปิดไฟล์</button>
+                                font-size: 14px;" value=<%= rs_order.getInt("id_order")%>>
+                            เปิดไฟล์
+                        </button>
                     </form>
                 </div>
 
                 <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("name_customer")%></div>
                 <div class="col col-4" data-label="สถานะ"><%= rs_trans.getString("status")%></div>
 
-                <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) { //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้%> 
+                <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) {
+                        //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้ %> 
                 <form action="View_Fileorder.jsp"  method="POST">
-                    <div class="col col-2" data-label="งานส่งมอบ">
+                    <div class="col col-5" data-label="งานส่งมอบ">
                         <br><br>
-                        <button name="view" style="margin-top: 30px;" style="
+                        <button name="view" style="margin-top: 30px;
                                 padding-left: 5px;
                                 padding-top: 5px;
                                 padding-right: 5px;
                                 padding-bottom: 5px;
                                 margin-top: 10px;
                                 margin-bottom: 5px;
-                                font-size: 14px; value=<%= rs_order.getInt("id_order")%>>เปิดไฟล์</button>
-                                </div>
-                                </form>
-                                <% } else if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { //นักแปลรับงานแต่ยังไม่ได้ส่งงาน%>
-                                <div class="col col-2" data-label="งานส่งมอบ">กำลังแปล</div>
-                        <% } else { %>
-                    <div class="col col-2" data-label="งานส่งมอบ">-</div>
-                    <% } %>
+                                font-size: 14px;" value=<%= rs_order.getInt("id_order")%>>
+                            เปิดไฟล์
+                        </button>
+                    </div>
+                </form>
+                <% } else if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { %>
+                <div class="col col-5" data-label="งานส่งมอบ">กำลังแปล</div>
+                <% } else { %>
+                <div class="col col-5" data-label="งานส่งมอบ">-</div>
+                <% } %>
             </li>
             <% }
                 }%>

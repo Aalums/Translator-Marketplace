@@ -93,8 +93,9 @@
                         <table style="width:100%">
                             <tr>
                                 <td>
+                                    <% String[] title = rs_order.getString("file_create").split("/|\\."); %>
                                     <h3>ชื่องาน</h3>
-                                    <input type="text" name="title" value="" />
+                                    <input type="text" name="title" value="<%= title[1].split("_")[1] %>" />
                                 </td>
                             </tr>
                             <tr>
@@ -129,7 +130,7 @@
                             <tr>
                                 <td>
                                     <h3>รายละเอียดงาน</h3>
-                                    <input placeholder="<%= rs_order.getString("description")%>" type="text" name="desc"/> 
+                                    <input type="text" name="desc" value="<%= rs_order.getString("description")%>"/> 
                                 </td>
                             </tr>
                             <tr>

@@ -4,6 +4,9 @@
     Author     : porpiraya
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -146,7 +149,25 @@
                 <ul>
                     <li><a href='Create_order.html'>สร้างรายการ</a></li>
                     <li><a href='Order_customer.jsp'>ออเดอร์</a></li>
-                    <li><a href='Order_Translator.jsp'>ออเดอร์นักแปล</a></li>
+                    
+                    <%
+                        Connection conn = (Connection) getServletContext().getAttribute("connection");
+
+                        //เช็คว่าเป็นนักแปล?
+                        PreparedStatement chk_translator = conn.prepareStatement(
+                                "SELECT * FROM customers"
+                                + " JOIN translators USING (id_customer) "
+                                + " WHERE id_customer = ?;"
+                        );
+                        chk_translator.setString(1, id_customer);
+
+                        ResultSet rs_chk_translator = chk_translator.executeQuery();
+                        if (rs_chk_translator.next()) {
+                            session.getServletContext().setAttribute("id_translator", rs_chk_translator.getInt("id_translator"));
+                    %>
+                    <li><a href='OrderTranslatorServlet'>ออเดอร์นักแปล</a></li>
+                    <% } %>
+                    
                     <li><a href='Status_Order.jsp'>สถานะ</a></li>
                     <li class='active'><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>

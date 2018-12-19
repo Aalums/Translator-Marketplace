@@ -174,20 +174,18 @@
             border: 2px solid #4778d9!important;
         }
         button {
-            left: 64%;
-            top: 57%;
-            position: absolute;
             font-family: 'Mitr', sans-serif;
             box-sizing: border-box;
             outline: none;
             border: 2px solid #24305e;
             background: #f8e392;
             border-radius: 4px;
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
             margin-bottom: 30px;
+            margin-top: 10px;
             transition: transform .2s, box-shadow .2s;
             transform: translate(-4px,-4px);
             box-shadow: 4px 4px 0px 0px #24305e;
@@ -213,100 +211,95 @@
         <div class="content-wrapper" style="padding-bottom: 699px;">
             <div class="container">
                 <form name="Form" action="EditProfileServlet" method="POST" enctype="multipart/form-data">
-                    <div class="col-sm-<%= column%>">
-                        <div class="login">
-                            <div class = "form">
-                                <div class = "header">
-                                    <center><h1>แก้ไขโปรไฟล์</h1></center>     
-                                </div>
-
-                                <% while (rs_profile.next()) {%>
-
-                                <div class = "sign-in-form">
-                                    <table style="width:100%">
-                                        <tr>
-                                            <td>
-                                                <div class="text-center">
-                                                    <%
-                                                        if (rs_profile.getString("picture") == null) { %>
-                                                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
-                                                    <% } else {
-                                                    %>
-                                                    <img src="<%= rs_profile.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
-                                                    <% }%>
-                                                    <h6>เลือกภาพโปรไฟล์</h6>
-                                                    <input type="file" class="text-center center-block file-upload" name="picture" >
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <h3>ชื่อ-นามสกุล</h3>
-                                                <input type="text" name="name_customer" value="<%= rs_profile.getString("name_customer")%>" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <h3>อีเมล</h3> <br><font color="red" size="0.3px"> **กรุณาใช้ @gmail.com เท่านั้น!!! </font>
-                                                <input type="email" pattern=".+@gmail.com" name="email" value="<%= rs_profile.getString("email")%>" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <h3>เบอร์โทรศัพท์</h3>
-                                                <input type="text" name="phone" value="<%= rs_profile.getString("phone")%>" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3>ชื่อผู้ใช้</h3>
-                                                <input type="text" name="id_customer" value="<%= rs_profile.getString("id_customer")%>" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <h3>รหัสผ่าน</h3>
-                                                <input type="password" name="password" value="<%= rs_profile.getString("password")%>" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <% }%>
-
+                    <div class="login">
+                        <div class = "form">
+                            <div class = "header">
+                                <center><h1>แก้ไขโปรไฟล์</h1></center>     
                             </div>
-                        </div>
-                    </div>
+                            <% while (rs_profile.next()) {%>
 
-                    <%
-                        if (check) {
-                            PreparedStatement translator = conn.prepareStatement(
-                                    "SELECT * FROM customers"
-                                    + " JOIN translators USING (id_customer) "
-                                    + " WHERE id_customer = ?;"
-                            );
-                            translator.setString(1, id_customer);
+                            <div class = "sign-in-form">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td>
+                                            <div class="text-center">
+                                                <%
+                                                    if (rs_profile.getString("picture") == null) { %>
+                                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
+                                                <% } else {
+                                                %>
+                                                <img src="<%= rs_profile.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
+                                                <% }%>
+                                                <h6>เลือกภาพโปรไฟล์</h6>
+                                                <input type="file" class="text-center center-block file-upload" name="picture" >
+                                            </div>
+                                        </td>
+                                    </tr>
 
-                            ResultSet rs_translator = translator.executeQuery();
-                            if (rs_translator.next()) {
-                    %>
+                                    <tr>
+                                        <td>
+                                            <h3>ชื่อ-นามสกุล</h3>
+                                            <input type="text" name="name_customer" value="<%= rs_profile.getString("name_customer")%>" />
+                                        </td>
+                                    </tr>
 
-                    <div class="col-sm-<%= column%>">
-                        <div class="login">
-                            <div class = "form">
-                                <div class = "header">
-                                    <center><h1>รายละเอียดนักแปล</h1></center>     
-                                </div>
+                                    <tr>
+                                        <td>
+                                            <h3>อีเมล</h3> <br><font color="red" size="0.3px"> **กรุณาใช้ @gmail.com เท่านั้น!!! </font>
+                                            <input type="email" pattern=".+@gmail.com" name="email" value="<%= rs_profile.getString("email")%>" />
+                                        </td>
+                                    </tr>
 
-                                <div class = "sign-in-form">
-                                    <h3>DESCRIPTION</h3>
-                                    <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile")%>
-                                    </textarea><br><br><br><br>
+                                    <tr>
+                                        <td>
+                                            <h3>เบอร์โทรศัพท์</h3>
+                                            <input type="text" name="phone" value="<%= rs_profile.getString("phone")%>" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h3>ชื่อผู้ใช้</h3>
+                                            <input type="text" name="id_customer" value="<%= rs_profile.getString("id_customer")%>" />
+                                        </td>
+                                    </tr>
 
+                                    <tr>
+                                        <td>
+                                            <h3>รหัสผ่าน</h3>
+                                            <input type="password" name="password" value="<%= rs_profile.getString("password")%>" />
+                                        </td>
+                                    </tr>
+
+                                    <!--  กรณีเป็นนักแปล -->
+
+                                    <%
+                                        if (check) {
+                                            PreparedStatement translator = conn.prepareStatement(
+                                                    "SELECT * FROM customers"
+                                                    + " JOIN translators USING (id_customer) "
+                                                    + " WHERE id_customer = ?;"
+                                            );
+                                            translator.setString(1, id_customer);
+
+                                            ResultSet rs_translator = translator.executeQuery();
+                                            if (rs_translator.next()) {
+                                    %>
+
+                                    <tr>
+                                        <td>
+                                            <div class = "header">
+                                                <center><h1>นักแปล</h1></center>     
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h3>รายละเอียดเกี่ยวกับนักแปล</h3>
+                                            <textarea name="describe" rows="10" cols="50"><%= rs_translator.getString("profile")%>
+                                            </textarea>
+                                        </td>
+                                    </tr>
                                     <%
                                         //RadioButton
                                         String chkRad1 = "";
@@ -342,36 +335,49 @@
                                             }
                                         }
                                     %>
+                                    <tr>
+                                        <td>
+                                            <h3>ระดับภาษาอังกฤษ</h3>
+                                            <input <%= chkRad1%> id="chkRad1" type="radio" name="translate" value="สูง"> สูง
+                                            <input <%= chkRad2%> id="chkRad2" type="radio" name="translate" value="ปานกลาง" > ปานกลาง
+                                            <input <%= chkRad3%> id="chkRad3" type="radio" name="translate" value="พื้นฐาน"> พื้นฐาน
+                                        </td>
+                                    </tr>
 
-                                    <h3>LANGUAGE LEVEL</h3>
-                                    <input <%= chkRad1%> id="chkRad1" type="radio" name="translate" value="สูง"> สูง
-                                    <input <%= chkRad2%> id="chkRad2" type="radio" name="translate" value="ปานกลาง" > ปานกลาง
-                                    <input <%= chkRad3%> id="chkRad3" type="radio" name="translate" value="พื้นฐาน"> พื้นฐาน
+                                    <tr>
+                                        <td>
+                                            <h3>ทักษะพิเศษ</h3>
+                                            <input <%= chkBox1%> type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">การ์ตูน</label>
+                                            <input <%= chkBox2%> type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">นิยาย</label>
+                                            <input <%= chkBox3%> type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">วิชาการ</label>
+                                            <input <%= chkBox4%> type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">บทประพันธ์</label>
+                                            <input <%= chkBox5%> type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">เอกสารทั่วไป</label>
+                                        </td>
+                                    </tr>
+                                    <% }
+                                        }
+                                    %>
+                                   <tr>
+                                        <td>
+                                    <center>
+                                        <br>
+                                        <button type="submit">
+                                            <div class = "button-text">
+                                                <a href="register_translator.jsp"></a>
+                                                บันทึก
+                                            </div>
+                                        </button>
+                                    </center>
+                                    </td>
+                                  </tr>
 
-                                    <h3>SKILL</h3>
-                                    <input <%= chkBox1%> type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">Cartoon</label>
-                                    <input <%= chkBox2%> type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">Novel</label>
-                                    <input <%= chkBox3%> type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">Academic</label>
-                                    <input <%= chkBox4%> type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">Poet</label>
-                                    <input <%= chkBox5%> type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
-
-                                    <br><br><br><br><br>
-                                </div>
+                                </table>
                             </div>
+
+                            <% }%>
+
                         </div>
                     </div>
-
-                    <% }
-                        }
-                    %>
-
-                    <center>
-                        <button type="submit">
-                            <div class = "button-text">
-                                บันทึก
-                            </div>
-                        </button>
-                    </center>
                 </form>
             </div>
         </div>

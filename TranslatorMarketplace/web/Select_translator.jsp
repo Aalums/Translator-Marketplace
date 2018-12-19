@@ -204,10 +204,10 @@
 
                     <%
                        if (rs_translator.getString("picture") == null) { %>
-                    <center><img src="profile.png" class="profile" style=" height: 120px ; width: 120px;"></center>
+                       <img src="profile.png" class="profile" style=" height: 120px ; width: 120px; margin:auto; display:block;" > <%--วิธีแรก--%>
                         <% } else {
                         %>
-                    <center><img src="<%= rs_translator.getString("picture")%>" class="profile" style=" height: 120px ; width: 120px; "></center>
+                    <img src="<%= rs_translator.getString("picture")%>" class="profile" style=" height: 120px ; width: 120px; margin:auto; display:block; text-align:center; "> <%--วิธีสอง--%>
                         <% }%>
 
 

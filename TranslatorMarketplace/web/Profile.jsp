@@ -241,12 +241,12 @@
             <!-- here’s the avatar -->
             <% if (rs_customer.getString("picture") == null) {%>
             <a href=#>
-                <img src="profile.png" alt="eye" style=" height: 200px ; width: 200px;">
+                <img src="profile.png" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;">
             </a>
 
             <% } else {%>
             <a href=#>
-                <img src="<%= rs_customer.getString("picture")%>" alt="eye" style=" height: 200px ; width: 200px;"></a>
+                <img src="<%= rs_customer.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;"></a>
                 <% }%>
 
             <!-- the username -->

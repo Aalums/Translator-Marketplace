@@ -41,7 +41,7 @@ public class CreateOrderServlet extends HttpServlet {
             ServletContext session = request.getServletContext();
             String id_customer = (String) session.getAttribute("id_customer");
 
-            //รับค่า parameter จาก Create_order.html
+            //รับค่า parameter จาก Create_order.jsp
             String title = request.getParameter("title");
             String translate = request.getParameter("translate");
             int num_page = Integer.parseInt(request.getParameter("num_page"));
@@ -53,9 +53,6 @@ public class CreateOrderServlet extends HttpServlet {
             InputStream inputStream = file.getInputStream();
             file_create file_create = new file_create();
             file_create.fileCreate(id_customer+"_"+title, inputStream);
-
-            //เช็ค
-            //out.println("alert('Get Parameter Complete!!')");
             
             String sql = "INSERT INTO create_order (id_customer, file_create, translate_type, description, num_page, price, due_date) "
                     + "VALUES (?,?,?,?,?,?,?)";
@@ -72,9 +69,6 @@ public class CreateOrderServlet extends HttpServlet {
             pstmt.close();
 
             response.sendRedirect("Order_customer.jsp");
-
-            //เช็ค
-            //out.println("<br>alert('INSERT Complete!!')");
             
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderServlet.class.getName()).log(Level.SEVERE, null, ex);

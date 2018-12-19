@@ -322,15 +322,15 @@
                                         String chkBox5 = "";
                                         String[] type = rs_translator.getString("type_skill").split(" ");
                                         for (int i = 0; i < type.length; i++) {
-                                            if (type[i].equals("Cartoon")) {
+                                            if (type[i].equals("การ์ตูน")) {
                                                 chkBox1 = "checked";
-                                            } else if (type[i].equals("Novel")) {
+                                            } else if (type[i].equals("นิยาย")) {
                                                 chkBox2 = "checked";
-                                            } else if (type[i].equals("Academic")) {
+                                            } else if (type[i].equals("วิชาการ")) {
                                                 chkBox3 = "checked";
-                                            } else if (type[i].equals("Poet")) {
+                                            } else if (type[i].equals("บทประพันธ์")) {
                                                 chkBox4 = "checked";
-                                            } else if (type[i].equals("Documentary")) {
+                                            } else if (type[i].equals("เอกสารทั่วไป")) {
                                                 chkBox5 = "checked";
                                             }
                                         }

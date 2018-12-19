@@ -52,6 +52,9 @@ public class EditOrderServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            //แสดงผลลัพธ์เป็นภาษาไทยได้ถูกต้อง
+            request.setCharacterEncoding("UTF-8");
 
             //id_order from click 'edit'
             int edit_order = Integer.parseInt(request.getParameter("save_order"));

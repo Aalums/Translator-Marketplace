@@ -100,55 +100,57 @@
                         <div class = "sign-in-form">
                             <table style="width:100%">
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <h3>ชื่องาน</h3>
                                         <input type="text" name="title" value="" />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <h3>การแปล</h3><br><br><br>
                                         <input type="radio" name="translate" value="thaieng"> ไทย -> อังกฤษ
                                         <input type="radio" name="translate" value="engthai" > อังกฤษ -> ไทย
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td>
-                                        <h3>จำนวนหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา</h3>
-                                        <div class="product">
+                                
+                                <tr>   
+                                    <td  width="150">
+                                        <h3>จำนวนหน้า</h3>
                                             <div class="product-quantity">
-                                                <input type="number" name="num_page" value="1" min="1" style="width: 75px;">
-                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <div class="product-quantity" >
-                                                <input type="number" name="price" value="1" min="1" style="margin-left: 80px; width: 80px;">
+                                                <input type="number" name="num_page" value="1" min="1" style="width: 75px">
                                             </div>
-                                        </div>
+                                    </td>
+                                    <td width="500">
+                                        <h3>ราคา</h3>
+                                            <div class="product-quantity">
+                                                <input type="number" name="price" value="1" min="1" style="width: 85px">
+                                            </div>
                                     </td>
                                 </tr>
+                        
 
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <h3>รายละเอียดงาน</h3>
                                         <input type="text" name="description" value="" /> 
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <h3>กำหนดวันรับงานแปล</h3><br>
                                         <input type="date" name="orderdate" id="orderdate" value="">
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <h3>แนบไฟล์ที่ต้องการแปล</h3> <br><br><br><br>
                                         <input type="file" name="file_create" /><br><br>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                 <center>
                                     <button type="submit">
                                         <div class = "button-text">

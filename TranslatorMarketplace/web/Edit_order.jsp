@@ -92,14 +92,14 @@
                     <div class = "sign-in-form">
                         <table style="width:100%">
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <% String[] title = rs_order.getString("file_create").split("/|\\."); %>
                                     <h3>ชื่องาน</h3>
                                     <input type="text" name="title" value="<%= title[1].split("_")[1] %>" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <!--โชว์การเลือกเดิม-->
                                     <h3>การแปล</h3><br><br><br>
                                     <% if (rs_order.getString("translate_type").equals("thaieng")) {%>
@@ -113,42 +113,43 @@
                             </tr>
 
                             <tr>
-                                <td>
-                                    <h3>จำนวนหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา</h3>
-                                    <div class="product">
+                                <td  width="150">
+                                    <h3>จำนวนหน้า</h3>
                                         <div class="product-quantity">
                                             <input type="number" name="num_page" value="<%= rs_order.getInt("num_page")%>" min="1" style="width: 75px;">
                                         </div>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td width="500">
+                                    <h3>ราคา</h3>
                                             <div class="product-quantity" >
-                                                <input type="number" name="price" value="<%= rs_order.getInt("price")%>" min="1" style="margin-left: 80px; width: 80px;">
+                                                <input type="number" name="price" value="<%= rs_order.getInt("price")%>" min="1" style="width: 85px;">
                                             </div>
-                                    </div>
+                                
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <h3>รายละเอียดงาน</h3>
                                     <input type="text" name="desc" value="<%= rs_order.getString("description")%>"/> 
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <h3>กำหนดวันรับงานแปล</h3><br>
                                     <input type="date" name="due_date" id="orderdate" value="<%= rs_order.getDate("due_date")%>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <h3>ไฟล์</h3><br> <%= rs_order.getString("file_create")%> <br><br><br>
                                     <input type="file" name="file_create" /><br><br>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>
+                                <td colspan="2">
                             <center>
                                 <button type="submit" name="save_order" value="<%= rs_order.getInt("id_order")%>">
                                     <div class = "button-text">

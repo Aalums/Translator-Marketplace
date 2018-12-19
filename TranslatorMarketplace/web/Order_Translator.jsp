@@ -214,7 +214,7 @@
                                     ยอมรับ
                                     <% } else if (status.equals("ปฎิเสธ")) { %> 
                                     ปฎิเสธ
-                                    <% } else if (status.equals("รายการนี้ถูกจ้างเเล้ว")) { %> 
+                                    <% } else if (status.equals("รายการถูกจ้างเเล้ว")) { %> 
                                     รายการนี้ถูกจ้างเเล้ว
                                     <% } else {%>
                                     <% int id_translator = (Integer) session.getServletContext().getAttribute("id_translator");%>

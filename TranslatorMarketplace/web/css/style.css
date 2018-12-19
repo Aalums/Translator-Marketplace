@@ -455,6 +455,7 @@ button:active {
     -webkit-border-radius: 50%;
     -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
     -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+    
 
 }
 
@@ -541,7 +542,7 @@ button:active {
     .profile-card header {
         width: auto;
         height: auto;
-        padding: 30px 20px;
+        padding: 0px 20px;
         display: block;
         border-right: none;
     }

@@ -229,10 +229,10 @@
                                                 <div class="text-center">
                                                     <%
                                                         if (rs_profile.getString("picture") == null) { %>
-                                                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" max-width: 50%;">
+                                                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
                                                     <% } else {
                                                     %>
-                                                    <img src="<%= rs_profile.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" max-width: 50%;">
+                                                    <img src="<%= rs_profile.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
                                                     <% }%>
                                                     <h6>เลือกภาพโปรไฟล์</h6>
                                                     <input type="file" class="text-center center-block file-upload" name="picture" >

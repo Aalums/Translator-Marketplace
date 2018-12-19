@@ -108,8 +108,8 @@
                                 <tr>
                                     <td colspan="2">
                                         <h3>การแปล</h3><br><br><br>
-                                        <input type="radio" name="translate" value="thaieng"> ไทย -> อังกฤษ
-                                        <input type="radio" name="translate" value="engthai" > อังกฤษ -> ไทย
+                                        <input type="radio" name="translate" value="แปลภาษาไทยเป็นภาษาอังกฤษ"> ไทย -> อังกฤษ
+                                        <input type="radio" name="translate" value="แปลภาษาอังกฤษเป็นภาษาไทย" > อังกฤษ -> ไทย
                                     </td>
                                 </tr>
                                 

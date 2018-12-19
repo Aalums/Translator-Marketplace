@@ -227,15 +227,26 @@
     <aside class="profile-card">
 
         <header>
+
+            
+            <%---
+                if (rs_customer.getString("picture") == null) { %>
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
+            <% } else {
+            %>
+            <img src="<%= rs_customer.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
+            <% }---%>
+            
+
             <!-- here’s the avatar -->
             <% if (rs_customer.getString("picture") == null) {%>
             <a href=#>
-                <img src="profile.png" alt="eye">
+                <img src="profile.png" alt="eye" style=" height: 200px ; width: 200px;">
             </a>
 
             <% } else {%>
             <a href=#>
-                <img src="<%= rs_customer.getString("picture")%>" alt="eye"></a>
+                <img src="<%= rs_customer.getString("picture")%>" alt="eye" style=" height: 200px ; width: 200px;"></a>
                 <% }%>
 
             <!-- the username -->

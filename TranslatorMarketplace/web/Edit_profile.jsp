@@ -259,7 +259,7 @@
                                     <tr>
                                         <td>
                                             <h3>ชื่อผู้ใช้</h3>
-                                            <input type="text" name="id_customer" value="<%= rs_profile.getString("id_customer")%>" />
+                                            <input type="text"  readonly="readonly" name="id_customer" value="<%= rs_profile.getString("id_customer")%>" />
                                         </td>
                                     </tr>
 

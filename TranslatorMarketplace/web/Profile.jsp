@@ -176,9 +176,23 @@
     <aside class="profile-card">
 
         <header>
+            
+            
+             <% if (rs_translator.getString("picture") == null) {%>
+            <a href=#>
+                <img src="profile.png" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;">
+            </a>
+
+            <% } else {%>
+            <a href=#>
+                <img src="<%= rs_translator.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;"></a>
+                <% }%>
+
+            <!-- the username -->
+            <h1 id="name"><%= rs_translator.getString("name_customer")%></h1>
 
             <!-- here’s the avatar -->
-            <% if (rs_translator.getString("picture") == null) {%>
+            <%--- if (rs_translator.getString("picture") == null) {%>
             <a href=#>
                 <img src="profile.png" alt="eye">
             </a>
@@ -190,7 +204,7 @@
             <% }%>
 
             <!-- the username -->
-            <h1 id="name"><%= rs_translator.getString("name_customer")%></h1>
+            <h1 id="name"><%= rs_translator.getString("name_customer")---%></h1>
 
             <!-- and role or location -->
             <h2>นักแปล</h2>
@@ -224,19 +238,10 @@
         ResultSet rs_customer = customer.executeQuery();
         while (rs_customer.next()) {
     %>
+    
     <aside class="profile-card">
 
         <header>
-
-            
-            <%---
-                if (rs_customer.getString("picture") == null) { %>
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
-            <% } else {
-            %>
-            <img src="<%= rs_customer.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
-            <% }---%>
-            
 
             <!-- here’s the avatar -->
             <% if (rs_customer.getString("picture") == null) {%>
@@ -260,6 +265,7 @@
             <p>เบอร์โทรศัพท์ : <%= rs_customer.getString("phone")%></p><br><br>
         </div>
 
+        
         <center>
             <form action="register_translator.jsp">
                 <button type="submit">
@@ -269,10 +275,12 @@
                 </button>
             </form>
         </center>
+        
         <a href="Edit_profile.jsp" class="icon-button edit">
             <i class="icon-edit" ><img src="picture/edit.png"/></i><span></span>
         </a>
     </aside>
+        
     <%
             }
         }

@@ -59,7 +59,7 @@
                     <li><a href='OrderTranslatorServlet'>ออเดอร์นักแปล</a></li>
                     <% } %>
                     
-                    <li><a href='StatusOrderServlet'>สถานะ</a></li>
+                    <li><a href='Status_Order.jsp'>สถานะ</a></li>
                     <li><a href='Profile.jsp'>โปรไฟล์</a></li>
                 </ul>
             </div>

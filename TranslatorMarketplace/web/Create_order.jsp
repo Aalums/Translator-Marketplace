@@ -75,11 +75,12 @@
             var a = document.forms["Form"]["title"].value;
             var b = document.forms["Form"]["translate"].value;
             var c = document.forms["Form"]["num_page"].value;
-            var d = document.forms["Form"]["description"].value;
-            var e = document.forms["Form"]["orderdate"].value;
-            var f = document.forms["Form"]["file_create"].value;
+            var d = document.forms["Form"]["price"].value;
+            var e = document.forms["Form"]["description"].value;
+            var f = document.forms["Form"]["orderdate"].value;
+            var g = document.forms["Form"]["file_create"].value;
             if (a == null || a == "", b == null || b == "", c == null || c == "",
-                    d == null || d == "", e == null || e == "", f == null || f == "")
+                    d == null || d == "", e == null || e == "", f == null || f == "", g == null || g == "")
             {
                 alert("กรุณากรอกข้อมูลให้ครบถ้วน");
                 return false;

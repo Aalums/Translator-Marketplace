@@ -45,7 +45,7 @@ public class CreateOrderServlet extends HttpServlet {
             String title = request.getParameter("title");
             String translate = request.getParameter("translate");
             int num_page = Integer.parseInt(request.getParameter("num_page"));
-            float price = num_page * 120;
+            float price = Float.parseFloat(request.getParameter("price"));
             String description = request.getParameter("description");
             Date date = Date.valueOf(request.getParameter("orderdate"));
 

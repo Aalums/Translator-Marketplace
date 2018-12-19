@@ -93,8 +93,9 @@
                         <table style="width:100%">
                             <tr>
                                 <td>
+                                    <% String[] title = rs_order.getString("file_create").split("/|\\."); %>
                                     <h3>ชื่องาน</h3>
-                                    <input type="text" name="title" value="" />
+                                    <input type="text" name="title" value="<%= title[1].split("_")[1] %>" />
                                 </td>
                             </tr>
                             <tr>

@@ -103,11 +103,11 @@
                                     <!--โชว์การเลือกเดิม-->
                                     <h3>การแปล</h3><br><br><br>
                                     <% if (rs_order.getString("translate_type").equals("thaieng")) {%>
-                                    <input type="radio" name="translate_type" value="thaieng" checked="True"> ไทย -> อังกฤษ
-                                    <input type="radio" name="translate_type" value="engthai" > อังกฤษ -> ไทย
+                                    <input type="radio" name="translate_type" value="ไทยเป็นอังกฤษ" checked="True"> ไทย -> อังกฤษ
+                                    <input type="radio" name="translate_type" value="อังกฤษเป็นไทย" > อังกฤษ -> ไทย
                                     <% } else { %>
-                                    <input type="radio" name="translate_type" value="thaieng" > ไทย -> อังกฤษ
-                                    <input type="radio" name="translate_type" value="engthai" checked="True"> อังกฤษ -> ไทย
+                                    <input type="radio" name="translate_type" value="ไทยเป็นอังกฤษ" > ไทย -> อังกฤษ
+                                    <input type="radio" name="translate_type" value="อังกฤษเป็นไทย" checked="True"> อังกฤษ -> ไทย
                                     <% }%>
                                 </td>
                             </tr>

@@ -209,7 +209,7 @@
                                 <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">นิยาย</label>
                                 <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">วิชาการ</label>
                                 <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">บทประพันธ์</label>
-                                <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">เอกสาร</label>
+                                <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">เอกสารทั่วไป</label>
                             </form>
                             <br><br><br><br><br>
 

@@ -47,10 +47,31 @@
             <img src="css/TRANSLATOR.png" alt="logo"  height="156" width="300">
         </div>
     </div>
+    
+    <style>
+        #alert {
+            color: red;
+        }
+    </style>
+    
 </head>
 
 <body>
-    <form action="LoginServlet">
+    
+    <script type="text/javascript">
+        function isEmpty()
+        {
+            var a = document.forms["Form"]["id"].value;
+            var b = document.forms["Form"]["password"].value;
+            if (a == null || a == "", b == null || b == "")
+            {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return false;
+            }
+        }
+    </script>
+    
+    <form action="LoginServlet" name="Form" onsubmit="return isEmpty()">
         <!-- Create Container + Logo -->
         <div class="content-wrapper" style="padding-bottom: 699px;">
             <div class="container">
@@ -75,6 +96,19 @@
                                         <input type="password" name="password" value="" />
                                     </td>
                                 </tr>
+                                
+                                <%
+                                    String message = (String) session.getServletContext().getAttribute("message");
+                                    if (message != null) {%>
+                                <tr>
+                                    <td>
+                                        <center><h3 id="alert"><%= message%></h3><br><br></center>
+                                    </td>
+                                </tr>
+                                <%
+                                    session.getServletContext().removeAttribute("message");
+                                    }
+                                %>
 
                                 <tr>
                                     <td>

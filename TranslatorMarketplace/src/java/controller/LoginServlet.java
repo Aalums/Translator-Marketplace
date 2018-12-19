@@ -70,39 +70,13 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("Order_customer.jsp");
                 } else {
                     //ถ้าไม่ตรงให้แจ้งเตือน
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<SCRIPT LANGUAGE=javascript>");
-
-                    out.println("<meta http-equiv='refresh' content='3;URL=Login.jsp'>"); //redirects after 3 seconds
-                    out.println("<p style='color:red;'>User or password incorrect!</p>");
-
-//                    out.println("alert(\" Invalid ID or Password, please try again!! \")");
-//                    out.println("window.location.replace(\"Login.jsp\");");
-                    out.println("</SCRIPT>");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("</body>");
-                    out.println("</html>");
+                    session.setAttribute("message", "** ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง **");
+                    response.sendRedirect("Login.jsp");
                 }
             } else {
                 //ถ้าไม่มี id ใน database ให้แจ้งเตือนไป Register ก่อน
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<SCRIPT LANGUAGE=javascript>");
-
-                out.println("<meta http-equiv='refresh' content='3;URL=Register.jsp'>"); //redirects after 3 seconds
-                out.println("<p style='color:red;'>User or password incorrect!</p>");
-
-//                out.println("alert(\" Please Register!! \")");
-//                out.println("window.location.replace(\"Register.jsp\");");
-                out.println("</SCRIPT>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("</body>");
-                out.println("</html>");
+                session.setAttribute("message", "** กรุณาสมัครสมาชิก **");
+                response.sendRedirect("Login.jsp");
             }
 
         } catch (SQLException ex) {

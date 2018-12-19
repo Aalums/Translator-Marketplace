@@ -204,10 +204,10 @@
 
                    <%
                          if (rs_translator.getString("picture") == null) { %>
-                    <img src="profile.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
+                    <img src="profile.png" class="profile" style=" height: 200px ; width: 200px;">
                     <% } else {
                     %>
-                    <img src="<%= rs_translator.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
+                    <img src="<%= rs_translator.getString("picture")%>" class="profile" style=" height: 200px ; width: 200px;">
                     <% }%>
 
 

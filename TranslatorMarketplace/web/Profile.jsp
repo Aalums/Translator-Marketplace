@@ -180,33 +180,18 @@
             
              <% if (rs_translator.getString("picture") == null) {%>
             <a href=#>
-                <img src="profile.png" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;">
+                <img src="profile.png" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px; margin-top:20px">
             </a>
 
             <% } else {%>
             <a href=#>
-                <img src="<%= rs_translator.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;"></a>
+                <img src="<%= rs_translator.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px ;margin-top:20px"></a>
                 <% }%>
 
             <!-- the username -->
             <h1 id="name"><%= rs_translator.getString("name_customer")%></h1>
 
-            <!-- here’s the avatar -->
-            <%--- if (rs_translator.getString("picture") == null) {%>
-            <a href=#>
-                <img src="profile.png" alt="eye">
-            </a>
-
-            <% } else {%>
-            <a href=#>
-                <img src="<%= rs_translator.getString("picture")%>" alt="eye">
-            </a>
-            <% }%>
-
-            <!-- the username -->
-            <h1 id="name"><%= rs_translator.getString("name_customer")---%></h1>
-
-            <!-- and role or location -->
+            
             <h2>นักแปล</h2>
 
         </header>
@@ -246,12 +231,12 @@
             <!-- here’s the avatar -->
             <% if (rs_customer.getString("picture") == null) {%>
             <a href=#>
-                <img src="profile.png" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;">
+                <img src="profile.png" class="avatar img-circle img-thumbnail" alt="eye" style="height: 200px ; width: 200px;margin-top:20px">
             </a>
 
             <% } else {%>
             <a href=#>
-                <img src="<%= rs_customer.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;"></a>
+                <img src="<%= rs_customer.getString("picture")%>" class="avatar img-circle img-thumbnail" alt="eye" style=" height: 200px ; width: 200px;margin-top:20px"></a>
                 <% }%>
 
             <!-- the username -->

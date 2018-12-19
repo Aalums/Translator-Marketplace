@@ -74,8 +74,12 @@ public class LoginServlet extends HttpServlet {
                     out.println("<html>");
                     out.println("<head>");
                     out.println("<SCRIPT LANGUAGE=javascript>");
-                    out.println("alert(\" Invalid ID or Password, please try again!! \")");
-                    out.println("window.location.replace(\"Login.jsp\");");
+
+                    out.println("<meta http-equiv='refresh' content='3;URL=Login.jsp'>"); //redirects after 3 seconds
+                    out.println("<p style='color:red;'>User or password incorrect!</p>");
+
+//                    out.println("alert(\" Invalid ID or Password, please try again!! \")");
+//                    out.println("window.location.replace(\"Login.jsp\");");
                     out.println("</SCRIPT>");
                     out.println("</head>");
                     out.println("<body>");
@@ -88,8 +92,12 @@ public class LoginServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<SCRIPT LANGUAGE=javascript>");
-                out.println("alert(\" Please Register!! \")");
-                out.println("window.location.replace(\"Register.jsp\");");
+
+                out.println("<meta http-equiv='refresh' content='3;URL=Register.jsp'>"); //redirects after 3 seconds
+                out.println("<p style='color:red;'>User or password incorrect!</p>");
+
+//                out.println("alert(\" Please Register!! \")");
+//                out.println("window.location.replace(\"Register.jsp\");");
                 out.println("</SCRIPT>");
                 out.println("</head>");
                 out.println("<body>");

@@ -102,7 +102,7 @@
                                 <td colspan="2">
                                     <!--โชว์การเลือกเดิม-->
                                     <h3>การแปล</h3><br><br><br>
-                                    <% if (rs_order.getString("translate_type").equals("thaieng")) {%>
+                                    <% if (rs_order.getString("translate_type").equals("ไทยเป็นอังกฤษ")) {%>
                                     <input type="radio" name="translate_type" value="ไทยเป็นอังกฤษ" checked="True"> ไทย -> อังกฤษ
                                     <input type="radio" name="translate_type" value="อังกฤษเป็นไทย" > อังกฤษ -> ไทย
                                     <% } else { %>

@@ -202,20 +202,16 @@
                 <figcaption>
                     <!--รูปโปรไฟล์-->
 
-                   <%
-                         if (rs_translator.getString("picture") == null) { %>
-                    <img src="profile.png" class="profile" style=" height: 200px ; width: 200px;">
-                    <% } else {
-                    %>
-                    <img src="<%= rs_translator.getString("picture")%>" class="profile" style=" height: 200px ; width: 200px;">
-                    <% }%>
+                    <%
+                       if (rs_translator.getString("picture") == null) { %>
+                    <center><img src="profile.png" class="profile" style=" height: 120px ; width: 120px;"></center>
+                        <% } else {
+                        %>
+                    <center><img src="<%= rs_translator.getString("picture")%>" class="profile" style=" height: 120px ; width: 120px; "></center>
+                        <% }%>
 
 
-                    <%-- if (rs_translator.getString("picture") == null) {%>
-                    <img src="profile.png" class="profile" />
-                    <% } else {%>
-                    <img src="<%= rs_translator.getString("picture")%>" class="profile" />
-                    <% }--%> 
+
 
                     <h1><%= rs_translator.getString("name_customer")%></h1>
                     <h2>

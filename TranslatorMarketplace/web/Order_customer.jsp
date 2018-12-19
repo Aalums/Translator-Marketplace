@@ -174,15 +174,17 @@
         ArrayList id_order = new ArrayList();
 
         PreparedStatement ordered = conn.prepareStatement(
-                "SELECT id_order FROM ordered"
+                "SELECT id_order FROM create_order"
+                + " JOIN ordered USING (id_order)"
+                + " WHERE id_customer = ?"
                 + " GROUP BY id_order;"
         );
+        ordered.setString(1, id_customer);
 
         PreparedStatement create_order = conn.prepareStatement(
-                "SELECT * FROM customers"
-                + " JOIN create_order USING (id_customer) "
+                "SELECT * FROM create_order"
                 + " WHERE id_customer = ?"
-                + " GROUP BY due_date DESC;"
+                + " ORDER BY due_date DESC;"
         );
         create_order.setString(1, id_customer);
 
@@ -198,7 +200,7 @@
 
 <div class="container">
     <div class="row">
-        <% while (rs_create.next()) {%>
+        <% while (rs_create.next()) { %>
         <div id="pricing-table">
             <div class="plan">
                 <h3>รายการที่  <%= rs_create.getInt("id_order")%>

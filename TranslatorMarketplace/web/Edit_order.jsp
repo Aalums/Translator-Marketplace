@@ -130,7 +130,7 @@
                             <tr>
                                 <td>
                                     <h3>รายละเอียดงาน</h3>
-                                    <input placeholder="<%= rs_order.getString("description")%>" type="text" name="desc"/> 
+                                    <input type="text" name="desc" value="<%= rs_order.getString("description")%>"/> 
                                 </td>
                             </tr>
                             <tr>

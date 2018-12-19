@@ -22,7 +22,7 @@
         </style>
     </head>
     <body>
-        <%--- int id_order = Integer.parseInt(request.getParameter("view"));
+        <% int id_order = Integer.parseInt(request.getParameter("view"));
 
             Connection conn = (Connection) getServletContext().getAttribute("connection");
 
@@ -34,7 +34,7 @@
             ResultSet rs = ps.executeQuery();
             rs.next();
 
-            String file = rs.getString("file_order");---%>
+            String file = rs.getString("file_order"); %>
 
         <h1><%= file%></h1>
         <div class="container">

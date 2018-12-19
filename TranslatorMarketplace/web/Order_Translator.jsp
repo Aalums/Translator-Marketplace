@@ -205,8 +205,8 @@
                                                                                   padding-bottom: 5px;
                                                                                   padding-right: 5px;
                                                                                   margin-bottom: 0px;
-                                                                                  font-size: 14px;
-                                                                                  "value=<%= id_order%>>เปิดไฟล์</button>
+                                                                                  font-size: 14px;"
+                                                                                  value=<%= id_order%>>เปิดไฟล์</button>
                                     </li>
                                 </form>
                                 <li><b>สถานะรับงาน&nbsp;:</b>&nbsp;
@@ -241,12 +241,13 @@
                                     </form>
                                     <% } %>  
                                 </li>
-                                <li><b>งานส่งมอบ&nbsp;:</b>&nbsp;<br>
+                                <li><b>งานส่งมอบ&nbsp;:</b>&nbsp;
                                     <%  if (status.equals("ยอมรับ") && file != null) {
                                             String[] file_order = file.split("/");%>
                                     <%= file_order[1]%><br>
 
                                     <form action="View_Fileorder.jsp" method="POST">
+                                        <br>
                                         <button name="view"  style="
                                                 margin-left: 30px;
                                                 padding-top: 5px;
@@ -274,7 +275,7 @@
                                     <% } else if (status.equals("ยอมรับ") && file == null) {%>
 
 
-                                    <form action="" enctype='multipart/form-data' method="POST">
+                                    <form action="SendOrderServlet" enctype='multipart/form-data' method="POST">
                                         <input type="file" name="file_order" value="" />
                                         <button name="send" style="
                                                 margin-left: 10px;
@@ -284,7 +285,7 @@
                                                 padding-right: 10px;
                                                 margin-bottom: 0px;
                                                 font-size: 18px;
-                                                "value=""<%= id_order%>>ส่งงาน</button>
+                                                "value=<%= id_order%>>ส่งงาน</button>
                                     </form>
                                     <% } %>
                                 </li>

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,7 +38,7 @@ public class EditOrderServlet extends HttpServlet {
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,72 +52,71 @@ public class EditOrderServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             //id_order from click 'edit'
-            int save_order = Integer.parseInt(request.getParameter("save_order"));
+            int edit_order = Integer.parseInt(request.getParameter("save_order"));
 
-            PreparedStatement ps_order = conn.prepareStatement(
-                    "SELECT *"
-                    + " FROM create_order"
-                    + " WHERE id_order = ?");
-
-            //get data from Edit_order.jsp
             Part file = request.getPart("file_create");
 
+            String title = request.getParameter("title");
             String type = request.getParameter("translate_type");
             String desc = request.getParameter("desc");
-            String page = request.getParameter("num_page");
-            String price = request.getParameter("price");
-            
-            ps_order.setInt(1, save_order);
-            ResultSet rs_order = ps_order.executeQuery();
-            
+            int num_page = Integer.parseInt(request.getParameter("num_page"));
+            float price = Float.parseFloat(request.getParameter("price"));
+            Date date = Date.valueOf(request.getParameter("due_date"));
+
             PreparedStatement ps_edit;
-            
-            while(rs_order.next()){
-                if(!type.equals(rs_order.getString("translate_type")) && !type.equals("")){
-                    ps_edit = conn.prepareStatement("UPDATE create_order SET translate_type = ? WHERE id_order = ?");
-                    ps_edit.setString(1, type);
-                    ps_edit.setInt(2, save_order);
-                    row = ps_edit.executeUpdate();
-//                    out.println("type = "+row);
-                }
-                if(!desc.equals(rs_order.getString("description")) && !desc.equals("")){
-                    ps_edit = conn.prepareStatement("UPDATE create_order SET description = ? WHERE id_order = ?");
-                    ps_edit.setString(1, desc);
-                    ps_edit.setInt(2, save_order);
-                    row = ps_edit.executeUpdate();
-//                    out.println("desc = "+row);
-                }
-                if(!page.equals(rs_order.getString("num_page")) && !page.equals("")){
-                    ps_edit = conn.prepareStatement("UPDATE create_order SET num_page = ? WHERE id_order = ?");
-                    ps_edit.setInt(1, Integer.parseInt(page));
-                    ps_edit.setInt(2, save_order);
-                    row = ps_edit.executeUpdate();
-//                    out.println("page = "+row);
-                }
-                if(rs_order.getFloat("price") != Float.parseFloat(price)){
-                    ps_edit = conn.prepareStatement("UPDATE create_order SET price = ? WHERE id_order = ?");
-                    ps_edit.setFloat(1, Float.parseFloat(price));
-                    ps_edit.setInt(2, save_order);
-                    row = ps_edit.executeUpdate();
-//                    out.println("page = "+row);
-                }
-                if(!file.equals("")){
-                    //เอาชื่อไฟล์ออกมา
-                    String[] title = rs_order.getString("file_create").split("/|\\.");
-                    
-                    InputStream inputStream = file.getInputStream();
-                    file_create file_cre = new file_create();
-                    file_cre.fileCreate(title[1], inputStream);
-                }
+
+            if (file.getSize() > 0) { //มีการอัพไฟล์ใหม่
+//                out.println("size = "+file.getSize());
+                ps_edit = conn.prepareStatement(
+                        "UPDATE create_order SET file_create = ?,"
+                        + " translate_type = ?,"
+                        + " description = ?,"
+                        + " num_page = ?,"
+                        + " price = ?,"
+                        + " due_date = ?"
+                        + "WHERE id_order = ?"
+                );
+
+                InputStream inputStream = file.getInputStream();
+                file_create file_create = new file_create();
+                file_create.fileCreate(title, inputStream);
+
+                ps_edit.setString(1, file_create.create());
+                ps_edit.setString(2, type);
+                ps_edit.setString(3, desc);
+                ps_edit.setInt(4, num_page);
+                ps_edit.setFloat(5, price);
+                ps_edit.setDate(6, date);
+                ps_edit.setInt(7, edit_order);
+
+                row = ps_edit.executeUpdate();
+
+            } else {
+                ps_edit = conn.prepareStatement(
+                        "UPDATE create_order SET translate_type = ?,"
+                        + " description = ?,"
+                        + " num_page = ?,"
+                        + " price = ?,"
+                        + " due_date = ?"
+                        + "WHERE id_order = ?"
+                );
+
+                ps_edit.setString(1, type);
+                ps_edit.setString(2, desc);
+                ps_edit.setInt(3, num_page);
+                ps_edit.setFloat(4, price);
+                ps_edit.setDate(5, date);
+                ps_edit.setInt(6, edit_order);
+
+                row = ps_edit.executeUpdate();
             }
-            
-            rs_order.close();
-            ps_order.close();
-            
+
+            System.out.println("update = "+row);
+
             response.sendRedirect("Order_customer.jsp");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(EditOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

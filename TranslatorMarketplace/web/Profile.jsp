@@ -136,13 +136,13 @@
         }
         .icon-button .icon-edit {
             color: #ffda44;
-             top: 3%;
+            top: 3%;
             left: 5%;
             /*background: url(picture/edit-2.png) no-repeat;*/
         }   
         .icon-button:hover .icon-edit {
             color: #333e94;
-             top: 3%;
+            top: 3%;
             left: 5%;
         }
     </style>
@@ -200,13 +200,15 @@
         <!-- bit of a bio; who are you? -->
         <div class="profile-bio">
 
-            <p>E-mail: <%= rs_translator.getString("email")%></p><br><br>
-            <p>Phone : <%= rs_translator.getString("phone")%></p><br><br>
-            <p>Profile : <%= rs_translator.getString("profile")%></p><br><br>
-            <p>Language : <%= rs_translator.getString("level_skill")%></p><br><br>
-            <p>Skill : <%= rs_translator.getString("type_skill")%></p>
+            <p>อีเมล: <%= rs_translator.getString("email")%></p><br><br>
+            <p>เบอร์โทรศัพท์ : <%= rs_translator.getString("phone")%></p><br><br>
+            <p>รายละเอียดนักแปล : <%= rs_translator.getString("profile")%></p><br><br>
+            <p>ระดับภาษาอังกฤษ : <%= rs_translator.getString("level_skill")%></p><br><br>
+            <p>ทักษะพิเศษ : <%= rs_translator.getString("type_skill")%></p>
         </div>
-
+        <a href="Edit_profile.jsp" class="icon-button edit">
+            <i class="icon-edit" ><img src="picture/edit.png"/></i><span></span>
+        </a>
     </aside>
 
     <%
@@ -243,8 +245,8 @@
 
         <!-- bit of a bio; who are you? -->
         <div class="profile-bio">
-            <p>E-mail: <%= rs_customer.getString("email")%></p><br><br>
-            <p>Phone : <%= rs_customer.getString("phone")%></p><br><br>
+            <p>อีเมล: <%= rs_customer.getString("email")%></p><br><br>
+            <p>เบอร์โทรศัพท์ : <%= rs_customer.getString("phone")%></p><br><br>
         </div>
 
         <center>
@@ -256,9 +258,9 @@
                 </button>
             </form>
         </center>
-                    <a href="Edit_profile.jsp" class="icon-button edit">
-                <i class="icon-edit" ><img src="picture/edit.png"/></i><span></span>
-            </a>
+        <a href="Edit_profile.jsp" class="icon-button edit">
+            <i class="icon-edit" ><img src="picture/edit.png"/></i><span></span>
+        </a>
     </aside>
     <%
             }

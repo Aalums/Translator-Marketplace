@@ -194,29 +194,29 @@
                         </div>
 
                         <div class = "sign-in-form">
-                            <h3>DESCRIPTION</h3>
+                            <h3>รายละเอียดเกี่ยวกับนักแปล</h3>
                             <textarea name="describe" rows="10" cols="50" value="">
                             </textarea><br><br><br><br>
 
-                            <h3>LANGUAGE LEVEL</h3>
+                            <h3>ระดับภาษาอังกฤษ</h3>
                             <input type="radio" name="translate" value="สูง"> สูง
                             <input type="radio" name="translate" value="ปานกลาง" > ปานกลาง
                             <input type="radio" name="translate" value="พื้นฐาน"> พื้นฐาน
 
                             <form action="#">
-                                <h3>SKILL</h3>
-                                <input type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">Cartoon</label>
-                                <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">Novel</label>
-                                <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">Academic</label>
-                                <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">Poet</label>
-                                <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">Documentary</label>
+                                <h3>ทักษะพิเศษ</h3>
+                                <input type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">การ์ตูน</label>
+                                <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">นิยาย</label>
+                                <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">วิชาการ</label>
+                                <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">บทประพันธ์</label>
+                                <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">เอกสาร</label>
                             </form>
                             <br><br><br><br><br>
 
                             <center>
                                 <button type="submit">
                                     <div class = "button-text">
-                                        REGISTER
+                                        สมัครนักแปล
                                     </div>
                                 </button>
                             </center>

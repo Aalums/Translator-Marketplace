@@ -173,6 +173,26 @@
         label:hover:before {
             border: 2px solid #4778d9!important;
         }
+        button {
+            left: 64%;
+            top: 57%;
+            position: absolute;
+            font-family: 'Mitr', sans-serif;
+            box-sizing: border-box;
+            outline: none;
+            border: 2px solid #24305e;
+            background: #f8e392;
+            border-radius: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 30px;
+            transition: transform .2s, box-shadow .2s;
+            transform: translate(-4px,-4px);
+            box-shadow: 4px 4px 0px 0px #24305e;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -311,17 +331,13 @@
                                         for (int i = 0; i < type.length; i++) {
                                             if (type[i].equals("Cartoon")) {
                                                 chkBox1 = "checked";
-                                            }
-                                            else if (type[i].equals("Novel")) {
+                                            } else if (type[i].equals("Novel")) {
                                                 chkBox2 = "checked";
-                                            }
-                                            else if (type[i].equals("Academic")) {
+                                            } else if (type[i].equals("Academic")) {
                                                 chkBox3 = "checked";
-                                            }
-                                            else if (type[i].equals("Poet")) {
+                                            } else if (type[i].equals("Poet")) {
                                                 chkBox4 = "checked";
-                                            }
-                                            else if (type[i].equals("Documentary")) {
+                                            } else if (type[i].equals("Documentary")) {
                                                 chkBox5 = "checked";
                                             }
                                         }

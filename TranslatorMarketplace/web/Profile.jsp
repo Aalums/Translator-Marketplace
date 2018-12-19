@@ -86,43 +86,47 @@
             -ms-user-select: none;
             user-select: none;
             width: 3.6rem;
-            right: 24%;
-            top: 50%;
+            top: 3%;
+            left: 80%;
         }
         /* Circle */
         .icon-button span {
             border-radius: 0;
             display: block;
             height: 0;
-            left: 50%;
             margin: 0;
             position: absolute;
-            top: 50%;
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
             -o-transition: all 0.3s;
             transition: all 0.3s;
             width: 0;
+            top: 3%;
+            left: 80%;
         }
         .icon-button:hover span {
             width: 3.6rem;
             height: 3.6rem;
             border-radius: 3.6rem;
             margin: -1.8rem;
+            top: 50%;
+            left: 50%;
         }
         .edit span {
             background-color: #ffda44;
+            top: 3%;
+            left: 80%;
             /*background: url(picture/edit-3.png) no-repeat;*/
         }
         /* Icons */
         .icon-button i {
+            top: 3%;
+            left: 4%;
             background: none;
             color: white;
             height: 3.6rem;
-            left: 0;
             line-height: 3.6rem;
             position: absolute;
-            top: 0;
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
             -o-transition: all 0.3s;
@@ -132,19 +136,20 @@
         }
         .icon-button .icon-edit {
             color: #ffda44;
+             top: 3%;
+            left: 5%;
             /*background: url(picture/edit-2.png) no-repeat;*/
         }   
         .icon-button:hover .icon-edit {
             color: #333e94;
+             top: 3%;
+            left: 5%;
         }
     </style>
 </head>
 
 <body>
 
-    <a href="Edit_profile.jsp" class="icon-button edit">
-        <i class="icon-edit" ><img src="picture/edit.png"/></i><span></span></a>
-    <!--<a href='Edit_profile.jsp'>Edit</a>-->
 
     <%
         //เช็คก่อนว่าเป็นนักแปล ?
@@ -177,6 +182,7 @@
             <a href=#>
                 <img src="profile.png" alt="eye">
             </a>
+
             <% } else {%>
             <a href=#>
                 <img src="<%= rs_translator.getString("picture")%>" alt="eye">
@@ -193,6 +199,7 @@
 
         <!-- bit of a bio; who are you? -->
         <div class="profile-bio">
+
             <p>E-mail: <%= rs_translator.getString("email")%></p><br><br>
             <p>Phone : <%= rs_translator.getString("phone")%></p><br><br>
             <p>Profile : <%= rs_translator.getString("profile")%></p><br><br>
@@ -218,12 +225,12 @@
     <aside class="profile-card">
 
         <header>
-
             <!-- here’s the avatar -->
             <% if (rs_customer.getString("picture") == null) {%>
             <a href=#>
                 <img src="profile.png" alt="eye">
             </a>
+
             <% } else {%>
             <a href=#>
                 <img src="<%= rs_customer.getString("picture")%>" alt="eye"></a>
@@ -249,6 +256,9 @@
                 </button>
             </form>
         </center>
+                    <a href="Edit_profile.jsp" class="icon-button edit">
+                <i class="icon-edit" ><img src="picture/edit.png"/></i><span></span>
+            </a>
     </aside>
     <%
             }

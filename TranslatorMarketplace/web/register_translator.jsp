@@ -226,11 +226,11 @@
 
                             <form action="#">
                                 <h3>ทักษะพิเศษ</h3>
-                                <input type="checkbox" id="box1" name="box" value="Cartoon" /><label for="box1">การ์ตูน</label>
-                                <input type="checkbox" id="box2" name="box" value="Novel" /><label for="box2">นิยาย</label>
-                                <input type="checkbox" id="box3" name="box" value="Academic" /><label for="box3">วิชาการ</label>
-                                <input type="checkbox" id="box4" name="box" value="Poet" /><label for="box4">บทประพันธ์</label>
-                                <input type="checkbox" id="box5" name="box" value="Documentary" /><label for="box5">เอกสารทั่วไป</label>
+                                <input type="checkbox" id="box1" name="box" value="การ์ตูน" /><label for="box1">การ์ตูน</label>
+                                <input type="checkbox" id="box2" name="box" value="นิยาย" /><label for="box2">นิยาย</label>
+                                <input type="checkbox" id="box3" name="box" value="วิชาการ" /><label for="box3">วิชาการ</label>
+                                <input type="checkbox" id="box4" name="box" value="บทประพันธ์" /><label for="box4">บทประพันธ์</label>
+                                <input type="checkbox" id="box5" name="box" value="เอกสารทั่วไป" /><label for="box5">เอกสารทั่วไป</label>
                             </form>
                             <br><br><br><br><br>
 

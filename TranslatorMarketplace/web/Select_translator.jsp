@@ -19,124 +19,146 @@
         <link rel="stylesheet" href="css/style.css">
 
         <style>
-            h2 {
-                font-weight: normal;
-                font-size: 1.5em;
-                font-weight: 200;
-                line-height: 1.2em;
-                margin-top: 20px;
-            }
-            h3 {
-                font-variant: small-caps;
-                font-size: 0.9em;
-                letter-spacing: 0.5px;
-                font-weight: 200;
-                line-height: 0em;
-                margin-bottom: 30px;
-                letter-spacing: 1px;
-            }
-            .register-form {
-                max-width: 600px;
-                min-width: 490px;
-                width: 80%;
-                position: absolute;
-                padding: 50px;
-                padding-right: 54px;
-                top: 200px;
-                left: 50%;
-                transform: translate(-50%,0);
-                border-radius: 5px;
-                background: #fff;
-                border: 2px solid #003489;
-                box-shadow: 8px 8px 0px 0px #003489;
-                margin-bottom: 100px;
-            }
-            /* Base for label styling */
-            [type="checkbox"]:not(:checked),
-            [type="checkbox"]:checked {
-                position: absolute;
-                left: -9999px;
-            }
-            [type="checkbox"]:not(:checked) + label,
-            [type="checkbox"]:checked + label {
+            .snip1336 {
                 position: relative;
-                padding-left: 1.95em;
-                cursor: pointer;
-                line-height: 25pt;
-            }
-            /* checkbox aspect */
-            [type="checkbox"]:not(:checked) + label:before,
-            [type="checkbox"]:checked + label:before {
-                content: '';
-                position: absolute;
-                left: 0; top: 0;
-                width: 1.25em; height: 1.25em;
-                border: 2px solid #ccc;
-                background: #fff;
-                border-radius: 4px;
-                box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
-            }
-            /* checked mark aspect : เฉพาะcodeนี้ จะขึ้นchecked ทุกcheckbox*/
-            [type="checkbox"]:not(:checked) + label:after,
-            [type="checkbox"]:checked + label:after {
-                content: '\2713\0020';
-                position: absolute;
-                top: .15em; left: .22em;
-                font-size: 1.3em;
-                line-height: 0.8;
-                color: #09ad7e;
-                transition: all .2s;
-                font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
-            }
-            /* checked mark aspect changes : พอใส่codeนี้ที่checkedทุกcheckboxก่อนหน้าจะหาย แล้วเลือกcheckอันไหนก็ได้*/
-            [type="checkbox"]:not(:checked) + label:after {
-                opacity: 0;
-                transform: scale(0);
-            }
-            [type="checkbox"]:checked + label:after {
-                opacity: 1;
-                transform: scale(1);
-            }
-            /* disabled checkbox */
-            [type="checkbox"]:disabled:not(:checked) + label:before,
-            [type="checkbox"]:disabled:checked + label:before {
-                box-shadow: none;
-                border-color: #bbb;
-                background-color: #ddd;
-            }
-            [type="checkbox"]:disabled:checked + label:after {
-                color: #999;
-            }
-            [type="checkbox"]:disabled + label {
-                color: #aaa;
-            }
-            /* accessibility */
-            [type="checkbox"]:checked:focus + label:before,
-            [type="checkbox"]:not(:checked):focus + label:before {
-                border: 2px dotted blue;
-            }
-            /* hover style just for information */
-            label:hover:before {
-                border: 2px solid #4778d9!important;
-            }
-            button {
+                float: left;
+                overflow: hidden;
+                margin: 10px 1%;
+                min-width: 230px;
+                max-width: 280px;
+                width: 100%;
+                color: #ffffff;
+                text-align: left;
+                line-height: 1.4em;
+                background-color: #333333;
+                border-radius: 2%;
+                box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.23);
                 font-family: 'Mitr', sans-serif;
-                box-sizing: border-box;
-                outline: none;
-                border: 2px solid #24305e;
-                background: #f8e392;
-                border-radius: 4px;
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 15px;
-                padding-bottom: 15px;
-                margin-bottom: 30px;
-                margin-top: 10px;
-                transition: transform .2s, box-shadow .2s;
-                transform: translate(-4px,-4px);
-                box-shadow: 4px 4px 0px 0px #24305e;
-                text-align: center;
             }
+            .snip1336 * {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-transition: all 0.25s ease;
+                transition: all 0.25s ease;
+            }
+            .snip1336 img {
+                max-width: 100%;
+                vertical-align: central;
+            }
+            .snip1336 figcaption {
+                width: 100%;
+                background-color: #333333;
+                padding: 25px;
+                position: relative;
+                height: 15em;
+                font-family: 'Mitr', sans-serif;
+            }
+            .snip1336 select_employ {
+                width: 100%;
+                background-color: #333333;
+                padding: 25px;
+                position: relative;
+            }
+            .snip1336 figcaption:before {
+                position: absolute;
+                content: '';
+                bottom: 100%;
+                left: 0;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 55px 0 0 400px;
+                border-color: transparent transparent transparent #f76d6d;
+            }
+            .snip1336 figcaption a {
+                padding: 5px;
+                border: 1px solid #ffffff;
+                color: #ffffff;
+                font-size: 0.7em;
+                text-transform: uppercase;
+                margin: 10px 0;
+                display: inline-block;
+                width: 47%;
+                text-align: center;
+                text-decoration: none;
+                font-weight: 600;
+                letter-spacing: 1px;
+                font-family: 'Mitr', sans-serif;
+            }
+            .snip1336 figcaption a:hover {
+                opacity: 1;
+            }
+            .snip1336 .profile {
+                border-radius: 50%;
+                position: absolute;
+                bottom: 100%;
+                margin-bottom: 18px;
+                left: 65px;
+                z-index: 1;
+                max-width: 200px;
+                max-height: 200px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            }
+            .snip1336 .follow {
+                margin-right: 4%;
+                border-color: #2980b9;
+                color: #2980b9;
+            }
+            .snip1336 h1 {
+                color: white;
+                text-align: center;
+                margin: 0 0 5px;
+                font-weight: 300;
+                font-family: 'Mitr', sans-serif;
+            }
+            .snip1336 h2 {
+                color: #f8e392;
+                margin: 0 0 5px;
+                font-weight: 300;
+                font-size: 0.7em;
+                font-family: 'Mitr', sans-serif;
+            }
+            .snip1336 h2 span {
+                display: block;
+                font-size: 1.5em;
+                color: #f8e392;
+                font-family: 'Mitr', sans-serif;
+            }
+            .snip1336 p {
+                margin: 0 0 10px;
+                font-size: 1.0em;
+                font-family: 'Mitr', sans-serif;
+                color: #ffffff;
+            }
+            .container {
+                max-width: 895px; 
+                width: 100%; 
+                margin: 0 auto; 
+            } 
+            #select_employ{
+                box-shadow: 4px 4px 0px 0px  #f76d6d;
+                border: 2px solid #f76d6d;
+            }
+            a {
+                font-size: 35px;
+                width: 20px;
+                height: 20px;
+                padding-right: 20px;
+                padding-left: 20px;
+                border-radius: 50%;
+                top:60px;
+                left:20%;
+                background-color: #f76d6d;
+                color: white;
+                position: relative;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            a:hover {
+                background-color: #333333;
+            }
+
         </style>
     </head>
 
@@ -180,8 +202,7 @@
                 <figcaption>
                     <!--รูปโปรไฟล์-->
 
-
-                    <%
+                   <%
                          if (rs_translator.getString("picture") == null) { %>
                     <img src="profile.png" class="avatar img-circle img-thumbnail" alt="avatar" style=" height: 200px ; width: 200px;">
                     <% } else {

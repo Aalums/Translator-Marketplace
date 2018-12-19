@@ -64,14 +64,14 @@
                             <table style="width:100%">
                                 <tr>
                                     <td>
-                                        <h3>USERNAME</h3><br><br>
+                                        <h3>ชื่อผู้ใช้</h3><br><br>
                                         <input type="text" name="id" value="" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <h3>PASSWORD</h3><br><br>
+                                        <h3>รหัสผ่าน</h3><br><br>
                                         <input type="password" name="password" value="" />
                                     </td>
                                 </tr>

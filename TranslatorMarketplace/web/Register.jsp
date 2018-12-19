@@ -154,14 +154,14 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h3>USERNAME</h3>
+                                        <h3>ชื่อผู้ใช้</h3>
                                         <input type="text" name="id_customer" value="<%= id_customer%>" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <h3>PASSWORD</h3>
+                                        <h3>รหัสผ่าน</h3>
                                         <input type="password" name="password" value="<%= password%>" />
                                     </td>
                                 </tr>

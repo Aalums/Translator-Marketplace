@@ -126,7 +126,7 @@
             padding-top: 0px;
         }
         .responsive-table .col-4 {
-            flex-basis: 20%;
+            flex-basis: 10%;
             line-height: 20px;
             border-left: 1px solid #ddd;
             padding: 10px;
@@ -135,7 +135,7 @@
             text-align: center;
         }
         .responsive-table .col-5 {
-            flex-basis: 10%;
+            flex-basis: 20%;
             line-height: 20px;
             border-left: 1px solid #ddd;
             padding: 10px;
@@ -197,7 +197,7 @@
                 <div class="col col-2">รายละเอียด</div>
                 <div class="col col-3">นักแปล</div>
                 <div class="col col-4">สถานะ</div>
-                <div class="col col-5">งานส่งมอบ</div>
+                <div class="col col-5">การแปล</div>
             </li>
             <% while (rs_order.next()) {
                     ps_trans.setInt(1, rs_order.getInt("id_order"));
@@ -232,7 +232,7 @@
                 <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) {
                         //นักแปลส่งงานให้คนจ้างแล้ว ให้กดไฟล์เพื่อตรวจงานได้ %> 
                 <form action="View_Fileorder.jsp"  method="POST">
-                    <div class="col col-5" data-label="งานส่งมอบ">
+                    <div class="col col-5" data-label="การแปล">
                         <br><br>
                         <button name="view" style="margin-top: 30px;
                                 padding-left: 5px;
@@ -247,9 +247,9 @@
                     </div>
                 </form>
                 <% } else if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") == null) { %>
-                <div class="col col-5" data-label="งานส่งมอบ">กำลังแปล</div>
+                <div class="col col-5" data-label="การแปล">กำลังแปล</div>
                 <% } else { %>
-                <div class="col col-5" data-label="งานส่งมอบ">-</div>
+                <div class="col col-5" data-label="การแปล">-</div>
                 <% } %>
             </li>
             <% }

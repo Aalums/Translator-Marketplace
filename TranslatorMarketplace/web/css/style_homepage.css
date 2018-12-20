@@ -44,6 +44,38 @@ header {
     background-size: cover;
     -o-background-size: cover;
 }
+button {
+    font-family: 'Mitr', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid #24305e;
+    background: #f0fff0;
+    border-radius: 4px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 30px;
+    transition: transform .2s, box-shadow .2s;
+    transform: translate(-4px,-4px);
+    box-shadow: 4px 4px 0px 0px #24305e;
+    text-align: center;
+}
+
+.button-text {
+    font-family: 'Mitr', sans-serif;
+    margin: 0;
+    line-height: 1;
+}
+
+button:hover {
+    transform: translate(-6px,-6px);
+    box-shadow: 6px 6px 0px 0px #24305e;
+}
+
+button:active {
+    transition-delay:-.15s;
+    transform: translate(-2px,-2px);
+    box-shadow: 2px 2px 0px 0px #24305e;
+}
 
 header .header-content {
     position: relative;
@@ -255,3 +287,4 @@ h2 {
 .topnav-right {
   float: right;
 }
+

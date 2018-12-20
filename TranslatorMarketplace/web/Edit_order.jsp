@@ -36,7 +36,7 @@
             <div id='cssmenu'>
                 <ul>
 
-                    <li><a href='Create_order.html'>สร้างรายการ</a></li>
+                    <li><a href='Create_order.jsp'>สร้างรายการ</a></li>
                     <li class='active'><a href='Order_customer.jsp'>ออเดอร์</a></li>
 
                     <%

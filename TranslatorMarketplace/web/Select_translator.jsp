@@ -93,7 +93,8 @@
                 position: absolute;
                 bottom: 100%;
                 margin-bottom: 18px;
-                left: 65px;
+                top: -67%;
+                left: 78px;
                 z-index: 1;
                 max-width: 200px;
                 max-height: 200px;
@@ -105,6 +106,7 @@
                 color: #2980b9;
             }
             .snip1336 h1 {
+                font-size: x-large;
                 color: white;
                 text-align: center;
                 margin: 0 0 5px;
@@ -210,13 +212,11 @@
                     <img src="<%= rs_translator.getString("picture")%>" class="profile" style=" height: 120px ; width: 120px; margin:auto; display:block; text-align:center; "> <%--วิธีสอง--%>
                         <% }%>
 
-
-
-
-                    <h1><%= rs_translator.getString("name_customer")%></h1>
+                    <h1 style="font-size: 20px;"><%= rs_translator.getString("name_customer")%></h1>
                     <h2>
-                        <span>SKILL : <%= rs_translator.getString("type_skill")%></span>
-                        <span>LANGUAGE : <%= rs_translator.getString("level_skill")%></span>
+                        <span style="font-size: 14px;">อีเมล : <%= rs_translator.getString("email")%></span>
+                        <span>ทักษะพิเศษ : <%= rs_translator.getString("type_skill")%></span>
+                        <span>ระดับภาษาอังกฤษ : <%= rs_translator.getString("level_skill")%></span>
                     </h2>
                     <p><%= rs_translator.getString("profile")%></p>
                 </figcaption>

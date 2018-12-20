@@ -24,7 +24,7 @@ public class file_order {
     }
     
     public void fileOrder(String name, InputStream file) throws FileNotFoundException{
-        File path = new File("/Users/eyenach/Documents/GitHub/Translator-Marketplace/TranslatorMarketplace/web/file_order/" + name + ".pdf");
+        File path = new File("/Users/Planoi/Documents/GitHub/Translator-Marketplace/TranslatorMarketplace/web/file_order/" + name + ".pdf");
         FileOutputStream outputStream = new FileOutputStream(path);
 
         file_order = "file_order/" + name + ".pdf";

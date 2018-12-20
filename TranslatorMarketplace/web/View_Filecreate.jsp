@@ -66,11 +66,11 @@
             ResultSet rs = ps.executeQuery();
             rs.next();
 
-            String file = rs.getString("file_create");%>
+            String file = rs.getString("file_create"); %>
 
             <a href="javascript:history.back();" class="button6" style=" font-family: 'Mitr', sans-serif;">&#8249;</a>
         <div class="container">
-            <center> <embed src=<%= file%> type="application/pdf" style="width: 80%; height: 45em;"/> </center> 
+            <center> <embed src="<%= file%>" type="application/pdf" style="width: 80%; height: 45em;"/> </center> 
         </div>
     </body>
 </html>

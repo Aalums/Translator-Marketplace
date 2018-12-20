@@ -39,14 +39,20 @@ public class AcceptOrderServlet extends HttpServlet {
             int id_translator = Integer.parseInt(select[1]);
             String status = select[2];
             int id_order = Integer.parseInt(select[0]);
-            
+            System.out.println(status);
             //แก้ไขสถานะเพื่อเก็บเข้าฐานข้อมูล
             if (status.equals("YES")) {
                 status = "ยอมรับ";
+                PreparedStatement ps_order_n = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ? AND id_translator not in (?)");
+                ps_order_n.setString(1, "รายการถูกจ้างเเล้ว");
+                ps_order_n.setInt(2, id_order);
+                ps_order_n.setInt(3, id_translator);
+                ps_order_n.executeUpdate();
+                ps_order_n.close();
             } else if (status.equals("NO")) {
                 status = "ปฏิเสธ";
             }
-            
+            System.out.println(status);
             PreparedStatement ps_order_y = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ? AND id_translator = ?");
             ps_order_y.setString(1, status);
             ps_order_y.setInt(2, id_order);
@@ -54,11 +60,7 @@ public class AcceptOrderServlet extends HttpServlet {
             
             int row = ps_order_y.executeUpdate();
             
-            PreparedStatement ps_order_n = conn.prepareStatement("UPDATE ordered SET status = ? WHERE id_order = ? AND id_translator not in (?)");
-            ps_order_n.setString(1, "รายการถูกจ้างเเล้ว");
-            ps_order_n.setInt(2, id_order);
-            ps_order_n.setInt(3, id_translator);
-            ps_order_n.executeUpdate();
+            
             
             for(int i=0; i<list_order.size(); i++){
                 OrderTranslator item = (OrderTranslator) list_order.get(i);
@@ -69,7 +71,7 @@ public class AcceptOrderServlet extends HttpServlet {
             }
             
             ps_order_y.close();
-            ps_order_n.close();
+            
 
             response.sendRedirect("Order_Translator.jsp");
             

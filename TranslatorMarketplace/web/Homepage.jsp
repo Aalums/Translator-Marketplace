@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <title>Home Page</title>
@@ -14,9 +15,9 @@
 
         <link href="css/style_homepage.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
-       
 
-   <%
+
+        <%
             String id_customer = (String) session.getServletContext().getAttribute("id_customer");
             if (id_customer == null) {
                 //ยังไม่เข้าสู่ระบบ
@@ -30,7 +31,7 @@
         </div>
     </div>
 
-    <% } else { %>
+    <% } else {%>
 
     <div class="topnav">
         <div class="topnav-right">
@@ -180,19 +181,32 @@
 
 
     <header>
-        
-             <img src="https://sv1.picz.in.th/images/2018/12/18/9kXyGf.png" alt="9kXyGf.png" border="0" />
-            <div class="header-content">
-                <div class="header-content-inner">
-                    <p>Welcome To  Translator Market Place</p>
-                    <p>เว็บไซต์ที่เป็นเครื่องมือช่วยคุณในการแปลเอกสาร<br> การันตีคุณภาพผลงานจากนักแปลมือดี</p>
-                </div>
+
+        <img src="https://sv1.picz.in.th/images/2018/12/18/9kXyGf.png" alt="9kXyGf.png" border="0" />
+        <div class="header-content" style="
+             padding-top: 55px;
+             padding-bottom: 20px;
+             ">
+            <div class="header-content-inner">
+                <p>Welcome To  Translator Market Place</p>
+                <p>เว็บไซต์ที่เป็นเครื่องมือช่วยคุณในการแปลเอกสาร<br> การันตีคุณภาพผลงานจากนักแปลมือดี</p>
             </div>
+        </div>
+
+        <form action="Translator.jsp" method="POST">
+            <button type="submit">
+                <h1>
+                    นักแปลของเรา
+                </h1>
+            </button>
+        </form>
+
+
     </header>
 
     <div style ="background: linear-gradient(to top, #ffcccc 80%, transparent 100%)"width:600px:high:300px:">
 
-        <br>
+         <br>
         <br>
         <br>
         <br>
@@ -202,34 +216,34 @@
 
         <div class="containers">
             <div class="box first">
-           
+
 
                 <span class="icon-cont">
-                      <i> <img src="https://www.img.in.th/images/3ff09a432550034c065b2d801777b8de.png" width="80px" ></i>
-                   
+                    <i> <img src="https://www.img.in.th/images/3ff09a432550034c065b2d801777b8de.png" width="80px" ></i>
+
                 </span>
 
                 <h3>Register</h3>
-                    <h7> สมัครสมาชิก <br><br> เพื่อเริ่มใช้งาน </h7>
+                <h7> สมัครสมาชิก <br><br> เพื่อเริ่มใช้งาน </h7>
             </div>
 
             <div class="box second">
                 <span class="icon-cont">
-                   <i> <img src="https://sv1.picz.in.th/images/2018/12/18/9kxczR.png" width="80px" ></i>
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/18/9kxczR.png" width="80px" ></i>
 
                 </span> 
-                
+
                 <h3>Create Order</h3>
-                
+
                 <h7>สร้างรายการจ้างแปล</h7>
-                
+
             </div>
 
             <div class="box third">
                 <span class="icon-cont">
                     <i> <img src="https://sv1.picz.in.th/images/2018/12/17/9fK3Mz.png" width="80px" ></i>
                 </span> 
-                
+
                 <h3>Choose</h3>
                 <h7>เลือกนักแปล <br><br> ที่ต้องการ</h7>
             </div>
@@ -244,7 +258,7 @@
 
             <div class="box fifth">
                 <span class="icon-cont">
-                  <i> <img src="https://sv1.picz.in.th/images/2018/12/18/9kEiw9.png" width="80px" ></i>
+                    <i> <img src="https://sv1.picz.in.th/images/2018/12/18/9kEiw9.png" width="80px" ></i>
                 </span>
 
                 <h3>Check</h3>
@@ -252,7 +266,7 @@
                 <h7> ตรวจสอบ <br><br> ความถูกต้อง</h7>
 
             </div>
-            
+
             <div class="box sixth">
                 <span class="icon-cont">
                     <i> <img src="https://sv1.picz.in.th/images/2018/12/18/9k5VGf.png" width="80px" ></i>
@@ -263,7 +277,7 @@
                 <h7> ชำระเงิน</h7>
 
             </div>
-            
+
             <div class="box seventh">
                 <span class="icon-cont">
                     <i> <img src="https://www.img.in.th/images/a98cf3547bb15cb44b1d4387bab6abbd.png" width="80px" ></i>

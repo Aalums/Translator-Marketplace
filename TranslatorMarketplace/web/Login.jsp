@@ -57,7 +57,21 @@
 </head>
 
 <body>
-    <form action="LoginServlet">
+    
+    <script type="text/javascript">
+        function isEmpty()
+        {
+            var a = document.forms["Form"]["id"].value;
+            var b = document.forms["Form"]["password"].value;
+            if (a == null || a == "", b == null || b == "")
+            {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return false;
+            }
+        }
+    </script>
+    
+    <form action="LoginServlet" name="Form" onsubmit="return isEmpty()">
         <!-- Create Container + Logo -->
         <div class="content-wrapper" style="padding-bottom: 699px;">
             <div class="container">
@@ -101,7 +115,7 @@
                                 <center>
                                     <button type="submit">
                                         <div class = "button-text">
-                                            LOGIN
+                                            เข้าสู่ระบบ
                                         </div>
                                     </button>
                                 </center>

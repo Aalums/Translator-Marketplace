@@ -20,15 +20,16 @@
             .container {
                 padding: 30px;
             }
-            a {
+           a {
                 font-size: 35px;
                 width: 59px;
                 height: 66px;
                 padding-right: 25px;
                 padding-left: 22px;
+                padding-bottom: 4px;
                 border-radius: 50%;
-                top:60px;
-                left:20%;
+                top: 50px;
+                left: 6%;
                 background-color: #f76d6d;
                 color: white;
                 position: relative;

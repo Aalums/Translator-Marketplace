@@ -56,32 +56,27 @@ public class LoginServlet extends HttpServlet {
 
             ServletContext session = request.getServletContext();
 
-            if (id.isEmpty() || password.isEmpty()) {
-                session.setAttribute("message", "** กรุณากรอกข้อมูลให้ครบถ้วน **");
-                response.sendRedirect("Login.jsp");
-            } else {
-                //เช็ค id ว่ามีใน customers table หรือไม่
-                String sql = "SELECT * FROM customers WHERE id_customer=?";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setString(1, id);
-                ResultSet rs = pstmt.executeQuery();
+            //เช็ค id ว่ามีใน customers table หรือไม่
+            String sql = "SELECT * FROM customers WHERE id_customer=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
 
-                if (rs.next()) {
-                    //ถ้ามีก็ไปเช็ค password ว่าตรงกับที่รีจิสไว้หรือไม่
-                    if (id.equals(rs.getString("id_customer")) && password.equals(rs.getString("password"))) {
-                        //ถ้าตรงก็ให้ไปหน้า Order_customer
-                        session.setAttribute("id_customer", id);
-                        response.sendRedirect("Order_customer.jsp");
-                    } else {
-                        //ถ้าไม่ตรงให้แจ้งเตือน
-                        session.setAttribute("message", "** รหัสผ่าน ไม่ถูกต้อง **");
-                        response.sendRedirect("Login.jsp");
-                    }
+            if (rs.next()) {
+                //ถ้ามีก็ไปเช็ค password ว่าตรงกับที่รีจิสไว้หรือไม่
+                if (id.equals(rs.getString("id_customer")) && password.equals(rs.getString("password"))) {
+                    //ถ้าตรงก็ให้ไปหน้า Order_customer
+                    session.setAttribute("id_customer", id);
+                    response.sendRedirect("Order_customer.jsp");
                 } else {
-                    //ถ้าไม่มี id ใน database ให้แจ้งเตือนไป Register ก่อน
-                    session.setAttribute("message", "** กรุณาสมัครสมาชิก **");
+                    //ถ้าไม่ตรงให้แจ้งเตือน
+                    session.setAttribute("message", "** ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง **");
                     response.sendRedirect("Login.jsp");
                 }
+            } else {
+                //ถ้าไม่มี id ใน database ให้แจ้งเตือนไป Register ก่อน
+                session.setAttribute("message", "** กรุณาสมัครสมาชิก **");
+                response.sendRedirect("Login.jsp");
             }
 
         } catch (SQLException ex) {

@@ -135,7 +135,7 @@
             text-align: center;
         }
         .responsive-table .col-5 {
-            flex-basis: 20%;
+            flex-basis: 10%;
             line-height: 20px;
             border-left: 1px solid #ddd;
             padding: 10px;
@@ -180,7 +180,7 @@
         );
 
         PreparedStatement ps_trans = conn.prepareStatement(
-                "SELECT name_customer, status, file_order, id_customer FROM ordered"
+                "SELECT * FROM ordered"
                 + " JOIN translators USING (id_translator)"
                 + "JOIN customers USING (id_customer)"
                 + " WHERE id_order = ?"
@@ -226,7 +226,10 @@
                     </form>
                 </div>
 
-                <div class="col col-3" data-label="นักแปล"><%= rs_trans.getString("name_customer")%></div>
+                <div class="col col-3" data-label="นักแปล">
+                    <%= rs_trans.getString("name_customer")%> <br>
+                    <%= rs_trans.getString("email")%>
+                </div>
                 <div class="col col-4" data-label="สถานะ"><%= rs_trans.getString("status")%></div>
 
                 <% if (rs_trans.getString("status").equals("ยอมรับ") && rs_order.getString("file_order") != null) {

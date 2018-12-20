@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +59,10 @@ public class EditOrderServlet extends HttpServlet {
 
             //id_order from click 'edit'
             int edit_order = Integer.parseInt(request.getParameter("save_order"));
+            
+            //id cus จากตอน login
+            ServletContext session = request.getServletContext();
+            String id_customer = (String) session.getAttribute("id_customer");
 
             Part file = request.getPart("file_create");
 
@@ -84,7 +89,7 @@ public class EditOrderServlet extends HttpServlet {
 
                 InputStream inputStream = file.getInputStream();
                 file_create file_create = new file_create();
-                file_create.fileCreate(title, inputStream);
+                file_create.fileCreate(id_customer+"_"+title, inputStream);
 
                 ps_edit.setString(1, file_create.create());
                 ps_edit.setString(2, type);
